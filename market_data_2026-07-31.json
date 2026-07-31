@@ -1,0 +1,52 @@
+{
+  "timestamp": "2026-07-31T03:41:18.454353+00:00",
+  "market": "Hong Kong",
+  "stocks": [
+    {
+      "symbol": "HK00700",
+      "name": "\u817e\u8baf\u63a7\u80a1 (Tencent Holdings Limited)",
+      "current_price": 503.16,
+      "previous_price": 485.32,
+      "change": 17.84,
+      "change_pct": 3.68,
+      "currency": "HKD",
+      "timestamp": "2026-07-31T03:41:18.454329+00:00"
+    },
+    {
+      "symbol": "HK01972",
+      "name": "\u592a\u53e4\u5730\u4ea7 (Swire Properties Limited)",
+      "current_price": 22.87,
+      "previous_price": 23.83,
+      "change": -0.96,
+      "change_pct": -4.03,
+      "currency": "HKD",
+      "timestamp": "2026-07-31T03:41:18.454343+00:00"
+    },
+    {
+      "symbol": "HK03986",
+      "name": "\u5146\u6613\u521b\u65b0 (GigaDevice Semiconductor Inc)",
+      "current_price": 496.17,
+      "previous_price": 494.53,
+      "change": 1.64,
+      "change_pct": 0.33,
+      "currency": "HKD",
+      "timestamp": "2026-07-31T03:41:18.454347+00:00"
+    },
+    {
+      "symbol": "HK00001",
+      "name": "\u957f\u548c (CK Hutchison Holdings Limited)",
+      "current_price": 90.22,
+      "previous_price": 87.95,
+      "change": 2.27,
+      "change_pct": 2.58,
+      "currency": "HKD",
+      "timestamp": "2026-07-31T03:41:18.454349+00:00"
+    }
+  ],
+  "summary": {
+    "average_change_pct": 0.64,
+    "positive_count": 3,
+    "total_stocks": 4,
+    "sentiment": "\ud83d\ude80 Bullish"
+  }
+}
