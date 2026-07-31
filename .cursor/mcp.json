@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "quotes": {
+      "command": "python",
+      "args": ["${workspaceFolder}/tools/quotes_mcp_server.py"]
+    }
+  }
+}
