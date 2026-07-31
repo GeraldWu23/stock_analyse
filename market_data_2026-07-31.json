@@ -1,0 +1,30 @@
+{
+  "HK00700": {
+    "name": "\u817e\u8baf\u63a7\u80a1 (Tencent)",
+    "price": 506.87,
+    "change_percent": 1.37,
+    "currency": "HKD",
+    "timestamp": "2026-07-31T03:50:50.232369"
+  },
+  "HK01972": {
+    "name": "\u592a\u53e4\u5730\u4ea7 (Swire)",
+    "price": 23.78,
+    "change_percent": -0.92,
+    "currency": "HKD",
+    "timestamp": "2026-07-31T03:50:50.232379"
+  },
+  "HK03986": {
+    "name": "\u5146\u6613\u521b\u65b0 (GigaDevice)",
+    "price": 511.94,
+    "change_percent": 3.42,
+    "currency": "HKD",
+    "timestamp": "2026-07-31T03:50:50.232382"
+  },
+  "HK00001": {
+    "name": "\u957f\u548c (CK Hutchison)",
+    "price": 88.18,
+    "change_percent": -2.02,
+    "currency": "HKD",
+    "timestamp": "2026-07-31T03:50:50.232384"
+  }
+}
