@@ -6,7 +6,7 @@
   - 太古地产H     hk01972    (港股)
   - 兆易创新H     hk03986    (港股 H 股; 兆易创新 A+H 两地上市, A 股为 sh603986)
   - 电力ETF       sh561700   (电力ETF 博时)
-  - 1000增强ETF   sh561780   (中证1000增强ETF 博时)
+  - 电网设备ETF   sh561380   (电网设备ETF 国泰)
 
 数据源: **腾讯 qt.gtimg.cn 优先, 新浪 hq.sinajs.cn 兜底**。
 两个接口都返回 GBK 编码的文本; 新浪需要携带 Referer 头。
@@ -36,7 +36,7 @@ WATCHLIST: list[tuple[str, str]] = [
     # 兆易创新 A+H 两地上市: H 股为 hk03986 (A 股为 sh603986)。此处按需求取 H 股。
     ("兆易创新H", "hk03986"),
     ("电力ETF", "sh561700"),
-    ("1000增强ETF", "sh561780"),
+    ("电网设备ETF", "sh561380"),
 ]
 
 _TENCENT_URL = "https://qt.gtimg.cn/q={codes}"

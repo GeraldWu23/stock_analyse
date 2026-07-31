@@ -51,7 +51,7 @@ def get_quotes(codes: list[str] | None = None, timeout: float = 10.0) -> dict:
     参数:
         codes: 标的代码列表, 如 ["sh600029", "hk01972"]。
                前缀: 上交所 sh、深交所 sz、港股 hk(补足 5 位, 如 hk01972)。
-               省略时使用内置自选(南方航空A/太古地产H/兆易创新H/电力ETF/1000增强ETF)。
+               省略时使用内置自选(南方航空A/太古地产H/兆易创新H/电力ETF/电网设备ETF)。
         timeout: 单次请求超时秒数。
 
     返回:

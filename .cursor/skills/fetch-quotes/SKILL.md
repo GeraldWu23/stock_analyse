@@ -1,6 +1,6 @@
 ---
 name: fetch-quotes
-description: 拉取 A 股 / 港股 / ETF 的实时行情(现价、涨跌、涨跌幅、最高、最低、成交量)。当用户询问股票/标的价格、行情、盘中报价,或提到自选(南方航空A、太古地产H、兆易创新H、电力ETF、1000增强ETF)时使用。数据源腾讯优先、新浪兜底。
+description: 拉取 A 股 / 港股 / ETF 的实时行情(现价、涨跌、涨跌幅、最高、最低、成交量)。当用户询问股票/标的价格、行情、盘中报价,或提到自选(南方航空A、太古地产H、兆易创新H、电力ETF、电网设备ETF)时使用。数据源腾讯优先、新浪兜底。
 ---
 
 # Fetch Quotes 行情查询
@@ -17,11 +17,11 @@ description: 拉取 A 股 / 港股 / ETF 的实时行情(现价、涨跌、涨�
 在仓库根目录运行(优先使用虚拟环境的解释器 `./.venv/bin/python`,没有则用 `python3`):
 
 ```bash
-# 拉取内置自选(南方航空A / 太古地产H / 兆易创新H / 电力ETF / 1000增强ETF)
+# 拉取内置自选(南方航空A / 太古地产H / 兆易创新H / 电力ETF / 电网设备ETF)
 python fetch_quotes.py
 
 # 指定代码(前缀:上交所 sh、深交所 sz、港股 hk 补足 5 位)
-python fetch_quotes.py sh600029 hk01972 hk03986 sh561700 sh561780
+python fetch_quotes.py sh600029 hk01972 hk03986 sh561700 sh561380
 
 # 每 N 秒轮询一次(如每 2 分钟 = 120,每 5 分钟 = 300),Ctrl+C 结束
 python fetch_quotes.py --interval 120
@@ -34,7 +34,7 @@ python fetch_quotes.py --interval 120
 | 上交所 A 股 | `sh` | `sh600029` 南方航空 |
 | 深交所 A 股 | `sz` | `sz000001` 平安银行 |
 | 港股 | `hk`(5 位) | `hk01972` 太古地产、`hk03986` 兆易创新H |
-| ETF | `sh`/`sz` | `sh561700` 电力ETF、`sh561780` 1000增强ETF |
+| ETF | `sh`/`sz` | `sh561700` 电力ETF、`sh561380` 电网设备ETF |
 
 ## 输出 / Output
 
