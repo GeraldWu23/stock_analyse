@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-07-31T04:11:04.450694",
+  "data": [
+    {
+      "name": "腾讯控股 (Tencent)",
+      "ticker": "HK00700",
+      "price": 497.17,
+      "base_price": 515.0,
+      "change_percent": -3.46,
+      "currency": "HKD"
+    },
+    {
+      "name": "太古地产 (Swire)",
+      "ticker": "HK01972",
+      "price": 25.28,
+      "base_price": 24.8,
+      "change_percent": 1.92,
+      "currency": "HKD"
+    },
+    {
+      "name": "兆易创新 (GigaDevice)",
+      "ticker": "HK03986",
+      "price": 510.06,
+      "base_price": 496.5,
+      "change_percent": 2.73,
+      "currency": "HKD"
+    },
+    {
+      "name": "长和 (CK Hutchison)",
+      "ticker": "HK00001",
+      "price": 88.38,
+      "base_price": 89.7,
+      "change_percent": -1.47,
+      "currency": "HKD"
+    }
+  ],
+  "summary": {
+    "average_change": -0.07,
+    "sentiment": "MILDLY BULLISH",
+    "total_stocks": 4
+  }
+}
