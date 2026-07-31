@@ -39,10 +39,29 @@ q = fetch_quote("600519.SS")
 print(q.price, q.change, q.change_percent)
 ```
 
+## A 股 / 港股行情脚本 fetch_quotes.py
+
+腾讯 `qt.gtimg.cn` 优先、新浪 `hq.sinajs.cn` 兜底,支持 A 股 / 港股 / ETF,并可定时轮询。
+
+```bash
+python fetch_quotes.py                     # 内置自选(南方航空A/太古地产H/兆易创新H/大陆ETF)
+python fetch_quotes.py sh600029 hk03986    # 指定代码 (sh/sz/hk 前缀)
+python fetch_quotes.py --interval 300       # 每 5 分钟轮询一次 (Ctrl+C 结束)
+```
+
+## 让 Cursor 自动调用
+
+两种方式都已内置,任选其一:
+
+- **Skill**:`.cursor/skills/fetch-quotes/SKILL.md`。在 Cursor 里直接问"查一下这些价格 / 看看行情",
+  agent 会自动运行 `fetch_quotes.py`(也可手动 `/fetch-quotes` 触发)。
+- **MCP 工具**:`.cursor/mcp.json` 会启动 `tools/quotes_mcp_server.py`(FastMCP),暴露结构化工具
+  `get_quotes(codes?)` 与 `list_watchlist()`,返回 JSON。首次可能需要在 Cursor 里允许运行该 MCP 工具。
+
 ## 测试
 
 ```bash
 pytest -q
 ```
 
-单元测试不依赖网络（对接口返回做解析测试）。
+单元测试不依赖网络（对接口返回做解析 / mock 网络）。
