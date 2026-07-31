@@ -23,6 +23,7 @@ from __future__ import annotations
 import argparse
 import dataclasses
 import sys
+import time
 from datetime import datetime, timezone
 
 import requests
@@ -269,6 +270,23 @@ def render_table(rows: list[list[str]]) -> str:
     return "\n".join(lines)
 
 
+def print_snapshot(
+    codes: list[str], name_map: dict[str, str], *, timeout: float
+) -> tuple[list[Quote], list[str]]:
+    """抓取一次并打印一张行情表, 返回 (quotes, failed)。"""
+    quotes, failed = fetch_quotes(codes, timeout=timeout)
+
+    now = datetime.now(timezone.utc).astimezone().strftime("%Y-%m-%d %H:%M:%S %Z")
+    print(f"行情快照 @ {now}\n")
+    if quotes:
+        print(render_table([_row(q, name_map.get(q.code)) for q in quotes]))
+    if failed:
+        print("\n未获取到行情:", ", ".join(failed), file=sys.stderr)
+    # 立即刷新, 便于在管道/日志中实时查看。
+    sys.stdout.flush()
+    return quotes, failed
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog="fetch_quotes.py",
@@ -276,6 +294,20 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument("codes", nargs="*", help="标的代码, 如 sh600029 hk01972; 缺省则用内置自选")
     parser.add_argument("--timeout", type=float, default=10.0, help="请求超时秒数")
+    parser.add_argument(
+        "--interval",
+        type=float,
+        default=0.0,
+        metavar="秒",
+        help="轮询间隔秒数; >0 则循环拉取 (每5分钟填 300)。默认 0 表示只拉一次。",
+    )
+    parser.add_argument(
+        "--count",
+        type=int,
+        default=0,
+        metavar="次数",
+        help="配合 --interval 使用: 最多拉取多少次; 0 表示无限循环, 直到 Ctrl+C。",
+    )
     args = parser.parse_args(argv)
 
     if args.codes:
@@ -285,14 +317,27 @@ def main(argv: list[str] | None = None) -> int:
     codes = [code for _, code in watch]
     name_map = {code: name for name, code in watch}
 
-    quotes, failed = fetch_quotes(codes, timeout=args.timeout)
+    # 单次模式。
+    if args.interval <= 0:
+        quotes, _ = print_snapshot(codes, name_map, timeout=args.timeout)
+        return 0 if quotes else 1
 
-    now = datetime.now(timezone.utc).astimezone().strftime("%Y-%m-%d %H:%M:%S %Z")
-    print(f"行情快照 @ {now}\n")
-    if quotes:
-        print(render_table([_row(q, name_map.get(q.code)) for q in quotes]))
-    if failed:
-        print("\n未获取到行情:", ", ".join(failed), file=sys.stderr)
+    # 轮询模式。
+    got_any = False
+    iteration = 0
+    try:
+        while True:
+            iteration += 1
+            print(f"===== 第 {iteration} 次 =====")
+            quotes, _ = print_snapshot(codes, name_map, timeout=args.timeout)
+            got_any = got_any or bool(quotes)
+            if args.count and iteration >= args.count:
+                break
+            print(f"\n(等待 {args.interval:.0f} 秒后再次拉取, 按 Ctrl+C 结束)\n")
+            time.sleep(args.interval)
+    except KeyboardInterrupt:
+        print("\n已停止轮询。", file=sys.stderr)
+    return 0 if got_any else 1
 
     return 0 if quotes else 1
 
