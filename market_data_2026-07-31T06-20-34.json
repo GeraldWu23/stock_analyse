@@ -1,0 +1,43 @@
+{
+  "stocks": [
+    {
+      "code": "HK03986",
+      "name": "GigaDevice",
+      "price": 500.66,
+      "change_percent": -1.83,
+      "base_price": 510.0,
+      "timestamp": "2026-07-31T06:20:34.481351+00:00"
+    },
+    {
+      "code": "HK00001",
+      "name": "CK Hutchison",
+      "price": 87.22,
+      "change_percent": -0.89,
+      "base_price": 88.0,
+      "timestamp": "2026-07-31T06:20:34.481368+00:00"
+    },
+    {
+      "code": "HK01972",
+      "name": "Swire Properties",
+      "price": 25.27,
+      "change_percent": -0.9,
+      "base_price": 25.5,
+      "timestamp": "2026-07-31T06:20:34.481372+00:00"
+    },
+    {
+      "code": "HK00700",
+      "name": "Tencent",
+      "price": 475.22,
+      "change_percent": -0.99,
+      "base_price": 480.0,
+      "timestamp": "2026-07-31T06:20:34.481374+00:00"
+    }
+  ],
+  "summary": {
+    "timestamp": "2026-07-31T06:20:34.481376+00:00",
+    "average_change": -1.16,
+    "stocks_up": 0,
+    "stocks_down": 4,
+    "sentiment": "BEARISH"
+  }
+}
