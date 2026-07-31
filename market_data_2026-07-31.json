@@ -1,0 +1,35 @@
+{
+  "HK00700": {
+    "symbol": "HK00700",
+    "name": "腾讯控股 (Tencent)",
+    "sector": "科技",
+    "price": 498.79,
+    "previous_close": 485.63,
+    "change": 13.16,
+    "change_percent": 2.71,
+    "currency": "HKD",
+    "timestamp": "2026-07-31T03:35:59.699435Z"
+  },
+  "HK01972": {
+    "symbol": "HK01972",
+    "name": "太古地产 (Swire Properties)",
+    "sector": "房产",
+    "price": 23.48,
+    "previous_close": 23.83,
+    "change": -0.35,
+    "change_percent": -1.48,
+    "currency": "HKD",
+    "timestamp": "2026-07-31T03:35:59.699447Z"
+  },
+  "HK03986": {
+    "symbol": "HK03986",
+    "name": "兆易创新 (GigaDevice)",
+    "sector": "半导体",
+    "price": 501.91,
+    "previous_close": 494.46,
+    "change": 7.45,
+    "change_percent": 1.51,
+    "currency": "HKD",
+    "timestamp": "2026-07-31T03:35:59.699452Z"
+  }
+}
