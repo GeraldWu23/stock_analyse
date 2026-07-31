@@ -1,0 +1,20 @@
+{
+  "HK03986": {
+    "name": "\u5146\u6613\u521b\u65b0",
+    "price": 494.46,
+    "change_percent": 0.42,
+    "currency": "HKD"
+  },
+  "HK01972": {
+    "name": "\u592a\u53e4\u5730\u4ea7",
+    "price": 23.83,
+    "change_percent": -0.97,
+    "currency": "HKD"
+  },
+  "HK00700": {
+    "name": "\u817e\u8baf\u63a7\u80a1",
+    "price": 485.63,
+    "change_percent": 1.64,
+    "currency": "HKD"
+  }
+}
