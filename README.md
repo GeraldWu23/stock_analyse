@@ -44,7 +44,7 @@ print(q.price, q.change, q.change_percent)
 腾讯 `qt.gtimg.cn` 优先、新浪 `hq.sinajs.cn` 兜底,支持 A 股 / 港股 / ETF,并可定时轮询。
 
 ```bash
-python fetch_quotes.py                     # 内置自选(南方航空A/太古地产H/兆易创新H/电力ETF/电网设备ETF)
+python fetch_quotes.py                     # 内置自选(南方航空A/太古地产H/兆易创新H/MiniMax/电力ETF/电网设备ETF)
 python fetch_quotes.py sh600029 hk03986    # 指定代码 (sh/sz/hk 前缀)
 python fetch_quotes.py --interval 300       # 每 5 分钟轮询一次 (Ctrl+C 结束)
 ```

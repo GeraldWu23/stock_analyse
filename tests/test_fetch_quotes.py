@@ -99,7 +99,7 @@ def test_parse_sina_hk():
 
 def test_default_watchlist_covers_requested_symbols():
     codes = {code for _, code in fq.WATCHLIST}
-    assert {"sh600029", "hk01972", "hk03986", "sh561700", "sh561380"} <= codes
+    assert {"sh600029", "hk01972", "hk03986", "hk00100", "sh561700", "sh561380"} <= codes
 
 
 def test_render_table_has_headers():
