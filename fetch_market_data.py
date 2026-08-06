@@ -92,7 +92,7 @@ def generate_reports(market_data):
         f.write("| Code | Name | Price | Change | Base Price |\n")
         f.write("|------|------|-------|--------|------------|\n")
         
-        for stock in market_data["stocks"]:
+        for stock in sorted(market_data["stocks"], key=lambda x: x["change_percent"], reverse=True):
             change_icon = "📈" if stock["change_percent"] > 0 else "📉"
             f.write(f"| {stock['code']} | {stock['name']} | {stock['price']} HKD | {change_icon} {stock['change_percent']:+.2f}% | {stock['base_price']} HKD |\n")
     
