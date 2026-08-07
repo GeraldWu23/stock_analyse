@@ -7,6 +7,21 @@ description: 拉取 A 股 / 港股 / ETF 的实时行情(现价、涨跌、涨�
 
 用仓库里的 `fetch_quotes.py` 拉取股票实时行情。数据源:腾讯 `qt.gtimg.cn` 优先,新浪 `hq.sinajs.cn` 兜底。
 
+## 关注清单 / Watchlist
+
+当前内置自选(与 `fetch_quotes.py` 的 `WATCHLIST` 保持一致):
+
+| 显示名 | 代码 | 市场 |
+| --- | --- | --- |
+| 南方航空A | `sh600029` | 上交所 A 股 |
+| 太古地产H | `hk01972` | 港股 |
+| 兆易创新H | `hk03986` | 港股(A 股为 `sh603986`) |
+| MiniMax | `hk00100` | 港股(MINIMAX-W,稀宇科技) |
+| 电力ETF | `sh561700` | 上交所 ETF |
+| 电网设备ETF | `sh561380` | 上交所 ETF |
+
+> 增删标的请改 `fetch_quotes.py` 的 `WATCHLIST`;Skill 与 MCP 工具都会自动生效。
+
 ## 何时使用 / When to use
 
 - 用户想查某只 A 股 / 港股 / ETF 的价格或涨跌。
