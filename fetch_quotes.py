@@ -229,7 +229,7 @@ def fetch_quotes(codes: list[str], *, timeout: float = 10.0) -> tuple[list[Quote
 
 
 # --------------------------- 展示 --------------------------- #
-_COLUMNS = ["代码", "名称", "现价", "涨跌", "涨跌幅", "最高", "最低", "成交量", "时间", "来源"]
+_COLUMNS = ["代码", "名称", "现价", "涨跌幅", "涨跌", "最高", "最低", "成交量", "时间", "来源"]
 
 
 def _display_width(text: str) -> int:
@@ -247,8 +247,8 @@ def _row(q: Quote, name_override: str | None = None) -> list[str]:
         q.code,
         (name_override or q.name or "-")[:10],
         f"{q.price:,.3f}" if q.price is not None else "-",
-        f"{chg:+,.3f}" if chg is not None else "-",
         f"{pct:+.2f}%" if pct is not None else "-",
+        f"{chg:+,.3f}" if chg is not None else "-",
         f"{q.high:,.3f}" if q.high is not None else "-",
         f"{q.low:,.3f}" if q.low is not None else "-",
         f"{q.volume:,.0f}" if q.volume is not None else "-",
