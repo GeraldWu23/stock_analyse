@@ -49,6 +49,25 @@ python fetch_quotes.py sh600029 hk03986    # 指定代码 (sh/sz/hk 前缀)
 python fetch_quotes.py --interval 300       # 每 5 分钟轮询一次 (Ctrl+C 结束)
 ```
 
+## 定时调度 schedule_quotes.py
+
+用**标准 5 段 cron 表达式**定时执行(纯标准库,无需第三方库)。默认调用 `fetch_quotes.py`,
+也可用 `--cmd` 跑任意命令。时间基准为本机本地时间,`Ctrl+C` 结束。
+
+```bash
+# 交易时段(周一到周五 9:00-15:00)每 5 分钟拉一次内置自选
+python schedule_quotes.py --cron "*/5 9-15 * * 1-5"
+
+# 每天 15:05 拉指定标的(-- 之后的参数透传给 fetch_quotes.py)
+python schedule_quotes.py --cron "5 15 * * *" -- sh600029 hk00100
+
+# 每 10 分钟跑任意命令;--run-now 启动即先跑一次;--max-runs N 跑 N 次后退出
+python schedule_quotes.py --cron "*/10 * * * *" --cmd "python other.py"
+```
+
+cron 字段为 `分 时 日 月 周`,支持 `*`、`a-b`、`*/n`、`a,b,c`;"日"和"周"都限定时命中其一即触发(同标准 cron)。
+若要开机自启/防休眠长期运行,可把本命令交给 macOS `launchd` 或 `nohup`+`caffeinate` 托管。
+
 ## 让 Cursor 自动调用
 
 两种方式都已内置,任选其一:
