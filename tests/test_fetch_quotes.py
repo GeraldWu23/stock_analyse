@@ -97,6 +97,36 @@ def test_parse_sina_hk():
     assert q.source == "新浪"
 
 
+def test_tencent_realtime_code_prefixes_hk_only():
+    # 港股加 r_ 前缀取实时; A股/ETF 不变。
+    assert fq._tencent_realtime_code("hk01972") == "r_hk01972"
+    assert fq._tencent_realtime_code("hk00100") == "r_hk00100"
+    assert fq._tencent_realtime_code("sh600029") == "sh600029"
+    assert fq._tencent_realtime_code("sz000001") == "sz000001"
+
+
+def test_fetch_from_maps_request_code_and_matches_back(monkeypatch):
+    # 用 r_ 前缀请求, 响应变量名为 v_r_hk01972, 仍应匹配回 hk01972。
+    captured = {}
+
+    def fake_http_get(url, timeout):
+        captured["url"] = url
+        return _tencent_line(
+            "r_hk01972",
+            {1: "太古地产", 2: "01972", 3: "23.9", 4: "24.0", 5: "24.0",
+             6: "1000", 30: "2026/08/11 14:19:42", 31: "-0.1", 33: "24.4", 34: "23.6"},
+        )
+
+    monkeypatch.setattr(fq, "_http_get", fake_http_get)
+    out = fq._fetch_from(
+        fq._TENCENT_URL, ["hk01972"], fq._parse_tencent, 10.0,
+        request_code=fq._tencent_realtime_code,
+    )
+    assert "r_hk01972" in captured["url"]  # 请求用了实时前缀
+    assert "hk01972" in out                # 但结果按原始代码归位
+    assert out["hk01972"].price == pytest.approx(23.9)
+
+
 def test_default_watchlist_covers_requested_symbols():
     codes = {code for _, code in fq.WATCHLIST}
     assert {"sh600029", "hk01972", "hk03986", "hk00100", "sh561700", "sh561380"} <= codes

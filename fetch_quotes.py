@@ -12,6 +12,9 @@
 数据源: **腾讯 qt.gtimg.cn 优先, 新浪 hq.sinajs.cn 兜底**。
 两个接口都返回 GBK 编码的文本; 新浪需要携带 Referer 头。
 
+港股实时: 腾讯普通 ``hk`` 前缀有约 15 分钟延迟, 本脚本对港股改用 ``r_hk`` 实时前缀
+(如 ``r_hk01972``), 可拿到近实时行情。若腾讯不可用而回落到新浪, 港股仍可能是延迟数据。
+
 用法::
 
     python fetch_quotes.py                     # 拉取默认自选
@@ -181,17 +184,37 @@ def _parse_sina(code: str, payload: str) -> Quote | None:
     )
 
 
-def _fetch_from(url_tmpl: str, codes: list[str], parser, timeout: float) -> dict[str, Quote]:
-    """批量请求某个数据源, 返回 {code: Quote} (仅含解析成功的)。"""
+def _tencent_realtime_code(code: str) -> str:
+    """腾讯请求用的实时代码。
+
+    港股普通 ``hk`` 前缀有约 15 分钟延迟, 加 ``r_`` 前缀 (如 ``r_hk01972``) 可拿到实时行情;
+    返回的变量名会变成 ``v_r_hk01972``, 但字段结构与 ``hk`` 完全一致。A 股/ETF 本就是实时, 不用改。
+    """
+    return f"r_{code}" if _is_hk(code) else code
+
+
+def _fetch_from(
+    url_tmpl: str,
+    codes: list[str],
+    parser,
+    timeout: float,
+    request_code=None,
+) -> dict[str, Quote]:
+    """批量请求某个数据源, 返回 {code: Quote} (仅含解析成功的)。
+
+    ``request_code`` 可把内部代码映射成请求用代码 (如腾讯港股加 ``r_`` 前缀),
+    响应仍按原始代码做后缀匹配, 因此 ``v_r_hk01972`` 能匹配回 ``hk01972``。
+    """
     if not codes:
         return {}
-    text = _http_get(url_tmpl.format(codes=",".join(codes)), timeout=timeout)
+    req_codes = [request_code(c) if request_code else c for c in codes]
+    text = _http_get(url_tmpl.format(codes=",".join(req_codes)), timeout=timeout)
     result: dict[str, Quote] = {}
     for line in text.splitlines():
         line = line.strip()
         if not line:
             continue
-        # 从 v_sh600029=... 或 var hq_str_sh600029=... 中取出代码。
+        # 从 v_sh600029=... / v_r_hk01972=... / var hq_str_sh600029=... 中取出代码。
         head = line.split("=", 1)[0]
         matched = next((c for c in codes if head.endswith(c)), None)
         if matched is None:
@@ -209,9 +232,17 @@ def fetch_quotes(codes: list[str], *, timeout: float = 10.0) -> tuple[list[Quote
     """
     quotes: dict[str, Quote] = {}
 
-    # 1) 腾讯优先。
+    # 1) 腾讯优先 (港股用 r_ 前缀取实时行情)。
     try:
-        quotes.update(_fetch_from(_TENCENT_URL, codes, _parse_tencent, timeout))
+        quotes.update(
+            _fetch_from(
+                _TENCENT_URL,
+                codes,
+                _parse_tencent,
+                timeout,
+                request_code=_tencent_realtime_code,
+            )
+        )
     except requests.RequestException as exc:
         print(f"[腾讯] 请求失败, 转用新浪兜底: {exc}", file=sys.stderr)
 
