@@ -30,6 +30,11 @@ cron 字段 (分 时 日 月 周)::
     # 立即先跑一次再进入定时(便于验证)
     python schedule_quotes.py --cron "*/5 * * * *" --run-now --max-runs 3
 
+    # 多段 --cron 取并集(如交易时段: 9:20起/午休停/16:00收盘)
+    python schedule_quotes.py \
+        --cron "20-55/5 9 * * 1-5" --cron "*/5 10,11 * * 1-5" \
+        --cron "*/5 13-15 * * 1-5" --cron "0 16 * * 1-5"
+
 时间基准为**本机本地时间**。按 Ctrl+C 结束。
 """
 
@@ -140,6 +145,11 @@ class CronSchedule:
         raise CronError("未来 4 年内没有匹配的执行时间, 请检查表达式")
 
 
+def next_run(schedules: list[CronSchedule], after: datetime) -> datetime:
+    """多段计划的并集: 返回晚于 ``after`` 的最近一次命中时间。"""
+    return min(s.next_after(after) for s in schedules)
+
+
 def parse_cron(expr: str) -> CronSchedule:
     """解析 5 段 cron 表达式。"""
     fields = expr.split()
@@ -169,9 +179,10 @@ def run_job(args: argparse.Namespace) -> int:
         print(f"$ {args.cmd}", flush=True)
         return subprocess.call(args.cmd, shell=True)
     # 默认: 复用 fetch_quotes 的 main(), job_args 原样透传(如股票代码)。
+    # 注意: 必须传列表(可为空), 传 None 会让 argparse 去读父进程的 sys.argv。
     import fetch_quotes
 
-    return fetch_quotes.main(args.job_args or None)
+    return fetch_quotes.main(args.job_args)
 
 
 def _run_and_report(args: argparse.Namespace, scheduled: datetime | None = None) -> None:
@@ -194,8 +205,9 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--cron",
         required=True,
+        action="append",
         metavar="表达式",
-        help='5 段 cron, 如 "*/5 9-15 * * 1-5"(注意加引号)',
+        help='5 段 cron, 如 "*/5 9-15 * * 1-5"(注意加引号)。可重复多次, 取并集。',
     )
     parser.add_argument(
         "--cmd",
@@ -222,14 +234,15 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     try:
-        schedule = parse_cron(args.cron)
+        schedules = [parse_cron(expr) for expr in args.cron]
     except CronError as exc:
         print(f"cron 表达式错误: {exc}", file=sys.stderr)
         return 2
 
     target = args.cmd if args.cmd else "fetch_quotes " + " ".join(args.job_args)
+    crons = " | ".join(args.cron)
     print(
-        f"已启动定时任务: cron='{args.cron}' → {target.strip()}\n"
+        f"已启动定时任务: cron=[{crons}] → {target.strip()}\n"
         f"时间基准: 本地时间 | 结束: Ctrl+C",
         flush=True,
     )
@@ -243,7 +256,7 @@ def main(argv: list[str] | None = None) -> int:
                 return 0
 
         while True:
-            nxt = schedule.next_after(_now())
+            nxt = next_run(schedules, _now())
             print(f"下次执行: {nxt:%Y-%m-%d %H:%M}", flush=True)
             # 分段 sleep, 便于对系统休眠/改表进行自我校正。
             while True:

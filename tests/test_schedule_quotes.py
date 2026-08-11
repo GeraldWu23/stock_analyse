@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+import argparse
 from datetime import datetime, timezone
 
 import pytest
 
+import fetch_quotes
 import schedule_quotes as sq
 
 # 参照: 2026-08-11 是周二, 2026-08-15 周六, 2026-08-09 周日, 2026-08-10 周一。
@@ -66,3 +68,35 @@ def test_next_after():
 def test_invalid_expressions_raise(expr):
     with pytest.raises(sq.CronError):
         sq.parse_cron(expr)
+
+
+def test_run_job_passes_empty_list_not_none(monkeypatch):
+    # 回归: job_args 为空时必须传 [] 给 fetch_quotes.main, 传 None 会误读父进程 argv。
+    captured = {}
+
+    def fake_main(argv=None):
+        captured["argv"] = argv
+        return 0
+
+    monkeypatch.setattr(fetch_quotes, "main", fake_main)
+    ns = argparse.Namespace(cmd=None, job_args=[])
+    assert sq.run_job(ns) == 0
+    assert captured["argv"] == []
+
+
+def test_next_run_union_of_multiple_crons():
+    # 交易时段日程: 9:20 起 / 午休 12-13 停 / 16:00 收盘。
+    scheds = [
+        sq.parse_cron("20-55/5 9 * * 1-5"),   # 9:20-9:55
+        sq.parse_cron("*/5 10,11 * * 1-5"),   # 10:00-11:55
+        sq.parse_cron("*/5 13-15 * * 1-5"),   # 13:00-15:55
+        sq.parse_cron("0 16 * * 1-5"),        # 16:00
+    ]
+    # 9:00 -> 首个是 9:20
+    assert sq.next_run(scheds, dt(2026, 8, 11, 9, 0)) == dt(2026, 8, 11, 9, 20)
+    # 11:55 -> 跳过午休, 下一个是 13:00
+    assert sq.next_run(scheds, dt(2026, 8, 11, 11, 55)) == dt(2026, 8, 11, 13, 0)
+    # 15:57 -> 收盘 16:00
+    assert sq.next_run(scheds, dt(2026, 8, 11, 15, 57)) == dt(2026, 8, 11, 16, 0)
+    # 16:00 之后 -> 次日(周三)9:20
+    assert sq.next_run(scheds, dt(2026, 8, 11, 16, 0)) == dt(2026, 8, 12, 9, 20)
