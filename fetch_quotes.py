@@ -7,6 +7,7 @@
   - 兆易创新H     hk03986    (港股 H 股; 兆易创新 A+H 两地上市, A 股为 sh603986)
   - MiniMax       hk00100    (港股 MINIMAX-W, 稀宇科技)
   - 智谱H         hk02513    (港股, 智谱 Zhipu AI)
+  - 长实集团      hk01113    (港股, 长实集团 CK Asset)
   - 电力ETF       sh561700   (电力ETF 博时)
   - 电网设备ETF   sh561380   (电网设备ETF 国泰)
 
@@ -42,6 +43,7 @@ WATCHLIST: list[tuple[str, str]] = [
     ("兆易创新H", "hk03986"),
     ("MiniMax", "hk00100"),
     ("智谱H", "hk02513"),
+    ("长实集团", "hk01113"),
     ("电力ETF", "sh561700"),
     ("电网设备ETF", "sh561380"),
 ]

@@ -1,6 +1,6 @@
 ---
 name: fetch-quotes
-description: 拉取 A 股 / 港股 / ETF 的实时行情(现价、涨跌、涨跌幅、最高、最低、成交量)。当用户询问股票/标的价格、行情、盘中报价,或提到自选(南方航空A、太古地产H、兆易创新H、MiniMax、智谱H、电力ETF、电网设备ETF)时使用。数据源腾讯优先、新浪兜底。
+description: 拉取 A 股 / 港股 / ETF 的实时行情(现价、涨跌、涨跌幅、最高、最低、成交量)。当用户询问股票/标的价格、行情、盘中报价,或提到自选(南方航空A、太古地产H、兆易创新H、MiniMax、智谱H、长实集团、电力ETF、电网设备ETF)时使用。数据源腾讯优先、新浪兜底。
 ---
 
 # Fetch Quotes 行情查询
@@ -18,6 +18,7 @@ description: 拉取 A 股 / 港股 / ETF 的实时行情(现价、涨跌、涨�
 | 兆易创新H | `hk03986` | 港股(A 股为 `sh603986`) |
 | MiniMax | `hk00100` | 港股(MINIMAX-W,稀宇科技) |
 | 智谱H | `hk02513` | 港股(智谱 Zhipu AI) |
+| 长实集团 | `hk01113` | 港股(长实集团 CK Asset) |
 | 电力ETF | `sh561700` | 上交所 ETF |
 | 电网设备ETF | `sh561380` | 上交所 ETF |
 
@@ -33,11 +34,11 @@ description: 拉取 A 股 / 港股 / ETF 的实时行情(现价、涨跌、涨�
 在仓库根目录运行(优先使用虚拟环境的解释器 `./.venv/bin/python`,没有则用 `python3`):
 
 ```bash
-# 拉取内置自选(南方航空A / 太古地产H / 兆易创新H / MiniMax / 智谱H / 电力ETF / 电网设备ETF)
+# 拉取内置自选(南方航空A / 太古地产H / 兆易创新H / MiniMax / 智谱H / 长实集团 / 电力ETF / 电网设备ETF)
 python fetch_quotes.py
 
 # 指定代码(前缀:上交所 sh、深交所 sz、港股 hk 补足 5 位)
-python fetch_quotes.py sh600029 hk01972 hk03986 hk00100 hk02513 sh561700 sh561380
+python fetch_quotes.py sh600029 hk01972 hk03986 hk00100 hk02513 hk01113 sh561700 sh561380
 
 # 每 N 秒轮询一次(如每 2 分钟 = 120,每 5 分钟 = 300),Ctrl+C 结束
 python fetch_quotes.py --interval 120

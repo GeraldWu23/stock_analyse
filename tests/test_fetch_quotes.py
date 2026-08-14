@@ -130,7 +130,8 @@ def test_fetch_from_maps_request_code_and_matches_back(monkeypatch):
 def test_default_watchlist_covers_requested_symbols():
     codes = {code for _, code in fq.WATCHLIST}
     assert {
-        "sh600029", "hk01972", "hk03986", "hk00100", "hk02513", "sh561700", "sh561380"
+        "sh600029", "hk01972", "hk03986", "hk00100", "hk02513", "hk01113",
+        "sh561700", "sh561380",
     } <= codes
 
 
