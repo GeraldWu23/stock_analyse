@@ -10,6 +10,8 @@
   - 长实集团      hk01113    (港股, 长实集团 CK Asset)
   - 电力ETF       sh561700   (电力ETF 博时)
   - 电网设备ETF   sh561380   (电网设备ETF 国泰)
+  - 绿色电力ETF   sh561170   (绿色电力ETF 富国)
+  - 科创AIETF     sh588730   (科创人工智能ETF 易方达)
 
 数据源: **腾讯 qt.gtimg.cn 优先, 新浪 hq.sinajs.cn 兜底**。
 两个接口都返回 GBK 编码的文本; 新浪需要携带 Referer 头。
@@ -46,6 +48,8 @@ WATCHLIST: list[tuple[str, str]] = [
     ("长实集团", "hk01113"),
     ("电力ETF", "sh561700"),
     ("电网设备ETF", "sh561380"),
+    ("绿色电力ETF", "sh561170"),
+    ("科创AIETF", "sh588730"),
 ]
 
 _TENCENT_URL = "https://qt.gtimg.cn/q={codes}"
