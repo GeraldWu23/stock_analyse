@@ -130,10 +130,12 @@ def test_fetch_from_maps_request_code_and_matches_back(monkeypatch):
 def test_default_watchlist_covers_requested_symbols():
     codes = {code for _, code in fq.WATCHLIST}
     assert {
-        "sh600029", "hk01972", "hk03986", "hk00100", "hk02513", "hk01113",
+        "sh600029", "hk01972", "hk03986", "sh688825", "hk01113",
         "sz000333", "sh561380", "sh561170", "sh588730", "sz159934",
     } <= codes
     assert "sh561700" not in codes  # 电力ETF 已移除
+    assert "hk00100" not in codes   # MiniMax 已移除
+    assert "hk02513" not in codes   # 智谱H 已移除
 
 
 def test_render_table_has_headers():

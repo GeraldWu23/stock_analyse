@@ -22,7 +22,7 @@ cron 字段 (分 时 日 月 周)::
     python schedule_quotes.py --cron "*/5 9-15 * * 1-5"
 
     # 每天 15:05 拉指定标的(-- 之后的参数会原样传给 fetch_quotes.py)
-    python schedule_quotes.py --cron "5 15 * * *" -- sh600029 hk00100
+    python schedule_quotes.py --cron "5 15 * * *" -- sh600029 hk01113
 
     # 每 10 分钟跑任意命令
     python schedule_quotes.py --cron "*/10 * * * *" --cmd "python other.py"

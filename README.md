@@ -44,7 +44,7 @@ print(q.price, q.change, q.change_percent)
 腾讯 `qt.gtimg.cn` 优先、新浪 `hq.sinajs.cn` 兜底,支持 A 股 / 港股 / ETF,并可定时轮询。
 
 ```bash
-python fetch_quotes.py                     # 内置自选(南方航空A/太古地产H/兆易创新H/MiniMax/智谱H/长实集团/美的集团/电网设备ETF/绿色电力ETF/科创AIETF/黄金ETF)
+python fetch_quotes.py                     # 内置自选(南方航空A/太古地产H/兆易创新H/长鑫科技/长实集团/美的集团/电网设备ETF/绿色电力ETF/科创AIETF/黄金ETF)
 python fetch_quotes.py sh600029 hk03986    # 指定代码 (sh/sz/hk 前缀)
 python fetch_quotes.py --interval 300       # 每 5 分钟轮询一次 (Ctrl+C 结束)
 ```
@@ -59,7 +59,7 @@ python fetch_quotes.py --interval 300       # 每 5 分钟轮询一次 (Ctrl+C �
 python schedule_quotes.py --cron "*/5 9-15 * * 1-5"
 
 # 每天 15:05 拉指定标的(-- 之后的参数透传给 fetch_quotes.py)
-python schedule_quotes.py --cron "5 15 * * *" -- sh600029 hk00100
+python schedule_quotes.py --cron "5 15 * * *" -- sh600029 hk01113
 
 # 每 10 分钟跑任意命令;--run-now 启动即先跑一次;--max-runs N 跑 N 次后退出
 python schedule_quotes.py --cron "*/10 * * * *" --cmd "python other.py"
