@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Plugin runtime (regenerated per analysis)
+.cursor/plugins/stock-deep-analyzer/**/.cache/
+.cursor/plugins/stock-deep-analyzer/**/reports/
+.cursor/plugins/stock-deep-analyzer/**/prewarm/
+
+# Secrets
+.env
+.env.local
+*.pem
+.netrc
