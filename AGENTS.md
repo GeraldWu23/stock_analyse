@@ -52,4 +52,6 @@ Tickers: `600519.SH` / `002273.SZ` / `00700.HK` / `AAPL` / Chinese names.
 
 Canonical snapshot (date + cash + positions): `portfolio/HOLDINGS.md`. Machine copy: `portfolio/holdings.json`. CSV for `--portfolio`: `portfolio/holdings.csv`.
 
-When the user says 我的持仓 / 我监控的票 / 拿一支我的股票, read `portfolio/HOLDINGS.md` first. Do not invent the cropped 9th holding. Ordinary-account total already includes cash; do not add cash on top.
+When the user says 我的持仓 / 我监控的票 / 拿一支我的股票, read `portfolio/HOLDINGS.md` first. **Shares are sticky:** do not change `shares` / 持仓 unless the user says they traded; mark to market with live price × shares. Ordinary-account total already includes cash; do not add cash on top. The 100-share 561700 stub is not the 9% cash sleeve.
+
+ETF/LOF rows are baskets, not single stocks. Do not run the 65-judge equity pipeline on them; analyze the index + top holdings instead.
