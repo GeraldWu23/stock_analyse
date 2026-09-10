@@ -1,45 +1,32 @@
 """Run the 9-school / 66-judge rule panel on stocks in this repo.
 
-Uses already-collected plugin `raw_data.json` (no new plugin flags, no LLM, no HTML).
+Reads `portfolio/collected/{ticker}/raw_data.json` written by
+`python -m portfolio.collect --fundamentals`. No plugin, no LLM, no HTML.
 ETF rows are skipped: they are baskets, not equity-judge targets.
 """
 from __future__ import annotations
 
 import json
-import os
-import sys
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
 
-from portfolio.collector import COLLECTED_DIR, HOLDINGS_JSON, load_holdings, position_kind
+from portfolio.collector import COLLECTED_DIR, load_holdings, position_kind
+from portfolio.engine.score import generate_panel, score_dimensions
+from portfolio.stock_raw import raw_data_path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-PLUGIN_SCRIPTS = (
-    REPO_ROOT / ".cursor" / "plugins" / "stock-deep-analyzer" / "skills" / "deep-analysis" / "scripts"
-)
 
 SCHOOL_LABELS = {
-    "A": "价值派",
+    "A": "经典价值派",
     "B": "成长派",
     "C": "宏观派",
     "D": "技术派",
-    "E": "中国价投",
+    "E": "中式价投",
     "F": "A 股游资",
-    "G": "量化",
+    "G": "量化派",
     "H": "科技领袖派",
     "I": "AI 卡位/瓶颈猎手",
 }
-
-
-def plugin_cache_dir(ticker: str) -> Path:
-    return PLUGIN_SCRIPTS / ".cache" / ticker
-
-
-def _ensure_plugin_path() -> None:
-    scripts = str(PLUGIN_SCRIPTS)
-    if scripts not in sys.path:
-        sys.path.insert(0, scripts)
 
 
 def summarize_panel(panel: dict, *, name: str, ticker: str) -> dict:
@@ -80,35 +67,26 @@ def summarize_panel(panel: dict, *, name: str, ticker: str) -> dict:
     }
 
 
-def score_stock_from_cache(ticker: str) -> dict:
-    """Rule-engine 66 judges from existing raw_data.json. No LLM, no HTML."""
-    _ensure_plugin_path()
-    raw_path = plugin_cache_dir(ticker) / "raw_data.json"
-    if not raw_path.exists():
-        raise FileNotFoundError(f"没有采集缓存: {raw_path}")
-    prev = Path.cwd()
-    os.chdir(PLUGIN_SCRIPTS)
-    os.environ.setdefault("UZI_DEPTH", "medium")
-    os.environ.setdefault("UZI_CLI_ONLY", "1")
-    os.environ.setdefault("UZI_DISABLE_GLOBAL_PEERS", "1")
-    os.environ.setdefault("UZI_NO_AUTO_OPEN", "1")
-    try:
-        from lib.pipeline.score_fns import generate_panel, score_dimensions
-
-        raw = json.loads(raw_path.read_text(encoding="utf-8"))
-        dims = score_dimensions(raw)
-        panel = generate_panel(dims, raw)
-        cache = plugin_cache_dir(ticker)
-        cache.mkdir(parents=True, exist_ok=True)
-        (cache / "dimensions.json").write_text(
-            json.dumps(dims, ensure_ascii=False, indent=2, default=str), encoding="utf-8"
+def score_stock_from_cache(ticker: str, collected_dir: Path | None = None) -> dict:
+    """Rule-engine 66 judges from project raw_data.json. No LLM, no HTML."""
+    dest = collected_dir or COLLECTED_DIR
+    path = raw_data_path(ticker, dest)
+    if not path.exists():
+        raise FileNotFoundError(
+            f"没有采集缓存: {path}。先跑 python -m portfolio.collect --name <中文名> --fundamentals"
         )
-        (cache / "panel.json").write_text(
-            json.dumps(panel, ensure_ascii=False, indent=2, default=str), encoding="utf-8"
-        )
-        return {"dimensions": dims, "panel": panel}
-    finally:
-        os.chdir(prev)
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    dims = score_dimensions(raw)
+    panel = generate_panel(dims, raw)
+    cache = path.parent
+    cache.mkdir(parents=True, exist_ok=True)
+    (cache / "dimensions.json").write_text(
+        json.dumps(dims, ensure_ascii=False, indent=2, default=str), encoding="utf-8"
+    )
+    (cache / "panel.json").write_text(
+        json.dumps(panel, ensure_ascii=False, indent=2, default=str), encoding="utf-8"
+    )
+    return {"dimensions": dims, "panel": panel, "raw_path": str(path)}
 
 
 def run_book_judges(
@@ -116,6 +94,7 @@ def run_book_judges(
     *,
     only_name: str | None = None,
     score_fn=None,
+    collected_dir: Path | None = None,
 ) -> dict:
     book = holdings or load_holdings()
     rows = list(book.get("holdings") or [])
@@ -125,7 +104,11 @@ def run_book_judges(
         if not rows:
             raise ValueError(f"持仓里没有叫 {only_name!r} 的标的")
 
-    score_fn = score_fn or score_stock_from_cache
+    def _score(ticker: str) -> dict:
+        if score_fn is not None:
+            return score_fn(ticker)
+        return score_stock_from_cache(ticker, collected_dir=collected_dir)
+
     results: list[dict] = []
     skipped: list[dict] = []
     for row in rows:
@@ -135,7 +118,7 @@ def run_book_judges(
             skipped.append({"name": name, "reason": "ETF 是篮子，不跑 66 评委"})
             continue
         try:
-            scored = score_fn(ticker)
+            scored = _score(ticker)
             panel = scored["panel"] if isinstance(scored, dict) and "panel" in scored else scored
             results.append(summarize_panel(panel, name=name, ticker=ticker))
         except Exception as exc:

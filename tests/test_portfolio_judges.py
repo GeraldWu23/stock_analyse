@@ -72,3 +72,11 @@ def test_write_snapshot(tmp_path):
     path = write_judges_snapshot(payload, collected_dir=tmp_path)
     assert path.exists()
     assert path.name == "judges-latest.json"
+
+
+def test_judges_module_does_not_touch_plugin():
+    from pathlib import Path
+    src = Path("portfolio/judges.py").read_text(encoding="utf-8")
+    assert "stock-deep-analyzer" not in src
+    assert "lib.pipeline" not in src
+    assert "from portfolio.engine.score import" in src

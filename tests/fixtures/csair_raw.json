@@ -1,0 +1,784 @@
+{
+  "ticker": "600029.SH",
+  "market": "A",
+  "code": "600029",
+  "name": "南方航空",
+  "llm": false,
+  "dimensions": {
+    "0_basic": {
+      "data": {
+        "code": "600029.SH",
+        "_xq_basic_err": "API Error: Xueqiu company endpoint requires a valid xq_a_token or login session; anonymous access is currently restricted, please pass a valid token via `token=`. Upstream returned 400016: 遇到错误，请刷新页面或者重新登录帐号后再试 (Status code: 400)",
+        "_xq_spot_err": "API Error: Xueqiu quote endpoint requires a valid xq_a_token or login session; upstream returned 400016: 遇到错误，请刷新页面或者重新登录帐号后再试 (Status code: 400)",
+        "_info_err": "Expecting value: line 1 column 1 (char 0)",
+        "_snap_err": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
+        "_em_direct_err": "Expecting value: line 1 column 1 (char 0)",
+        "name": "南方航空",
+        "price": 5.0,
+        "change_pct": -0.6,
+        "pe_ttm": -69.38,
+        "pb": 3.01,
+        "market_cap": "906.05亿",
+        "market_cap_raw": 90605000000.0,
+        "circulating_cap": "673.85亿",
+        "_fallback_snap": "tencent-qt+field:tencent_qt+field:baostock",
+        "industry": null,
+        "open": 5.01,
+        "prev_close": 5.03,
+        "high": 5.03,
+        "low": 4.98,
+        "circulating_cap_raw": 67385000000.0,
+        "listed_date": "2003-07-25"
+      },
+      "source": "akshare:A",
+      "fallback": false
+    },
+    "1_financials": {
+      "data": {
+        "revenue_history": [
+          925.61,
+          1016.44,
+          870.59,
+          1599.29,
+          1742.24,
+          1822.56
+        ],
+        "net_profit_history": [
+          -108.42,
+          -121.03,
+          -326.82,
+          -42.09,
+          -16.96,
+          8.57
+        ],
+        "financial_years": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "roe_history": [
+          -15.77,
+          -17.57,
+          -62.19,
+          -10.81,
+          -4.72,
+          2.44
+        ],
+        "revenue_growth_yoy": 9.72,
+        "revenue_growth": "+9.7%",
+        "revenue_growth_period": "2026-06-30",
+        "revenue_growth_basis": "reported_yoy",
+        "revenue_growth_source": "akshare.stock_financial_analysis_indicator:主营业务收入增长率(%)",
+        "financial_health": {
+          "current_ratio": 0.2725,
+          "debt_ratio": 85.9097,
+          "net_margin_pct": 1.4732,
+          "cash": 42.22,
+          "total_debt": 213.36,
+          "equity": 83.58
+        },
+        "roe": "2.4%",
+        "roe_mrq": "-11.1%",
+        "net_margin": "1.5%",
+        "financial_period": "2025-12-31",
+        "dupont": {
+          "net_margin_pct": 1.47,
+          "asset_turnover": 0.536,
+          "equity_multiplier": 6.36,
+          "roe_reconstructed_pct": 5.03,
+          "roe_quality": "leverage_driven"
+        },
+        "dividend_years": [
+          "2015",
+          "2016",
+          "2017",
+          "2018",
+          "2019"
+        ],
+        "dividend_amounts": [
+          0.4,
+          0.8,
+          1.0,
+          1.0,
+          0.5
+        ],
+        "dividend_yields": [
+          0.02,
+          0.04,
+          0.05,
+          0.05,
+          0.03
+        ]
+      },
+      "source": "akshare:stock_financial_abstract + indicator + cash_flow + dividend_detail",
+      "fallback": false
+    },
+    "2_kline": {
+      "data": {
+        "kline_count": 653,
+        "indicators": {
+          "last_close": 5.0,
+          "ma5": 5.022,
+          "ma10": 5.016,
+          "ma20": 5.0215000000000005,
+          "ma60": 5.116666666666666,
+          "ma120": 5.324833333333333,
+          "ma200": 6.118200000000001,
+          "above_ma20": false,
+          "above_ma200": false,
+          "ma_bull_alignment": false,
+          "macd_dif": -0.02537423551828155,
+          "macd_dea": -0.02930841967714984,
+          "macd_hist": 0.007868368317736574,
+          "macd_golden_cross": false,
+          "rsi_14": 51.4285714285714,
+          "kdj_k": 46.8,
+          "kdj_d": 41.2,
+          "kdj_j": 57.9,
+          "obv": -617174530.0,
+          "obv_trend_up": true,
+          "williams_r": -76.5,
+          "year_high": 8.29,
+          "year_low": 4.98,
+          "pct_from_year_high": -39.68636911942098,
+          "stage": 4,
+          "vol_5_vs_20": 1.0648465739525277,
+          "vcp_score": 0.643992203803439
+        },
+        "stage": "Stage 4 下跌",
+        "ma_align": "非多头",
+        "macd": "水下",
+        "rsi": "51",
+        "candles_60d": [
+          {
+            "date": "2026-06-18",
+            "open": 5.42,
+            "close": 5.29,
+            "high": 5.44,
+            "low": 5.26
+          },
+          {
+            "date": "2026-06-22",
+            "open": 5.21,
+            "close": 5.28,
+            "high": 5.29,
+            "low": 5.12
+          },
+          {
+            "date": "2026-06-23",
+            "open": 5.28,
+            "close": 5.16,
+            "high": 5.33,
+            "low": 5.13
+          },
+          {
+            "date": "2026-06-24",
+            "open": 5.16,
+            "close": 5.25,
+            "high": 5.4,
+            "low": 5.13
+          },
+          {
+            "date": "2026-06-25",
+            "open": 5.38,
+            "close": 5.58,
+            "high": 5.64,
+            "low": 5.35
+          },
+          {
+            "date": "2026-06-26",
+            "open": 5.5,
+            "close": 5.41,
+            "high": 5.54,
+            "low": 5.41
+          },
+          {
+            "date": "2026-06-29",
+            "open": 5.35,
+            "close": 5.3,
+            "high": 5.36,
+            "low": 5.24
+          },
+          {
+            "date": "2026-06-30",
+            "open": 5.27,
+            "close": 5.18,
+            "high": 5.28,
+            "low": 5.11
+          },
+          {
+            "date": "2026-07-01",
+            "open": 5.19,
+            "close": 5.35,
+            "high": 5.38,
+            "low": 5.15
+          },
+          {
+            "date": "2026-07-02",
+            "open": 5.38,
+            "close": 5.26,
+            "high": 5.43,
+            "low": 5.23
+          },
+          {
+            "date": "2026-07-03",
+            "open": 5.26,
+            "close": 5.21,
+            "high": 5.31,
+            "low": 5.17
+          },
+          {
+            "date": "2026-07-06",
+            "open": 5.21,
+            "close": 5.23,
+            "high": 5.29,
+            "low": 5.18
+          },
+          {
+            "date": "2026-07-07",
+            "open": 5.2,
+            "close": 5.12,
+            "high": 5.21,
+            "low": 5.1
+          },
+          {
+            "date": "2026-07-08",
+            "open": 5.05,
+            "close": 5.06,
+            "high": 5.11,
+            "low": 5.03
+          },
+          {
+            "date": "2026-07-09",
+            "open": 5.01,
+            "close": 5.05,
+            "high": 5.06,
+            "low": 4.99
+          },
+          {
+            "date": "2026-07-10",
+            "open": 5.06,
+            "close": 5.11,
+            "high": 5.13,
+            "low": 4.99
+          },
+          {
+            "date": "2026-07-13",
+            "open": 5.03,
+            "close": 5.01,
+            "high": 5.04,
+            "low": 5.0
+          },
+          {
+            "date": "2026-07-14",
+            "open": 4.98,
+            "close": 5.04,
+            "high": 5.04,
+            "low": 4.95
+          },
+          {
+            "date": "2026-07-15",
+            "open": 4.98,
+            "close": 5.05,
+            "high": 5.05,
+            "low": 4.95
+          },
+          {
+            "date": "2026-07-16",
+            "open": 5.01,
+            "close": 5.03,
+            "high": 5.07,
+            "low": 4.98
+          },
+          {
+            "date": "2026-07-17",
+            "open": 5.0,
+            "close": 4.99,
+            "high": 5.05,
+            "low": 4.97
+          },
+          {
+            "date": "2026-07-20",
+            "open": 4.98,
+            "close": 5.02,
+            "high": 5.04,
+            "low": 4.96
+          },
+          {
+            "date": "2026-07-21",
+            "open": 5.02,
+            "close": 5.06,
+            "high": 5.12,
+            "low": 5.01
+          },
+          {
+            "date": "2026-07-22",
+            "open": 5.03,
+            "close": 5.08,
+            "high": 5.1,
+            "low": 5.01
+          },
+          {
+            "date": "2026-07-23",
+            "open": 5.07,
+            "close": 5.18,
+            "high": 5.19,
+            "low": 5.05
+          },
+          {
+            "date": "2026-07-24",
+            "open": 5.12,
+            "close": 5.04,
+            "high": 5.16,
+            "low": 5.04
+          },
+          {
+            "date": "2026-07-27",
+            "open": 5.13,
+            "close": 5.15,
+            "high": 5.19,
+            "low": 5.1
+          },
+          {
+            "date": "2026-07-28",
+            "open": 5.15,
+            "close": 5.14,
+            "high": 5.22,
+            "low": 5.12
+          },
+          {
+            "date": "2026-07-29",
+            "open": 5.12,
+            "close": 5.18,
+            "high": 5.19,
+            "low": 5.1
+          },
+          {
+            "date": "2026-07-30",
+            "open": 5.14,
+            "close": 5.18,
+            "high": 5.23,
+            "low": 5.13
+          },
+          {
+            "date": "2026-07-31",
+            "open": 5.18,
+            "close": 5.25,
+            "high": 5.25,
+            "low": 5.16
+          },
+          {
+            "date": "2026-08-03",
+            "open": 5.26,
+            "close": 5.26,
+            "high": 5.29,
+            "low": 5.23
+          },
+          {
+            "date": "2026-08-04",
+            "open": 5.27,
+            "close": 5.18,
+            "high": 5.27,
+            "low": 5.14
+          },
+          {
+            "date": "2026-08-05",
+            "open": 5.26,
+            "close": 5.24,
+            "high": 5.29,
+            "low": 5.19
+          },
+          {
+            "date": "2026-08-06",
+            "open": 5.22,
+            "close": 5.18,
+            "high": 5.27,
+            "low": 5.15
+          },
+          {
+            "date": "2026-08-07",
+            "open": 5.15,
+            "close": 5.15,
+            "high": 5.17,
+            "low": 5.09
+          },
+          {
+            "date": "2026-08-10",
+            "open": 5.12,
+            "close": 5.15,
+            "high": 5.16,
+            "low": 5.1
+          },
+          {
+            "date": "2026-08-11",
+            "open": 5.12,
+            "close": 5.05,
+            "high": 5.15,
+            "low": 5.05
+          },
+          {
+            "date": "2026-08-12",
+            "open": 5.05,
+            "close": 5.07,
+            "high": 5.08,
+            "low": 5.05
+          },
+          {
+            "date": "2026-08-13",
+            "open": 5.08,
+            "close": 5.05,
+            "high": 5.09,
+            "low": 5.04
+          },
+          {
+            "date": "2026-08-14",
+            "open": 5.05,
+            "close": 5.02,
+            "high": 5.06,
+            "low": 5.02
+          },
+          {
+            "date": "2026-08-17",
+            "open": 5.03,
+            "close": 5.03,
+            "high": 5.03,
+            "low": 5.01
+          },
+          {
+            "date": "2026-08-18",
+            "open": 5.01,
+            "close": 5.01,
+            "high": 5.02,
+            "low": 5.0
+          },
+          {
+            "date": "2026-08-19",
+            "open": 5.0,
+            "close": 4.99,
+            "high": 5.02,
+            "low": 4.98
+          },
+          {
+            "date": "2026-08-20",
+            "open": 5.0,
+            "close": 5.03,
+            "high": 5.03,
+            "low": 4.99
+          },
+          {
+            "date": "2026-08-21",
+            "open": 5.01,
+            "close": 4.99,
+            "high": 5.01,
+            "low": 4.98
+          },
+          {
+            "date": "2026-08-24",
+            "open": 5.0,
+            "close": 5.03,
+            "high": 5.04,
+            "low": 4.99
+          },
+          {
+            "date": "2026-08-25",
+            "open": 5.02,
+            "close": 5.06,
+            "high": 5.06,
+            "low": 5.01
+          },
+          {
+            "date": "2026-08-26",
+            "open": 5.12,
+            "close": 5.08,
+            "high": 5.13,
+            "low": 5.06
+          },
+          {
+            "date": "2026-08-27",
+            "open": 5.05,
+            "close": 5.03,
+            "high": 5.07,
+            "low": 5.01
+          },
+          {
+            "date": "2026-08-28",
+            "open": 5.01,
+            "close": 5.06,
+            "high": 5.07,
+            "low": 5.0
+          },
+          {
+            "date": "2026-08-31",
+            "open": 5.02,
+            "close": 5.01,
+            "high": 5.03,
+            "low": 4.99
+          },
+          {
+            "date": "2026-09-01",
+            "open": 5.0,
+            "close": 5.01,
+            "high": 5.02,
+            "low": 4.99
+          },
+          {
+            "date": "2026-09-02",
+            "open": 4.99,
+            "close": 4.98,
+            "high": 5.0,
+            "low": 4.96
+          },
+          {
+            "date": "2026-09-03",
+            "open": 4.98,
+            "close": 4.99,
+            "high": 5.01,
+            "low": 4.97
+          },
+          {
+            "date": "2026-09-04",
+            "open": 4.98,
+            "close": 5.03,
+            "high": 5.05,
+            "low": 4.97
+          },
+          {
+            "date": "2026-09-07",
+            "open": 5.01,
+            "close": 5.03,
+            "high": 5.04,
+            "low": 5.0
+          },
+          {
+            "date": "2026-09-08",
+            "open": 5.02,
+            "close": 5.02,
+            "high": 5.05,
+            "low": 5.01
+          },
+          {
+            "date": "2026-09-09",
+            "open": 5.01,
+            "close": 5.03,
+            "high": 5.04,
+            "low": 4.99
+          },
+          {
+            "date": "2026-09-10",
+            "open": 5.01,
+            "close": 5.0,
+            "high": 5.03,
+            "low": 4.98
+          }
+        ],
+        "ma20_60d": [
+          5.32,
+          5.32,
+          5.3,
+          5.28,
+          5.29,
+          5.29,
+          5.28,
+          5.26,
+          5.26,
+          5.27,
+          5.27,
+          5.27,
+          5.27,
+          5.27,
+          5.27,
+          5.27,
+          5.26,
+          5.24,
+          5.22,
+          5.2,
+          5.18,
+          5.17,
+          5.17,
+          5.16,
+          5.14,
+          5.12,
+          5.11,
+          5.11,
+          5.1,
+          5.1,
+          5.1,
+          5.1,
+          5.1,
+          5.11,
+          5.12,
+          5.12,
+          5.13,
+          5.13,
+          5.13,
+          5.13,
+          5.13,
+          5.13,
+          5.13,
+          5.12,
+          5.12,
+          5.12,
+          5.11,
+          5.1,
+          5.1,
+          5.09,
+          5.08,
+          5.07,
+          5.06,
+          5.05,
+          5.04,
+          5.03,
+          5.03,
+          5.03,
+          5.02,
+          5.02
+        ],
+        "ma60_60d": [
+          5.53,
+          5.52,
+          5.51,
+          5.51,
+          5.5,
+          5.5,
+          5.49,
+          5.48,
+          5.47,
+          5.47,
+          5.46,
+          5.45,
+          5.44,
+          5.42,
+          5.41,
+          5.4,
+          5.39,
+          5.38,
+          5.36,
+          5.35,
+          5.34,
+          5.33,
+          5.32,
+          5.31,
+          5.3,
+          5.29,
+          5.29,
+          5.28,
+          5.28,
+          5.27,
+          5.27,
+          5.26,
+          5.25,
+          5.25,
+          5.24,
+          5.23,
+          5.23,
+          5.23,
+          5.22,
+          5.22,
+          5.21,
+          5.21,
+          5.2,
+          5.19,
+          5.18,
+          5.17,
+          5.17,
+          5.16,
+          5.15,
+          5.15,
+          5.15,
+          5.15,
+          5.15,
+          5.14,
+          5.14,
+          5.14,
+          5.14,
+          5.13,
+          5.12,
+          5.12
+        ],
+        "close_60d": [
+          5.29,
+          5.28,
+          5.16,
+          5.25,
+          5.58,
+          5.41,
+          5.3,
+          5.18,
+          5.35,
+          5.26,
+          5.21,
+          5.23,
+          5.12,
+          5.06,
+          5.05,
+          5.11,
+          5.01,
+          5.04,
+          5.05,
+          5.03,
+          4.99,
+          5.02,
+          5.06,
+          5.08,
+          5.18,
+          5.04,
+          5.15,
+          5.14,
+          5.18,
+          5.18,
+          5.25,
+          5.26,
+          5.18,
+          5.24,
+          5.18,
+          5.15,
+          5.15,
+          5.05,
+          5.07,
+          5.05,
+          5.02,
+          5.03,
+          5.01,
+          4.99,
+          5.03,
+          4.99,
+          5.03,
+          5.06,
+          5.08,
+          5.03,
+          5.06,
+          5.01,
+          5.01,
+          4.98,
+          4.99,
+          5.03,
+          5.03,
+          5.02,
+          5.03,
+          5.0
+        ],
+        "kline_stats": {
+          "ytd_return": "-17.1%",
+          "volatility": "32.7%",
+          "max_drawdown": "-39.9%"
+        }
+      },
+      "source": "akshare:stock_zh_a_hist + stock_cyq_em (+ 6 path fallback chain)",
+      "fallback": false
+    },
+    "10_valuation": {
+      "data": {
+        "_valuation_source": "basic",
+        "pe": "-12.26",
+        "pb": "3.01",
+        "pe_quantile": null,
+        "pb_quantile": null
+      },
+      "source": "basic (mini_racer-safe)",
+      "fallback": false
+    }
+  }
+}
