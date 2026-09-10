@@ -34,6 +34,7 @@ Use the `/stock-deep-analyzer:` prefix (short names do not always resolve):
 |---|---|
 | `/stock-deep-analyzer:analyze-stock 贵州茅台` or "深度分析 00700.HK" | Two-stage deep path in `deep-analysis` skill (`stage1` → agent role-play → `stage2`) |
 | `/stock-deep-analyzer:quick-scan 002273` or "快速看看" | `python run.py <ticker> --depth lite --no-browser` |
+| "只采集 / 不要大模型 / 拉数据" | `python -m portfolio.collect` for the book, or `python .cursor/plugins/stock-deep-analyzer/run.py <ticker> --collect-only --no-browser` for one stock. Writes cache JSON only. ETFs get quotes + baskets, not the 65-judge pipeline. |
 | `/stock-deep-analyzer:dcf 600519` | DCF command in `.cursor/commands/dcf.md` |
 | `/stock-deep-analyzer:scan-trap <ticker>` | Trap-detector skill |
 | "分析 XXX" with no depth specified | Medium CLI path: `python run.py <ticker> --no-browser` |

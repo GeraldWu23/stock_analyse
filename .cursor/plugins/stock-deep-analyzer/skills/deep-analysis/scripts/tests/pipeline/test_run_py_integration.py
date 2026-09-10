@@ -10,12 +10,11 @@ sys.path.insert(0, str(SCRIPTS))
 ROOT = SCRIPTS.parent.parent.parent
 
 
-def test_run_py_has_uzi_pipeline_check():
-    """run.py 含 UZI_PIPELINE=1 检测 · Phase 7 的核心."""
+def test_run_py_has_collect_only_flag():
     run_py = ROOT / "run.py"
     txt = run_py.read_text(encoding="utf-8")
-    assert "UZI_PIPELINE" in txt, "run.py 必须检测 UZI_PIPELINE env"
-    assert "run_pipeline" in txt, "run.py 必须调 pipeline.run_pipeline"
+    assert "--collect-only" in txt
+    assert "collect_only=True" in txt
 
 
 def test_run_py_has_fallback_on_exception():
