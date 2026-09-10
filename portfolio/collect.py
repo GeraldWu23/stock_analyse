@@ -1,4 +1,4 @@
-"""CLI: collect holdings market data without calling an LLM.
+"""CLI: collect holdings market data in this repo. No plugin, no LLM.
 
 Examples:
     python -m portfolio.collect
@@ -15,17 +15,15 @@ from portfolio.collector import collect_book, format_table, write_snapshot
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
-        description="采集持仓行情与篮子，不调用大模型、不跑 ETF 的 65 评委。",
+        description="采集本仓库持仓的行情与 ETF 篮子。不调用大模型，不改插件。",
     )
     parser.add_argument("--name", metavar="名称", default=None, help="只采集这一行（用中文名）")
-    parser.add_argument("--quotes-only", action="store_true", help="只拉现价/溢价，不抓 ETF 篮子、不跑个股 22 维")
-    parser.add_argument("--no-resume", action="store_true", help="个股强制重抓（默认复用已有 raw_data.json）")
+    parser.add_argument("--quotes-only", action="store_true", help="只拉现价/溢价，不抓 ETF 篮子")
     args = parser.parse_args(argv)
 
     snapshot = collect_book(
         only_name=args.name,
         quotes_only=args.quotes_only,
-        resume=not args.no_resume,
     )
     path = write_snapshot(snapshot)
     print(format_table(snapshot))

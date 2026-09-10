@@ -17,7 +17,7 @@ from .score import score_from_cache
 from .synthesize import synthesize_and_render
 
 
-def run_pipeline(ticker: str, resume: bool = True, collect_only: bool = False) -> str:
+def run_pipeline(ticker: str, resume: bool = True) -> str:
     """完整管道入口（v3.0.0 主干）.
 
     1. pipeline.collect · 用 22 BaseFetcher adapter 并发抓数据（max_workers=6）
@@ -25,9 +25,6 @@ def run_pipeline(ticker: str, resume: bool = True, collect_only: bool = False) -
     3. pipeline.score_from_cache · 直接调 rrt 纯函数（score_dimensions / generate_panel /
        generate_synthesis）· 不再调 stage1（stage1 会重新 collect）
     4. pipeline.synthesize_and_render · 调 stage2（stage2 只读 cache 不 collect · OK）
-
-    collect_only=True 时停在 raw_data.json：不打分、不写评委、不出 HTML。
-    给「只要采集、不要大模型」用。
 
     Phase 6c 升级：score 阶段解耦 legacy stage1 · 不再重复 collect · 省 5-10 min/股.
     """
@@ -61,24 +58,12 @@ def run_pipeline(ticker: str, resume: bool = True, collect_only: bool = False) -
             raw_data_compatible[k] = raw_dict[k]
 
     _write_cache(ticker, raw_data_compatible)
-    cache_path = _raw_cache_path(ticker)
-    if collect_only:
-        print(f"✅ [pipeline.run] collect-only · 已写 {cache_path} · 跳过打分 / 评委 / HTML")
-        return str(cache_path)
-
     print(f"✅ [pipeline.run] raw_data.json 已写 · 进入 scoring 段（v3.0 纯函数编排）")
 
     # pipeline.score_from_cache · 直接调 rrt.score_dimensions/generate_panel/generate_synthesis
     # 不再走 rrt.stage1（stage1 会重新 collect · 浪费时间）
     score_from_cache(ticker)
     return synthesize_and_render(ticker)
-
-
-def _raw_cache_path(ticker: str) -> Path:
-    from lib.market_router import parse_ticker
-    ti = parse_ticker(ticker)
-    import run_real_test as rrt
-    return Path(rrt.__file__).parent / ".cache" / ti.full / "raw_data.json"
 
 
 def _preflight_guards(ticker: str) -> None:

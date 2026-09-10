@@ -485,8 +485,6 @@ def main():
                         help="v2.6 · 强制重抓所有 fetcher（默认 resume：复用 .cache/{ticker}/raw_data.json 已有维度）")
     parser.add_argument("--from-modeling", action="store_true",
                         help="从已有 raw_data.json 直接恢复机构建模、评分和报告生成，不重新采集数据")
-    parser.add_argument("--collect-only", action="store_true",
-                        help="只采集并写入 .cache/{ticker}/raw_data.json，不打分、不写评委长文、不出 HTML")
     parser.add_argument("--enable-xueqiu-login", action="store_true",
                         help="v2.7.1 · 启用 XueQiu Playwright 登录态抓取实盘比赛持仓（首次需 `python -m lib.xueqiu_browser login`）")
     parser.add_argument("--depth", choices=["lite", "medium", "deep"], default=None,
@@ -527,8 +525,7 @@ def main():
         print(f"⚠️ 无法加载 analysis_profile: {_e}")
 
     # lite/medium 允许 CLI 规则报告；deep 必须停在 Stage 1 等待 Agent role-play。
-    # collect-only 也不走评委长文，始终按 CLI 采集处理。
-    if os.environ.get("UZI_DEPTH") == "deep" and not args.collect_only:
+    if os.environ.get("UZI_DEPTH") == "deep":
         os.environ.pop("UZI_CLI_ONLY", None)
     else:
         os.environ.setdefault("UZI_CLI_ONLY", "1")
@@ -664,32 +661,6 @@ def main():
         stage1_modeling as _stage1_modeling,
         stage2 as _stage2,
     )
-
-    if args.collect_only:
-        os.environ["UZI_NO_AUTO_OPEN"] = "1"
-        print(f"📥 collect-only · {args.ticker} · 不调用大模型、不出 HTML")
-        cache_path = None
-        if os.environ.get("UZI_LEGACY") != "1":
-            try:
-                from lib.pipeline.run import run_pipeline
-                cache_path = run_pipeline(args.ticker, resume=not args.no_resume, collect_only=True)
-            except Exception as e:
-                print(f"⚠️  collect-only pipeline 回退 legacy stage1: {type(e).__name__}: {str(e)[:120]}")
-                cache_path = None
-        if not cache_path:
-            result = _stage1(args.ticker)
-            if isinstance(result, dict) and result.get("status") == "non_stock_security":
-                print("   ETF/基金已写入成分股清单（_resolve_error.json），不跑个股评委。")
-                print(f"   cache: {SCRIPTS_DIR / '.cache' / result.get('ticker', args.ticker)}")
-                sys.exit(0)
-            if isinstance(result, dict) and result.get("status") == "name_not_resolved":
-                print("❌ 中文名无法解析，采集中止")
-                print(json.dumps(result, ensure_ascii=False, indent=2))
-                sys.exit(2)
-            resolved = result.get("ticker") if isinstance(result, dict) else args.ticker
-            cache_path = str(SCRIPTS_DIR / ".cache" / resolved / "raw_data.json")
-        print(f"✅ 采集完成 · {cache_path}")
-        sys.exit(0)
 
     if os.environ.get("UZI_DEPTH") == "deep":
         deep_result = _stage1_modeling(args.ticker) if args.from_modeling else _stage1(args.ticker)

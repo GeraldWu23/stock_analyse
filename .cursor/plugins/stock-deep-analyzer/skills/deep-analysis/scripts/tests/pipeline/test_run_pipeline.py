@@ -32,42 +32,10 @@ def test_pipeline_run_has_load_and_write_cache():
 
 
 def test_run_pipeline_signature():
-    """run_pipeline(ticker, resume=True, collect_only=False) · 签名稳定."""
+    """run_pipeline(ticker, resume=True) · 签名稳定."""
     import inspect
     from lib.pipeline.run import run_pipeline
     sig = inspect.signature(run_pipeline)
     params = list(sig.parameters.keys())
     assert "ticker" in params
     assert "resume" in params
-    assert "collect_only" in params
-
-
-def test_collect_only_skips_score_and_html(monkeypatch, tmp_path):
-    """collect_only 只写 raw_data.json，不打分、不合成 HTML。"""
-    import lib.pipeline.run as pipeline_run
-
-    monkeypatch.setattr(pipeline_run, "_preflight_guards", lambda ticker: None)
-    monkeypatch.setattr(pipeline_run, "_load_cache", lambda ticker: {})
-    monkeypatch.setattr(pipeline_run, "pipeline_collect", lambda ticker, raw_previous=None, max_workers=6: {
-        "0_basic": {"name": "南方航空", "price": 5.0, "market": "A"},
-    })
-
-    wrote = {}
-
-    def fake_write(ticker, raw):
-        wrote["raw"] = raw
-
-    monkeypatch.setattr(pipeline_run, "_write_cache", fake_write)
-    monkeypatch.setattr(pipeline_run, "_raw_cache_path", lambda ticker: tmp_path / "raw_data.json")
-
-    scored = []
-    rendered = []
-    monkeypatch.setattr(pipeline_run, "score_from_cache", lambda ticker: scored.append(ticker))
-    monkeypatch.setattr(pipeline_run, "synthesize_and_render", lambda ticker: rendered.append(ticker) or "nope.html")
-
-    out = pipeline_run.run_pipeline("600029.SH", collect_only=True)
-    assert scored == []
-    assert rendered == []
-    assert wrote["raw"]["ticker"] == "600029.SH"
-    assert wrote["raw"]["execution_path"] == "pipeline"
-    assert str(tmp_path / "raw_data.json") == out
