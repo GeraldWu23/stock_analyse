@@ -13,6 +13,7 @@ __pycache__/
 portfolio/collected/
 .cache/
 portfolio/analysis/judges-latest.md
+portfolio/analysis/*-规则引擎-latest.md
 
 # Secrets
 .env

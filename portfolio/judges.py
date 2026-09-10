@@ -1,45 +1,33 @@
 """Run the 9-school / 66-judge rule panel on stocks in this repo.
 
-Uses already-collected plugin `raw_data.json` (no new plugin flags, no LLM, no HTML).
+Reads `portfolio/collected/{ticker}/raw_data.json` written by
+`python -m portfolio.collect --fundamentals`. No plugin, no LLM, no HTML.
 ETF rows are skipped: they are baskets, not equity-judge targets.
 """
 from __future__ import annotations
 
 import json
-import os
-import sys
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
 
-from portfolio.collector import COLLECTED_DIR, HOLDINGS_JSON, load_holdings, position_kind
+from portfolio.collector import COLLECTED_DIR, load_holdings, position_kind
+from portfolio.engine.score import generate_panel, score_dimensions
+from portfolio.engine.stock_features import extract_features
+from portfolio.stock_raw import raw_data_path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-PLUGIN_SCRIPTS = (
-    REPO_ROOT / ".cursor" / "plugins" / "stock-deep-analyzer" / "skills" / "deep-analysis" / "scripts"
-)
 
 SCHOOL_LABELS = {
-    "A": "价值派",
+    "A": "经典价值派",
     "B": "成长派",
     "C": "宏观派",
     "D": "技术派",
-    "E": "中国价投",
+    "E": "中式价投",
     "F": "A 股游资",
-    "G": "量化",
+    "G": "量化派",
     "H": "科技领袖派",
     "I": "AI 卡位/瓶颈猎手",
 }
-
-
-def plugin_cache_dir(ticker: str) -> Path:
-    return PLUGIN_SCRIPTS / ".cache" / ticker
-
-
-def _ensure_plugin_path() -> None:
-    scripts = str(PLUGIN_SCRIPTS)
-    if scripts not in sys.path:
-        sys.path.insert(0, scripts)
 
 
 def summarize_panel(panel: dict, *, name: str, ticker: str) -> dict:
@@ -80,35 +68,26 @@ def summarize_panel(panel: dict, *, name: str, ticker: str) -> dict:
     }
 
 
-def score_stock_from_cache(ticker: str) -> dict:
-    """Rule-engine 66 judges from existing raw_data.json. No LLM, no HTML."""
-    _ensure_plugin_path()
-    raw_path = plugin_cache_dir(ticker) / "raw_data.json"
-    if not raw_path.exists():
-        raise FileNotFoundError(f"没有采集缓存: {raw_path}")
-    prev = Path.cwd()
-    os.chdir(PLUGIN_SCRIPTS)
-    os.environ.setdefault("UZI_DEPTH", "medium")
-    os.environ.setdefault("UZI_CLI_ONLY", "1")
-    os.environ.setdefault("UZI_DISABLE_GLOBAL_PEERS", "1")
-    os.environ.setdefault("UZI_NO_AUTO_OPEN", "1")
-    try:
-        from lib.pipeline.score_fns import generate_panel, score_dimensions
-
-        raw = json.loads(raw_path.read_text(encoding="utf-8"))
-        dims = score_dimensions(raw)
-        panel = generate_panel(dims, raw)
-        cache = plugin_cache_dir(ticker)
-        cache.mkdir(parents=True, exist_ok=True)
-        (cache / "dimensions.json").write_text(
-            json.dumps(dims, ensure_ascii=False, indent=2, default=str), encoding="utf-8"
+def score_stock_from_cache(ticker: str, collected_dir: Path | None = None) -> dict:
+    """Rule-engine 66 judges from project raw_data.json. No LLM, no HTML."""
+    dest = collected_dir or COLLECTED_DIR
+    path = raw_data_path(ticker, dest)
+    if not path.exists():
+        raise FileNotFoundError(
+            f"没有采集缓存: {path}。先跑 python -m portfolio.collect --name <中文名> --fundamentals"
         )
-        (cache / "panel.json").write_text(
-            json.dumps(panel, ensure_ascii=False, indent=2, default=str), encoding="utf-8"
-        )
-        return {"dimensions": dims, "panel": panel}
-    finally:
-        os.chdir(prev)
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    dims = score_dimensions(raw)
+    panel = generate_panel(dims, raw)
+    cache = path.parent
+    cache.mkdir(parents=True, exist_ok=True)
+    (cache / "dimensions.json").write_text(
+        json.dumps(dims, ensure_ascii=False, indent=2, default=str), encoding="utf-8"
+    )
+    (cache / "panel.json").write_text(
+        json.dumps(panel, ensure_ascii=False, indent=2, default=str), encoding="utf-8"
+    )
+    return {"dimensions": dims, "panel": panel, "raw_path": str(path)}
 
 
 def run_book_judges(
@@ -116,6 +95,7 @@ def run_book_judges(
     *,
     only_name: str | None = None,
     score_fn=None,
+    collected_dir: Path | None = None,
 ) -> dict:
     book = holdings or load_holdings()
     rows = list(book.get("holdings") or [])
@@ -125,7 +105,11 @@ def run_book_judges(
         if not rows:
             raise ValueError(f"持仓里没有叫 {only_name!r} 的标的")
 
-    score_fn = score_fn or score_stock_from_cache
+    def _score(ticker: str) -> dict:
+        if score_fn is not None:
+            return score_fn(ticker)
+        return score_stock_from_cache(ticker, collected_dir=collected_dir)
+
     results: list[dict] = []
     skipped: list[dict] = []
     for row in rows:
@@ -135,7 +119,7 @@ def run_book_judges(
             skipped.append({"name": name, "reason": "ETF 是篮子，不跑 66 评委"})
             continue
         try:
-            scored = score_fn(ticker)
+            scored = _score(ticker)
             panel = scored["panel"] if isinstance(scored, dict) and "panel" in scored else scored
             results.append(summarize_panel(panel, name=name, ticker=ticker))
         except Exception as exc:
@@ -243,6 +227,79 @@ def format_markdown(payload: dict) -> str:
     return "\n".join(parts)
 
 
+def _fmt_num(v, digits: int = 2) -> str:
+    if v is None or v == "" or v == "—":
+        return "—"
+    try:
+        n = float(v)
+    except (TypeError, ValueError):
+        return str(v)
+    if n != v and isinstance(v, str) and not any(ch.isdigit() for ch in v):
+        return str(v)
+    return f"{n:.{digits}f}"
+
+
+def format_stock_report(name: str, quote: dict, scored: dict, panel_summary: dict) -> str:
+    raw = scored.get("raw") or {}
+    features = extract_features(raw, raw.get("dimensions") or {})
+    dims = (scored.get("dimensions") or {}).get("dimensions") or {}
+    sig = panel_summary.get("signal_distribution") or {}
+    lines = [
+        f"# {name} · 规则引擎分析",
+        "",
+        f"日期：{datetime.now().strftime('%Y-%m-%d')}。"
+        "本仓库采集 + 66 评委规则投票，**没有调用大模型**，也不是持牌投顾意见。",
+        "",
+        "## 采集摘要",
+        "",
+        f"- 现价 {_fmt_num(quote.get('last_price'), 3)}"
+        f"；涨跌 {_fmt_num(quote.get('change_pct'))}%",
+        f"- PE(TTM) {_fmt_num(features.get('pe')) if features.get('pe') else '—'}；PB {_fmt_num(features.get('pb'))}"
+        f"；市值约 {_fmt_num(features.get('market_cap_yi'))} 亿",
+        f"- ROE 最新 {_fmt_num(features.get('roe_latest'))}%；负债率 {_fmt_num(features.get('debt_ratio'))}%"
+        f"；营收增速 {_fmt_num(features.get('revenue_growth_latest'))}%",
+        f"- 净利润增速 {_fmt_num(features.get('net_profit_growth_latest'))}%；净利率 {_fmt_num(features.get('net_margin'))}",
+        f"- K 线 {features.get('stage')}；均线 {features.get('ma_align')}；RSI {_fmt_num(features.get('rsi'), 0)}",
+        "",
+        "## 九派 66 评委",
+        "",
+        f"{panel_summary.get('n_judges')} 位评委 · 共识 **{panel_summary.get('panel_consensus')}** · "
+        f"看多 {sig.get('bullish', 0)}、中性 {sig.get('neutral', 0)}、"
+        f"看空 {sig.get('bearish', 0)}、跳过 {sig.get('skip', 0)}。",
+        "",
+        "| 流派 | 结论 | 分数 |",
+        "| --- | --- | ---: |",
+    ]
+    for s in panel_summary.get("schools") or []:
+        score = s.get("score")
+        score_s = "—" if score is None else (f"{score:.1f}" if isinstance(score, float) else str(score))
+        lines.append(f"| {s.get('label')} | {s.get('verdict') or '—'} | {score_s} |")
+    lines.append("")
+    if panel_summary.get("top_bear"):
+        lines.append("偏空：" + "、".join(f"{i['name']} {i.get('score')}" for i in panel_summary["top_bear"]))
+    if panel_summary.get("top_bull"):
+        lines.append("偏多：" + "、".join(f"{i['name']} {i.get('score')}" for i in panel_summary["top_bull"]))
+    lines.append("")
+    fin = dims.get("1_financials") or {}
+    kline = dims.get("2_kline") or {}
+    if fin.get("label") or kline.get("label"):
+        lines.extend(["## 维度分（规则，不是模型）", ""])
+        if fin.get("label"):
+            lines.append(f"- 财报：{fin.get('score')} 分 · {fin.get('label')}")
+        if kline.get("label"):
+            lines.append(f"- K 线：{kline.get('score')} 分 · {kline.get('label')}")
+        lines.append("")
+    lines.extend([
+        "## 怎么读",
+        "",
+        "游资 / 科技领袖 / AI 卡位 得 0 分且「跳过」，多半是规则判定不在能力圈，不是模型看空。",
+        "研报、护城河、龙虎榜等维度本采集未拉，对应规则会因缺数据跳过，不记失败。",
+        "份额未改。现金已在账户总值里。",
+        "",
+    ])
+    return "\n".join(lines)
+
+
 def main(argv: list[str] | None = None) -> int:
     import argparse
 
@@ -253,11 +310,35 @@ def main(argv: list[str] | None = None) -> int:
     payload = run_book_judges(only_name=args.name)
     path = write_judges_snapshot(payload)
     note = REPO_ROOT / "portfolio" / "analysis" / "judges-latest.md"
-    dated = REPO_ROOT / "portfolio" / "analysis" / f"judges-{datetime.now().strftime('%Y-%m-%d')}.md"
-    note.parent.mkdir(parents=True, exist_ok=True)
-    md = format_markdown(payload)
-    note.write_text(md, encoding="utf-8")
-    dated.write_text(md, encoding="utf-8")
+    stamp = datetime.now().strftime("%Y-%m-%d")
+    if args.name:
+        dated = REPO_ROOT / "portfolio" / "analysis" / f"{args.name}-规则引擎-{stamp}.md"
+        latest = REPO_ROOT / "portfolio" / "analysis" / f"{args.name}-规则引擎-latest.md"
+        stock = (payload.get("stocks") or [{}])[0]
+        raw = {}
+        dims = {}
+        quote = {}
+        if stock.get("ticker"):
+            rp = raw_data_path(stock["ticker"])
+            if rp.exists():
+                raw = json.loads(rp.read_text(encoding="utf-8"))
+                dp = rp.parent / "dimensions.json"
+                if dp.exists():
+                    dims = json.loads(dp.read_text(encoding="utf-8"))
+                basic = ((raw.get("dimensions") or {}).get("0_basic") or {}).get("data") or {}
+                quote = {"last_price": basic.get("price"), "change_pct": basic.get("change_pct")}
+        md = format_stock_report(args.name, quote, {"raw": raw, "dimensions": dims}, stock)
+        latest.parent.mkdir(parents=True, exist_ok=True)
+        latest.write_text(md, encoding="utf-8")
+        dated.write_text(md, encoding="utf-8")
+        note = latest
+    else:
+        dated = REPO_ROOT / "portfolio" / "analysis" / f"judges-{stamp}.md"
+        note = REPO_ROOT / "portfolio" / "analysis" / "judges-latest.md"
+        md = format_markdown(payload)
+        note.parent.mkdir(parents=True, exist_ok=True)
+        note.write_text(md, encoding="utf-8")
+        dated.write_text(md, encoding="utf-8")
     print(format_judges(payload))
     print(f"JSON {path}")
     print(f"笔记 {note}")
