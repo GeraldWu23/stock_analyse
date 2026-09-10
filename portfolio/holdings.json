@@ -11,10 +11,10 @@
     "hk_connect": 1
   },
   "cash": {
-    "broker_available_cny": null,
-    "broker_available_note": "持仓页截图未显示可用资金",
-    "extra_outside_account_cny": 43452.12,
-    "extra_note": "用户口述，截图以外另有"
+    "account_cash_cny": 43452.12,
+    "included_in_account_total": true,
+    "weight_pct": 9.0,
+    "note": "普通账户总额已含该现金，不要再往上加"
   },
   "holdings": [
     {
@@ -150,24 +150,22 @@
       "market_value": null,
       "day_pnl": null,
       "day_pnl_pct": null,
-      "weight_pct": 9.0,
+      "weight_pct": null,
       "missing": true,
-      "note": "截图底部裁切，App 显示场内基金 6 只，可见 5 只"
+      "note": "App 显示场内基金 6 只，截图只露出 5 只；仓位缺口已记为账户现金，不把 9% 算成该基金市值"
     }
   ],
   "totals": {
     "visible_weight_pct": 91.0,
-    "missing_ninth_weight_pct": 9.0,
+    "cash_weight_pct": 9.0,
     "visible_cny_market_value": 415314.49,
     "swire_market_value_hkd": 29568.00,
     "visible_cny_day_pnl": -3772.11,
     "swire_day_pnl_hkd": -240.00,
-    "implied_account_nav_cny": 483762.38,
-    "extra_cash_cny": 43452.12,
-    "implied_account_plus_extra_cash_cny": 527214.50
+    "account_cash_cny": 43452.12,
+    "account_total_cny": 483762.38
   },
   "gaps": [
-    "第 9 只场内基金未出现在截图中",
-    "券商账户内可用资金未出现在截图中"
+    "第 9 只场内基金名称未出现在截图中"
   ]
 }
