@@ -7,7 +7,6 @@ from __future__ import annotations
 
 import json
 from collections import defaultdict
-from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
 from statistics import mean
@@ -47,12 +46,6 @@ def _to_float(v: Any, default: float = 0.0) -> float:
 def _to_yi(v: Any) -> float:
     n = _to_float(v)
     return round(n / 1e8, 2) if abs(n) >= 1_000_000 else round(n, 2)
-
-
-def _call(fn, timeout: float):
-    with ThreadPoolExecutor(max_workers=1) as pool:
-        fut = pool.submit(fn)
-        return fut.result(timeout=timeout)
 
 
 def _dim(data: dict, source: str, *, error: str | None = None) -> dict:
@@ -195,6 +188,13 @@ def fetch_basic_a(ticker: str, name: str, ak_module: Any | None = None) -> dict:
                 data["price"] = _num(mapping.get("最新"))
     except Exception as exc:
         data["_info_err"] = f"{type(exc).__name__}: {exc}"[:160]
+    if data.get("price") is None or data.get("market_cap") is None:
+        yf_basic = _basic_from_yfinance(ticker)
+        for key, value in yf_basic.items():
+            if data.get(key) is None and value is not None:
+                data[key] = value
+        if yf_basic:
+            data["_yf_basic"] = True
     if data.get("market_cap") and not data.get("market_cap_yi"):
         data["market_cap_yi"] = _to_float(str(data["market_cap"]).replace("亿", ""))
     return data
@@ -356,19 +356,141 @@ def fetch_financials_a(ticker: str, ak_module: Any | None = None) -> dict:
     return out
 
 
-def fetch_kline_a(ticker: str, ak_module: Any | None = None) -> dict:
-    ak = _import_ak(ak_module)
-    if ak is None:
+def _yf_symbol(ticker: str) -> str:
+    code, market = parse_ticker(ticker)
+    code6 = code.zfill(6) if code.isdigit() else code
+    if market == "SH":
+        return f"{code6}.SS"
+    if market == "SZ":
+        return f"{code6}.SZ"
+    if market == "HK":
+        return f"{int(code6)}.HK"
+    return ticker
+
+
+def _basic_from_yfinance(ticker: str) -> dict:
+    try:
+        import yfinance as yf  # type: ignore
+        info = yf.Ticker(_yf_symbol(ticker))
+        fast = getattr(info, "fast_info", None)
+        last = getattr(fast, "last_price", None) if fast is not None else None
+        meta = getattr(info, "info", None) or {}
+        if last is None:
+            hist = info.history(period="5d")
+            if hist is not None and not getattr(hist, "empty", True):
+                last = float(hist["Close"].iloc[-1])
+        mcap = getattr(fast, "market_cap", None) if fast is not None else None
+        if mcap is None:
+            mcap = meta.get("marketCap")
+        out: dict[str, Any] = {}
+        if last is not None:
+            out["price"] = _num(last)
+        pe = meta.get("trailingPE")
+        pb = meta.get("priceToBook")
+        if pe is not None:
+            out["pe_ttm"] = _num(pe)
+        if pb is not None:
+            out["pb"] = _num(pb)
+        if mcap is not None:
+            out["market_cap_raw"] = _num(mcap)
+            out["market_cap"] = f"{_to_yi(mcap)}亿"
+            out["market_cap_yi"] = _to_yi(mcap)
+        industry = meta.get("industry") or meta.get("sector")
+        if industry:
+            out["industry"] = industry
+        return out
+    except Exception:
         return {}
+
+
+def _records_from_baostock(ticker: str) -> list[dict]:
+    import baostock as bs  # type: ignore
+
+    code, market = parse_ticker(ticker)
+    code6 = code.zfill(6)
+    prefix = "sh" if market == "SH" else "sz"
+    lg = bs.login()
+    if str(getattr(lg, "error_code", "1")) != "0":
+        return []
+    try:
+        rs = bs.query_history_k_data_plus(
+            f"{prefix}.{code6}",
+            "date,open,high,low,close,volume",
+            start_date="2018-01-01",
+            frequency="d",
+            adjustflag="2",
+        )
+        rows: list[dict] = []
+        while rs.error_code == "0" and rs.next():
+            date, open_, high, low, close, volume = rs.get_row_data()
+            rows.append({
+                "日期": date,
+                "开盘": _to_float(open_),
+                "最高": _to_float(high),
+                "最低": _to_float(low),
+                "收盘": _to_float(close),
+                "成交量": _to_float(volume),
+            })
+        return rows
+    finally:
+        bs.logout()
+
+
+def _records_from_yfinance(ticker: str) -> list[dict]:
+    import yfinance as yf  # type: ignore
+
+    hist = yf.Ticker(_yf_symbol(ticker)).history(period="5y")
+    if hist is None or getattr(hist, "empty", True):
+        return []
+    rows = []
+    for idx, rec in hist.iterrows():
+        rows.append({
+            "日期": str(idx)[:10],
+            "开盘": _to_float(rec.get("Open")),
+            "最高": _to_float(rec.get("High")),
+            "最低": _to_float(rec.get("Low")),
+            "收盘": _to_float(rec.get("Close")),
+            "成交量": _to_float(rec.get("Volume")),
+        })
+    return rows
+
+
+def _load_kline_records(ticker: str, ak_module: Any | None = None) -> tuple[list[dict], str]:
+    ak = _import_ak(ak_module)
     code, _market = parse_ticker(ticker)
     code6 = code.zfill(6)
+    errors: list[str] = []
+    if ak is not None:
+        for adjust in ("qfq", ""):
+            try:
+                hist = ak.stock_zh_a_hist(symbol=code6, period="daily", adjust=adjust)
+                if hist is not None and not getattr(hist, "empty", True):
+                    return hist.to_dict("records"), f"akshare:stock_zh_a_hist:{adjust or 'raw'}"
+            except Exception as exc:
+                errors.append(f"akshare:{type(exc).__name__}")
     try:
-        hist = ak.stock_zh_a_hist(symbol=code6, period="daily", adjust="qfq")
-    except Exception:
-        hist = None
-    if hist is None or getattr(hist, "empty", True):
-        return {}
-    records = hist.to_dict("records")
+        rows = _records_from_baostock(ticker)
+        if rows:
+            return rows, "baostock"
+    except Exception as exc:
+        errors.append(f"baostock:{type(exc).__name__}")
+    try:
+        rows = _records_from_yfinance(ticker)
+        if rows:
+            return rows, "yfinance"
+    except Exception as exc:
+        errors.append(f"yfinance:{type(exc).__name__}")
+    raise RuntimeError("K线全失败: " + ",".join(errors) if errors else "K线为空")
+
+
+def fetch_kline_a(ticker: str, ak_module: Any | None = None) -> dict:
+    records, source = _load_kline_records(ticker, ak_module)
+    out = _kline_from_records(records)
+    out["_source"] = source
+    return out
+
+
+def _kline_from_records(records: list[dict]) -> dict:
     closes = [_to_float(r.get("收盘")) for r in records]
     opens = [_to_float(r.get("开盘")) for r in records]
     highs = [_to_float(r.get("最高")) for r in records]
@@ -498,9 +620,12 @@ def assemble_raw(
         "execution_path": "portfolio.stock_raw",
         "errors": errors or {},
         "dimensions": {
-            "0_basic": _dim(basic, "akshare:stock_individual_info_em+quote"),
+            "0_basic": _dim(basic, basic.get("_quote_source") or "quote+info"),
             "1_financials": _dim(financials, "akshare:financial_abstract+indicator"),
-            "2_kline": _dim(kline, "akshare:stock_zh_a_hist"),
+            "2_kline": _dim(
+                {k: v for k, v in kline.items() if k != "_source"},
+                kline.get("_source") or "kline",
+            ),
             "3_macro": _empty_dim(),
             "4_peers": _empty_dim(),
             "5_chain": _empty_dim(),
@@ -528,7 +653,7 @@ def collect_stock_raw(
     *,
     kind: str | None = None,
     ak_module: Any | None = None,
-    timeout_sec: float = 90.0,
+    seed_quote: dict | None = None,
     fetch_basic_fn=None,
     fetch_financials_fn=None,
     fetch_kline_fn=None,
@@ -539,7 +664,7 @@ def collect_stock_raw(
 
     def _run(label: str, fn, fallback):
         try:
-            return _call(fn, timeout_sec)
+            return fn()
         except Exception as exc:
             errors[label] = f"{type(exc).__name__}: {exc}"[:200]
             return fallback
@@ -548,10 +673,21 @@ def collect_stock_raw(
     fin_fn = fetch_financials_fn or (lambda: fetch_financials_a(ticker, ak_module))
     kline_fn = fetch_kline_fn or (lambda: fetch_kline_a(ticker, ak_module))
     basic = _run("0_basic", basic_fn, {"code": ticker, "name": name})
+    if seed_quote:
+        if basic.get("price") is None and seed_quote.get("last_price") is not None:
+            basic["price"] = seed_quote.get("last_price")
+        if basic.get("change_pct") is None and seed_quote.get("change_pct") is not None:
+            basic["change_pct"] = seed_quote.get("change_pct")
+        if basic.get("pe_ttm") is None and seed_quote.get("pe_ttm") is not None:
+            basic["pe_ttm"] = seed_quote.get("pe_ttm")
+        if basic.get("pb") is None and seed_quote.get("pb") is not None:
+            basic["pb"] = seed_quote.get("pb")
     financials = _run("1_financials", fin_fn, {})
     kline = _run("2_kline", kline_fn, {})
     raw = assemble_raw(ticker, name, basic=basic, financials=financials, kline=kline, errors=errors)
-    raw["ok"] = bool(financials.get("roe_history") or financials.get("revenue_history")) and bool(kline)
+    raw["ok"] = bool(financials.get("roe_history") or financials.get("revenue_history")) and bool(
+        kline.get("kline_count") or kline.get("stage")
+    )
     return raw
 
 
@@ -594,7 +730,17 @@ def collect_holdings_fundamentals(
             skipped.append({"name": name, "reason": "ETF 是篮子，不采集个股财报"})
             continue
         try:
-            raw = collect_fn(ticker, name, kind=position_kind(row), ak_module=ak_module)
+            raw = collect_fn(
+                ticker,
+                name,
+                kind=position_kind(row),
+                ak_module=ak_module,
+                seed_quote={
+                    "last_price": row.get("last_price"),
+                    "pe_ttm": row.get("pe_ttm"),
+                    "pb": row.get("pb"),
+                },
+            )
             path = write_raw_data(raw, collected_dir)
             results.append({
                 "name": name,

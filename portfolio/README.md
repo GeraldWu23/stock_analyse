@@ -25,4 +25,4 @@ cd /path/to/stock_analyse
 2. **财报 + K 线**：营业额、ROE、负债、分红、均线/Stage。不调用大模型，不进插件目录。
 3. **66 评委 / 九派**：`portfolio/engine/` 里的 Python 规则，读上一步的 `raw_data.json`。
 
-不要跑 `python run.py`，那条会走插件 HTML / 评委长文（大模型）。
+东财行情接口在海外环境可能断连。本仓库会依次试：东财 hist → BaoStock → yfinance。K 线来源写在 `raw_data.json` 的 `2_kline.source`。

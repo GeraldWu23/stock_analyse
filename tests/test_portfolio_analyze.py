@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from portfolio.analyze import format_stock_report
+from portfolio.judges import format_stock_report
 from portfolio.stock_raw import assemble_raw
 from portfolio.engine.score import score_dimensions, generate_panel
 from portfolio.judges import summarize_panel

@@ -10,6 +10,27 @@ from portfolio.stock_raw import assemble_raw, collect_stock_raw, write_raw_data
 FIXTURE = Path(__file__).parent / "fixtures" / "csair_raw.json"
 
 
+def test_kline_from_records_sets_stage():
+    from portfolio.stock_raw import _kline_from_records
+
+    records = []
+    price = 5.0
+    for i in range(260):
+        price = price * 0.999  # drifting down → stage 4
+        records.append({
+            "日期": f"2025-01-{(i % 28) + 1:02d}",
+            "开盘": price,
+            "最高": price + 0.02,
+            "最低": price - 0.02,
+            "收盘": price,
+            "成交量": 1000,
+        })
+    out = _kline_from_records(records)
+    assert out["kline_count"] == 260
+    assert "Stage" in out["stage"] or out["stage"] == "—"
+    assert out["kline_stats"].get("max_drawdown")
+
+
 def test_engine_has_66_judges():
     assert_count()
     assert len(INVESTORS) == 66
@@ -72,7 +93,7 @@ def test_collect_stock_raw_rejects_etf():
 def test_holdings_fundamentals_skips_etf(tmp_path):
     from portfolio.stock_raw import collect_holdings_fundamentals
 
-    def fake(ticker, name, kind=None, ak_module=None):
+    def fake(ticker, name, kind=None, ak_module=None, **kwargs):
         return assemble_raw(
             ticker,
             name,
