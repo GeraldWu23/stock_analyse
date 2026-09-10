@@ -47,3 +47,9 @@ Tickers: `600519.SH` / `002273.SZ` / `00700.HK` / `AAPL` / Chinese names.
 3. Lite/medium may run CLI-only and summarize the HTML/JSON.
 4. This Cloud Agent environment is often overseas. If East Money / akshare time out, say so, keep `_data_gaps.json`, and fall back to `yfinance` / public web sources. Optional `MX_APIKEY` improves A-share coverage (see `.cursor/plugins/stock-deep-analyzer/.env.example`). Never commit secrets.
 5. Reports land in `.cursor/plugins/stock-deep-analyzer/skills/deep-analysis/scripts/reports/` (gitignored).
+
+## Personal holdings
+
+Canonical snapshot (date + cash + positions): `portfolio/HOLDINGS.md`. Machine copy: `portfolio/holdings.json`. CSV for `--portfolio`: `portfolio/holdings.csv`.
+
+When the user says 我的持仓 / 我监控的票 / 拿一支我的股票, read `portfolio/HOLDINGS.md` first. Do not invent the cropped 9th holding.
