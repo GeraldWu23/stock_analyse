@@ -52,6 +52,8 @@ Tickers: `600519.SH` / `002273.SZ` / `00700.HK` / `AAPL` / Chinese names.
 
 Canonical snapshot (date + cash + positions): `portfolio/HOLDINGS.md`. Machine copy: `portfolio/holdings.json`. CSV for `--portfolio`: `portfolio/holdings.csv`.
 
-When the user says 我的持仓 / 我监控的票 / 拿一支我的股票, read `portfolio/HOLDINGS.md` first. **Shares are sticky:** do not change `shares` / 持仓 unless the user says they traded; mark to market with live price × shares. Ordinary-account total already includes cash; do not add cash on top. The 100-share 561700 stub is not the 9% cash sleeve.
+When the user says 我的持仓 / 我监控的票 / 拿一支我的股票, read `portfolio/HOLDINGS.md` first. **Shares are sticky:** do not change `shares` / 持仓 unless the user says they traded; mark to market with live price × shares. Ordinary-account total already includes cash; do not add cash on top. The 100-share 电力ETF博时 stub is not the 9% cash sleeve.
+
+**Display rule:** in user-facing replies and markdown tables, use Chinese names (科创人工智能ETF、电网设备ETF、绿色电力ETF、南方航空、纳斯达克ETF、黄金ETF、太古地产、长鑫科技、电力ETF博时). Do not show ticker codes unless the user asks. Codes stay in `holdings.json` / CSV only.
 
 ETF/LOF rows are baskets, not single stocks. Do not run the 65-judge equity pipeline on them; analyze the index + top holdings instead.
