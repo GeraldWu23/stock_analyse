@@ -28,3 +28,5 @@ In Cursor Agent chat (always use the prefix):
 - `/stock-deep-analyzer:scan-trap 002217` — pump-and-dump check
 
 See `AGENTS.md` for agent workflow and `.cursor/plugins/stock-deep-analyzer/README.md` for the upstream manual.
+
+Personal holdings snapshot (dated): `portfolio/HOLDINGS.md`.
