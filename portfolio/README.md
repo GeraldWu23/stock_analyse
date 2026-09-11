@@ -26,3 +26,10 @@ cd /path/to/stock_analyse
 3. **66 评委 / 九派**：`portfolio/engine/` 里的 Python 规则，读上一步的 `raw_data.json`。
 
 东财行情接口在海外环境可能断连。本仓库会依次试：东财 hist → BaoStock → yfinance。K 线来源写在 `raw_data.json` 的 `2_kline.source`。
+
+## 模拟交易
+
+模拟交易与真实持仓分开保存，不会改动 `HOLDINGS.md` 或 `holdings.json`：
+
+- 2026-09-11 降低集中度：`simulations/2026-09-11-1315-risk-reduction.md`
+- 同一记录的机器可读账本：`simulations/2026-09-11-1315-risk-reduction.json`
