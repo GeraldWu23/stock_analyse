@@ -18,7 +18,8 @@
     "after": {
       "cash_cny": 127178.11,
       "securities_cny": 350765.60,
-      "total_assets_cny": 477943.71
+      "total_assets_cny": 477943.71,
+      "post_positions_weight_sum_pct_rounded": 100.01
     },
     "change": {
       "gross_sale_proceeds_cny": 83764.40,
@@ -206,6 +207,7 @@
   "review_notes": [
     "这是模拟成交，不代表已在券商账户成交；portfolio/holdings.json与portfolio/HOLDINGS.md保持不变。",
     "模拟总资产只因手续费减少38.41元；价格波动、滑点及实际券商费率会使真实结果不同。",
+    "逐项仓位四舍五入到两位小数后合计100.01%，0.01个百分点为显示舍入差异；未舍入权重合计100%。",
     "电力ETF博时的异常账面成本使合计已实现损益失真，复盘时应单独核对历史拆分、合并或成本调整记录。"
   ]
 }
