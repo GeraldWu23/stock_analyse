@@ -1,0 +1,211 @@
+{
+  "simulation_id": "2026-09-11-1315-risk-reduction",
+  "status": "simulated_only",
+  "executed_at": "2026-09-11T13:15:55+08:00",
+  "quote_snapshot": "portfolio/collected/2026-09-11.json",
+  "quote_mode": "quotes-only",
+  "llm_used": false,
+  "real_broker_order_submitted": false,
+  "valuation": {
+    "cash_currency": "CNY",
+    "hkd_to_cny": 0.8415811012,
+    "hkd_rate_note": "由2026-09-10券商账户总额反推，仅用于模拟组合折算",
+    "before": {
+      "cash_cny": 43452.12,
+      "securities_cny": 434530.00,
+      "total_assets_cny": 477982.12
+    },
+    "after": {
+      "cash_cny": 127178.11,
+      "securities_cny": 350765.60,
+      "total_assets_cny": 477943.71
+    },
+    "change": {
+      "gross_sale_proceeds_cny": 83764.40,
+      "fees_cny": 38.41,
+      "net_sale_proceeds_cny": 83725.99,
+      "total_assets_change_cny": -38.41
+    }
+  },
+  "fee_assumptions": {
+    "commission_rate": 0.00025,
+    "minimum_commission_per_order_cny": 5.00,
+    "a_share_sell_stamp_duty_rate": 0.0005,
+    "a_share_transfer_fee_rate": 0.00001,
+    "etf_stamp_duty_rate": 0,
+    "slippage": 0,
+    "note": "模拟费率，不代表券商实际收费；成交价按13:15:55行情快照的最新价"
+  },
+  "trades": [
+    {
+      "sequence": 1,
+      "name": "纳斯达克ETF华安",
+      "side": "卖出",
+      "quantity": 11100,
+      "price_cny": 2.431,
+      "shares_before": 22200,
+      "shares_after": 11100,
+      "gross_amount_cny": 26984.10,
+      "commission_cny": 6.75,
+      "stamp_duty_cny": 0,
+      "transfer_fee_cny": 0,
+      "total_fees_cny": 6.75,
+      "net_proceeds_cny": 26977.35,
+      "book_cost_price_cny": 2.03,
+      "realized_pnl_after_fees_cny": 4444.35,
+      "reason": "场内价格相对IOPV溢价8.9%，减半降低溢价回落及海外科技集中风险"
+    },
+    {
+      "sequence": 2,
+      "name": "电网设备ETF国泰",
+      "side": "卖出",
+      "quantity": 45500,
+      "price_cny": 0.707,
+      "shares_before": 126800,
+      "shares_after": 81300,
+      "gross_amount_cny": 32168.50,
+      "commission_cny": 8.04,
+      "stamp_duty_cny": 0,
+      "transfer_fee_cny": 0,
+      "total_fees_cny": 8.04,
+      "net_proceeds_cny": 32160.46,
+      "book_cost_price_cny": 0.732,
+      "realized_pnl_after_fees_cny": -1145.54,
+      "reason": "将单一电网设备方向由18.76%降至约12%，降低与绿色电力组合后的电力链集中度"
+    },
+    {
+      "sequence": 3,
+      "name": "南方航空",
+      "side": "卖出",
+      "quantity": 4900,
+      "price_cny": 5.000,
+      "shares_before": 12500,
+      "shares_after": 7600,
+      "gross_amount_cny": 24500.00,
+      "commission_cny": 6.13,
+      "stamp_duty_cny": 12.25,
+      "transfer_fee_cny": 0.25,
+      "total_fees_cny": 18.62,
+      "net_proceeds_cny": 24481.38,
+      "book_cost_price_cny": 5.181,
+      "realized_pnl_after_fees_cny": -905.52,
+      "reason": "将单一周期股仓位从13.08%降至8%以内"
+    },
+    {
+      "sequence": 4,
+      "name": "电力ETF博时",
+      "side": "卖出",
+      "quantity": 100,
+      "price_cny": 1.118,
+      "shares_before": 100,
+      "shares_after": 0,
+      "gross_amount_cny": 111.80,
+      "commission_cny": 5.00,
+      "stamp_duty_cny": 0,
+      "transfer_fee_cny": 0,
+      "total_fees_cny": 5.00,
+      "net_proceeds_cny": 106.80,
+      "book_cost_price_cny": 84.573,
+      "realized_pnl_after_fees_cny": -8350.50,
+      "reason": "清理100份残余仓",
+      "warning": "账面成本异常高，模拟已按底稿原值计算；该笔账面损益不应直接视为真实经济损益"
+    }
+  ],
+  "unchanged_positions": [
+    "科创人工智能ETF易方达",
+    "绿色电力ETF富国",
+    "黄金ETF易方达",
+    "太古地产",
+    "长鑫科技"
+  ],
+  "post_positions": [
+    {
+      "name": "科创人工智能ETF易方达",
+      "shares": 70000,
+      "price": 1.355,
+      "currency": "CNY",
+      "market_value_cny": 94850.00,
+      "weight_pct": 19.85
+    },
+    {
+      "name": "电网设备ETF国泰",
+      "shares": 81300,
+      "price": 0.707,
+      "currency": "CNY",
+      "market_value_cny": 57479.10,
+      "weight_pct": 12.03
+    },
+    {
+      "name": "绿色电力ETF富国",
+      "shares": 60000,
+      "price": 1.156,
+      "currency": "CNY",
+      "market_value_cny": 69360.00,
+      "weight_pct": 14.51
+    },
+    {
+      "name": "南方航空",
+      "shares": 7600,
+      "price": 5.000,
+      "currency": "CNY",
+      "market_value_cny": 38000.00,
+      "weight_pct": 7.95
+    },
+    {
+      "name": "纳斯达克ETF华安",
+      "shares": 11100,
+      "price": 2.431,
+      "currency": "CNY",
+      "market_value_cny": 26984.10,
+      "weight_pct": 5.65
+    },
+    {
+      "name": "黄金ETF易方达",
+      "shares": 3014,
+      "price": 9.307,
+      "currency": "CNY",
+      "market_value_cny": 28051.30,
+      "weight_pct": 5.87
+    },
+    {
+      "name": "太古地产",
+      "shares": 1200,
+      "price": 24.360,
+      "currency": "HKD",
+      "market_value_cny": 24601.10,
+      "weight_pct": 5.15
+    },
+    {
+      "name": "长鑫科技",
+      "shares": 200,
+      "price": 57.200,
+      "currency": "CNY",
+      "market_value_cny": 11440.00,
+      "weight_pct": 2.39
+    },
+    {
+      "name": "电力ETF博时",
+      "shares": 0,
+      "price": 1.118,
+      "currency": "CNY",
+      "market_value_cny": 0,
+      "weight_pct": 0
+    },
+    {
+      "name": "现金",
+      "market_value_cny": 127178.11,
+      "weight_pct": 26.61
+    }
+  ],
+  "exposure_after": {
+    "人工智能_半导体_纳斯达克科技_pct": 27.88,
+    "电网设备_绿色电力_pct": 26.54,
+    "南方航空_pct": 7.95,
+    "cash_pct": 26.61
+  },
+  "review_notes": [
+    "这是模拟成交，不代表已在券商账户成交；portfolio/holdings.json与portfolio/HOLDINGS.md保持不变。",
+    "模拟总资产只因手续费减少38.41元；价格波动、滑点及实际券商费率会使真实结果不同。",
+    "电力ETF博时的异常账面成本使合计已实现损益失真，复盘时应单独核对历史拆分、合并或成本调整记录。"
+  ]
+}
