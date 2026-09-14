@@ -29,7 +29,7 @@ cd /path/to/stock_analyse
 
 ## 模拟交易
 
-本项目按模拟账户记账。`HOLDINGS.md`、`holdings.json` 和 `holdings.csv` 始终表示最新模拟持仓；每次成交前后的完整流水另存于 `simulations/`：
+模拟交易与真实持仓分开保存，不会改动 `HOLDINGS.md` 或 `holdings.json`：
 
 - 2026-09-11 降低集中度：`simulations/2026-09-11-1315-risk-reduction.md`
 - 同一记录的机器可读账本：`simulations/2026-09-11-1315-risk-reduction.json`

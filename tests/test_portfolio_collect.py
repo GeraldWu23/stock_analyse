@@ -8,7 +8,6 @@ from portfolio.collector import (
     collect_position,
     format_table,
     holding_pnl,
-    load_holdings,
     mark_to_market,
     match_etf_row,
     parse_ticker,
@@ -52,20 +51,6 @@ SAMPLE_HOLDINGS = {
         },
     ],
 }
-
-
-def test_canonical_book_is_latest_simulated_holdings():
-    book = load_holdings()
-    rows = {row["name"]: row for row in book["holdings"]}
-
-    assert book["ledger_type"] == "simulated"
-    assert book["account"] == "模拟账户"
-    assert book["cash"]["account_cash_cny"] == 127178.11
-    assert book["totals"]["account_total_cny"] == 477943.71
-    assert rows["电网设备ETF国泰"]["shares"] == 81300
-    assert rows["南方航空"]["shares"] == 7600
-    assert rows["纳斯达克ETF华安"]["shares"] == 11100
-    assert "电力ETF博时" not in rows
 
 
 def test_etf_vs_stock_kind():
