@@ -9,6 +9,7 @@ from portfolio.collector import (
     collect_position,
     format_table,
     holding_pnl,
+    load_holdings,
     mark_to_market,
     match_etf_row,
     parse_ticker,
