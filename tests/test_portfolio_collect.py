@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from portfolio.collector import (
+    SIMULATED_HOLDINGS_JSON,
     collect_book,
     collect_position,
     format_table,
@@ -51,6 +52,22 @@ SAMPLE_HOLDINGS = {
         },
     ],
 }
+
+
+def test_real_and_assistant_simulated_books_stay_separate():
+    real = load_holdings()
+    simulated = load_holdings(SIMULATED_HOLDINGS_JSON)
+    real_rows = {row["name"]: row for row in real["holdings"]}
+    simulated_rows = {row["name"]: row for row in simulated["holdings"]}
+
+    assert real["account"] == "普通账户"
+    assert real["cash"]["account_cash_cny"] == 43452.12
+    assert real_rows["南方航空"]["shares"] == 12500
+    assert simulated["account_owner"] == "assistant"
+    assert simulated["cash"]["account_cash_cny"] == 127178.11
+    assert simulated_rows["南方航空"]["shares"] == 7600
+    assert "电力ETF博时" in real_rows
+    assert "电力ETF博时" not in simulated_rows
 
 
 def test_etf_vs_stock_kind():

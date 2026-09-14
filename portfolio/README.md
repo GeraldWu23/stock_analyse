@@ -29,7 +29,13 @@ cd /path/to/stock_analyse
 
 ## 模拟交易
 
-模拟交易与真实持仓分开保存，不会改动 `HOLDINGS.md` 或 `holdings.json`：
+“你的持仓”指助手维护的模拟仓，最新快照保存在 `simulated/HOLDINGS.md` 和 `simulated/holdings.json`。“我的持仓”仍指用户的真实账户，保存在顶层 `HOLDINGS.md` 和 `holdings.json`。两套账本严格分开。
+
+采集助手模拟仓行情：
+
+```bash
+.venv/bin/python -m portfolio.collect --simulated --quotes-only
+```
 
 - 2026-09-11 降低集中度：`simulations/2026-09-11-1315-risk-reduction.md`
 - 同一记录的机器可读账本：`simulations/2026-09-11-1315-risk-reduction.json`

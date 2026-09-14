@@ -12,6 +12,7 @@ from typing import Any, Callable
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 HOLDINGS_JSON = REPO_ROOT / "portfolio" / "holdings.json"
+SIMULATED_HOLDINGS_JSON = REPO_ROOT / "portfolio" / "simulated" / "holdings.json"
 COLLECTED_DIR = REPO_ROOT / "portfolio" / "collected"
 
 FUND_TYPES = {"场内基金", "ETF", "LOF"}
@@ -362,6 +363,7 @@ def collect_book(
     cash = (book.get("cash") or {}).get("account_cash_cny")
     return {
         "as_of": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "account": book.get("account"),
         "mode": "quotes-only" if quotes_only else "collect",
         "llm": False,
         "shares_are_sticky": True,
