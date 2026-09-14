@@ -7,6 +7,7 @@ from portfolio.collector import (
     SIMULATED_HOLDINGS_JSON,
     collect_book,
     collect_position,
+    daily_pnl,
     format_table,
     holding_pnl,
     load_holdings,
@@ -19,7 +20,9 @@ from portfolio.collector import (
 )
 
 SAMPLE_HOLDINGS = {
+    "account": "测试账户",
     "cash": {"account_cash_cny": 43452.12},
+    "totals": {"hkd_to_cny": 0.84},
     "holdings": [
         {
             "name": "科创人工智能ETF易方达",
@@ -89,14 +92,24 @@ def test_mark_to_market_keeps_shares_sticky():
     assert pnl["holding_pnl"] < 0
 
 
+def test_daily_pnl_uses_previous_close_not_cost():
+    pnl = daily_pnl(1000, 5.10, 5.00)
+    assert pnl == {"today_pnl": 100.0, "today_pnl_pct": 2.0}
+    assert daily_pnl(1000, 5.10, None)["today_pnl"] is None
+
+
 def test_etf_premium_from_eastmoney_discount_column():
     q = quote_from_etf_row({
         "最新价": 2.456,
+        "昨收": 2.400,
+        "涨跌幅": 2.33,
         "IOPV实时估值": 2.2569,
         "基金折价率": -8.82,
         "名称": "纳斯达克ETF",
     })
     assert q["last_price"] == 2.456
+    assert q["previous_close"] == 2.4
+    assert q["change_pct"] == 2.33
     assert q["iopv"] == 2.2569
     assert q["premium_pct"] == 8.82
     assert q["discount_pct"] == -8.82
@@ -121,6 +134,8 @@ def test_collect_book_mocked_no_llm(tmp_path: Path):
     etf_table = [{
         "代码": "588730",
         "最新价": 1.40,
+        "昨收": 1.39,
+        "涨跌幅": 0.72,
         "IOPV实时估值": 1.39,
         "基金折价率": -0.72,
         "名称": "科创人工智能ETF易方达",
@@ -128,8 +143,13 @@ def test_collect_book_mocked_no_llm(tmp_path: Path):
 
     def fake_basic(ticker: str):
         if ticker.endswith("HK"):
-            return {"price": 24.8, "name": "太古地产", "pb": 0.52}
-        return {"price": 5.02, "name": "南方航空", "pe_ttm": -12.26}
+                return {"price": 24.8, "previous_close": 24.5, "name": "太古地产", "pb": 0.52}
+            return {
+                "price": 5.02,
+                "previous_close": 5.00,
+                "name": "南方航空",
+                "pe_ttm": -12.26,
+            }
 
     class FakeAk:
         def fund_etf_spot_em(self):
@@ -137,6 +157,8 @@ def test_collect_book_mocked_no_llm(tmp_path: Path):
             return pd.DataFrame([{
                 "代码": "588730",
                 "最新价": 1.40,
+                "昨收": 1.39,
+                "涨跌幅": 0.72,
                 "IOPV实时估值": 1.39,
                 "基金折价率": -0.72,
                 "名称": "科创人工智能ETF易方达",
@@ -163,6 +185,7 @@ def test_collect_book_mocked_no_llm(tmp_path: Path):
         ak_module=FakeAk(),
     )
     assert snap["llm"] is False
+    assert snap["account"] == "测试账户"
     assert snap["mode"] == "collect"
     names = [p["name"] for p in snap["positions"]]
     assert "南方航空" in names
@@ -170,9 +193,11 @@ def test_collect_book_mocked_no_llm(tmp_path: Path):
     csa = next(p for p in snap["positions"] if p["name"] == "南方航空")
     assert csa["last_price"] == 5.02
     assert csa["shares"] == 12500
+    assert csa["today_pnl"] == 250.0
     assert "plugin_collect" not in csa
     assert etf["kind"] == "etf"
     assert etf["last_price"] == 1.4
+    assert etf["today_pnl"] == 700.0
     assert etf["top_holdings"][0]["name"] == "芯原股份"
 
     path = write_snapshot(snap, collected_dir=tmp_path)
@@ -181,6 +206,9 @@ def test_collect_book_mocked_no_llm(tmp_path: Path):
     table = format_table(snap)
     assert "南方航空" in table
     assert "600029" not in table
+    assert "名称 | 今日盈亏 | 成本价 | 现价 | 持仓金额 | 持仓量 | 仓位" in table
+    assert "现金：" in table
+    assert "总资产：" in table
 
 
 def test_quotes_only_skips_baskets():
