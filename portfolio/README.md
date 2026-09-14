@@ -29,7 +29,24 @@ cd /path/to/stock_analyse
 
 ## 模拟交易
 
-模拟交易与真实持仓分开保存，不会改动 `HOLDINGS.md` 或 `holdings.json`：
+“你的持仓”指助手维护的模拟仓，最新快照保存在 `simulated/HOLDINGS.md` 和 `simulated/holdings.json`。“我的持仓”仍指用户的真实账户，保存在顶层 `HOLDINGS.md` 和 `holdings.json`。两套账本严格分开。
+
+采集助手模拟仓行情：
+
+```bash
+.venv/bin/python -m portfolio.collect --simulated --quotes-only
+```
 
 - 2026-09-11 降低集中度：`simulations/2026-09-11-1315-risk-reduction.md`
 - 同一记录的机器可读账本：`simulations/2026-09-11-1315-risk-reduction.json`
+- 2026-09-14 再次降低纳斯达克ETF溢价风险：`simulations/2026-09-14-1338-nasdaq-premium-trim.md`
+- 同一记录的机器可读账本：`simulations/2026-09-14-1338-nasdaq-premium-trim.json`
+
+## 持仓展示格式
+
+以后查看用户真实持仓或助手模拟仓，固定按券商截图顺序展示：
+
+| 名称 | 今日盈亏 | 成本价 | 现价 | 持仓金额 | 持仓量 | 仓位 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+
+“今日盈亏”按 `(现价 - 昨收) × 持仓量` 计算，不是累计持仓盈亏。实时昨收缺失时显示“暂不可用”，不能用累计盈亏替代。表格后列现金与总资产；现金已包含在总资产内。
