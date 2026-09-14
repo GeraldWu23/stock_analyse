@@ -65,8 +65,9 @@ def test_real_and_assistant_simulated_books_stay_separate():
     assert real["cash"]["account_cash_cny"] == 43452.12
     assert real_rows["南方航空"]["shares"] == 12500
     assert simulated["account_owner"] == "assistant"
-    assert simulated["cash"]["account_cash_cny"] == 127178.11
+    assert simulated["cash"]["account_cash_cny"] == 140472.11
     assert simulated_rows["南方航空"]["shares"] == 7600
+    assert simulated_rows["纳斯达克ETF华安"]["shares"] == 5600
     assert "电力ETF博时" in real_rows
     assert "电力ETF博时" not in simulated_rows
 
