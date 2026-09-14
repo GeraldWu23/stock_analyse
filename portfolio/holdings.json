@@ -1,24 +1,26 @@
 {
-  "as_of_date": "2026-09-10",
-  "screenshot_times": ["20:32", "20:44"],
+  "as_of_date": "2026-09-11",
+  "snapshot_times": ["13:15:55"],
   "timezone": "Asia/Shanghai",
-  "account": "普通账户",
+  "account": "模拟账户",
+  "ledger_type": "simulated",
+  "latest_transaction": "simulations/2026-09-11-1315-risk-reduction.json",
   "source_screenshots": [
     "sources/broker-holdings-2026-09-10-2032.jpg",
     "sources/broker-holdings-2026-09-10-2044.jpg"
   ],
   "shares_are_sticky": true,
-  "shares_rule": "除非用户主动交易，否则不更新份额；市值用 份额×实时价格 还原",
+  "shares_rule": "除非用户明确进行新的模拟交易，否则不更新份额；市值用 份额×实时价格 还原",
   "app_counts": {
-    "all": 9,
+    "all": 8,
     "stocks": 2,
-    "etfs": 6,
+    "etfs": 5,
     "hk_connect": 1
   },
   "cash": {
-    "account_cash_cny": 43452.12,
+    "account_cash_cny": 127178.11,
     "included_in_account_total": true,
-    "weight_pct": 9.0
+    "weight_pct": 26.61
   },
   "holdings": [
     {
@@ -31,12 +33,12 @@
       "shares": 70000,
       "available": 70000,
       "cost_price": 1.506,
-      "last_price": 1.396,
+      "last_price": 1.355,
       "currency": "CNY",
-      "market_value": 97720.00,
-      "holding_pnl": -7724.87,
-      "holding_pnl_pct": -7.33,
-      "weight_pct": 20.2
+      "market_value": 94850.00,
+      "holding_pnl": -10570.00,
+      "holding_pnl_pct": -10.03,
+      "weight_pct": 19.85
     },
     {
       "rank": 2,
@@ -45,15 +47,15 @@
       "code": "561380",
       "market": "上海",
       "type": "场内基金",
-      "shares": 126800,
-      "available": 126800,
+      "shares": 81300,
+      "available": 81300,
       "cost_price": 0.732,
-      "last_price": 0.718,
+      "last_price": 0.707,
       "currency": "CNY",
-      "market_value": 91042.40,
-      "holding_pnl": -1821.19,
-      "holding_pnl_pct": -1.97,
-      "weight_pct": 18.8
+      "market_value": 57479.10,
+      "holding_pnl": -2032.50,
+      "holding_pnl_pct": -3.42,
+      "weight_pct": 12.03
     },
     {
       "rank": 3,
@@ -65,12 +67,12 @@
       "shares": 60000,
       "available": 60000,
       "cost_price": 1.129,
-      "last_price": 1.158,
+      "last_price": 1.156,
       "currency": "CNY",
-      "market_value": 69480.00,
-      "holding_pnl": 1723.06,
-      "holding_pnl_pct": 2.54,
-      "weight_pct": 14.3
+      "market_value": 69360.00,
+      "holding_pnl": 1620.00,
+      "holding_pnl_pct": 2.39,
+      "weight_pct": 14.51
     },
     {
       "rank": 4,
@@ -79,15 +81,15 @@
       "code": "600029",
       "market": "上海",
       "type": "股票",
-      "shares": 12500,
-      "available": 12500,
+      "shares": 7600,
+      "available": 7600,
       "cost_price": 5.181,
       "last_price": 5.00,
       "currency": "CNY",
-      "market_value": 62500.00,
-      "holding_pnl": -2264.04,
-      "holding_pnl_pct": -3.50,
-      "weight_pct": 12.9
+      "market_value": 38000.00,
+      "holding_pnl": -1375.60,
+      "holding_pnl_pct": -3.49,
+      "weight_pct": 7.95
     },
     {
       "rank": 5,
@@ -96,15 +98,15 @@
       "code": "159632",
       "market": "深圳",
       "type": "场内基金",
-      "shares": 22200,
-      "available": 22200,
+      "shares": 11100,
+      "available": 11100,
       "cost_price": 2.03,
-      "last_price": 2.456,
+      "last_price": 2.431,
       "currency": "CNY",
-      "market_value": 54523.20,
-      "holding_pnl": 9248.83,
-      "holding_pnl_pct": 20.43,
-      "weight_pct": 11.3
+      "market_value": 26984.10,
+      "holding_pnl": 4451.10,
+      "holding_pnl_pct": 19.75,
+      "weight_pct": 5.65
     },
     {
       "rank": 6,
@@ -116,12 +118,12 @@
       "shares": 3014,
       "available": 3014,
       "cost_price": 8.85,
-      "last_price": 9.492,
+      "last_price": 9.307,
       "currency": "CNY",
-      "market_value": 28608.89,
-      "holding_pnl": 1929.97,
-      "holding_pnl_pct": 7.20,
-      "weight_pct": 5.9
+      "market_value": 28051.30,
+      "holding_pnl": 1377.40,
+      "holding_pnl_pct": 5.16,
+      "weight_pct": 5.87
     },
     {
       "rank": 7,
@@ -133,12 +135,13 @@
       "shares": 1200,
       "available": 1200,
       "cost_price": 19.865,
-      "last_price": 24.640,
+      "last_price": 24.360,
       "currency": "HKD",
-      "market_value": 29568.00,
-      "holding_pnl": 5730.57,
-      "holding_pnl_pct": 24.04,
-      "weight_pct": 5.2
+      "market_value": 29232.00,
+      "market_value_cny": 24601.10,
+      "holding_pnl": 5394.00,
+      "holding_pnl_pct": 22.63,
+      "weight_pct": 5.15
     },
     {
       "rank": 8,
@@ -155,33 +158,17 @@
       "market_value": 11440.00,
       "holding_pnl": -195.00,
       "holding_pnl_pct": -1.68,
-      "weight_pct": 2.4
-    },
-    {
-      "rank": 9,
-      "name": "电力ETF博时",
-      "ticker": "561700.SH",
-      "code": "561700",
-      "market": "上海",
-      "type": "场内基金",
-      "shares": 100,
-      "available": 100,
-      "cost_price": 84.573,
-      "last_price": 1.119,
-      "currency": "CNY",
-      "market_value": 111.90,
-      "holding_pnl": -8345.37,
-      "holding_pnl_pct": -98.68,
-      "weight_pct": 0.02,
-      "note": "100 份残余仓，市值可忽略"
+      "weight_pct": 2.39
     }
   ],
   "totals": {
-    "visible_weight_pct": 91.02,
-    "cash_weight_pct": 9.0,
-    "cny_securities_market_value": 415426.39,
-    "swire_market_value_hkd": 29568.00,
-    "account_cash_cny": 43452.12,
-    "account_total_cny": 483762.38
+    "visible_weight_pct": 73.39,
+    "cash_weight_pct": 26.61,
+    "cny_securities_market_value": 326164.50,
+    "swire_market_value_hkd": 29232.00,
+    "swire_market_value_cny": 24601.10,
+    "hkd_to_cny": 0.8415811012,
+    "account_cash_cny": 127178.11,
+    "account_total_cny": 477943.71
   }
 }
