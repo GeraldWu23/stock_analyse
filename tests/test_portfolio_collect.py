@@ -143,13 +143,13 @@ def test_collect_book_mocked_no_llm(tmp_path: Path):
 
     def fake_basic(ticker: str):
         if ticker.endswith("HK"):
-                return {"price": 24.8, "previous_close": 24.5, "name": "太古地产", "pb": 0.52}
-            return {
-                "price": 5.02,
-                "previous_close": 5.00,
-                "name": "南方航空",
-                "pe_ttm": -12.26,
-            }
+            return {"price": 24.8, "previous_close": 24.5, "name": "太古地产", "pb": 0.52}
+        return {
+            "price": 5.02,
+            "previous_close": 5.00,
+            "name": "南方航空",
+            "pe_ttm": -12.26,
+        }
 
     class FakeAk:
         def fund_etf_spot_em(self):
