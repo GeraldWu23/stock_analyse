@@ -1,0 +1,67 @@
+{
+  "simulation_id": "2026-09-14-1338-nasdaq-premium-trim",
+  "status": "simulated_only",
+  "executed_at": "2026-09-14T13:38:18+08:00",
+  "account": "我的模拟仓",
+  "real_broker_order_submitted": false,
+  "trade": {
+    "name": "纳斯达克ETF华安",
+    "side": "卖出",
+    "quantity": 5500,
+    "shares_before": 11100,
+    "shares_after": 5600,
+    "latest_price_cny": 2.419,
+    "executable_bid_cny": 2.418,
+    "fill_price_cny": 2.418,
+    "previous_close_cny": 2.434,
+    "iopv_cny": 2.2524,
+    "premium_pct": 7.40,
+    "gross_amount_cny": 13299.00,
+    "commission_cny": 5.00,
+    "net_proceeds_cny": 13294.00,
+    "book_cost_price_cny": 2.030,
+    "realized_pnl_after_fees_cny": 2129.00,
+    "reason": "场内溢价仍为7.40%，继续减半以降低溢价回落和海外科技集中风险"
+  },
+  "valuation": {
+    "hkd_to_cny": 0.8415811012,
+    "before": {
+      "cash_cny": 127178.11,
+      "securities_cny": 349966.41,
+      "total_assets_cny": 477144.52
+    },
+    "after": {
+      "cash_cny": 140472.11,
+      "securities_cny": 336661.91,
+      "total_assets_cny": 477134.02,
+      "cash_weight_pct": 29.44,
+      "nasdaq_etf_weight_pct": 2.84
+    },
+    "execution_impact": {
+      "bid_ask_spread_cny": 5.50,
+      "commission_cny": 5.00,
+      "total_assets_change_cny": -10.50
+    },
+    "today_after_trade": {
+      "pnl_cny": -2631.77,
+      "pnl_pct": -0.55
+    }
+  },
+  "quote": {
+    "source": "akshare:fund_etf_spot_em",
+    "data_time": "2026-09-14T13:38:18+08:00",
+    "data_date": "2026-09-14",
+    "today_change_pct": -0.62
+  },
+  "fee_assumptions": {
+    "commission_rate": 0.00025,
+    "minimum_commission_per_order_cny": 5.00,
+    "etf_stamp_duty_rate": 0,
+    "note": "模拟使用卖一操作对应的可成交买一价，并按最低5元佣金计费"
+  },
+  "review_notes": [
+    "这是助手模拟仓交易，未修改用户真实持仓。",
+    "纳斯达克ETF华安剩余5600份；后续应继续监控场内溢价，而不只看纳斯达克指数涨跌。",
+    "股票行情约13:14，ETF行情更新至13:38，因此组合总资产和今日盈亏是盘中估算。"
+  ]
+}
