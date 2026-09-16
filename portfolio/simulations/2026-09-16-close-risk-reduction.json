@@ -1,0 +1,95 @@
+{
+  "simulation_id": "2026-09-16-close-risk-reduction",
+  "status": "simulated_only",
+  "executed_at": "2026-09-16T15:00:00+08:00",
+  "pricing_rule": "按2026-09-16收盘价成交",
+  "account": "我的模拟仓",
+  "real_broker_order_submitted": false,
+  "trades": [
+    {
+      "name": "科创人工智能ETF易方达",
+      "side": "卖出",
+      "quantity": 10000,
+      "shares_before": 70000,
+      "shares_after": 60000,
+      "fill_price_cny": 1.417,
+      "gross_amount_cny": 14170.00,
+      "commission_cny": 5.00,
+      "total_fees_cny": 5.00,
+      "net_proceeds_cny": 14165.00,
+      "book_cost_price_cny": 1.506,
+      "realized_pnl_after_fees_cny": -895.00,
+      "reason": "最大单一仓位超过20%，利用当日上涨降低人工智能主题集中度"
+    },
+    {
+      "name": "南方航空",
+      "side": "卖出",
+      "quantity": 3800,
+      "shares_before": 7600,
+      "shares_after": 3800,
+      "fill_price_cny": 4.840,
+      "gross_amount_cny": 18392.00,
+      "commission_cny": 5.00,
+      "stamp_duty_cny": 9.20,
+      "transfer_fee_cny": 0.18,
+      "total_fees_cny": 14.38,
+      "net_proceeds_cny": 18377.62,
+      "book_cost_price_cny": 5.181,
+      "realized_pnl_after_fees_cny": -1310.18,
+      "reason": "低ROE、高负债且处于Stage 4下跌趋势，减半控制周期股风险"
+    },
+    {
+      "name": "纳斯达克ETF华安",
+      "side": "卖出",
+      "quantity": 5600,
+      "shares_before": 5600,
+      "shares_after": 0,
+      "fill_price_cny": 2.436,
+      "gross_amount_cny": 13641.60,
+      "commission_cny": 5.00,
+      "total_fees_cny": 5.00,
+      "net_proceeds_cny": 13636.60,
+      "book_cost_price_cny": 2.030,
+      "realized_pnl_after_fees_cny": 2268.60,
+      "premium_pct_at_close": 9.89,
+      "reason": "场内溢价接近10%，清除指数之外的溢价收缩风险"
+    }
+  ],
+  "settlement": {
+    "gross_sale_proceeds_cny": 46203.60,
+    "fees_cny": 24.38,
+    "net_sale_proceeds_cny": 46179.22,
+    "realized_pnl_after_fees_cny": 63.42
+  },
+  "valuation": {
+    "hkd_to_cny": 0.8415811012,
+    "before": {
+      "securities_cny": 340751.40,
+      "cash_cny": 140472.11,
+      "total_assets_cny": 481223.51
+    },
+    "after": {
+      "securities_cny": 294547.80,
+      "cash_cny": 186651.33,
+      "total_assets_cny": 481199.13,
+      "cash_weight_pct": 38.79
+    },
+    "today_after_trade": {
+      "pnl_cny": 3973.24,
+      "note": "交易前今日盈亏3997.62元，扣除24.38元模拟费用"
+    }
+  },
+  "fee_assumptions": {
+    "commission_rate": 0.00025,
+    "minimum_commission_per_order_cny": 5.00,
+    "a_share_sell_stamp_duty_rate": 0.0005,
+    "a_share_transfer_fee_rate": 0.00001,
+    "etf_stamp_duty_rate": 0,
+    "slippage": 0
+  },
+  "review_notes": [
+    "用户明确要求使用收盘价，因此本次不使用买一价并假设零滑点。",
+    "这是助手模拟仓交易，未修改用户真实持仓。",
+    "纳斯达克ETF华安已清仓；科创人工智能ETF易方达剩余60000份；南方航空剩余3800股。"
+  ]
+}

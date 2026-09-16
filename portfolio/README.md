@@ -41,6 +41,8 @@ cd /path/to/stock_analyse
 - 同一记录的机器可读账本：`simulations/2026-09-11-1315-risk-reduction.json`
 - 2026-09-14 再次降低纳斯达克ETF溢价风险：`simulations/2026-09-14-1338-nasdaq-premium-trim.md`
 - 同一记录的机器可读账本：`simulations/2026-09-14-1338-nasdaq-premium-trim.json`
+- 2026-09-16 按收盘价降低组合风险：`simulations/2026-09-16-close-risk-reduction.md`
+- 同一记录的机器可读账本：`simulations/2026-09-16-close-risk-reduction.json`
 
 ## 持仓展示格式
 
