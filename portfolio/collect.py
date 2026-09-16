@@ -11,7 +11,13 @@ from __future__ import annotations
 import argparse
 import sys
 
-from portfolio.collector import collect_book, format_table, write_snapshot
+from portfolio.collector import (
+    SIMULATED_HOLDINGS_JSON,
+    collect_book,
+    format_table,
+    load_holdings,
+    write_snapshot,
+)
 from portfolio.stock_raw import collect_holdings_fundamentals
 
 
@@ -22,13 +28,20 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--name", metavar="名称", default=None, help="只采集这一行（用中文名）")
     parser.add_argument("--quotes-only", action="store_true", help="只拉现价/溢价，不抓 ETF 篮子")
     parser.add_argument(
+        "--simulated",
+        action="store_true",
+        help="采集助手的模拟仓（“你的持仓”），默认采集用户真实持仓",
+    )
+    parser.add_argument(
         "--fundamentals",
         action="store_true",
         help="股票再拉财报与 K 线，写入 collected/{ticker}/raw_data.json，供 66 评委使用",
     )
     args = parser.parse_args(argv)
 
+    holdings = load_holdings(SIMULATED_HOLDINGS_JSON) if args.simulated else None
     snapshot = collect_book(
+        holdings,
         only_name=args.name,
         quotes_only=args.quotes_only,
     )

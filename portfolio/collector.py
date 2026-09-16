@@ -12,6 +12,7 @@ from typing import Any, Callable
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 HOLDINGS_JSON = REPO_ROOT / "portfolio" / "holdings.json"
+SIMULATED_HOLDINGS_JSON = REPO_ROOT / "portfolio" / "simulated" / "holdings.json"
 COLLECTED_DIR = REPO_ROOT / "portfolio" / "collected"
 
 FUND_TYPES = {"场内基金", "ETF", "LOF"}
@@ -62,6 +63,17 @@ def holding_pnl(shares: float, cost: float | None, last_price: float | None) -> 
     }
 
 
+def daily_pnl(shares: float, last_price: float | None, previous_close: float | None) -> dict:
+    if last_price is None or previous_close in (None, 0):
+        return {"today_pnl": None, "today_pnl_pct": None}
+    pnl = (float(last_price) - float(previous_close)) * float(shares)
+    pct = (float(last_price) / float(previous_close) - 1.0) * 100.0
+    return {
+        "today_pnl": round(pnl, 2),
+        "today_pnl_pct": round(pct, 2),
+    }
+
+
 def _num(value: Any) -> float | None:
     if value is None or value == "" or value == "-":
         return None
@@ -109,6 +121,7 @@ def fetch_etf_spot_table(ak_module: Any | None = None) -> list[dict]:
 
 def quote_from_etf_row(row: dict) -> dict:
     price = _num(_first_col(row, ("最新价", "最新", "close", "price")))
+    previous_close = _num(_first_col(row, ("昨收", "昨收价", "previous_close", "prev_close")))
     iopv = _num(_first_col(row, ("IOPV实时估值", "IOPV实时净值", "IOPV", "净值", "实时净值")))
     # 东财「基金折价率」为负时表示溢价（例：-8.82 → 溢价 8.82%）。
     discount = _num(_first_col(row, ("基金折价率", "折价率", "基金折溢价率", "折溢价率", "溢价率")))
@@ -119,6 +132,8 @@ def quote_from_etf_row(row: dict) -> dict:
         premium = round((price / iopv - 1.0) * 100.0, 2)
     return {
         "last_price": price,
+        "previous_close": previous_close,
+        "change_pct": _num(_first_col(row, ("涨跌幅", "涨跌幅%", "change_pct"))),
         "iopv": iopv,
         "premium_pct": premium,
         "discount_pct": discount,
@@ -188,7 +203,33 @@ def fetch_fund_basket(code6: str, top_n: int = 10, ak_module: Any | None = None)
     return rows
 
 
-def _quote_a_share(code6: str, ak: Any) -> dict:
+def _quote_yfinance(symbol: str) -> dict:
+    try:
+        import yfinance as yf  # type: ignore
+        ticker = yf.Ticker(symbol)
+        fast = getattr(ticker, "fast_info", None)
+        last = _num(getattr(fast, "last_price", None)) if fast is not None else None
+        previous_close = _num(getattr(fast, "previous_close", None)) if fast is not None else None
+        if last is None:
+            hist = ticker.history(period="5d")
+            if hist is not None and not hist.empty:
+                last = _num(hist["Close"].iloc[-1])
+                if previous_close is None and len(hist) >= 2:
+                    previous_close = _num(hist["Close"].iloc[-2])
+        change_pct = None
+        if last is not None and previous_close not in (None, 0):
+            change_pct = round((last / previous_close - 1.0) * 100.0, 2)
+        return {
+            "last_price": last,
+            "previous_close": previous_close,
+            "change_pct": change_pct,
+            "source": "yfinance",
+        }
+    except Exception:
+        return {"last_price": None, "previous_close": None, "source": "unavailable"}
+
+
+def _quote_a_share(code6: str, market: str, ak: Any) -> dict:
     bid = ask = None
     try:
         book = ak.stock_bid_ask_em(symbol=code6)
@@ -198,17 +239,25 @@ def _quote_a_share(code6: str, ak: Any) -> dict:
     except Exception:
         pass
     last = ask or bid
-    change_pct = None
+    change_pct = previous_close = None
     try:
         hist = ak.stock_zh_a_hist(symbol=code6, period="daily", adjust="")
         if hist is not None and not hist.empty:
             row = hist.iloc[-1]
             last = _num(row.get("收盘")) or last
             change_pct = _num(row.get("涨跌幅"))
+            if last is not None and change_pct is not None and change_pct != -100:
+                previous_close = last / (1.0 + change_pct / 100.0)
+            elif len(hist) >= 2:
+                previous_close = _num(hist.iloc[-2].get("收盘"))
     except Exception:
         pass
+    if last is None:
+        suffix = "SS" if market == "SH" else market
+        return _quote_yfinance(f"{code6}.{suffix}")
     return {
         "last_price": last,
+        "previous_close": previous_close,
         "bid": bid,
         "ask": ask,
         "change_pct": change_pct,
@@ -228,23 +277,13 @@ def _quote_hk(code: str, ak: Any) -> dict:
                     rec = hit.iloc[0].to_dict()
                     return {
                         "last_price": _num(_first_col(rec, ("最新价", "最新", "close"))),
+                        "previous_close": _num(_first_col(rec, ("昨收", "昨收价", "previous_close"))),
                         "change_pct": _num(_first_col(rec, ("涨跌幅", "涨跌幅%"))),
                         "source": "akshare:stock_hk_spot_em",
                     }
         except Exception:
             pass
-    try:
-        import yfinance as yf  # type: ignore
-        ticker = yf.Ticker(f"{int(code5)}.HK")
-        fast = getattr(ticker, "fast_info", None)
-        last = getattr(fast, "last_price", None) if fast is not None else None
-        if last is None:
-            hist = ticker.history(period="5d")
-            if hist is not None and not hist.empty:
-                last = float(hist["Close"].iloc[-1])
-        return {"last_price": _num(last), "source": "yfinance"}
-    except Exception:
-        return {"last_price": None, "source": "unavailable"}
+    return _quote_yfinance(f"{int(code5)}.HK")
 
 
 def fetch_stock_quote(
@@ -256,6 +295,7 @@ def fetch_stock_quote(
         data = fetch_basic_fn(ticker) or {}
         return {
             "last_price": _num(data.get("price") if "price" in data else data.get("last_price")),
+            "previous_close": _num(data.get("previous_close")),
             "name": data.get("name"),
             "pe_ttm": _num(data.get("pe_ttm")),
             "pb": _num(data.get("pb")),
@@ -267,7 +307,7 @@ def fetch_stock_quote(
     ak = _import_ak(ak_module)
     if market == "HK":
         return _quote_hk(code, ak)
-    return _quote_a_share(code.zfill(6) if code.isdigit() else code, ak)
+    return _quote_a_share(code.zfill(6) if code.isdigit() else code, market, ak)
 
 
 def collect_position(
@@ -306,6 +346,7 @@ def collect_position(
         out["last_price"] = last
         out["market_value"] = mark_to_market(shares, last)
         out.update(holding_pnl(shares, cost, last))
+        out.update(daily_pnl(shares, last, out.get("previous_close")))
         if not quotes_only:
             try:
                 out["top_holdings"] = fetch_fund_basket(code, ak_module=ak_module)
@@ -322,11 +363,28 @@ def collect_position(
         out["quote_error"] = f"{type(exc).__name__}: {exc}"[:160]
         out["status"] = "quote_fallback_ledger"
     last = quote.get("last_price") if quote.get("last_price") is not None else row.get("last_price")
+    if quote.get("last_price") is None:
+        out["status"] = "quote_fallback_ledger"
     out.update({k: v for k, v in quote.items() if k != "name" or v})
     out["last_price"] = last
     out["market_value"] = mark_to_market(shares, last)
     out.update(holding_pnl(shares, cost, last))
+    out.update(daily_pnl(shares, last, out.get("previous_close")))
     return out
+
+
+def _hkd_to_cny(book: dict) -> float | None:
+    totals = book.get("totals") or {}
+    explicit = _num(totals.get("hkd_to_cny"))
+    if explicit is not None:
+        return explicit
+    account_total = _num(totals.get("account_total_cny"))
+    cash = _num(totals.get("account_cash_cny"))
+    cny_securities = _num(totals.get("cny_securities_market_value"))
+    hkd_value = _num(totals.get("swire_market_value_hkd"))
+    if None not in (account_total, cash, cny_securities) and hkd_value not in (None, 0):
+        return (account_total - cash - cny_securities) / hkd_value
+    return None
 
 
 def collect_book(
@@ -359,14 +417,51 @@ def collect_book(
         )
         for row in rows
     ]
-    cash = (book.get("cash") or {}).get("account_cash_cny")
+    cash = _num((book.get("cash") or {}).get("account_cash_cny"))
+    hkd_rate = _hkd_to_cny(book)
+    for position in positions:
+        native_value = _num(position.get("market_value"))
+        native_today_pnl = _num(position.get("today_pnl"))
+        rate = hkd_rate if position.get("currency") == "HKD" else 1.0
+        position["market_value_cny"] = (
+            None if native_value is None or rate is None else round(native_value * rate, 2)
+        )
+        position["today_pnl_cny"] = (
+            None if native_today_pnl is None or rate is None else round(native_today_pnl * rate, 2)
+        )
+
+    valid_values = [p["market_value_cny"] for p in positions if p.get("market_value_cny") is not None]
+    securities_cny = round(sum(valid_values), 2)
+    total_assets_cny = round(securities_cny + cash, 2) if cash is not None else None
+    if total_assets_cny and not only_name:
+        for position in positions:
+            value = position.get("market_value_cny")
+            position["weight_pct"] = None if value is None else round(value / total_assets_cny * 100.0, 2)
+    known_daily = [p["today_pnl_cny"] for p in positions if p.get("today_pnl_cny") is not None]
+    missing_daily = [p["name"] for p in positions if p.get("today_pnl_cny") is None]
+
     return {
         "as_of": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "account": book.get("account"),
         "mode": "quotes-only" if quotes_only else "collect",
         "llm": False,
         "shares_are_sticky": True,
         "cash_cny": cash,
+        "hkd_to_cny": hkd_rate,
         "positions": positions,
+        "summary": {
+            "securities_cny": securities_cny,
+            "cash_cny": cash,
+            "total_assets_cny": total_assets_cny,
+            "today_pnl_cny": round(sum(known_daily), 2),
+            "today_pnl_complete": not missing_daily,
+            "today_pnl_missing": missing_daily,
+            "cash_weight_pct": (
+                None
+                if not total_assets_cny or cash is None
+                else round(cash / total_assets_cny * 100.0, 2)
+            ),
+        },
         "ok": sum(1 for p in positions if p.get("status") == "ok"),
         "partial": sum(1 for p in positions if p.get("status") == "partial"),
         "failed": sum(1 for p in positions if p.get("status") not in ("ok", "partial", "quote_fallback_ledger")),
@@ -388,19 +483,57 @@ def write_snapshot(snapshot: dict, collected_dir: Path | None = None) -> Path:
 
 def format_table(snapshot: dict) -> str:
     lines = [
-        f"采集 {snapshot.get('as_of')} · 模式 {snapshot.get('mode')} · 大模型={snapshot.get('llm')}",
-        f"{'名称':<16} {'类型':<6} {'现价':>10} {'市值':>12} {'状态'}",
-        "-" * 56,
+        (
+            f"采集 {snapshot.get('as_of')} · 账户={snapshot.get('account') or '未命名'} "
+            f"· 模式={snapshot.get('mode')} · 大模型={snapshot.get('llm')}"
+        ),
+        "名称 | 今日盈亏 | 成本价 | 现价 | 持仓金额 | 持仓量 | 仓位",
+        "--- | ---: | ---: | ---: | ---: | ---: | ---:",
     ]
     for p in snapshot.get("positions") or []:
+        currency = p.get("currency")
+        unit = "港元" if currency == "HKD" else "元"
+        pnl_prefix = "HK$" if currency == "HKD" else "¥"
+        today_pnl = p.get("today_pnl")
+        today_pct = p.get("today_pnl_pct")
+        if today_pnl is None or today_pct is None:
+            today_s = "暂不可用"
+        else:
+            today_s = f"{pnl_prefix}{today_pnl:+,.2f} ({today_pct:+.2f}%)"
+        cost = p.get("cost_price")
         price = p.get("last_price")
-        mv = p.get("market_value")
-        price_s = "—" if price is None else f"{price:.3f}"
-        mv_s = "—" if mv is None else f"{mv:,.0f}"
-        extra = ""
-        if p.get("kind") == "etf" and p.get("premium_pct") is not None:
-            extra = f"  溢价{p['premium_pct']:.1f}%"
+        mv_cny = p.get("market_value_cny")
+        shares = p.get("shares")
+        weight = p.get("weight_pct")
+        cost_s = "—" if cost is None else f"{cost:.3f}{unit}"
+        price_s = "—" if price is None else f"{price:.3f}{unit}"
+        mv_s = "—" if mv_cny is None else f"¥{mv_cny:,.2f}"
+        shares_s = "—" if shares is None else f"{shares:,.0f}"
+        weight_s = "—" if weight is None else f"{weight:.2f}%"
         lines.append(
-            f"{p.get('name', ''):<16} {p.get('kind', ''):<6} {price_s:>10} {mv_s:>12} {p.get('status')}{extra}"
+            f"{p.get('name', '')} | {today_s} | {cost_s} | {price_s} | "
+            f"{mv_s} | {shares_s} | {weight_s}"
         )
+    summary = snapshot.get("summary") or {}
+    lines.extend([
+        "",
+        f"证券市值：¥{summary.get('securities_cny', 0):,.2f}",
+        f"现金：¥{summary.get('cash_cny', 0):,.2f}（{summary.get('cash_weight_pct', 0):.2f}%）",
+        f"总资产：¥{summary.get('total_assets_cny', 0):,.2f}",
+    ])
+    missing = summary.get("today_pnl_missing") or []
+    complete_label = "" if not missing else "（仅已取得昨收的持仓）"
+    lines.append(f"今日盈亏{complete_label}：¥{summary.get('today_pnl_cny', 0):+,.2f}")
+    if missing:
+        lines.append("今日盈亏暂不可用：" + "、".join(missing))
+    premiums = [
+        f"{p['name']} {p['premium_pct']:+.2f}%"
+        for p in snapshot.get("positions") or []
+        if p.get("kind") == "etf" and p.get("premium_pct") is not None
+    ]
+    if premiums:
+        lines.append("ETF溢折价：" + "；".join(premiums))
+    fallbacks = [p["name"] for p in snapshot.get("positions") or [] if p.get("status") != "ok"]
+    if fallbacks:
+        lines.append("行情回退/不完整：" + "、".join(fallbacks))
     return "\n".join(lines)
