@@ -1,0 +1,93 @@
+{
+  "simulation_id": "2026-09-18-1407-theme-concentration-reduction",
+  "status": "simulated_only",
+  "executed_at": "2026-09-18T14:07:38+08:00",
+  "pricing_rule": "按2026-09-18 14:07:38盘中快照价模拟成交",
+  "account": "我的模拟仓",
+  "real_broker_order_submitted": false,
+  "trades": [
+    {
+      "name": "科创人工智能ETF易方达",
+      "side": "卖出",
+      "quantity": 10100,
+      "shares_before": 60000,
+      "shares_after": 49900,
+      "fill_price_cny": 1.455,
+      "gross_amount_cny": 14695.50,
+      "commission_cny": 5.00,
+      "total_fees_cny": 5.00,
+      "net_proceeds_cny": 14690.50,
+      "book_cost_price_cny": 1.506,
+      "realized_pnl_after_fees_cny": -520.10,
+      "reason": "从18.03%降至15%，降低科创AI头部集中度；不把卖出资金等额换入512480"
+    },
+    {
+      "name": "电网设备ETF国泰",
+      "side": "卖出",
+      "quantity": 14700,
+      "shares_before": 81300,
+      "shares_after": 66600,
+      "fill_price_cny": 0.727,
+      "gross_amount_cny": 10686.90,
+      "commission_cny": 5.00,
+      "total_fees_cny": 5.00,
+      "net_proceeds_cny": 10681.90,
+      "book_cost_price_cny": 0.732,
+      "realized_pnl_after_fees_cny": -78.50,
+      "reason": "从12.21%降至10%，降低电力链集中度"
+    },
+    {
+      "name": "绿色电力ETF富国",
+      "side": "卖出",
+      "quantity": 17600,
+      "shares_before": 60000,
+      "shares_after": 42400,
+      "fill_price_cny": 1.142,
+      "gross_amount_cny": 20099.20,
+      "commission_cny": 5.02,
+      "total_fees_cny": 5.02,
+      "net_proceeds_cny": 20094.18,
+      "book_cost_price_cny": 1.129,
+      "realized_pnl_after_fees_cny": 223.78,
+      "reason": "从14.15%降至10%，降低与电网设备共同的电力主题风险"
+    }
+  ],
+  "settlement": {
+    "gross_sale_proceeds_cny": 45481.60,
+    "fees_cny": 15.02,
+    "net_sale_proceeds_cny": 45466.58,
+    "realized_pnl_after_fees_cny": -374.82
+  },
+  "valuation": {
+    "hkd_to_cny": 0.8415811012,
+    "before": {
+      "securities_cny": 297481.48,
+      "cash_cny": 186651.33,
+      "total_assets_cny": 484132.81,
+      "cash_weight_pct": 38.55
+    },
+    "after": {
+      "securities_cny": 251999.88,
+      "cash_cny": 232117.91,
+      "total_assets_cny": 484117.79,
+      "cash_weight_pct": 47.95
+    },
+    "today_after_trade": {
+      "pnl_cny": 4665.98,
+      "remaining_positions_pnl_cny": 4083.50,
+      "note": "交易前今日盈亏4681.00元；交易后组合今日盈亏扣除15.02元模拟费用，持仓表不含已卖出份额的当日盈亏"
+    }
+  },
+  "fee_assumptions": {
+    "commission_rate": 0.00025,
+    "minimum_commission_per_order_cny": 5.00,
+    "etf_stamp_duty_rate": 0,
+    "slippage": 0
+  },
+  "review_notes": [
+    "这是助手模拟仓交易，未修改用户真实持仓，也未向券商提交订单。",
+    "纳斯达克ETF华安在此前模拟交易中已清仓，本次没有重复卖出。",
+    "采用纯减仓方案，未买入512480；换入512480只能分散科创AI内部集中度，不能降低科技大类风险。",
+    "盘中快照价仅用于本次模拟成交，真实成交可能受盘口和滑点影响。"
+  ]
+}
