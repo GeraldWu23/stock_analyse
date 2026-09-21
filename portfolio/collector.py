@@ -203,6 +203,19 @@ def fetch_fund_basket(code6: str, top_n: int = 10, ak_module: Any | None = None)
     return rows
 
 
+def _quote_from_cn(ticker: str, cn_quotes: dict[str, dict] | None = None) -> dict:
+    from portfolio.cn_quotes import fetch_cn_quote, ticker_to_cn_code
+
+    code = ticker_to_cn_code(ticker)
+    if cn_quotes is not None:
+        return dict(cn_quotes.get(code) or {})
+    return dict(fetch_cn_quote(code) or {})
+
+
+def _has_last(quote: dict | None) -> bool:
+    return bool(quote) and quote.get("last_price") is not None
+
+
 def _quote_yfinance(symbol: str) -> dict:
     try:
         import yfinance as yf  # type: ignore
@@ -253,8 +266,7 @@ def _quote_a_share(code6: str, market: str, ak: Any) -> dict:
     except Exception:
         pass
     if last is None:
-        suffix = "SS" if market == "SH" else market
-        return _quote_yfinance(f"{code6}.{suffix}")
+        return {}
     return {
         "last_price": last,
         "previous_close": previous_close,
@@ -265,31 +277,33 @@ def _quote_a_share(code6: str, market: str, ak: Any) -> dict:
     }
 
 
-def _quote_hk(code: str, ak: Any) -> dict:
+def _quote_hk_eastmoney(code: str, ak: Any) -> dict:
     code5 = code.zfill(5)
-    if ak is not None:
-        try:
-            df = ak.stock_hk_spot_em()
-            if df is not None and not df.empty:
-                col = "代码" if "代码" in df.columns else df.columns[0]
-                hit = df[df[col].astype(str).str.zfill(5) == code5]
-                if not hit.empty:
-                    rec = hit.iloc[0].to_dict()
-                    return {
-                        "last_price": _num(_first_col(rec, ("最新价", "最新", "close"))),
-                        "previous_close": _num(_first_col(rec, ("昨收", "昨收价", "previous_close"))),
-                        "change_pct": _num(_first_col(rec, ("涨跌幅", "涨跌幅%"))),
-                        "source": "akshare:stock_hk_spot_em",
-                    }
-        except Exception:
-            pass
-    return _quote_yfinance(f"{int(code5)}.HK")
+    if ak is None:
+        return {}
+    try:
+        df = ak.stock_hk_spot_em()
+        if df is not None and not df.empty:
+            col = "代码" if "代码" in df.columns else df.columns[0]
+            hit = df[df[col].astype(str).str.zfill(5) == code5]
+            if not hit.empty:
+                rec = hit.iloc[0].to_dict()
+                return {
+                    "last_price": _num(_first_col(rec, ("最新价", "最新", "close"))),
+                    "previous_close": _num(_first_col(rec, ("昨收", "昨收价", "previous_close"))),
+                    "change_pct": _num(_first_col(rec, ("涨跌幅", "涨跌幅%"))),
+                    "source": "akshare:stock_hk_spot_em",
+                }
+    except Exception:
+        pass
+    return {}
 
 
 def fetch_stock_quote(
     ticker: str,
     fetch_basic_fn: Callable | None = None,
     ak_module: Any | None = None,
+    cn_quotes: dict[str, dict] | None = None,
 ) -> dict:
     if fetch_basic_fn is not None:
         data = fetch_basic_fn(ticker) or {}
@@ -305,9 +319,21 @@ def fetch_stock_quote(
         }
     code, market = parse_ticker(ticker)
     ak = _import_ak(ak_module)
+    cn = _quote_from_cn(ticker, cn_quotes)
     if market == "HK":
-        return _quote_hk(code, ak)
-    return _quote_a_share(code.zfill(6) if code.isdigit() else code, market, ak)
+        if _has_last(cn):
+            return cn
+        east = _quote_hk_eastmoney(code, ak)
+        if _has_last(east):
+            return east
+        return _quote_yfinance(f"{int(code.zfill(5))}.HK")
+    a_share = _quote_a_share(code.zfill(6) if code.isdigit() else code, market, ak)
+    if _has_last(a_share):
+        return a_share
+    if _has_last(cn):
+        return cn
+    suffix = "SS" if market == "SH" else market
+    return _quote_yfinance(f"{code.zfill(6) if code.isdigit() else code}.{suffix}")
 
 
 def collect_position(
@@ -317,6 +343,7 @@ def collect_position(
     quotes_only: bool = False,
     ak_module: Any | None = None,
     fetch_basic_fn: Callable | None = None,
+    cn_quotes: dict[str, dict] | None = None,
 ) -> dict:
     name = row["name"]
     ticker = row["ticker"]
@@ -340,6 +367,11 @@ def collect_position(
         quote = quote_from_etf_row(match) if match else {}
         last = quote.get("last_price")
         if last is None:
+            cn = _quote_from_cn(ticker, cn_quotes)
+            if _has_last(cn):
+                quote = {**quote, **{k: v for k, v in cn.items() if v is not None}}
+                last = quote.get("last_price")
+        if last is None:
             last = row.get("last_price")
             out["status"] = "quote_fallback_ledger"
         out.update(quote)
@@ -358,7 +390,12 @@ def collect_position(
 
     quote: dict = {}
     try:
-        quote = fetch_stock_quote(ticker, fetch_basic_fn=fetch_basic_fn, ak_module=ak_module)
+        quote = fetch_stock_quote(
+            ticker,
+            fetch_basic_fn=fetch_basic_fn,
+            ak_module=ak_module,
+            cn_quotes=cn_quotes,
+        )
     except Exception as exc:
         out["quote_error"] = f"{type(exc).__name__}: {exc}"[:160]
         out["status"] = "quote_fallback_ledger"
@@ -394,6 +431,8 @@ def collect_book(
     quotes_only: bool = False,
     ak_module: Any | None = None,
     fetch_basic_fn: Callable | None = None,
+    cn_quotes: dict[str, dict] | None = None,
+    fetch_cn_quotes_fn: Callable | None = None,
 ) -> dict:
     book = holdings or load_holdings()
     rows = list(book.get("holdings") or [])
@@ -407,6 +446,16 @@ def collect_book(
     if any(position_kind(r) == "etf" for r in rows):
         etf_table = fetch_etf_spot_table(ak_module)
 
+    if cn_quotes is None and fetch_basic_fn is None:
+        from portfolio.cn_quotes import fetch_cn_quotes, ticker_to_cn_code
+
+        codes = [ticker_to_cn_code(str(r.get("ticker") or r.get("code") or "")) for r in rows]
+        loader = fetch_cn_quotes_fn or fetch_cn_quotes
+        try:
+            cn_quotes = loader(codes)
+        except Exception:
+            cn_quotes = {}
+
     positions = [
         collect_position(
             row,
@@ -414,6 +463,7 @@ def collect_book(
             quotes_only=quotes_only,
             ak_module=ak_module,
             fetch_basic_fn=fetch_basic_fn,
+            cn_quotes=cn_quotes,
         )
         for row in rows
     ]

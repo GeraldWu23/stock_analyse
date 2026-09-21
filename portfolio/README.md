@@ -2,6 +2,8 @@
 
 从仓库根目录跑。用中文名，不要用代码。ETF 是篮子，不会进 66 评委。
 
+取数 / 规则打分 / 大模型分别对应哪条命令，见仓库根目录 `PIPELINE.md`。
+
 ## 明天分析南方航空（三步）
 
 ```bash
@@ -21,11 +23,21 @@ cd /path/to/stock_analyse
 
 ## 这三步分别做什么
 
-1. **现价**：东财/akshare 现价，份额不改，市值 = 份额 × 现价。
+1. **现价**：份额不改，市值 = 份额 × 现价。港股现价/昨收优先腾讯 `r_hk`（新浪兜底）；A 股/ETF 仍先东财（ETF 要 IOPV/篮子），现价缺失再用腾讯/新浪；Yahoo 排最后。
 2. **财报 + K 线**：营业额、ROE、负债、分红、均线/Stage。不调用大模型，不进插件目录。
 3. **66 评委 / 九派**：`portfolio/engine/` 里的 Python 规则，读上一步的 `raw_data.json`。
 
-东财行情接口在海外环境可能断连。本仓库会依次试：东财 hist → BaoStock → yfinance。K 线来源写在 `raw_data.json` 的 `2_kline.source`。
+K 线来源写在 `raw_data.json` 的 `2_kline.source`。`collect` 内置腾讯/新浪现价，不跑 cron。盘中盯盘用仓库根目录：
+
+```bash
+python schedule_quotes.py \
+  --cron "20-59/1 9 * * 1-5" \
+  --cron "*/1 10,11 * * 1-5" \
+  --cron "*/1 13-15 * * 1-5" \
+  --cron "0 16 * * 1-5"
+```
+
+conda 环境里用 `python`，不要用系统 `python3`。
 
 ## 模拟交易
 

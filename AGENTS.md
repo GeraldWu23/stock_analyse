@@ -26,6 +26,8 @@ Use the repo `.venv` when it exists:
 .venv/bin/pip install -r .cursor/plugins/stock-deep-analyzer/requirements.txt
 ```
 
+Step-by-step commands (collect vs LLM): `PIPELINE.md`.
+
 ## How to invoke
 
 Use the `/stock-deep-analyzer:` prefix (short names do not always resolve):
