@@ -27,7 +27,17 @@ cd /path/to/stock_analyse
 2. **财报 + K 线**：营业额、ROE、负债、分红、均线/Stage。不调用大模型，不进插件目录。
 3. **66 评委 / 九派**：`portfolio/engine/` 里的 Python 规则，读上一步的 `raw_data.json`。
 
-K 线来源写在 `raw_data.json` 的 `2_kline.source`。`collect` 内置腾讯/新浪现价，不跑 cron。
+K 线来源写在 `raw_data.json` 的 `2_kline.source`。`collect` 内置腾讯/新浪现价，不跑 cron。盘中盯盘用仓库根目录：
+
+```bash
+python schedule_quotes.py \
+  --cron "20-59/1 9 * * 1-5" \
+  --cron "*/1 10,11 * * 1-5" \
+  --cron "*/1 13-15 * * 1-5" \
+  --cron "0 16 * * 1-5"
+```
+
+conda 环境里用 `python`，不要用系统 `python3`。
 
 ## 模拟交易
 

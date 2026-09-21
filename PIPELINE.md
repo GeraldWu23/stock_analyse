@@ -45,7 +45,7 @@ ETF / LOF 是篮子：**不要**走个股 66 评委、不要走个股 DCF。
 - A 股：东财 → 腾讯/新浪 → Yahoo
 - ETF：东财（IOPV/篮子）→ 现价空了再用腾讯/新浪
 
-只盯盘、不写持仓快照时，若本地还有行情脚本分支：`python fetch_quotes.py` 或 `python schedule_quotes.py --cron "..."`。那是定时器，**不要**代替 `portfolio.collect`。
+只盯盘、不写持仓快照：仓库根目录的 `python fetch_quotes.py` 或 `python schedule_quotes.py --cron "..."`。那是定时器，**不要**代替 `portfolio.collect`。`conda activate` 之后请用 `python`，不要用系统 `python3`（macOS 常指向 CommandLineTools，找不到仓库里的脚本）。
 
 A5 读的是 A4 的 `raw_data.json`。没有缓存会直接报错，不会偷偷再去网上拉。
 
