@@ -43,6 +43,8 @@ cd /path/to/stock_analyse
 - 同一记录的机器可读账本：`simulations/2026-09-14-1338-nasdaq-premium-trim.json`
 - 2026-09-16 按收盘价降低组合风险：`simulations/2026-09-16-close-risk-reduction.md`
 - 同一记录的机器可读账本：`simulations/2026-09-16-close-risk-reduction.json`
+- 2026-09-22 开盘限价买入美的集团：`simulations/2026-09-22-0930-midea-limit-buy.md`
+- 同一记录的机器可读账本：`simulations/2026-09-22-0930-midea-limit-buy.json`
 
 ## 持仓展示格式
 
