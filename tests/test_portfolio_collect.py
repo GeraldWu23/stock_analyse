@@ -8,11 +8,14 @@ from portfolio.collector import (
     collect_book,
     collect_position,
     daily_pnl,
+    fetch_alt_quote,
     format_table,
     holding_pnl,
     load_holdings,
     mark_to_market,
     match_etf_row,
+    parse_sina_quote,
+    parse_tencent_quote,
     parse_ticker,
     position_kind,
     quote_from_etf_row,
@@ -268,3 +271,108 @@ def test_fund_basket_tries_year_then_picks_latest_quarter():
 
     rows = fetch_fund_basket("588730", ak_module=Ak())
     assert [r["name"] for r in rows] == ["芯原股份", "寒武纪"]
+
+
+def _tencent_etf_text() -> str:
+    fields = [""] * 40
+    fields[1] = "科创人工智能ETF易方达"
+    fields[2] = "588730"
+    fields[3] = "1.514"
+    fields[4] = "1.519"
+    fields[30] = "20260923103952"
+    fields[32] = "-0.33"
+    body = "~".join(fields) + "~-0.01~1.5142~-1.43~0.00~1.5181~CNY~0"
+    return f'v_sh588730="{body}";'
+
+
+def test_parse_tencent_etf_quote_includes_iopv():
+    quote = parse_tencent_quote(_tencent_etf_text(), "588730", "SH", kind="etf")
+    assert quote["last_price"] == 1.514
+    assert quote["previous_close"] == 1.519
+    assert quote["change_pct"] == -0.33
+    assert quote["iopv"] == 1.5142
+    assert quote["premium_pct"] == round((1.514 / 1.5142 - 1.0) * 100.0, 2)
+    assert quote["quote_at"] == "20260923103952"
+    assert quote["source"].startswith("tencent:qt:")
+
+
+def test_parse_sina_a_share_quote():
+    text = 'var hq_str_sh600029="南方航空,4.97,4.96,4.97,5.00,4.96,4.97,4.98,100,1000,2026-09-23,10:40:00,00,";'
+    quote = parse_sina_quote(text, "600029", "SH")
+    assert quote["last_price"] == 4.97
+    assert quote["previous_close"] == 4.96
+    assert quote["name"] == "南方航空"
+
+
+def test_etf_502_uses_tencent_instead_of_ledger(monkeypatch):
+    monkeypatch.setattr(
+        "portfolio.collector.fetch_alt_quote",
+        lambda code, market, kind="stock": parse_tencent_quote(_tencent_etf_text(), code, market, kind=kind),
+    )
+    position = collect_position(
+        SAMPLE_HOLDINGS["holdings"][0],
+        etf_table=[],
+        quotes_only=True,
+    )
+    assert position["last_price"] == 1.514
+    assert position["last_price"] != 1.396
+    assert position["previous_close"] == 1.519
+    assert position["today_pnl"] == round((1.514 - 1.519) * 70000, 2)
+    assert position["status"] == "ok"
+    assert position["quote_supplement"].startswith("tencent:qt:")
+    assert position.get("needs_web_search") is not True
+
+
+def test_etf_502_ledger_only_after_tencent_and_sina_fail(monkeypatch):
+    monkeypatch.setattr(
+        "portfolio.collector.fetch_alt_quote",
+        lambda code, market, kind="stock": {
+            "last_price": None,
+            "needs_web_search": True,
+            "alt_errors": ["tencent:HTTPError", "sina:HTTPError"],
+            "source": "unavailable",
+        },
+    )
+    position = collect_position(
+        SAMPLE_HOLDINGS["holdings"][0],
+        etf_table=[],
+        quotes_only=True,
+    )
+    assert position["last_price"] == 1.396
+    assert position["status"] == "quote_fallback_ledger"
+    assert position["needs_web_search"] is True
+    table = format_table({
+        "as_of": "t",
+        "account": "测试",
+        "mode": "quotes-only",
+        "llm": False,
+        "positions": [position],
+        "summary": {
+            "securities_cny": 1,
+            "cash_cny": 0,
+            "total_assets_cny": 1,
+            "today_pnl_cny": 0,
+            "cash_weight_pct": 0,
+            "today_pnl_missing": [position["name"]],
+        },
+    })
+    assert "需上网核对" in table
+    assert "科创人工智能ETF易方达" in table
+
+
+def test_fetch_alt_quote_order_is_tencent_then_sina(monkeypatch):
+    calls = []
+
+    def fake_http(url, referer=None):
+        calls.append(url)
+        if "gtimg" in url:
+            raise RuntimeError("502")
+        return 'var hq_str_sh588730="科创人工智能ETF易方达,1.517,1.519,1.514,1.527,1.508";'
+
+    monkeypatch.setattr("portfolio.collector._http_text", fake_http)
+    quote = fetch_alt_quote("588730", "SH", kind="etf")
+    assert calls[0].startswith("https://qt.gtimg.cn/q=sh588730")
+    assert calls[1].startswith("http://hq.sinajs.cn/list=sh588730")
+    assert quote["last_price"] == 1.514
+    assert quote["needs_web_search"] is True
+    assert quote["iopv_missing"] is True

@@ -6,6 +6,7 @@ Stocks get a live quote. Share counts stay sticky; market value is shares × pri
 from __future__ import annotations
 
 import json
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable
@@ -117,6 +118,166 @@ def fetch_etf_spot_table(ak_module: Any | None = None) -> list[dict]:
     if df is None or getattr(df, "empty", True):
         return []
     return df.to_dict("records")
+
+
+def _tencent_symbol(code: str, market: str) -> str | None:
+    market = (market or "").upper()
+    if market == "HK":
+        # Plain hk* on this network is the 15-minute board. r_hk* is the live tape.
+        return f"r_hk{str(code).zfill(5)}"
+    if market == "SH":
+        return f"sh{str(code).zfill(6)}"
+    if market == "SZ":
+        return f"sz{str(code).zfill(6)}"
+    return None
+
+
+def _sina_symbol(code: str, market: str) -> str | None:
+    market = (market or "").upper()
+    if market == "HK":
+        return f"hk{str(code).zfill(5)}"
+    return _tencent_symbol(code, market)
+
+
+def _http_text(url: str, *, referer: str | None = None) -> str:
+    import requests
+
+    headers = {"User-Agent": "Mozilla/5.0"}
+    if referer:
+        headers["Referer"] = referer
+    response = requests.get(url, headers=headers, timeout=8)
+    response.raise_for_status()
+    return response.content.decode("gbk", errors="replace")
+
+
+def _quoted_body(text: str) -> str:
+    match = re.search(r'"([^"]*)"', text or "")
+    if not match or not match.group(1).strip():
+        raise ValueError("empty quote body")
+    return match.group(1)
+
+
+def _field_num(parts: list[str], index: int) -> float | None:
+    if index >= len(parts):
+        return None
+    return _num(parts[index])
+
+
+# 腾讯 ETF 在 CNY 前给出：溢价%~IOPV~…~净值。个股报价没有这一段。
+_TENCENT_ETF_NAV = re.compile(
+    r"~([+-]?\d+(?:\.\d+)?)~(\d+(?:\.\d+)?)~[+-]?\d+(?:\.\d+)?~[+-]?\d+(?:\.\d+)?~(\d+(?:\.\d+)?)~CNY"
+)
+
+
+def parse_tencent_quote(text: str, code: str, market: str, *, kind: str = "stock") -> dict:
+    """Parse one qt.gtimg.cn line. Price is field 3, previous close is field 4."""
+    parts = _quoted_body(text).split("~")
+    if len(parts) < 35:
+        raise ValueError(f"tencent quote short: {len(parts)} fields")
+    got = str(parts[2]).strip()
+    expect = str(code).zfill(5) if market.upper() == "HK" else str(code).zfill(6)
+    if got.zfill(len(expect)) != expect and got.lstrip("0") != expect.lstrip("0"):
+        raise ValueError(f"tencent code mismatch: {got} != {expect}")
+    price = _field_num(parts, 3)
+    previous = _field_num(parts, 4)
+    if price in (None, 0):
+        raise ValueError("tencent price missing")
+    change_pct = _field_num(parts, 32)
+    if change_pct is None and previous not in (None, 0):
+        change_pct = round((price / previous - 1.0) * 100.0, 2)
+    out = {
+        "last_price": price,
+        "previous_close": previous,
+        "change_pct": change_pct,
+        "name": parts[1] or None,
+        "quote_at": parts[30] or None,
+        "source": f"tencent:qt:{_tencent_symbol(code, market)}",
+    }
+    if kind == "etf":
+        nav = _TENCENT_ETF_NAV.search("~".join(parts))
+        if nav:
+            iopv = _num(nav.group(2))
+            out["iopv"] = iopv
+            if iopv not in (None, 0):
+                out["premium_pct"] = round((price / iopv - 1.0) * 100.0, 2)
+    return out
+
+
+def parse_sina_quote(text: str, code: str, market: str, *, kind: str = "stock") -> dict:
+    """Parse one hq.sinajs.cn line. Sina does not publish ETF IOPV here."""
+    fields = _quoted_body(text).split(",")
+    market = market.upper()
+    if market == "HK":
+        if len(fields) < 7:
+            raise ValueError("sina hk quote short")
+        price = _num(fields[6])
+        previous = _num(fields[3])
+        name = fields[1]
+    else:
+        if len(fields) < 4:
+            raise ValueError("sina quote short")
+        price = _num(fields[3])
+        previous = _num(fields[2])
+        name = fields[0]
+    if price in (None, 0):
+        raise ValueError("sina price missing")
+    change_pct = None
+    if previous not in (None, 0):
+        change_pct = round((price / previous - 1.0) * 100.0, 2)
+    return {
+        "last_price": price,
+        "previous_close": previous,
+        "change_pct": change_pct,
+        "name": name or None,
+        "source": f"sina:hq:{_sina_symbol(code, market)}",
+        "iopv_missing": kind == "etf",
+    }
+
+
+def fetch_alt_quote(code: str, market: str, *, kind: str = "stock") -> dict:
+    """Tencent, then Sina. Used when East Money basic quotes return 502 or are empty.
+
+    Does not fall back to the ledger. Caller searches the web only if this
+    still has no last price (or an ETF still has no IOPV).
+    """
+    errors: list[str] = []
+    symbol = _tencent_symbol(code, market)
+    sina_symbol = _sina_symbol(code, market)
+    if symbol is None or sina_symbol is None:
+        return {
+            "last_price": None,
+            "source": "unavailable",
+            "alt_errors": [f"unsupported market {market}"],
+            "needs_web_search": True,
+        }
+    try:
+        text = _http_text(f"https://qt.gtimg.cn/q={symbol}")
+        quote = parse_tencent_quote(text, code, market, kind=kind)
+        quote["alt_errors"] = errors
+        if kind == "etf" and quote.get("iopv") is None:
+            quote["needs_web_search"] = True
+        return quote
+    except Exception as exc:
+        errors.append(f"tencent:{type(exc).__name__}: {exc}"[:160])
+    try:
+        text = _http_text(
+            f"http://hq.sinajs.cn/list={sina_symbol}",
+            referer="https://finance.sina.com.cn",
+        )
+        quote = parse_sina_quote(text, code, market, kind=kind)
+        quote["alt_errors"] = errors
+        if kind == "etf":
+            quote["needs_web_search"] = True
+        return quote
+    except Exception as exc:
+        errors.append(f"sina:{type(exc).__name__}: {exc}"[:160])
+    return {
+        "last_price": None,
+        "previous_close": None,
+        "source": "unavailable",
+        "alt_errors": errors,
+        "needs_web_search": True,
+    }
 
 
 def quote_from_etf_row(row: dict) -> dict:
@@ -365,15 +526,28 @@ def collect_position(
         table = etf_table if etf_table is not None else fetch_etf_spot_table(ak_module)
         match = match_etf_row(table, code)
         quote = quote_from_etf_row(match) if match else {}
+        if quote.get("last_price") is None:
+            _code, market = parse_ticker(ticker)
+            alt = fetch_alt_quote(code, market, kind="etf")
+            if alt.get("last_price") is not None:
+                quote = alt
+                out["quote_supplement"] = alt.get("source")
+            elif cn_quotes is not None:
+                cn = _quote_from_cn(ticker, cn_quotes)
+                if _has_last(cn):
+                    quote = {**quote, **{k: v for k, v in cn.items() if v is not None}}
+                    out["quote_supplement"] = cn.get("source")
+                else:
+                    quote["needs_web_search"] = True
+                    quote["alt_errors"] = alt.get("alt_errors")
+            else:
+                quote["needs_web_search"] = True
+                quote["alt_errors"] = alt.get("alt_errors")
         last = quote.get("last_price")
-        if last is None:
-            cn = _quote_from_cn(ticker, cn_quotes)
-            if _has_last(cn):
-                quote = {**quote, **{k: v for k, v in cn.items() if v is not None}}
-                last = quote.get("last_price")
         if last is None:
             last = row.get("last_price")
             out["status"] = "quote_fallback_ledger"
+            out["needs_web_search"] = True
         out.update(quote)
         out["last_price"] = last
         out["market_value"] = mark_to_market(shares, last)
@@ -399,10 +573,24 @@ def collect_position(
     except Exception as exc:
         out["quote_error"] = f"{type(exc).__name__}: {exc}"[:160]
         out["status"] = "quote_fallback_ledger"
+    if quote.get("last_price") is None and quote.get("needs_web_search"):
+        _code, market = parse_ticker(ticker)
+        alt = fetch_alt_quote(_code, market, kind="stock")
+        if alt.get("last_price") is not None:
+            quote = alt
+            out["quote_supplement"] = alt.get("source")
+            out["status"] = "ok"
+        else:
+            quote["alt_errors"] = alt.get("alt_errors")
+            quote["needs_web_search"] = True
     last = quote.get("last_price") if quote.get("last_price") is not None else row.get("last_price")
     if quote.get("last_price") is None:
         out["status"] = "quote_fallback_ledger"
+        out["needs_web_search"] = True
     out.update({k: v for k, v in quote.items() if k != "name" or v})
+    source = str(quote.get("source") or "")
+    if source.startswith(("tencent:", "sina:")) and not out.get("quote_supplement"):
+        out["quote_supplement"] = source
     out["last_price"] = last
     out["market_value"] = mark_to_market(shares, last)
     out.update(holding_pnl(shares, cost, last))
@@ -583,6 +771,16 @@ def format_table(snapshot: dict) -> str:
     ]
     if premiums:
         lines.append("ETF溢折价：" + "；".join(premiums))
+    supplemented = [
+        f"{p['name']}（{p.get('quote_supplement')}）"
+        for p in snapshot.get("positions") or []
+        if p.get("quote_supplement")
+    ]
+    if supplemented:
+        lines.append("东财不可用，已用其他接口补充：" + "、".join(supplemented))
+    web_needed = [p["name"] for p in snapshot.get("positions") or [] if p.get("needs_web_search")]
+    if web_needed:
+        lines.append("腾讯和新浪都未补全，需上网核对：" + "、".join(web_needed))
     fallbacks = [p["name"] for p in snapshot.get("positions") or [] if p.get("status") != "ok"]
     if fallbacks:
         lines.append("行情回退/不完整：" + "、".join(fallbacks))
