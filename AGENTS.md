@@ -58,7 +58,7 @@ Canonical snapshot (date + cash + positions): `portfolio/HOLDINGS.md`. Machine c
 
 When the user says 我的持仓 / 我监控的票 / 拿一支我的股票, read `portfolio/HOLDINGS.md` first. **Shares are sticky:** do not change `shares` / 持仓 unless the user says they traded; mark to market with live price × shares. Ordinary-account total already includes cash; do not add cash on top. The 100-share 电力ETF博时 stub is not the 9% cash sleeve.
 
-The assistant's separate simulated portfolio lives in `portfolio/simulated/HOLDINGS.md`, with machine copy `portfolio/simulated/holdings.json`. When the user says 你的持仓 / 你目前的持仓 / 你的当前持仓, “你的” refers to the assistant, so read the simulated portfolio. Do not interpret every generic mention of 当前持仓 as simulated, and never overwrite the user's real holdings with simulated trades.
+The assistant's separate simulated portfolio lives in `portfolio/simulated/HOLDINGS.md`, with machine copy `portfolio/simulated/holdings.json`. Portfolio analysis defaults to this book. Read the real `portfolio/HOLDINGS.md` only when the user explicitly says 我的持仓 or 真实账户. Never overwrite the user's real holdings with simulated trades.
 
 **Display rule:** in user-facing replies and markdown tables, use Chinese names (科创人工智能ETF、电网设备ETF、绿色电力ETF、南方航空、纳斯达克ETF、黄金ETF、太古地产、长鑫科技、电力ETF博时). Do not show ticker codes unless the user asks. Codes stay in `holdings.json` / CSV only.
 
