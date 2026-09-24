@@ -1,6 +1,6 @@
 ---
 name: portfolio-deep-analysis
-description: 对用户真实持仓或助手模拟仓中的全部股票、ETF 和现金进行并行深度分析，校验行情与基本面，审查 ETF 成分与组合集中度，并逐项给出持有、加仓、减仓、退出或不动建议、目标仓位和触发条件。当用户要求“把全部进行一次深度分析，并且做出投资建议”、全部持仓深度分析、分析整个组合或判断所有持仓是否需要交易时使用。
+description: 默认只分析助手模拟仓 portfolio/simulated/HOLDINGS.md（含美的集团 200 股）。不得改用 2026-09-10 真实账户，除非用户当次明确说“我的持仓”或“真实账户”。校验行情与基本面，审查 ETF 成分与组合集中度，并逐项给出持有、加仓、减仓、退出或不动建议。当用户要求全部持仓深度分析、分析整个组合或判断持仓是否需要交易时使用。
 metadata:
   related_skills: [deep-analysis, stock-deep-analyzer, investor-panel]
 ---
@@ -18,23 +18,37 @@ metadata:
 
 ## 1. 确定账本
 
-- 默认分析助手模拟仓：`portfolio/simulated/HOLDINGS.md` 和 `portfolio/simulated/holdings.json`。
-- 只有用户明确说“我的持仓”或“真实账户”时，才读取 `portfolio/HOLDINGS.md` 和 `portfolio/holdings.json`。
-- 不要把 2026-09-10 的真实账户样本混进模拟仓分析。
-- 份额是粘性的：除非用户明确说已交易，否则不得修改份额、成本或现金。
-- 开始时列出纳入分析的全部证券，并说明账本日期；不得静默漏掉小仓位、残余仓或现金。
+每次调用本 skill，只分析助手模拟仓，不分析 2026-09-10 的真实账户样本。
+
+- 账本：`portfolio/simulated/HOLDINGS.md` 和 `portfolio/simulated/holdings.json`。这是唯一默认来源。
+- `portfolio/HOLDINGS.md` 与 `portfolio/holdings.json` 是用户真实账户。只有用户当次明确说“我的持仓”或“真实账户”时才读。不得把真实账户的份额、现金或仓位写进模拟仓结论。
+- 当前粘性事实（直到用户授权新的模拟交易并改写上述两个文件）：份额是 2026-09-18 主题降集中之后的数量；美的集团 200 股，成本 80.71 元；现金 ¥215,970.75。文件若在授权交易后更新，以文件为准，仍不得退回 9 月 10 日真实样本。
+- 份额、成本和现金是粘性的：除非用户明确说已交易，否则不得修改。
+- 开始时列出账本里的全部证券和现金，并写明账本日期。漏掉美的、小仓位或现金即错误。
+
+## 1.1 每次必监控
+
+监控名单就是模拟仓账本，不另维护一份会漏名字的清单。每次调用必须覆盖 `portfolio/simulated/holdings.json` 的 `holdings` 全部行，再加现金。
+
+其中美的集团是必监控项，不能因为“真实账户没有”而跳过：
+
+| 名称 | 代码 | 份额 | 成本 | 账本 |
+| --- | --- | ---: | ---: | --- |
+| 美的集团 | `000333.SZ` | 200 | 80.71 元 | `portfolio/simulated/holdings.json` |
+
+今日盈亏按 `(现价 − 昨收) × 份额`，不用成本 80.71 代替昨收。行情用 `schedule_quotes.py` 调用的 `fetch_quotes.py`（腾讯优先）。港股必须走腾讯 `r_hk` 前缀；不带 `r_` 的 `hk` 在这台环境上大约延迟 15 分钟，不能当现价。
 
 ## 2. 刷新组合快照
 
-优先使用 `.venv/bin/python`，不存在时使用 `python3`：
+优先使用 `.venv/bin/python`，不存在时使用 `python3`。先拉模拟仓行情，再采集。港股由 `fetch_quotes.py` 自动加 `r_hk`：
 
 ```bash
-# 用户真实持仓
-.venv/bin/python -m portfolio.collect
-
-# 助手模拟仓
-.venv/bin/python -m portfolio.collect --simulated
+.venv/bin/python schedule_quotes.py --cron "0 0 1 1 0" --run-now --max-runs 1 -- \
+  sh588730 sh561380 sh561170 sh600029 sz159934 hk01972 sh688825 sz000333
+.venv/bin/python -m portfolio.collect --simulated --quotes-only
 ```
+
+`sz000333` 是美的，必须出现在这次拉取里。上面代码是当前模拟仓；若账本后来增删标的，以 `holdings.json` 为准重列，不要改回真实账户代码。只有用户当次明确要求真实账户时，才对 `portfolio/holdings.json` 跑不带 `--simulated` 的采集。
 
 读取 `portfolio/collected/latest.json`，校验：
 
@@ -152,6 +166,9 @@ ETF 是一篮子资产，禁止直接套用个股 65/66 人评审或个股 DCF�
 
 ## 完成检查
 
+- [ ] 用的是 `portfolio/simulated/HOLDINGS.md`，没有混入 2026-09-10 真实账户
+- [ ] 美的集团 200 股、成本 80.71 已进入本次监控和输出
+- [ ] 港股现价来自腾讯 `r_hk`，今日盈亏用昨收而不是成本
 - [ ] 股票、ETF、残余仓和现金全部覆盖
 - [ ] 行情与技术指标使用正确时点
 - [ ] 个股和 ETF 使用不同分析方法
