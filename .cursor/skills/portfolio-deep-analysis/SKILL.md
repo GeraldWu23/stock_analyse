@@ -18,9 +18,9 @@ metadata:
 
 ## 1. 确定账本
 
-- “我的持仓”读取 `portfolio/HOLDINGS.md` 和 `portfolio/holdings.json`。
-- “你的持仓”读取 `portfolio/simulated/HOLDINGS.md` 和 `portfolio/simulated/holdings.json`。
-- 用户只说“持仓”且上下文没有明确指向时，默认分析用户真实持仓。
+- 默认分析助手模拟仓：`portfolio/simulated/HOLDINGS.md` 和 `portfolio/simulated/holdings.json`。
+- 只有用户明确说“我的持仓”或“真实账户”时，才读取 `portfolio/HOLDINGS.md` 和 `portfolio/holdings.json`。
+- 不要把 2026-09-10 的真实账户样本混进模拟仓分析。
 - 份额是粘性的：除非用户明确说已交易，否则不得修改份额、成本或现金。
 - 开始时列出纳入分析的全部证券，并说明账本日期；不得静默漏掉小仓位、残余仓或现金。
 
