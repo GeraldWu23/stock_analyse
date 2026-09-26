@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import json
+from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import pytest
 
@@ -65,3 +67,82 @@ def test_book_requires_exactly_one_header(tmp_path: Path):
     book.dump([{"record": "position", "name": "南方航空"}])
     with pytest.raises(ValueError, match="应有且只有一行账本头"):
         book.book()
+
+
+def _book(tmp_path: Path) -> Holdings:
+    book = Holdings("测试仓", root=tmp_path)
+    book.dump([
+        {
+            "record": "book",
+            "cash": {"account_cash_cny": 10000},
+            "totals": {"hkd_to_cny": 0.8, "cash_cny": 10000},
+        },
+        {
+            "record": "position",
+            "name": "南方航空",
+            "ticker": "600029.SH",
+            "shares": 100,
+            "cost_price": 5,
+            "last_price": 5,
+            "currency": "CNY",
+        },
+    ])
+    return book
+
+
+def test_begin_writes_one_start_line(tmp_path: Path):
+    book = _book(tmp_path)
+    started = book.begin(at=datetime(2026, 9, 26, 18, 48, 1, tzinfo=ZoneInfo("Asia/Shanghai")))
+    assert started["record"] == "start"
+    assert started["date"] == "2026-09-26"
+    assert started["time"] == "18:48:01"
+    assert book.begin() == started
+    assert len(book.trades()) == 1
+
+
+def test_trade_appends_one_line_and_updates_shares(tmp_path: Path):
+    book = _book(tmp_path)
+    at = datetime(2026, 9, 26, 19, 1, 2, tzinfo=ZoneInfo("Asia/Shanghai"))
+    bought = book.trade(name="南方航空", side="买", shares=100, price=7, at=at)
+    assert bought == {
+        "record": "trade",
+        "date": "2026-09-26",
+        "time": "19:01:02",
+        "timezone": "Asia/Shanghai",
+        "name": "南方航空",
+        "side": "买",
+        "shares": 100,
+        "price": 7,
+        "currency": "CNY",
+        "ticker": "600029.SH",
+    }
+    row = book.rows()[0]
+    assert row["shares"] == 200
+    assert row["cost_price"] == 6
+    assert book.cash_cny() == 9300
+
+    book.trade(name="南方航空", side="卖", shares=50, price=8, at=at)
+    row = book.rows()[0]
+    assert row["shares"] == 150
+    assert row["cost_price"] == 6
+    assert book.cash_cny() == 9700
+    assert [line["side"] for line in book.trades()] == ["买", "卖"]
+
+
+def test_sell_all_removes_the_position_line(tmp_path: Path):
+    book = _book(tmp_path)
+    book.trade(name="南方航空", side="卖", shares=100, price=4, at=datetime(2026, 9, 26, 19, 2, tzinfo=ZoneInfo("Asia/Shanghai")))
+    assert book.rows() == []
+    assert book.trades()[-1]["side"] == "卖"
+    assert book.cash_cny() == 10400
+
+
+def test_rejected_trade_does_not_append(tmp_path: Path):
+    book = _book(tmp_path)
+    with pytest.raises(ValueError, match="份额不够"):
+        book.trade(name="南方航空", side="卖", shares=101, price=5)
+    with pytest.raises(ValueError, match="只能是买或卖"):
+        book.trade(name="南方航空", side="买入", shares=1, price=5)
+    assert book.rows()[0]["shares"] == 100
+    assert book.trades() == []
+    assert book.cash_cny() == 10000

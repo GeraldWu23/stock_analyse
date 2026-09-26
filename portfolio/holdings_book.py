@@ -1,24 +1,27 @@
-"""一个仓的账本。读写都走 Holdings，文件在 data/<仓名>/holdings.jsonl。
+"""一个仓的账本。读写都走 Holdings。
 
-以后读这个仓、把这个仓写回去，用 load 和 dump。
-不要在别的目录再保存一份同一个仓的账本。
+持仓结果在 data/<仓名>/holdings.jsonl。
+买卖动作在 data/<仓名>/ledger.jsonl，一行一笔。
+成交后调用 trade()。不要另写一份成交记录，也不要直接改份额。
 """
 from __future__ import annotations
 
 import json
+from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = REPO_ROOT / "data"
+SHANGHAI = ZoneInfo("Asia/Shanghai")
 
 
 class Holdings:
-    """一个仓。账本是 data/<仓名>/holdings.jsonl，一行一个 JSON 对象。
+    """一个仓。结果在 holdings.jsonl，买卖在 ledger.jsonl。
 
-    读用 load，写用 dump。
-    不要在别的目录再保存一份这个仓的账本。
-    dump 按给出的记录写文件，不在这里改份额。
-    改份额要等用户明确说已成交，到时也加在这个类上，不另开写入入口。
+    读持仓用 load，整本写回用 dump。
+    成交后只用 trade()：追加一条买卖，并改份额和现金。
+    不要另写一份成交记录，也不要直接改 holdings.jsonl 里的份额。
     """
 
     def __init__(self, name: str, root: Path | None = None):
@@ -51,6 +54,109 @@ class Holdings:
     def cash_cny(self) -> float:
         """两边账本头都用 cash.account_cash_cny。不解释是否已含在总资产里，该标志两本账的字段名不同。"""
         return float(self.book()["cash"]["account_cash_cny"])
+
+    def trades(self) -> list[dict]:
+        """买卖记录。没有文件时是空的。不在对象上缓存。"""
+        path = self.folder / "ledger.jsonl"
+        if not path.exists():
+            return []
+        text = path.read_text(encoding="utf-8")
+        return [json.loads(line) for line in text.splitlines() if line.strip()]
+
+    def begin(self, at: datetime | None = None) -> dict:
+        """以当前持仓为起点。已有记录则不另写起点。此前买卖不补记。"""
+        existing = self.trades()
+        if existing:
+            return existing[0]
+        return self._append_ledger(_moment_record("start", at) | {
+            "note": "以当前持仓为起点，此前买卖不补记",
+        })
+
+    def trade(self, *, name: str, side: str, shares: float, price: float, at: datetime | None = None) -> dict:
+        """追加一笔买卖，并改持仓份额和现金。仓位比例这次不重算。"""
+        if side not in ("买", "卖"):
+            raise ValueError("side 只能是买或卖")
+        if shares <= 0 or price <= 0:
+            raise ValueError("份额和价格要大于 0")
+
+        records = self.load()
+        position = next((row for row in records if row.get("record") == "position" and row.get("name") == name), None)
+        if side == "卖" and (position is None or float(position["shares"]) < shares):
+            raise ValueError(f"{name} 份额不够")
+        if position is None:
+            position = {
+                "record": "position",
+                "name": name,
+                "shares": 0,
+                "cost_price": price,
+                "last_price": price,
+                "currency": "CNY",
+            }
+            records.append(position)
+
+        held = float(position["shares"])
+        if side == "买":
+            cost = float(position.get("cost_price") or price)
+            position["cost_price"] = round((held * cost + shares * price) / (held + shares), 6)
+            position["shares"] = held + shares
+        else:
+            position["shares"] = held - shares
+        position["last_price"] = price
+        if "available" in position:
+            position["available"] = position["shares"]
+
+        currency = position.get("currency") or "CNY"
+        book = next(row for row in records if row.get("record") == "book")
+        rate = float(book["totals"]["hkd_to_cny"]) if currency == "HKD" else 1.0
+        cash_delta = round(shares * price * rate, 2)
+        if side == "买":
+            cash_delta = -cash_delta
+        book["cash"]["account_cash_cny"] = round(float(book["cash"]["account_cash_cny"]) + cash_delta, 2)
+        if book.get("totals") and "cash_cny" in book["totals"]:
+            book["totals"]["cash_cny"] = book["cash"]["account_cash_cny"]
+
+        ticker = position.get("ticker")
+        if position["shares"] <= 0:
+            records.remove(position)
+        else:
+            if "market_value" in position:
+                position["market_value"] = round(float(position["shares"]) * price, 2)
+            if "market_value_hkd" in position and currency == "HKD":
+                position["market_value_hkd"] = round(float(position["shares"]) * price, 2)
+            if "market_value_cny" in position:
+                position["market_value_cny"] = round(float(position["shares"]) * price * rate, 2)
+        self.dump(records)
+
+        record = _moment_record("trade", at) | {
+            "name": name,
+            "side": side,
+            "shares": shares,
+            "price": price,
+            "currency": currency,
+        }
+        if ticker:
+            record["ticker"] = ticker
+        return self._append_ledger(record)
+
+    def _append_ledger(self, record: dict) -> dict:
+        self.folder.mkdir(parents=True, exist_ok=True)
+        with (self.folder / "ledger.jsonl").open("a", encoding="utf-8") as handle:
+            handle.write(json.dumps(record, ensure_ascii=False) + "\n")
+        return record
+
+
+def _moment_record(kind: str, at: datetime | None) -> dict:
+    moment = datetime.now(SHANGHAI) if at is None else at
+    if moment.tzinfo is None:
+        moment = moment.replace(tzinfo=SHANGHAI)
+    else:
+        moment = moment.astimezone(SHANGHAI)
+    return {
+        "record": kind,
+        "date": moment.strftime("%Y-%m-%d"),
+        "time": moment.strftime("%H:%M:%S"),
+        "timezone": "Asia/Shanghai",
+    }
 
 
 MINE = Holdings("我的持仓")
