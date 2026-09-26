@@ -5,15 +5,17 @@ from pathlib import Path
 
 import pytest
 
-from portfolio.holdings_book import REAL, SIMULATED, Holdings, open_holdings
+from portfolio.holdings_book import MINE, VIRTUAL, Holdings, open_holdings
+
+REPO = Path(__file__).resolve().parents[1]
 
 
 def test_open_holdings_picks_the_named_book():
-    assert open_holdings(None) is REAL
-    assert open_holdings("real") is REAL
-    assert open_holdings("我的持仓") is REAL
-    assert open_holdings("simulated") is SIMULATED
-    assert open_holdings("你的持仓") is SIMULATED
+    assert open_holdings(None) is MINE
+    assert open_holdings("我的持仓") is MINE
+    assert open_holdings("虚拟仓") is VIRTUAL
+    assert MINE.folder == REPO / "data" / "我的持仓"
+    assert VIRTUAL.folder == REPO / "data" / "虚拟仓"
 
 
 def test_unknown_book_is_rejected():
@@ -21,34 +23,45 @@ def test_unknown_book_is_rejected():
         open_holdings("其他仓")
 
 
-def test_real_and_simulated_jsonl_keep_their_own_shares():
-    real_rows = {row["name"]: row for row in REAL.rows()}
-    simulated_rows = {row["name"]: row for row in SIMULATED.rows()}
+def test_two_books_keep_their_own_shares():
+    mine_rows = {row["name"]: row for row in MINE.rows()}
+    virtual_rows = {row["name"]: row for row in VIRTUAL.rows()}
 
-    assert REAL.book()["account"] == "普通账户"
-    assert REAL.cash_cny() == 43452.12
-    assert real_rows["南方航空"]["shares"] == 12500
-    assert "holdings" not in REAL.book()
-    assert SIMULATED.book()["account_owner"] == "assistant"
-    assert SIMULATED.cash_cny() == 232117.91
-    assert simulated_rows["南方航空"]["shares"] == 3800
-    assert "纳斯达克ETF华安" not in simulated_rows
-    assert "电力ETF博时" in real_rows
-    assert "电力ETF博时" not in simulated_rows
-    assert all(row["record"] == "position" for row in REAL.rows())
+    assert MINE.book()["account"] == "普通账户"
+    assert MINE.cash_cny() == 43452.12
+    assert mine_rows["南方航空"]["shares"] == 12500
+    assert "holdings" not in MINE.book()
+    assert VIRTUAL.book()["account_owner"] == "assistant"
+    assert VIRTUAL.cash_cny() == 232117.91
+    assert virtual_rows["南方航空"]["shares"] == 3800
+    assert "纳斯达克ETF华安" not in virtual_rows
+    assert "电力ETF博时" in mine_rows
+    assert "电力ETF博时" not in virtual_rows
+    assert all(row["record"] == "position" for row in MINE.rows())
 
 
 def test_jsonl_rows_match_the_ledger_json():
-    source = json.loads(REAL.jsonl_path.with_suffix(".json").read_text(encoding="utf-8"))
-    simulated = json.loads(SIMULATED.jsonl_path.with_suffix(".json").read_text(encoding="utf-8"))
-    assert [row["name"] for row in REAL.rows()] == [row["name"] for row in source["holdings"]]
-    assert [row["shares"] for row in SIMULATED.rows()] == [row["shares"] for row in simulated["holdings"]]
-    assert REAL.book()["as_of_date"] == source["as_of_date"]
-    assert SIMULATED.book()["ledger_type"] == simulated["ledger_type"]
+    source = json.loads((REPO / "portfolio" / "holdings.json").read_text(encoding="utf-8"))
+    virtual = json.loads((REPO / "portfolio" / "simulated" / "holdings.json").read_text(encoding="utf-8"))
+    assert [row["name"] for row in MINE.rows()] == [row["name"] for row in source["holdings"]]
+    assert [row["shares"] for row in VIRTUAL.rows()] == [row["shares"] for row in virtual["holdings"]]
+    assert MINE.book()["as_of_date"] == source["as_of_date"]
+    assert VIRTUAL.book()["ledger_type"] == virtual["ledger_type"]
+
+
+def test_dump_then_load_roundtrip(tmp_path: Path):
+    book = Holdings("临时仓", root=tmp_path)
+    records = [
+        {"record": "book", "cash": {"account_cash_cny": 1.5}},
+        {"record": "position", "name": "南方航空", "shares": 100},
+    ]
+    book.dump(records)
+    assert book.load() == records
+    assert (tmp_path / "临时仓" / "holdings.jsonl").is_file()
 
 
 def test_book_requires_exactly_one_header(tmp_path: Path):
-    path = tmp_path / "holdings.jsonl"
-    path.write_text(json.dumps({"record": "position", "name": "南方航空"}) + "\n", encoding="utf-8")
+    book = Holdings("坏账", root=tmp_path)
+    book.dump([{"record": "position", "name": "南方航空"}])
     with pytest.raises(ValueError, match="应有且只有一行账本头"):
-        Holdings(path).book()
+        book.book()
