@@ -5,7 +5,6 @@ from pathlib import Path
 
 import pytest
 
-from portfolio.collector import SIMULATED_HOLDINGS_JSON, load_holdings
 from portfolio.holdings_book import REAL, SIMULATED, Holdings, open_holdings
 
 
@@ -39,9 +38,9 @@ def test_real_and_simulated_jsonl_keep_their_own_shares():
     assert all(row["record"] == "position" for row in REAL.rows())
 
 
-def test_jsonl_rows_match_the_source_json():
-    source = load_holdings()
-    simulated = load_holdings(SIMULATED_HOLDINGS_JSON)
+def test_jsonl_rows_match_the_ledger_json():
+    source = json.loads(REAL.jsonl_path.with_suffix(".json").read_text(encoding="utf-8"))
+    simulated = json.loads(SIMULATED.jsonl_path.with_suffix(".json").read_text(encoding="utf-8"))
     assert [row["name"] for row in REAL.rows()] == [row["name"] for row in source["holdings"]]
     assert [row["shares"] for row in SIMULATED.rows()] == [row["shares"] for row in simulated["holdings"]]
     assert REAL.book()["as_of_date"] == source["as_of_date"]
