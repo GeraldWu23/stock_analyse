@@ -97,3 +97,13 @@ def open_holdings(which: str | None = None) -> Holdings:
 从现在起只维护虚拟仓的动作账，文件是 `data/虚拟仓/ledger.jsonl`。持仓类自己持有这份账。此前买卖不补记，`begin()` 写一条起点。
 
 之后每笔成交调用 `trade()`，追加一行。这一行有日期、时间、持仓名称、买或卖、份额、价格。同时改 `holdings.jsonl` 里的份额、成本价和现金。卖光则去掉该持仓行。仓位比例不重算。
+
+```python
+from portfolio.holdings_book import open_holdings
+
+book = open_holdings("虚拟仓")
+book.trade(name="绿色电力ETF富国", side="买", shares=600, price=1.2)
+book.trade(name="太古地产", side="卖", shares=1200, price=25.00)
+```
+
+`trade()` 会保存这两个文件。上面两行是调用例子，不是待执行的委托。

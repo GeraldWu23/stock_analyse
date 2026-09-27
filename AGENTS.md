@@ -60,6 +60,18 @@ When the user says 我的持仓 / 我监控的票 / 拿一支我的股票, read 
 
 The assistant's separate simulated portfolio lives in `portfolio/simulated/HOLDINGS.md`, with machine copy `portfolio/simulated/holdings.json`. When the user says 你的持仓 / 你目前的持仓 / 你的当前持仓, “你的” refers to the assistant, so read the simulated portfolio. Do not interpret every generic mention of 当前持仓 as simulated, and never overwrite the user's real holdings with simulated trades.
 
+虚拟仓的持仓对象是 `data/虚拟仓/`。用户明确说已成交，或要求执行虚拟交易时，从仓库根目录用持仓类记一笔，不要改 `portfolio/simulated/` 的份额来代替：
+
+```python
+from portfolio.holdings_book import open_holdings
+
+book = open_holdings("虚拟仓")
+book.trade(name="绿色电力ETF富国", side="买", shares=600, price=1.2)
+book.trade(name="太古地产", side="卖", shares=1200, price=25.00)
+```
+
+`trade()` 会写入 `holdings.jsonl` 和 `ledger.jsonl`，一行一笔，包含日期、时间、中文名称、买或卖、份额、价格。卖光会去掉该持仓行。港币价格按账本里的汇率折进现金。上面两行是调用例子，不是待执行的委托。用户没说成交时不要调用 `trade()`。
+
 **Display rule:** in user-facing replies and markdown tables, use Chinese names (科创人工智能ETF、电网设备ETF、绿色电力ETF、南方航空、纳斯达克ETF、黄金ETF、太古地产、长鑫科技、电力ETF博时). Do not show ticker codes unless the user asks. Codes stay in `holdings.json` / CSV only.
 
 Whenever the user asks to 看持仓 / 持仓情况 / 你的持仓 / 我的持仓, mimic the broker screenshot with this fixed column order: **名称｜今日盈亏｜成本价｜现价｜持仓金额｜持仓量｜仓位**. Show today's P&L as amount and percentage when both are available. Today's P&L means `(current price - previous close) × shares`, never cumulative holding P&L. If a valid live price or previous close is unavailable, show `暂不可用` and disclose the quote timestamp/fallback; never substitute cumulative P&L. Include cash and total assets after the positions, remembering that cash is already included in total assets. Use HKD for Hong Kong price/P&L fields and the stated FX rate only for portfolio value and weight.

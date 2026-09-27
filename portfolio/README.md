@@ -43,6 +43,18 @@ conda 环境里用 `python`，不要用系统 `python3`。
 
 “你的持仓”指助手维护的模拟仓，最新快照保存在 `simulated/HOLDINGS.md` 和 `simulated/holdings.json`。“我的持仓”仍指用户的真实账户，保存在顶层 `HOLDINGS.md` 和 `holdings.json`。两套账本严格分开。
 
+用户明确说已成交，或要求执行虚拟交易时，从仓库根目录用持仓类记一笔。`trade()` 会保存，不要再另写一份份额。
+
+```python
+from portfolio.holdings_book import open_holdings
+
+book = open_holdings("虚拟仓")
+book.trade(name="绿色电力ETF富国", side="买", shares=600, price=1.2)
+book.trade(name="太古地产", side="卖", shares=1200, price=25.00)
+```
+
+结果在 `data/虚拟仓/holdings.jsonl`，每笔买卖在 `data/虚拟仓/ledger.jsonl`。名称用中文。卖光会去掉该持仓行。港币价格按账本里的汇率折进现金。上面两行是调用例子，不是待执行的委托。
+
 采集助手模拟仓行情：
 
 ```bash
