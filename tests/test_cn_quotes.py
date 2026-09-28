@@ -136,7 +136,11 @@ def test_a_share_uses_tencent_when_eastmoney_empty():
     assert quote["source"] == "tencent:qt.gtimg.cn"
 
 
-def test_etf_fills_last_from_tencent_when_table_misses():
+def test_etf_fills_last_from_tencent_when_table_misses(monkeypatch):
+    monkeypatch.setattr(
+        "portfolio.collector.fetch_alt_quote",
+        lambda code, market, kind="stock": {"last_price": None, "source": "unavailable"},
+    )
     row = {
         "name": "纳斯达克ETF华安",
         "ticker": "159632.SZ",
