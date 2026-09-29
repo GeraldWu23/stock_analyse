@@ -24,6 +24,15 @@ metadata:
 - 份额是粘性的：除非用户明确说已交易，否则不得修改份额、成本或现金。
 - 开始时列出纳入分析的全部证券，并说明账本日期；不得静默漏掉小仓位、残余仓或现金。
 
+## 1.1 每次必查，即使虚拟仓份额为 0
+
+下面两只不在 `data/虚拟仓/holdings.jsonl` 里，也必须每次搜索行情并写入分析。份额为 0 时不要把它们的市值加进总资产，也不要调用 `trade()` 建仓，除非用户当次明确要求执行虚拟交易。
+
+| 名称 | 代码 | 腾讯代码 | 分析方式 |
+| --- | --- | --- | --- |
+| 美的集团 | `000333.SZ` | `sz000333` | 个股。今日盈亏用昨收，不用历史成交价 80.71 |
+| 纳斯达克ETF华安 | `159632.SZ` | `sz159632` | ETF。必须报现价、IOPV 和溢价，禁止套个股 DCF 或 66 评委 |
+
 ## 2. 刷新组合快照
 
 优先使用 `.venv/bin/python`，不存在时使用 `python3`：
@@ -34,6 +43,17 @@ metadata:
 
 # 助手模拟仓
 .venv/bin/python -m portfolio.collect --simulated
+```
+
+每次再拉必查的两只。港股用腾讯 `r_hk`；这两只是 A 股和 ETF，用下面的代码：
+
+```bash
+python3 - << 'PY'
+import urllib.request
+url = "https://qt.gtimg.cn/q=sz000333,sz159632"
+req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0", "Referer": "https://gu.qq.com/"})
+print(urllib.request.urlopen(req, timeout=12).read().decode("gbk"))
+PY
 ```
 
 读取 `portfolio/collected/latest.json`，校验：
@@ -152,6 +172,7 @@ ETF 是一篮子资产，禁止直接套用个股 65/66 人评审或个股 DCF�
 
 ## 完成检查
 
+- [ ] 已搜索并分析美的集团 `000333.SZ` 和纳斯达克ETF华安 `159632.SZ`，即使虚拟仓份额为 0
 - [ ] 股票、ETF、残余仓和现金全部覆盖
 - [ ] 行情与技术指标使用正确时点
 - [ ] 个股和 ETF 使用不同分析方法
