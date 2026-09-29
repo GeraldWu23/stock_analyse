@@ -1,0 +1,108 @@
+{
+  "date": "2026-09-29",
+  "ticker": "561380.SH",
+  "name": "电网设备ETF国泰",
+  "kind": "etf",
+  "ready": false,
+  "missing": [
+    "iopv",
+    "premium_pct",
+    "holdings_report_date"
+  ],
+  "fields": {
+    "last_price": {
+      "value": 0.675,
+      "as_of": "2026-09-29 16:14:38",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "prev_close": {
+      "value": 0.677,
+      "as_of": "2026-09-29 16:14:38",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "iopv": {
+      "value": null,
+      "as_of": "2026-09-29 16:14:38",
+      "source": "tencent:qt.gtimg.cn",
+      "error": "行情源没有 IOPV"
+    },
+    "premium_pct": {
+      "value": null,
+      "as_of": "2026-09-29 16:14:38",
+      "source": "tencent:qt.gtimg.cn",
+      "error": "行情源没有溢折价"
+    },
+    "top_holdings": {
+      "value": [
+        {
+          "rank": 1,
+          "name": "中天科技",
+          "weight_pct": 13.98,
+          "code": "600522"
+        },
+        {
+          "rank": 2,
+          "name": "亨通光电",
+          "weight_pct": 12.98,
+          "code": "600487"
+        },
+        {
+          "rank": 3,
+          "name": "特变电工",
+          "weight_pct": 8.5,
+          "code": "600089"
+        },
+        {
+          "rank": 4,
+          "name": "思源电气",
+          "weight_pct": 8.28,
+          "code": "002028"
+        },
+        {
+          "rank": 5,
+          "name": "国电南瑞",
+          "weight_pct": 7.45,
+          "code": "600406"
+        },
+        {
+          "rank": 6,
+          "name": "宏发股份",
+          "weight_pct": 3.6,
+          "code": "600885"
+        },
+        {
+          "rank": 7,
+          "name": "中国西电",
+          "weight_pct": 3.1,
+          "code": "601179"
+        },
+        {
+          "rank": 8,
+          "name": "四方股份",
+          "weight_pct": 2.85,
+          "code": "601126"
+        },
+        {
+          "rank": 9,
+          "name": "特锐德",
+          "weight_pct": 2.52,
+          "code": "300001"
+        },
+        {
+          "rank": 10,
+          "name": "旭光电子",
+          "weight_pct": 2.05,
+          "code": "600353"
+        }
+      ],
+      "as_of": null,
+      "source": "akshare:fund_portfolio_hold_em"
+    },
+    "holdings_report_date": {
+      "value": null,
+      "as_of": null,
+      "source": "akshare:fund_portfolio_hold_em",
+      "error": "采集时筛过季度，快照没有留下报告期"
+    }
+  }
+}
