@@ -99,6 +99,24 @@ ETF 是一篮子资产，禁止直接套用个股 65/66 人评审或个股 DCF�
 - ETF 成分和权重合计合理，直持与穿透持仓没有重复遗漏；
 - 结论与证据一致，异常数据已剔除或降权。
 
+分析前先读 `data/info/<日期>/<代码>.json`。`ready` 为 false，或当天文件不存在，则该标的标为未就绪，不要给买卖建议。个股必填现价、昨收、财报、K 线；ETF 另必填 IOPV、溢折价、前十大成分和成分报告期。
+
+2026-09-29 这七只的必填项已经写在 `data/info/2026-09-29/`。各项实际用来源如下。下一次缺同一项时，按这个顺序补，并把 `source` 和 `as_of` 写进对应字段。
+
+| 内容 | 标的 | 补齐来源 |
+| --- | --- | --- |
+| 现价、昨收 | 七只全部 | 腾讯行情 `https://qt.gtimg.cn/q=`，字段来源 `tencent:qt.gtimg.cn`。采集入口是 `python -m portfolio.collect --simulated`。当天东财 ETF 现货 `ak.fund_etf_spot_em` 返回 502，ETF 现价没有用东财。 |
+| K 线 | 南方航空、长鑫科技 | `baostock`。akshare `stock_zh_a_hist` 没有出数之后才落到 baostock。最后一根是 2026-09-28。 |
+| K 线 | 太古地产 | `yfinance`。港股不走 baostock。K 线含 2026-09-29。 |
+| 财报 | 南方航空、长鑫科技 | `akshare:financial_abstract+indicator`，即 `stock_financial_abstract` 与 `stock_financial_analysis_indicator`。 |
+| 财报 | 太古地产 | A 股 akshare 摘要和现金流是空表。改用 `yfinance.Ticker('1972.HK')` 的 `income_stmt`、`balance_sheet`、`cashflow` 年报。货币港元，单位元。 |
+| 前十大、报告期 | 科创人工智能ETF、电网设备ETF、绿色电力ETF | `ak.fund_portfolio_hold_em`。前十在第一次采集时写入；报告期从同一张表的「季度」列补上，值为 `2026年2季度股票投资明细`。 |
+| 成分、报告期 | 黄金ETF | `fund_portfolio_hold_em` 的股票持仓是空表，债券持仓和行业配置也没有可用行。改用 `ak.fund_individual_detail_hold_xq(symbol='159934', date='20260630')`。得到的是资产类型「其他」99.97% 和「现金」0.08%，报告期 `2026-06-30`。这一行没有写「黄金」。 |
+| IOPV | 四只 ETF | 东财现货没有折价率。改用腾讯分时 `https://proxy.finance.qq.com/ifzqgtimg/appstock/app/minute/query?code=<sh或sz代码>&cyb=1&extData=iopv`。取当天最后一笔 `extData.iopv`，时点 2026-09-29 15:30。这个数与 qt 第 78 字段相同。 |
+| 溢折价 | 四只 ETF | 不是接口字段。用登记里的收盘价除以 15:30 的 IOPV，再减 1，保留两位百分数。收盘在 16:08–16:14。 |
+
+现金不在这个目录里，仍读账本。
+
 若关键数据仍冲突，将该标的降为“观察/暂不操作”，列出待核验项，禁止用伪精确价格或仓位填补缺口。
 
 ## 5. 组合综合
