@@ -3,10 +3,8 @@
   "ticker": "01972.HK",
   "name": "太古地产",
   "kind": "stock",
-  "ready": false,
-  "missing": [
-    "financials"
-  ],
+  "ready": true,
+  "missing": [],
   "fields": {
     "last_price": {
       "value": 24.54,
@@ -19,10 +17,83 @@
       "source": "tencent:qt.gtimg.cn"
     },
     "financials": {
-      "value": null,
-      "as_of": "2026-09-29T08:25:27+00:00",
-      "source": "akshare:financial_abstract+indicator",
-      "error": "TypeError: 'NoneType' object is not subscriptable"
+      "value": {
+        "currency": "HKD",
+        "unit": "yuan",
+        "financial_years": [
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "period_end_dates": [
+          "2022-12-31",
+          "2023-12-31",
+          "2024-12-31",
+          "2025-12-31"
+        ],
+        "revenue_history": [
+          13826000000,
+          14670000000,
+          14428000000,
+          16041000000
+        ],
+        "revenue_row": "Total Revenue",
+        "net_profit_history": [
+          7980000000,
+          2637000000,
+          -766000000,
+          -1533000000
+        ],
+        "net_profit_row": "Net Income Common Stockholders",
+        "financial_health": {
+          "cash": 10183000000,
+          "total_liabilities": 82190000000,
+          "equity": 269460000000,
+          "total_equity_including_minority": 271342000000,
+          "total_debt": 49723000000,
+          "total_assets": 353532000000,
+          "operating_cash_flow": 7471000000
+        },
+        "cash_history": [
+          4502000000,
+          5097000000,
+          5121000000,
+          10183000000
+        ],
+        "total_liabilities_history": [
+          44904000000,
+          66339000000,
+          76999000000,
+          82190000000
+        ],
+        "equity_history": [
+          289211000000,
+          285082000000,
+          275326000000,
+          269460000000
+        ],
+        "total_debt_history": [
+          23449000000,
+          41776000000,
+          48867000000,
+          49723000000
+        ],
+        "total_assets_history": [
+          337162000000,
+          354488000000,
+          355426000000,
+          353532000000
+        ],
+        "operating_cash_flow_history": [
+          4756000000,
+          5445000000,
+          3762000000,
+          7471000000
+        ]
+      },
+      "as_of": "2026-09-29T09:15:23Z",
+      "source": "yfinance:1972.HK income_stmt+balance_sheet+cashflow"
     },
     "kline": {
       "value": {

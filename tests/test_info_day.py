@@ -46,6 +46,8 @@ def test_virtual_book_day_matches_the_collected_snapshot():
     swire = json.loads((day / "01972.HK.json").read_text(encoding="utf-8"))
     gold = json.loads((day / "159934.SZ.json").read_text(encoding="utf-8"))
     chip = json.loads((day / "588730.SH.json").read_text(encoding="utf-8"))
+    grid = json.loads((day / "561380.SH.json").read_text(encoding="utf-8"))
+    green = json.loads((day / "561170.SH.json").read_text(encoding="utf-8"))
 
     assert south["ready"] is True
     assert south["fields"]["last_price"]["value"] == 4.84
@@ -53,15 +55,27 @@ def test_virtual_book_day_matches_the_collected_snapshot():
     assert south["fields"]["financials"]["value"]["financial_years"][-1] == "2025"
     assert south["fields"]["kline"]["as_of"] == "2026-09-28"
 
-    assert swire["ready"] is False
-    assert swire["missing"] == ["financials"]
+    assert swire["ready"] is True
+    assert swire["missing"] == []
     assert swire["fields"]["kline"]["as_of"] == "2026-09-29"
+    assert swire["fields"]["financials"]["value"]["currency"] == "HKD"
+    assert swire["fields"]["financials"]["value"]["revenue_history"][-1] == 16041000000
+    assert swire["fields"]["financials"]["value"]["financial_years"][-1] == "2025"
 
-    assert gold["ready"] is False
-    assert gold["missing"] == ["iopv", "premium_pct", "top_holdings", "holdings_report_date"]
-    assert chip["ready"] is False
-    assert chip["missing"] == ["iopv", "premium_pct", "holdings_report_date"]
+    assert gold["ready"] is True
+    assert gold["fields"]["iopv"]["value"] == 8.8963
+    assert gold["fields"]["premium_pct"]["value"] == 0.01
+    assert gold["fields"]["holdings_report_date"]["value"] == "2026-06-30"
+    assert gold["fields"]["top_holdings"]["value"][0]["name"] == "其他"
+    assert chip["ready"] is True
+    assert chip["missing"] == []
+    assert chip["fields"]["iopv"]["value"] == 1.4255
+    assert chip["fields"]["premium_pct"]["value"] == 0.18
+    assert chip["fields"]["holdings_report_date"]["value"] == "2026年2季度股票投资明细"
     assert chip["fields"]["top_holdings"]["value"][0]["name"] == "芯原股份"
+    assert grid["ready"] is True and grid["fields"]["iopv"]["value"] == 0.6742
+    assert green["ready"] is True and green["fields"]["iopv"]["value"] == 1.1275
+    assert grid["fields"]["holdings_report_date"]["value"] == "2026年2季度股票投资明细"
     assert "shares" not in chip
 
 
