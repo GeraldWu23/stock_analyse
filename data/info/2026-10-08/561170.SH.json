@@ -1,0 +1,101 @@
+{
+  "date": "2026-10-08",
+  "ticker": "561170.SH",
+  "name": "绿色电力ETF富国",
+  "kind": "etf",
+  "ready": true,
+  "missing": [],
+  "fields": {
+    "last_price": {
+      "value": 1.157,
+      "as_of": "2026-10-08 16:14:59",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "prev_close": {
+      "value": 1.138,
+      "as_of": "2026-10-08 16:14:59",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "iopv": {
+      "value": 1.1567,
+      "as_of": "2026-10-08 15:30",
+      "source": "tencent:proxy.finance.qq.com minute extData.iopv"
+    },
+    "premium_pct": {
+      "value": 0.03,
+      "as_of": "2026-10-08 16:14:59",
+      "source": "last_price / iopv - 1；IOPV 时点 2026-10-08 15:30"
+    },
+    "top_holdings": {
+      "value": [
+        {
+          "rank": 1,
+          "name": "长江电力",
+          "weight_pct": 10.73,
+          "code": "600900"
+        },
+        {
+          "rank": 2,
+          "name": "中国核电",
+          "weight_pct": 9.05,
+          "code": "601985"
+        },
+        {
+          "rank": 3,
+          "name": "三峡能源",
+          "weight_pct": 6.46,
+          "code": "600905"
+        },
+        {
+          "rank": 4,
+          "name": "国电电力",
+          "weight_pct": 5.08,
+          "code": "600795"
+        },
+        {
+          "rank": 5,
+          "name": "华能国际",
+          "weight_pct": 4.07,
+          "code": "600011"
+        },
+        {
+          "rank": 6,
+          "name": "国投电力",
+          "weight_pct": 3.9,
+          "code": "600886"
+        },
+        {
+          "rank": 7,
+          "name": "中国广核",
+          "weight_pct": 3.75,
+          "code": "003816"
+        },
+        {
+          "rank": 8,
+          "name": "川投能源",
+          "weight_pct": 3.38,
+          "code": "600674"
+        },
+        {
+          "rank": 9,
+          "name": "大唐发电",
+          "weight_pct": 3.21,
+          "code": "601991"
+        },
+        {
+          "rank": 10,
+          "name": "上海电力",
+          "weight_pct": 2.59,
+          "code": "600021"
+        }
+      ],
+      "as_of": "2026年2季度股票投资明细",
+      "source": "akshare:fund_portfolio_hold_em"
+    },
+    "holdings_report_date": {
+      "value": "2026年2季度股票投资明细",
+      "as_of": "2026年2季度股票投资明细",
+      "source": "akshare:fund_portfolio_hold_em"
+    }
+  }
+}

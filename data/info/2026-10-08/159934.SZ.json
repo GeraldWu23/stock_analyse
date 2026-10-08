@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-08",
+  "ticker": "159934.SZ",
+  "name": "黄金ETF易方达",
+  "kind": "etf",
+  "ready": true,
+  "missing": [],
+  "fields": {
+    "last_price": {
+      "value": 8.853,
+      "as_of": "2026-10-08 16:14:57",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "prev_close": {
+      "value": 9.022,
+      "as_of": "2026-10-08 16:14:57",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "iopv": {
+      "value": 8.8525,
+      "as_of": "2026-10-08 15:30",
+      "source": "tencent:proxy.finance.qq.com minute extData.iopv"
+    },
+    "premium_pct": {
+      "value": 0.01,
+      "as_of": "2026-10-08 16:14:57",
+      "source": "last_price / iopv - 1；IOPV 时点 2026-10-08 15:30"
+    },
+    "top_holdings": {
+      "value": [
+        {
+          "rank": 1,
+          "name": "其他",
+          "weight_pct": 99.97,
+          "code": null,
+          "asset_type": "其他"
+        },
+        {
+          "rank": 2,
+          "name": "现金",
+          "weight_pct": 0.08,
+          "code": null,
+          "asset_type": "现金"
+        }
+      ],
+      "as_of": "2026-06-30",
+      "source": "akshare:fund_individual_detail_hold_xq"
+    },
+    "holdings_report_date": {
+      "value": "2026-06-30",
+      "as_of": "2026-06-30",
+      "source": "akshare:fund_individual_detail_hold_xq"
+    }
+  }
+}
