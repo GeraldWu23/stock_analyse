@@ -83,8 +83,10 @@ def test_writer_uses_only_collected_files(tmp_path):
     snapshot = REPO / "portfolio" / "collected" / "latest.json"
     if not snapshot.exists():
         return
+    snap = json.loads(snapshot.read_text(encoding="utf-8"))
+    prices = {row["name"]: row["last_price"] for row in snap["positions"]}
     written = write_collected_day(
-        REPO / "portfolio" / "collected" / "latest.json",
+        snapshot,
         REPO / "portfolio" / "simulated" / "holdings.json",
         REPO / "portfolio" / "collected",
         "2026-09-29",
@@ -92,6 +94,6 @@ def test_writer_uses_only_collected_files(tmp_path):
     )
     by_name = {record["name"]: record for record in written}
     assert by_name["长鑫科技"]["ready"] is True
-    assert by_name["长鑫科技"]["fields"]["last_price"]["value"] == 55.55
+    assert by_name["长鑫科技"]["fields"]["last_price"]["value"] == prices["长鑫科技"]
     assert by_name["绿色电力ETF富国"]["fields"]["top_holdings"]["value"][0]["weight_pct"] == 10.73
     assert by_name["太古地产"]["fields"]["financials"]["value"] is None
