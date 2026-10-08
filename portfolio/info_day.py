@@ -72,6 +72,12 @@ def load(date: str, ticker: str, root: Path | None = None) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def universe(root: Path | None = None) -> list[dict]:
+    """检查和分析的名单。读 data/info/universe.json，不读任何持仓账。"""
+    path = (root or DATA_DIR) / "universe.json"
+    return json.loads(path.read_text(encoding="utf-8"))["names"]
+
+
 def write_collected_day(
     snapshot_path: Path,
     holdings_path: Path,

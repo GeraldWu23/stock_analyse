@@ -3,9 +3,24 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from portfolio.info_day import REQUIRED, field, load, missing_of, save, write_collected_day
+from portfolio.holdings_book import VIRTUAL
+from portfolio.info_day import REQUIRED, field, load, missing_of, save, universe, write_collected_day
 
 REPO = Path(__file__).resolve().parents[1]
+
+
+def test_universe_is_not_taken_from_the_virtual_book():
+    names = universe()
+    tickers = [row["ticker"] for row in names]
+    virtual = {row["ticker"] for row in VIRTUAL.rows()}
+    assert "159632.SZ" in tickers
+    assert "000333.SZ" in tickers
+    assert names[tickers.index("159632.SZ")]["kind"] == "etf"
+    assert names[tickers.index("000333.SZ")]["name"] == "美的集团"
+    assert names[tickers.index("000333.SZ")]["kind"] == "stock"
+    assert "159632.SZ" not in virtual
+    assert "000333.SZ" not in virtual
+    assert virtual < set(tickers)
 
 
 def test_required_lists_stay_split_by_kind():

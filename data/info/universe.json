@@ -1,0 +1,15 @@
+{
+  "note": "检查和分析的标的。手改这一份，不要从虚拟仓或任何持仓账生成。",
+  "names": [
+    {"name": "科创人工智能ETF易方达", "ticker": "588730.SH", "kind": "etf"},
+    {"name": "电网设备ETF国泰", "ticker": "561380.SH", "kind": "etf"},
+    {"name": "绿色电力ETF富国", "ticker": "561170.SH", "kind": "etf"},
+    {"name": "南方航空", "ticker": "600029.SH", "kind": "stock"},
+    {"name": "纳斯达克ETF华安", "ticker": "159632.SZ", "kind": "etf"},
+    {"name": "黄金ETF易方达", "ticker": "159934.SZ", "kind": "etf"},
+    {"name": "太古地产", "ticker": "01972.HK", "kind": "stock"},
+    {"name": "长鑫科技", "ticker": "688825.SH", "kind": "stock"},
+    {"name": "电力ETF博时", "ticker": "561700.SH", "kind": "etf"},
+    {"name": "美的集团", "ticker": "000333.SZ", "kind": "stock"}
+  ]
+}

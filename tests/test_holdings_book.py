@@ -137,6 +137,51 @@ def test_sell_all_removes_the_position_line(tmp_path: Path):
     assert book.cash_cny() == 10400
 
 
+def test_old_book_without_check_time_still_loads(tmp_path: Path):
+    book = _book(tmp_path)
+    assert book.last_checked_at() is None
+    assert book.rows()[0]["shares"] == 100
+
+
+def test_mark_checked_leaves_shares_and_trade_time(tmp_path: Path):
+    book = _book(tmp_path)
+    records = book.load()
+    records[0]["as_of"] = "2026-09-18T14:07:38+08:00"
+    records[0]["as_of_date"] = "2026-09-10"
+    book.dump(records)
+    stamp = book.mark_checked(at=datetime(2026, 10, 8, 18, 45, 31, tzinfo=ZoneInfo("Asia/Shanghai")))
+    assert stamp == "2026-10-08T18:45:31+08:00"
+    assert book.last_checked_at() == stamp
+    assert book.book()["as_of"] == "2026-09-18T14:07:38+08:00"
+    assert book.book()["as_of_date"] == "2026-09-10"
+    assert book.rows()[0]["shares"] == 100
+    assert book.cash_cny() == 10000
+    assert book.trades() == []
+
+
+def test_trade_does_not_rewrite_last_checked_at(tmp_path: Path):
+    book = _book(tmp_path)
+    book.mark_checked(at=datetime(2026, 10, 8, 18, 45, 31, tzinfo=ZoneInfo("Asia/Shanghai")))
+    book.trade(
+        name="南方航空",
+        side="买",
+        shares=100,
+        price=7,
+        at=datetime(2026, 10, 8, 19, 0, tzinfo=ZoneInfo("Asia/Shanghai")),
+    )
+    assert book.last_checked_at() == "2026-10-08T18:45:31+08:00"
+    assert book.rows()[0]["shares"] == 200
+
+
+def test_virtual_check_is_not_the_last_trade():
+    assert VIRTUAL.last_checked_at() == "2026-10-08T18:45:31+08:00"
+    assert VIRTUAL.book()["as_of"] == "2026-09-18T14:07:38+08:00"
+    assert VIRTUAL.rows()[3]["name"] == "南方航空"
+    assert VIRTUAL.rows()[3]["shares"] == 3800
+    assert MINE.last_checked_at() is None
+    assert "last_checked_at" not in MINE.book()
+
+
 def test_rejected_trade_does_not_append(tmp_path: Path):
     book = _book(tmp_path)
     with pytest.raises(ValueError, match="份额不够"):

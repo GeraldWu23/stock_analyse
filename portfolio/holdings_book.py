@@ -55,6 +55,23 @@ class Holdings:
         """两边账本头都用 cash.account_cash_cny。不解释是否已含在总资产里，该标志两本账的字段名不同。"""
         return float(self.book()["cash"]["account_cash_cny"])
 
+    def last_checked_at(self) -> str | None:
+        """最近一次检查的时间。旧账本没有这个字段时是 None，不要当成最近一笔交易。"""
+        return self.book().get("last_checked_at")
+
+    def mark_checked(self, at: datetime | None = None) -> str:
+        """记下检查时间。不改份额、现金、as_of、as_of_date，也不写买卖账。没成交也要记。"""
+        moment = datetime.now(SHANGHAI) if at is None else at
+        if moment.tzinfo is None:
+            moment = moment.replace(tzinfo=SHANGHAI)
+        else:
+            moment = moment.astimezone(SHANGHAI)
+        stamp = moment.isoformat(timespec="seconds")
+        records = self.load()
+        next(row for row in records if row.get("record") == "book")["last_checked_at"] = stamp
+        self.dump(records)
+        return stamp
+
     def trades(self) -> list[dict]:
         """买卖记录。没有文件时是空的。不在对象上缓存。"""
         path = self.folder / "ledger.jsonl"

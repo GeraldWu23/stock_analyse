@@ -106,4 +106,14 @@ book.trade(name="绿色电力ETF富国", side="买", shares=600, price=1.2)
 book.trade(name="太古地产", side="卖", shares=1200, price=25.00)
 ```
 
-`trade()` 会保存这两个文件。上面两行是调用例子，不是待执行的委托。
+`trade()` 会保存这两个文件。上面两行是调用例子，不是待执行的委托。`trade()` 不改 `last_checked_at`。
+
+## 最后检查时间
+
+账本头可以有 `last_checked_at`。这是最近一次看过这本账的时间。某一天分析过、决定不改份额，也要写成这一天，不要用 `as_of`、`as_of_date` 或最近一笔买卖来代替。旧文件没有这个字段时，`last_checked_at()` 返回空，不当成报错，也不要填成交易日。
+
+```python
+book.mark_checked()
+```
+
+只改账本头上的这个字段。不改份额、现金，也不写 `ledger.jsonl`。
