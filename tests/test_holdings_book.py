@@ -174,7 +174,7 @@ def test_trade_does_not_rewrite_last_checked_at(tmp_path: Path):
 
 
 def test_virtual_check_is_not_the_last_trade():
-    assert VIRTUAL.last_checked_at() == "2026-10-08T18:45:31+08:00"
+    assert VIRTUAL.last_checked_at() == "2026-10-09T10:14:08+08:00"
     assert VIRTUAL.book()["as_of"] == "2026-09-18T14:07:38+08:00"
     assert VIRTUAL.rows()[3]["name"] == "南方航空"
     assert VIRTUAL.rows()[3]["shares"] == 3800
