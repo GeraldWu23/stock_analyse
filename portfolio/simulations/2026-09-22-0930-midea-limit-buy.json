@@ -1,0 +1,75 @@
+{
+  "simulation_id": "2026-09-22-0930-midea-limit-buy",
+  "status": "simulated_only",
+  "executed_at": "2026-09-22T09:30:00+08:00",
+  "valuation_as_of": "2026-09-22T09:49:32+08:00",
+  "pricing_rule": "开盘前限价不高于81元；开盘价80.71低于限价，按开盘价成交，不按之后81.47的最新价追买",
+  "account": "我的模拟仓",
+  "real_broker_order_submitted": false,
+  "quote": {
+    "source": "akshare:stock_zh_a_spot_em",
+    "ticker": "000333.SZ",
+    "previous_close": 80.90,
+    "open": 80.71,
+    "high": 81.55,
+    "low": 80.24,
+    "last": 81.47,
+    "limit_price": 81.00
+  },
+  "trades": [
+    {
+      "name": "美的集团",
+      "side": "买入",
+      "quantity": 200,
+      "shares_before": 0,
+      "shares_after": 200,
+      "limit_price_cny": 81.00,
+      "fill_price_cny": 80.71,
+      "mark_price_cny": 81.47,
+      "gross_amount_cny": 16142.00,
+      "commission_cny": 5.00,
+      "stamp_duty_cny": 0,
+      "transfer_fee_cny": 0.16,
+      "total_fees_cny": 5.16,
+      "cash_debit_cny": 16147.16,
+      "book_cost_price_cny": 80.71,
+      "unrealized_pnl_from_fill_cny": 152.00,
+      "reason": "限价81元在开盘价80.71成交第一笔200股；不追随后高于81的价格"
+    }
+  ],
+  "settlement": {
+    "gross_purchase_cny": 16142.00,
+    "fees_cny": 5.16,
+    "cash_debit_cny": 16147.16,
+    "realized_pnl_after_fees_cny": 0
+  },
+  "valuation": {
+    "hkd_to_cny": 0.8415811012,
+    "before": {
+      "securities_cny": 303663.94,
+      "cash_cny": 186651.33,
+      "total_assets_cny": 490315.27,
+      "cash_weight_pct": 38.07
+    },
+    "after": {
+      "securities_cny": 319957.94,
+      "cash_cny": 170504.17,
+      "total_assets_cny": 490462.11,
+      "cash_weight_pct": 34.76,
+      "midea_weight_pct": 3.32
+    }
+  },
+  "fee_assumptions": {
+    "commission_rate": 0.00025,
+    "minimum_commission_per_order_cny": 5.00,
+    "a_share_buy_stamp_duty_rate": 0,
+    "a_share_transfer_fee_rate": 0.00001,
+    "slippage": 0
+  },
+  "review_notes": [
+    "用户要求执行限价不高于81元买入200股的模拟单。",
+    "09:45左右最新价已到81.47，但今开80.71、最低80.24，开盘限价单已经触发，故按开盘价成交。",
+    "这是助手模拟仓交易，未修改用户真实持仓，也未向券商提交订单。",
+    "计划中的第二笔100股未执行。"
+  ]
+}

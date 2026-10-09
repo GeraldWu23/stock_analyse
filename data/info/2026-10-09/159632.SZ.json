@@ -1,0 +1,101 @@
+{
+  "date": "2026-10-09",
+  "ticker": "159632.SZ",
+  "name": "纳斯达克ETF华安",
+  "kind": "etf",
+  "ready": true,
+  "missing": [],
+  "fields": {
+    "last_price": {
+      "value": 2.584,
+      "as_of": "20261009100936",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "prev_close": {
+      "value": 2.587,
+      "as_of": "20261009100936",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "iopv": {
+      "value": 2.3442,
+      "as_of": "2026-10-09 10:11",
+      "source": "tencent:proxy.finance.qq.com minute extData.iopv"
+    },
+    "premium_pct": {
+      "value": 10.23,
+      "as_of": "20261009100936",
+      "source": "last_price / iopv - 1；IOPV 时点 2026-10-09 10:11"
+    },
+    "top_holdings": {
+      "value": [
+        {
+          "rank": 1,
+          "name": "英伟达",
+          "weight_pct": 7.0,
+          "code": "NVDA"
+        },
+        {
+          "rank": 2,
+          "name": "苹果",
+          "weight_pct": 6.14,
+          "code": "AAPL"
+        },
+        {
+          "rank": 3,
+          "name": "美光科技",
+          "weight_pct": 5.19,
+          "code": "MU"
+        },
+        {
+          "rank": 4,
+          "name": "微软",
+          "weight_pct": 4.01,
+          "code": "MSFT"
+        },
+        {
+          "rank": 5,
+          "name": "超威半导体",
+          "weight_pct": 3.78,
+          "code": "AMD"
+        },
+        {
+          "rank": 6,
+          "name": "亚马逊",
+          "weight_pct": 3.71,
+          "code": "AMZN"
+        },
+        {
+          "rank": 7,
+          "name": "特斯拉",
+          "weight_pct": 3.04,
+          "code": "TSLA"
+        },
+        {
+          "rank": 8,
+          "name": "谷歌-A",
+          "weight_pct": 3.01,
+          "code": "GOOGL"
+        },
+        {
+          "rank": 9,
+          "name": "英特尔",
+          "weight_pct": 2.8,
+          "code": "INTC"
+        },
+        {
+          "rank": 10,
+          "name": "谷歌-C",
+          "weight_pct": 2.79,
+          "code": "GOOG"
+        }
+      ],
+      "as_of": "2026年2季度股票投资明细",
+      "source": "akshare:fund_portfolio_hold_em"
+    },
+    "holdings_report_date": {
+      "value": "2026年2季度股票投资明细",
+      "as_of": "2026年2季度股票投资明细",
+      "source": "akshare:fund_portfolio_hold_em"
+    }
+  }
+}
