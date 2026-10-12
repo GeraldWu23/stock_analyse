@@ -1,0 +1,101 @@
+{
+  "date": "2026-10-09",
+  "ticker": "561380.SH",
+  "name": "电网设备ETF国泰",
+  "kind": "etf",
+  "ready": true,
+  "missing": [],
+  "fields": {
+    "last_price": {
+      "value": 0.653,
+      "as_of": "20261009100932",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "prev_close": {
+      "value": 0.671,
+      "as_of": "20261009100932",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "iopv": {
+      "value": 0.6525,
+      "as_of": "2026-10-09 10:11",
+      "source": "tencent:proxy.finance.qq.com minute extData.iopv"
+    },
+    "premium_pct": {
+      "value": 0.08,
+      "as_of": "20261009100932",
+      "source": "last_price / iopv - 1；IOPV 时点 2026-10-09 10:11"
+    },
+    "top_holdings": {
+      "value": [
+        {
+          "rank": 1,
+          "name": "中天科技",
+          "weight_pct": 13.98,
+          "code": "600522"
+        },
+        {
+          "rank": 2,
+          "name": "亨通光电",
+          "weight_pct": 12.98,
+          "code": "600487"
+        },
+        {
+          "rank": 3,
+          "name": "特变电工",
+          "weight_pct": 8.5,
+          "code": "600089"
+        },
+        {
+          "rank": 4,
+          "name": "思源电气",
+          "weight_pct": 8.28,
+          "code": "002028"
+        },
+        {
+          "rank": 5,
+          "name": "国电南瑞",
+          "weight_pct": 7.45,
+          "code": "600406"
+        },
+        {
+          "rank": 6,
+          "name": "宏发股份",
+          "weight_pct": 3.6,
+          "code": "600885"
+        },
+        {
+          "rank": 7,
+          "name": "中国西电",
+          "weight_pct": 3.1,
+          "code": "601179"
+        },
+        {
+          "rank": 8,
+          "name": "四方股份",
+          "weight_pct": 2.85,
+          "code": "601126"
+        },
+        {
+          "rank": 9,
+          "name": "特锐德",
+          "weight_pct": 2.52,
+          "code": "300001"
+        },
+        {
+          "rank": 10,
+          "name": "旭光电子",
+          "weight_pct": 2.05,
+          "code": "600353"
+        }
+      ],
+      "as_of": "2026年2季度股票投资明细",
+      "source": "akshare:fund_portfolio_hold_em"
+    },
+    "holdings_report_date": {
+      "value": "2026年2季度股票投资明细",
+      "as_of": "2026年2季度股票投资明细",
+      "source": "akshare:fund_portfolio_hold_em"
+    }
+  }
+}
