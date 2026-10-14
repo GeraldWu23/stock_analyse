@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-12T16:00:47+08:00",
+  "as_of": "2026-10-14T10:15:59+08:00",
   "timezone": "Asia/Shanghai",
   "account": "我的模拟仓",
   "account_owner": "assistant",
@@ -13,8 +13,8 @@
   "shares_are_sticky": true,
   "shares_rule": "除非发生新的模拟交易，否则不更新份额；市值用份额乘实时价格还原",
   "cash": {
-    "account_cash_cny": 250443.91,
-    "weight_pct": 53.34,
+    "account_cash_cny": 259819.91,
+    "weight_pct": 55.47,
     "included_in_total_assets": true
   },
   "holdings": [
@@ -24,10 +24,10 @@
       "type": "场内基金",
       "shares": 35900.0,
       "cost_price": 1.506,
-      "last_price": 1.309,
+      "last_price": 1.283,
       "currency": "CNY",
-      "market_value_cny": 46993.1,
-      "weight_pct": 10.01
+      "market_value_cny": 46059.7,
+      "weight_pct": 9.83
     },
     {
       "name": "电网设备ETF国泰",
@@ -35,10 +35,10 @@
       "type": "场内基金",
       "shares": 66600,
       "cost_price": 0.732,
-      "last_price": 0.654,
+      "last_price": 0.649,
       "currency": "CNY",
-      "market_value_cny": 43556.4,
-      "weight_pct": 9.28
+      "market_value_cny": 43223.4,
+      "weight_pct": 9.23
     },
     {
       "name": "绿色电力ETF富国",
@@ -46,10 +46,10 @@
       "type": "场内基金",
       "shares": 42400,
       "cost_price": 1.129,
-      "last_price": 1.154,
+      "last_price": 1.164,
       "currency": "CNY",
-      "market_value_cny": 48929.6,
-      "weight_pct": 10.42
+      "market_value_cny": 49353.6,
+      "weight_pct": 10.54
     },
     {
       "name": "南方航空",
@@ -57,10 +57,10 @@
       "type": "股票",
       "shares": 3800,
       "cost_price": 5.181,
-      "last_price": 4.82,
+      "last_price": 4.79,
       "currency": "CNY",
-      "market_value_cny": 18316.0,
-      "weight_pct": 3.9
+      "market_value_cny": 18202.0,
+      "weight_pct": 3.89
     },
     {
       "name": "黄金ETF易方达",
@@ -68,10 +68,10 @@
       "type": "场内基金",
       "shares": 3014,
       "cost_price": 8.85,
-      "last_price": 8.969,
+      "last_price": 8.911,
       "currency": "CNY",
-      "market_value_cny": 27032.57,
-      "weight_pct": 5.76
+      "market_value_cny": 26857.75,
+      "weight_pct": 5.73
     },
     {
       "name": "太古地产",
@@ -79,29 +79,18 @@
       "type": "港股通",
       "shares": 1200,
       "cost_price": 19.865,
-      "last_price": 24.3,
+      "last_price": 24.66,
       "currency": "HKD",
-      "market_value_hkd": 29160.0,
-      "market_value_cny": 24540.5,
-      "weight_pct": 5.23
-    },
-    {
-      "name": "长鑫科技",
-      "ticker": "688825.SH",
-      "type": "股票",
-      "shares": 200,
-      "cost_price": 58.175,
-      "last_price": 48.34,
-      "currency": "CNY",
-      "market_value_cny": 9668.0,
-      "weight_pct": 2.06
+      "market_value_hkd": 29592.0,
+      "market_value_cny": 24904.07,
+      "weight_pct": 5.32
     }
   ],
   "totals": {
-    "positions": 7,
-    "securities_cny": 219036.17,
-    "cash_cny": 250443.91,
-    "total_assets_cny": 469480.08,
+    "positions": 6,
+    "securities_cny": 208600.52,
+    "cash_cny": 259819.91,
+    "total_assets_cny": 468420.43,
     "hkd_to_cny": 0.8415811012
   }
 }

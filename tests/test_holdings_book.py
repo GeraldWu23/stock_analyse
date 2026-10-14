@@ -34,7 +34,7 @@ def test_two_books_keep_their_own_shares():
     assert mine_rows["南方航空"]["shares"] == 12500
     assert "holdings" not in MINE.book()
     assert VIRTUAL.book()["account_owner"] == "assistant"
-    assert VIRTUAL.cash_cny() == 250443.91
+    assert VIRTUAL.cash_cny() == 259819.91
     assert virtual_rows["南方航空"]["shares"] == 3800
     assert "纳斯达克ETF华安" not in virtual_rows
     assert "电力ETF博时" in mine_rows
@@ -174,7 +174,7 @@ def test_trade_does_not_rewrite_last_checked_at(tmp_path: Path):
 
 
 def test_virtual_check_is_not_the_last_trade():
-    assert VIRTUAL.last_checked_at() == "2026-10-14T10:01:05+08:00"
+    assert VIRTUAL.last_checked_at() == "2026-10-14T10:16:28+08:00"
     assert VIRTUAL.book()["as_of"] == "2026-09-18T14:07:38+08:00"
     assert VIRTUAL.rows()[3]["name"] == "南方航空"
     assert VIRTUAL.rows()[3]["shares"] == 3800
