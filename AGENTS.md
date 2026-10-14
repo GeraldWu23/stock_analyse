@@ -70,7 +70,7 @@ book.trade(name="绿色电力ETF富国", side="买", shares=600, price=1.2)
 book.trade(name="太古地产", side="卖", shares=1200, price=25.00)
 ```
 
-`trade()` 会写入 `holdings.jsonl` 和 `ledger.jsonl`，一行一笔，包含日期、时间、中文名称、买或卖、份额、价格。卖光会去掉该持仓行。港币价格按账本里的汇率折进现金。上面两行是调用例子，不是待执行的委托。用户没说成交时不要调用 `trade()`。
+`trade()` 会写入 `holdings.jsonl` 和 `ledger.jsonl`，一行一笔，包含日期、时间、中文名称、买或卖、份额、价格。卖光会去掉该持仓行。港币价格按账本里的汇率折进现金。上面两行是调用例子，不是待执行的委托。用户没说成交时不要调用 `trade()`。例外只有 portfolio-deep-analysis：虚拟仓里触发条件已经成立的操作当场记入，并同步到 `main`；没有成交时也把 `last_checked_at` 同步到 `main`。
 
 客观信息与持仓类无关，按天放在 `data/info/<YYYY-MM-DD>/<代码>.json`。个股必填现价、昨收、财报、K 线；ETF 必填现价、昨收、IOPV、溢折价、前十大成分和成分报告期。缺一项则文件里 `ready` 为 false，不要分析这只。读写用 `portfolio.info_day`。
 
