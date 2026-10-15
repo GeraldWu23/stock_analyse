@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from datetime import datetime
+from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -180,6 +181,37 @@ def test_virtual_check_is_not_the_last_trade():
     assert VIRTUAL.rows()[3]["shares"] == 3800
     assert MINE.last_checked_at() is None
     assert "last_checked_at" not in MINE.book()
+
+
+def test_virtual_ledger_replays_from_the_opening_book():
+    lines = VIRTUAL.trades()
+    start, trades = lines[0], lines[1:]
+    assert start["date"] == "2026-09-10"
+    assert start["time"] == "20:44:00"
+    assert start["cash_cny"] == 43452.12
+    held = {row["name"]: row["shares"] for row in start["positions"]}
+    assert held["科创人工智能ETF易方达"] == 70000
+    assert held["纳斯达克ETF华安"] == 22200
+    assert held["长鑫科技"] == 200
+    assert held["电力ETF博时"] == 100
+    assert trades[0]["name"] == "纳斯达克ETF华安"
+    assert trades[0]["date"] == "2026-09-11"
+    assert [line["date"] for line in trades[-2:]] == ["2026-10-12", "2026-10-14"]
+    assert "fee" not in trades[-2]
+    assert "fee" not in trades[-1]
+    cash = Decimal(str(start["cash_cny"]))
+    for line in trades:
+        assert line["side"] == "卖"
+        assert line["currency"] == "CNY"
+        held[line["name"]] -= line["shares"]
+        gross = Decimal(str(line["shares"])) * Decimal(str(line["price"]))
+        fee = Decimal(str(line.get("fee", 0)))
+        cash += (gross - fee).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+    assert {name: shares for name, shares in held.items() if shares} == {
+        row["name"]: row["shares"] for row in VIRTUAL.rows()
+    }
+    assert f"{cash:.2f}" == f"{VIRTUAL.cash_cny():.2f}"
+    assert VIRTUAL.book()["cash"]["account_cash_cny"] == 259819.91
 
 
 def test_rejected_trade_does_not_append(tmp_path: Path):
