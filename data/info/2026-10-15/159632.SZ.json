@@ -7,24 +7,24 @@
   "missing": [],
   "fields": {
     "last_price": {
-      "value": 2.612,
-      "as_of": "20261015095454",
+      "value": 2.524,
+      "as_of": "20261015140557",
       "source": "tencent:qt.gtimg.cn"
     },
     "prev_close": {
       "value": 2.612,
-      "as_of": "20261015095454",
+      "as_of": "20261015140557",
       "source": "tencent:qt.gtimg.cn"
     },
     "iopv": {
       "value": 2.2799,
-      "as_of": "20261015 09:49",
+      "as_of": "20261015 14:07",
       "source": "tencent:proxy.finance.qq.com minute extData.iopv"
     },
     "premium_pct": {
-      "value": 14.57,
-      "as_of": "20261015095454",
-      "source": "last_price / iopv - 1；IOPV 时点 20261015 09:49"
+      "value": 10.71,
+      "as_of": "20261015140557",
+      "source": "last_price / iopv - 1；IOPV 时点 20261015 14:07"
     },
     "top_holdings": {
       "value": [
