@@ -7,13 +7,13 @@
   "missing": [],
   "fields": {
     "last_price": {
-      "value": 44.32,
-      "as_of": "2026-10-16 09:49:47",
+      "value": 46.05,
+      "as_of": "2026-10-16 10:31:38",
       "source": "tencent:qt.gtimg.cn"
     },
     "prev_close": {
       "value": 43.59,
-      "as_of": "2026-10-16 09:49:47",
+      "as_of": "2026-10-16 10:31:38",
       "source": "tencent:qt.gtimg.cn"
     },
     "financials": {

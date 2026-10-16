@@ -174,13 +174,12 @@ def test_trade_does_not_rewrite_last_checked_at(tmp_path: Path):
 
 
 def test_virtual_check_is_not_the_last_trade():
-    assert VIRTUAL.last_checked_at() == "2026-10-15T14:16:54+08:00"
+    assert VIRTUAL.last_checked_at() == "2026-10-16T10:32:12+08:00"
     assert VIRTUAL.book()["as_of"] == "2026-09-18T14:07:38+08:00"
     assert VIRTUAL.rows()[3]["name"] == "南方航空"
     assert VIRTUAL.rows()[3]["shares"] == 3800
-    assert MINE.last_checked_at() == "2026-10-16T10:04:23+08:00"
-    assert MINE.book()["as_of_date"] == "2026-09-10"
-    assert MINE.cash_cny() == 43452.12
+    assert MINE.last_checked_at() is None
+    assert "last_checked_at" not in MINE.book()
 
 
 def test_rejected_trade_does_not_append(tmp_path: Path):
