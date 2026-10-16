@@ -53,7 +53,7 @@ book.trade(name="绿色电力ETF富国", side="买", shares=600, price=1.2)
 book.trade(name="太古地产", side="卖", shares=1200, price=25.00)
 ```
 
-结果在 `data/虚拟仓/holdings.jsonl`，每笔买卖在 `data/虚拟仓/ledger.jsonl`。名称用中文。卖光会去掉该持仓行。港币价格按账本里的汇率折进现金。上面两行是调用例子，不是待执行的委托。
+结果在 `data/虚拟仓/holdings.jsonl`，每笔买卖在 `data/虚拟仓/ledger.jsonl`。成交账第一行是 2026-09-10 的建仓，后面是成交；9 月补记的卖出带 `fee`。名称用中文。卖光会去掉该持仓行。港币价格按账本里的汇率折进现金。上面两行是调用例子，不是待执行的委托。
 
 看过一本账、即使不改份额，也调用 `book.mark_checked()`。它只写账本头的 `last_checked_at`。这是最后检查时间，不是 `as_of`、`as_of_date` 或最近一笔交易。旧账本没有这个字段时，最后检查是空的。
 
