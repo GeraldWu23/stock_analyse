@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-19",
+  "ticker": "159934.SZ",
+  "name": "黄金ETF易方达",
+  "kind": "etf",
+  "ready": true,
+  "missing": [],
+  "fields": {
+    "last_price": {
+      "value": 8.931,
+      "as_of": "2026-10-19 10:03:54",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "prev_close": {
+      "value": 8.937,
+      "as_of": "2026-10-19 10:03:54",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "iopv": {
+      "value": 8.9281,
+      "as_of": "20261019 10:04",
+      "source": "tencent:proxy.finance.qq.com minute extData.iopv"
+    },
+    "premium_pct": {
+      "value": 0.03,
+      "as_of": "2026-10-19 10:03:54",
+      "source": "last_price / iopv - 1；IOPV 时点 20261019 10:04"
+    },
+    "top_holdings": {
+      "value": [
+        {
+          "rank": 1,
+          "name": "现金",
+          "weight_pct": 0.08,
+          "code": null,
+          "asset_type": "现金"
+        },
+        {
+          "rank": 2,
+          "name": "其他",
+          "weight_pct": 99.97,
+          "code": null,
+          "asset_type": "其他"
+        }
+      ],
+      "as_of": "2026-06-30",
+      "source": "danjuanfunds:asset/percent；请求 2026-09-30 时接口仍返回 source 2026-06-30"
+    },
+    "holdings_report_date": {
+      "value": "2026-06-30",
+      "as_of": "2026-06-30",
+      "source": "danjuanfunds:asset/percent"
+    }
+  }
+}

@@ -1,0 +1,765 @@
+{
+  "date": "2026-10-19",
+  "ticker": "688825.SH",
+  "name": "长鑫科技",
+  "kind": "stock",
+  "ready": true,
+  "missing": [],
+  "fields": {
+    "last_price": {
+      "value": 41.98,
+      "as_of": "2026-10-19 10:03:54",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "prev_close": {
+      "value": 45.02,
+      "as_of": "2026-10-19 10:03:54",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "financials": {
+      "value": {
+        "currency": "CNY",
+        "unit": "元",
+        "rows": [
+          {
+            "REPORT_DATE": "2026-06-30 00:00:00",
+            "REPORT_DATE_NAME": "2026中报",
+            "NOTICE_DATE": "2026-08-29 00:00:00",
+            "TOTALOPERATEREVE": 150310076758,
+            "PARENTNETPROFIT": 77605227520,
+            "KCFJCXSYJLR": 78793025367.21,
+            "MLR": 127375596101.2,
+            "XSMLL": 84.7418874692,
+            "ROEJQ": 81.06,
+            "ZCFZL": 42.1572589135,
+            "LD": 3.215537839664,
+            "TOTALOPERATEREVETZ": 873.641733202492,
+            "PARENTNETPROFITTZ": 3427.75691436574,
+            "BPS": 2.238170510872,
+            "EPSJB": 1.2893
+          },
+          {
+            "REPORT_DATE": "2026-03-31 00:00:00",
+            "REPORT_DATE_NAME": "2026一季报",
+            "NOTICE_DATE": "2026-05-17 00:00:00",
+            "TOTALOPERATEREVE": 50800145545.85,
+            "PARENTNETPROFIT": 24762031466.04,
+            "KCFJCXSYJLR": 26340784100,
+            "MLR": 40212149226.3,
+            "XSMLL": 79.1575472751,
+            "ROEJQ": 35.76,
+            "ZCFZL": 50.6384256955,
+            "LD": 2.382348123295,
+            "TOTALOPERATEREVETZ": 719.13383538655,
+            "PARENTNETPROFITTZ": 1688.29946417967,
+            "BPS": 1.357710761979,
+            "EPSJB": 0.4114
+          },
+          {
+            "REPORT_DATE": "2025-12-31 00:00:00",
+            "REPORT_DATE_NAME": "2025年报",
+            "NOTICE_DATE": "2026-05-17 00:00:00",
+            "TOTALOPERATEREVE": 61799321546.81,
+            "PARENTNETPROFIT": 1874859379.01,
+            "KCFJCXSYJLR": 5315886200,
+            "MLR": 25333915217.69,
+            "XSMLL": 40.9938403588,
+            "ROEJQ": 3.83,
+            "ZCFZL": 54.2438128144,
+            "LD": 2.100320438836,
+            "TOTALOPERATEREVETZ": 155.598833397677,
+            "PARENTNETPROFITTZ": 126.240573345701,
+            "BPS": 0.94,
+            "EPSJB": 0.03
+          },
+          {
+            "REPORT_DATE": "2025-09-30 00:00:00",
+            "REPORT_DATE_NAME": "2025三季报",
+            "NOTICE_DATE": "2025-12-30 00:00:00",
+            "TOTALOPERATEREVE": 32083668100,
+            "PARENTNETPROFIT": -5279974900,
+            "KCFJCXSYJLR": -1062085300,
+            "MLR": null,
+            "XSMLL": null,
+            "ROEJQ": null,
+            "ZCFZL": 57.0550769923,
+            "LD": null,
+            "TOTALOPERATEREVETZ": 97.786249996109,
+            "PARENTNETPROFITTZ": 1.790337183462,
+            "BPS": null,
+            "EPSJB": null
+          },
+          {
+            "REPORT_DATE": "2025-06-30 00:00:00",
+            "REPORT_DATE_NAME": "2025中报",
+            "NOTICE_DATE": "2025-12-30 00:00:00",
+            "TOTALOPERATEREVE": 15437924611.51,
+            "PARENTNETPROFIT": -2332058185.65,
+            "KCFJCXSYJLR": -2386538410.69,
+            "MLR": 2007046774.65,
+            "XSMLL": 13.0007551219,
+            "ROEJQ": -5.75,
+            "ZCFZL": 57.6466014044,
+            "LD": 2.187281182732,
+            "TOTALOPERATEREVETZ": null,
+            "PARENTNETPROFITTZ": null,
+            "BPS": 0.77,
+            "EPSJB": -0.0412
+          },
+          {
+            "REPORT_DATE": "2025-03-31 00:00:00",
+            "REPORT_DATE_NAME": "2025一季报",
+            "NOTICE_DATE": "2026-05-17 00:00:00",
+            "TOTALOPERATEREVE": 6201690535.94,
+            "PARENTNETPROFIT": -1559027880.1,
+            "KCFJCXSYJLR": -1391181600,
+            "MLR": 814807684.24,
+            "XSMLL": 13.138476993,
+            "ROEJQ": -3.82,
+            "ZCFZL": null,
+            "LD": null,
+            "TOTALOPERATEREVETZ": null,
+            "PARENTNETPROFITTZ": null,
+            "BPS": null,
+            "EPSJB": -0.027
+          },
+          {
+            "REPORT_DATE": "2024-12-31 00:00:00",
+            "REPORT_DATE_NAME": "2024年报",
+            "NOTICE_DATE": "2025-12-30 00:00:00",
+            "TOTALOPERATEREVE": 24178248674.03,
+            "PARENTNETPROFIT": -7144887248.88,
+            "KCFJCXSYJLR": -7870032300,
+            "MLR": 1348712105.14,
+            "XSMLL": 5.5782042915,
+            "ROEJQ": -17.54,
+            "ZCFZL": 61.6136501477,
+            "LD": 1.189249185762,
+            "TOTALOPERATEREVETZ": 166.070838120191,
+            "PARENTNETPROFITTZ": 56.273043601944,
+            "BPS": 0.72,
+            "EPSJB": -0.13
+          },
+          {
+            "REPORT_DATE": "2024-09-30 00:00:00",
+            "REPORT_DATE_NAME": "2024三季报",
+            "NOTICE_DATE": "2025-12-30 00:00:00",
+            "TOTALOPERATEREVE": 16221384500,
+            "PARENTNETPROFIT": -5376227500,
+            "KCFJCXSYJLR": -5699625800,
+            "MLR": null,
+            "XSMLL": null,
+            "ROEJQ": null,
+            "ZCFZL": null,
+            "LD": null,
+            "TOTALOPERATEREVETZ": null,
+            "PARENTNETPROFITTZ": null,
+            "BPS": null,
+            "EPSJB": null
+          }
+        ]
+      },
+      "as_of": "2026-08-29 00:00:00",
+      "source": "eastmoney:RPT_F10_FINANCE_MAINFINADATA"
+    },
+    "kline": {
+      "value": {
+        "kline_count": 55,
+        "indicators": {
+          "last_close": 42.36000061035156,
+          "ma5": 44.79200057983398,
+          "ma10": 48.41600036621094,
+          "ma20": 52.017000389099124,
+          "ma60": 54.10927269675515,
+          "ma120": 54.10927269675515,
+          "ma200": 54.10927269675515,
+          "above_ma20": false,
+          "above_ma200": false,
+          "ma_bull_alignment": false,
+          "macd_dif": -3.0253019812241817,
+          "macd_dea": -1.7399218340108644,
+          "macd_hist": -2.5707602944266346,
+          "macd_golden_cross": false,
+          "rsi_14": 21.327008648607105,
+          "kdj_k": 9.3,
+          "kdj_d": 11.6,
+          "kdj_j": 4.8,
+          "obv": -1716532324.0,
+          "obv_trend_up": false,
+          "williams_r": -92.8,
+          "stage": 0,
+          "vol_5_vs_20": 1.0059196287528642
+        },
+        "stage": "—",
+        "ma_align": "非多头",
+        "macd": "水下",
+        "rsi": "21",
+        "candles_60d": [
+          {
+            "date": "2026-07-27",
+            "open": 49.5,
+            "close": 49.0,
+            "high": 55.03,
+            "low": 38.11
+          },
+          {
+            "date": "2026-07-28",
+            "open": 45.22,
+            "close": 47.0,
+            "high": 49.74,
+            "low": 45.21
+          },
+          {
+            "date": "2026-07-29",
+            "open": 46.5,
+            "close": 52.95,
+            "high": 53.99,
+            "low": 46.26
+          },
+          {
+            "date": "2026-07-30",
+            "open": 52.2,
+            "close": 52.87,
+            "high": 54.66,
+            "low": 49.25
+          },
+          {
+            "date": "2026-07-31",
+            "open": 58.2,
+            "close": 53.97,
+            "high": 60.6,
+            "low": 52.88
+          },
+          {
+            "date": "2026-08-03",
+            "open": 52.51,
+            "close": 54.99,
+            "high": 55.98,
+            "low": 50.73
+          },
+          {
+            "date": "2026-08-04",
+            "open": 55.0,
+            "close": 55.0,
+            "high": 56.16,
+            "low": 53.02
+          },
+          {
+            "date": "2026-08-05",
+            "open": 54.6,
+            "close": 54.3,
+            "high": 56.06,
+            "low": 53.01
+          },
+          {
+            "date": "2026-08-06",
+            "open": 52.96,
+            "close": 51.96,
+            "high": 53.23,
+            "low": 51.13
+          },
+          {
+            "date": "2026-08-07",
+            "open": 51.01,
+            "close": 52.48,
+            "high": 53.15,
+            "low": 50.06
+          },
+          {
+            "date": "2026-08-10",
+            "open": 52.47,
+            "close": 51.3,
+            "high": 52.59,
+            "low": 49.77
+          },
+          {
+            "date": "2026-08-11",
+            "open": 50.81,
+            "close": 50.4,
+            "high": 51.3,
+            "low": 50.05
+          },
+          {
+            "date": "2026-08-12",
+            "open": 50.82,
+            "close": 53.52,
+            "high": 54.4,
+            "low": 50.81
+          },
+          {
+            "date": "2026-08-13",
+            "open": 54.8,
+            "close": 52.88,
+            "high": 55.92,
+            "low": 52.73
+          },
+          {
+            "date": "2026-08-14",
+            "open": 54.49,
+            "close": 55.18,
+            "high": 55.38,
+            "low": 54.2
+          },
+          {
+            "date": "2026-08-17",
+            "open": 55.6,
+            "close": 61.8,
+            "high": 61.8,
+            "low": 55.5
+          },
+          {
+            "date": "2026-08-18",
+            "open": 61.15,
+            "close": 59.19,
+            "high": 61.3,
+            "low": 58.23
+          },
+          {
+            "date": "2026-08-19",
+            "open": 57.1,
+            "close": 57.55,
+            "high": 58.34,
+            "low": 55.7
+          },
+          {
+            "date": "2026-08-20",
+            "open": 57.58,
+            "close": 57.57,
+            "high": 58.43,
+            "low": 56.05
+          },
+          {
+            "date": "2026-08-21",
+            "open": 57.21,
+            "close": 58.0,
+            "high": 59.56,
+            "low": 57.21
+          },
+          {
+            "date": "2026-08-24",
+            "open": 57.6,
+            "close": 56.6,
+            "high": 58.88,
+            "low": 55.29
+          },
+          {
+            "date": "2026-08-25",
+            "open": 55.35,
+            "close": 56.5,
+            "high": 57.19,
+            "low": 54.91
+          },
+          {
+            "date": "2026-08-26",
+            "open": 56.6,
+            "close": 56.1,
+            "high": 56.97,
+            "low": 55.51
+          },
+          {
+            "date": "2026-08-27",
+            "open": 56.65,
+            "close": 59.12,
+            "high": 59.3,
+            "low": 56.2
+          },
+          {
+            "date": "2026-08-28",
+            "open": 58.5,
+            "close": 58.6,
+            "high": 59.8,
+            "low": 58.09
+          },
+          {
+            "date": "2026-08-31",
+            "open": 58.8,
+            "close": 58.01,
+            "high": 59.9,
+            "low": 57.01
+          },
+          {
+            "date": "2026-09-01",
+            "open": 58.5,
+            "close": 56.5,
+            "high": 58.88,
+            "low": 56.06
+          },
+          {
+            "date": "2026-09-02",
+            "open": 55.55,
+            "close": 54.32,
+            "high": 55.88,
+            "low": 54.0
+          },
+          {
+            "date": "2026-09-03",
+            "open": 55.0,
+            "close": 55.55,
+            "high": 56.05,
+            "low": 54.37
+          },
+          {
+            "date": "2026-09-04",
+            "open": 56.01,
+            "close": 54.8,
+            "high": 56.65,
+            "low": 54.45
+          },
+          {
+            "date": "2026-09-07",
+            "open": 56.51,
+            "close": 58.47,
+            "high": 58.97,
+            "low": 56.5
+          },
+          {
+            "date": "2026-09-08",
+            "open": 58.4,
+            "close": 58.39,
+            "high": 59.39,
+            "low": 57.61
+          },
+          {
+            "date": "2026-09-09",
+            "open": 58.9,
+            "close": 56.87,
+            "high": 59.08,
+            "low": 56.47
+          },
+          {
+            "date": "2026-09-10",
+            "open": 57.04,
+            "close": 57.2,
+            "high": 58.28,
+            "low": 57.02
+          },
+          {
+            "date": "2026-09-11",
+            "open": 56.0,
+            "close": 56.73,
+            "high": 57.0,
+            "low": 54.8
+          },
+          {
+            "date": "2026-09-14",
+            "open": 55.22,
+            "close": 54.49,
+            "high": 55.49,
+            "low": 54.4
+          },
+          {
+            "date": "2026-09-15",
+            "open": 54.49,
+            "close": 54.22,
+            "high": 55.89,
+            "low": 54.05
+          },
+          {
+            "date": "2026-09-16",
+            "open": 54.4,
+            "close": 55.1,
+            "high": 55.8,
+            "low": 53.51
+          },
+          {
+            "date": "2026-09-17",
+            "open": 54.6,
+            "close": 53.47,
+            "high": 54.99,
+            "low": 53.33
+          },
+          {
+            "date": "2026-09-18",
+            "open": 54.43,
+            "close": 55.54,
+            "high": 55.96,
+            "low": 54.18
+          },
+          {
+            "date": "2026-09-21",
+            "open": 57.0,
+            "close": 56.88,
+            "high": 58.76,
+            "low": 56.46
+          },
+          {
+            "date": "2026-09-22",
+            "open": 57.89,
+            "close": 57.86,
+            "high": 59.5,
+            "low": 57.01
+          },
+          {
+            "date": "2026-09-23",
+            "open": 58.5,
+            "close": 58.62,
+            "high": 59.83,
+            "low": 58.2
+          },
+          {
+            "date": "2026-09-24",
+            "open": 57.7,
+            "close": 56.2,
+            "high": 57.8,
+            "low": 56.2
+          },
+          {
+            "date": "2026-09-28",
+            "open": 56.0,
+            "close": 53.8,
+            "high": 56.29,
+            "low": 53.8
+          },
+          {
+            "date": "2026-09-29",
+            "open": 53.71,
+            "close": 55.55,
+            "high": 55.78,
+            "low": 53.68
+          },
+          {
+            "date": "2026-09-30",
+            "open": 55.55,
+            "close": 54.79,
+            "high": 55.85,
+            "low": 54.38
+          },
+          {
+            "date": "2026-10-08",
+            "open": 54.5,
+            "close": 50.52,
+            "high": 54.51,
+            "low": 50.2
+          },
+          {
+            "date": "2026-10-09",
+            "open": 49.81,
+            "close": 51.0,
+            "high": 51.36,
+            "low": 48.0
+          },
+          {
+            "date": "2026-10-12",
+            "open": 49.99,
+            "close": 48.34,
+            "high": 50.23,
+            "low": 48.29
+          },
+          {
+            "date": "2026-10-13",
+            "open": 46.3,
+            "close": 46.99,
+            "high": 48.55,
+            "low": 45.77
+          },
+          {
+            "date": "2026-10-14",
+            "open": 47.45,
+            "close": 46.0,
+            "high": 47.78,
+            "low": 46.0
+          },
+          {
+            "date": "2026-10-15",
+            "open": 44.01,
+            "close": 43.59,
+            "high": 44.55,
+            "low": 43.33
+          },
+          {
+            "date": "2026-10-16",
+            "open": 44.5,
+            "close": 45.02,
+            "high": 46.44,
+            "low": 44.1
+          },
+          {
+            "date": "2026-10-19",
+            "open": 42.79,
+            "close": 42.36,
+            "high": 42.97,
+            "low": 41.0
+          }
+        ],
+        "ma20_60d": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          54.1,
+          54.48,
+          54.95,
+          55.11,
+          55.42,
+          55.65,
+          55.8,
+          55.88,
+          55.88,
+          56.06,
+          56.17,
+          56.53,
+          56.93,
+          57.1,
+          57.32,
+          57.39,
+          57.03,
+          56.78,
+          56.66,
+          56.45,
+          56.33,
+          56.34,
+          56.41,
+          56.54,
+          56.39,
+          56.15,
+          56.03,
+          55.94,
+          55.75,
+          55.53,
+          55.2,
+          54.63,
+          54.01,
+          53.34,
+          52.74,
+          52.02
+        ],
+        "ma60_60d": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "close_60d": [
+          49.0,
+          47.0,
+          52.95,
+          52.87,
+          53.97,
+          54.99,
+          55.0,
+          54.3,
+          51.96,
+          52.48,
+          51.3,
+          50.4,
+          53.52,
+          52.88,
+          55.18,
+          61.8,
+          59.19,
+          57.55,
+          57.57,
+          58.0,
+          56.6,
+          56.5,
+          56.1,
+          59.12,
+          58.6,
+          58.01,
+          56.5,
+          54.32,
+          55.55,
+          54.8,
+          58.47,
+          58.39,
+          56.87,
+          57.2,
+          56.73,
+          54.49,
+          54.22,
+          55.1,
+          53.47,
+          55.54,
+          56.88,
+          57.86,
+          58.62,
+          56.2,
+          53.8,
+          55.55,
+          54.79,
+          50.52,
+          51.0,
+          48.34,
+          46.99,
+          46.0,
+          43.59,
+          45.02,
+          42.36
+        ],
+        "kline_stats": {
+          "ytd_return": "-13.6%",
+          "volatility": "63.0%",
+          "max_drawdown": "-31.5%"
+        }
+      },
+      "as_of": "2026-10-19",
+      "source": "yfinance"
+    }
+  }
+}
