@@ -1,3 +1,4 @@
 {"record": "start", "date": "2026-09-26", "time": "18:52:07", "timezone": "Asia/Shanghai", "note": "以当前持仓为起点，此前买卖不补记"}
 {"record": "trade", "date": "2026-10-12", "time": "16:00:47", "timezone": "Asia/Shanghai", "name": "科创人工智能ETF易方达", "side": "卖", "shares": 14000, "price": 1.309, "currency": "CNY", "ticker": "588730.SH"}
 {"record": "trade", "date": "2026-10-14", "time": "10:15:59", "timezone": "Asia/Shanghai", "name": "长鑫科技", "side": "卖", "shares": 200, "price": 46.88, "currency": "CNY", "ticker": "688825.SH"}
+{"record": "trade", "date": "2026-10-20", "time": "11:11:06", "timezone": "Asia/Shanghai", "name": "美的集团", "side": "买", "shares": 100, "price": 85.65, "currency": "CNY", "ticker": "000333.SZ"}
