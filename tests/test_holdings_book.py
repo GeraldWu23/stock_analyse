@@ -34,7 +34,7 @@ def test_two_books_keep_their_own_shares():
     assert mine_rows["南方航空"]["shares"] == 12500
     assert "holdings" not in MINE.book()
     assert VIRTUAL.book()["account_owner"] == "assistant"
-    assert VIRTUAL.cash_cny() == 251254.91
+    assert VIRTUAL.cash_cny() == 259640.91
     assert virtual_rows["南方航空"]["shares"] == 3800
     assert "纳斯达克ETF华安" not in virtual_rows
     assert "电力ETF博时" in mine_rows
