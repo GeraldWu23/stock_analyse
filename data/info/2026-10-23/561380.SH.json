@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-23",
+  "ticker": "561380.SH",
+  "name": "电网设备ETF国泰",
+  "kind": "etf",
+  "ready": true,
+  "missing": [],
+  "fields": {
+    "last_price": {
+      "value": 0.606,
+      "as_of": "2026-10-23 10:09:03",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "prev_close": {
+      "value": 0.623,
+      "as_of": "2026-10-23 10:09:03",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "iopv": {
+      "value": 0.6072,
+      "as_of": "2026-10-23 10:10:00",
+      "source": "tencent:proxy.finance.qq.com minute extData.iopv"
+    },
+    "premium_pct": {
+      "value": -0.2,
+      "as_of": "2026-10-23 10:09:03",
+      "source": "last/iopv-1；IOPV 时点 2026-10-23 10:10:00"
+    },
+    "top_holdings": {
+      "value": [
+        {
+          "name": "中天科技",
+          "code": "600522",
+          "weight_pct": 13.98
+        },
+        {
+          "name": "亨通光电",
+          "code": "600487",
+          "weight_pct": 12.98
+        },
+        {
+          "name": "特变电工",
+          "code": "600089",
+          "weight_pct": 8.5
+        },
+        {
+          "name": "思源电气",
+          "code": "002028",
+          "weight_pct": 8.28
+        },
+        {
+          "name": "国电南瑞",
+          "code": "600406",
+          "weight_pct": 7.45
+        },
+        {
+          "name": "宏发股份",
+          "code": "600885",
+          "weight_pct": 3.6
+        },
+        {
+          "name": "中国西电",
+          "code": "601179",
+          "weight_pct": 3.1
+        },
+        {
+          "name": "四方股份",
+          "code": "601126",
+          "weight_pct": 2.85
+        },
+        {
+          "name": "特锐德",
+          "code": "300001",
+          "weight_pct": 2.52
+        },
+        {
+          "name": "旭光电子",
+          "code": "600353",
+          "weight_pct": 2.05
+        }
+      ],
+      "as_of": "2026年2季度股票投资明细",
+      "source": "eastmoney:FundArchivesDatas type=jjcc year=2026"
+    },
+    "holdings_report_date": {
+      "value": "2026年2季度股票投资明细",
+      "as_of": "2026年2季度股票投资明细",
+      "source": "eastmoney:FundArchivesDatas type=jjcc year=2026"
+    }
+  }
+}

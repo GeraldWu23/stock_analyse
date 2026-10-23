@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-23",
+  "ticker": "561170.SH",
+  "name": "绿色电力ETF富国",
+  "kind": "etf",
+  "ready": true,
+  "missing": [],
+  "fields": {
+    "last_price": {
+      "value": 1.122,
+      "as_of": "2026-10-23 10:09:03",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "prev_close": {
+      "value": 1.134,
+      "as_of": "2026-10-23 10:09:03",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "iopv": {
+      "value": 1.1222,
+      "as_of": "2026-10-23 10:10:00",
+      "source": "tencent:proxy.finance.qq.com minute extData.iopv"
+    },
+    "premium_pct": {
+      "value": -0.02,
+      "as_of": "2026-10-23 10:09:03",
+      "source": "last/iopv-1；IOPV 时点 2026-10-23 10:10:00"
+    },
+    "top_holdings": {
+      "value": [
+        {
+          "name": "长江电力",
+          "code": "600900",
+          "weight_pct": 10.73
+        },
+        {
+          "name": "中国核电",
+          "code": "601985",
+          "weight_pct": 9.05
+        },
+        {
+          "name": "三峡能源",
+          "code": "600905",
+          "weight_pct": 6.46
+        },
+        {
+          "name": "国电电力",
+          "code": "600795",
+          "weight_pct": 5.08
+        },
+        {
+          "name": "华能国际",
+          "code": "600011",
+          "weight_pct": 4.07
+        },
+        {
+          "name": "国投电力",
+          "code": "600886",
+          "weight_pct": 3.9
+        },
+        {
+          "name": "中国广核",
+          "code": "003816",
+          "weight_pct": 3.75
+        },
+        {
+          "name": "川投能源",
+          "code": "600674",
+          "weight_pct": 3.38
+        },
+        {
+          "name": "大唐发电",
+          "code": "601991",
+          "weight_pct": 3.21
+        },
+        {
+          "name": "上海电力",
+          "code": "600021",
+          "weight_pct": 2.59
+        }
+      ],
+      "as_of": "2026年2季度股票投资明细",
+      "source": "eastmoney:FundArchivesDatas type=jjcc year=2026"
+    },
+    "holdings_report_date": {
+      "value": "2026年2季度股票投资明细",
+      "as_of": "2026年2季度股票投资明细",
+      "source": "eastmoney:FundArchivesDatas type=jjcc year=2026"
+    }
+  }
+}
