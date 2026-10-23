@@ -182,6 +182,39 @@ def test_virtual_check_is_not_the_last_trade():
     assert "last_checked_at" not in MINE.book()
 
 
+def test_cash_flow_changes_only_cash_and_appends_one_line(tmp_path: Path):
+    book = _book(tmp_path)
+    at = datetime(2026, 10, 22, 11, 30, 0, tzinfo=ZoneInfo("Asia/Shanghai"))
+    deposit = book.cash_flow(side="充值", amount=5000, at=at)
+    assert deposit == {
+        "record": "cash",
+        "date": "2026-10-22",
+        "time": "11:30:00",
+        "timezone": "Asia/Shanghai",
+        "side": "充值",
+        "amount": 5000,
+        "currency": "CNY",
+    }
+    assert book.cash_cny() == 15000
+    assert book.book()["totals"]["cash_cny"] == 15000
+    book.cash_flow(side="提现", amount=2000.5, at=at)
+    assert book.cash_cny() == 12999.5
+    assert book.rows()[0]["shares"] == 100
+    assert [line["side"] for line in book.trades()] == ["充值", "提现"]
+
+
+def test_rejected_cash_flow_does_not_append(tmp_path: Path):
+    book = _book(tmp_path)
+    with pytest.raises(ValueError, match="现金不够"):
+        book.cash_flow(side="提现", amount=10000.01)
+    with pytest.raises(ValueError, match="只能是充值或提现"):
+        book.cash_flow(side="买", amount=1)
+    with pytest.raises(ValueError, match="大于 0"):
+        book.cash_flow(side="充值", amount=0)
+    assert book.cash_cny() == 10000
+    assert book.trades() == []
+
+
 def test_rejected_trade_does_not_append(tmp_path: Path):
     book = _book(tmp_path)
     with pytest.raises(ValueError, match="份额不够"):
