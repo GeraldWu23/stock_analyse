@@ -1,0 +1,642 @@
+{
+  "date": "2026-10-27",
+  "ticker": "688825.SH",
+  "name": "长鑫科技",
+  "kind": "stock",
+  "ready": true,
+  "missing": [],
+  "fields": {
+    "last_price": {
+      "value": 43.0,
+      "as_of": "2026-10-27 15:30:28",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "prev_close": {
+      "value": 42.66,
+      "as_of": "2026-10-27 15:30:28",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "financials": {
+      "value": {
+        "symbol": "688825.SS",
+        "annual_income": {},
+        "quarterly_income": {
+          "2026-06-30": {
+            "Tax Effect Of Unusual Items": -54741991.706716,
+            "Tax Rate For Calcs": 0.087786,
+            "Normalized EBITDA": 90443502901.85,
+            "Total Unusual Items": -623585013.83,
+            "Total Unusual Items Excluding Goodwill": -623585013.83,
+            "Net Income From Continuing Operation Net Minority Interest": 52843196053.96,
+            "Reconciled Depreciation": 7461359189.99,
+            "Reconciled Cost Of Revenue": 12346484337.25,
+            "EBITDA": 89819917888.02,
+            "EBIT": 82358558698.03,
+            "Net Interest Income": -389442180.37,
+            "Interest Expense": 647402695.42,
+            "Interest Income": 264799429.47,
+            "Normalized Income": 53412039076.08328,
+            "Net Income From Continuing And Discontinued Operation": 52843196053.96,
+            "Total Expenses": 16634954085.45,
+            "Total Operating Income As Reported": 81711411227.26,
+            "Net Income Common Stockholders": 52843196053.96,
+            "Otherunder Preferred Stock Dividend": 0.0,
+            "Net Income": 52843196053.96,
+            "Minority Interests": -21694869952.84,
+            "Net Income Including Noncontrolling Interests": 74538066006.8,
+            "Net Income Continuous Operations": 74538066006.8,
+            "Tax Provision": 7173089995.81,
+            "Pretax Income": 81711156002.61,
+            "Other Non Operating Income Expenses": -255224.65,
+            "Special Income Charges": -308638629.59,
+            "Other Special Charges": -45027927.56,
+            "Write Off": 16239755.25,
+            "Impairment Of Capital Assets": 337426801.9,
+            "Net Non Operating Interest Income Expense": -389442180.37,
+            "Total Other Finance Cost": 6838914.42,
+            "Interest Expense Non Operating": 647402695.42,
+            "Interest Income Non Operating": 264799429.47,
+            "Operating Income": 82874977126.7,
+            "Operating Expense": 4288469748.2,
+            "Other Operating Expenses": 966419898.05,
+            "Depreciation And Amortization In Income Statement": 78964546.08,
+            "Depreciation Income Statement": 78964546.08,
+            "Research And Development": 3383442392.07,
+            "Selling General And Administration": 276252858.37,
+            "Selling And Marketing Expense": 45714403.25,
+            "General And Administrative Expense": 230538455.12,
+            "Gross Profit": 87163446874.9,
+            "Cost Of Revenue": 12346484337.25,
+            "Total Revenue": 99509931212.15,
+            "Operating Revenue": 99509931212.15
+          }
+        },
+        "annual_balance": {
+          "2025-12-31": {
+            "Ordinary Shares Number": 60192797469.0,
+            "Share Issued": 60192797469.0
+          },
+          "2024-12-31": {
+            "Ordinary Shares Number": 57770942200.0,
+            "Share Issued": 57770942200.0
+          },
+          "2023-12-31": {
+            "Ordinary Shares Number": 53633000000.0,
+            "Share Issued": 53633000000.0
+          },
+          "2022-12-31": {
+            "Ordinary Shares Number": 53633000000.0,
+            "Share Issued": 53633000000.0
+          }
+        },
+        "annual_cashflow": {},
+        "quarterly_cashflow": {
+          "2026-06-30": {
+            "Free Cash Flow": 76388941342.67,
+            "Repayment Of Debt": -16105006355.93,
+            "Issuance Of Debt": 6547731247.38,
+            "Capital Expenditure": -12200731768.17,
+            "End Cash Position": 133534187174.44,
+            "Beginning Cash Position": 72219969531.87,
+            "Effect Of Exchange Rate Changes": -219749148.57,
+            "Changes In Cash": 61533966791.14,
+            "Financing Cash Flow": -7261385088.56,
+            "Net Other Financing Charges": 2954743330.7,
+            "Cash Dividends Paid": -658853310.71,
+            "Net Issuance Payments Of Debt": -9557275108.55,
+            "Net Long Term Debt Issuance": -9557275108.55,
+            "Long Term Debt Payments": -16105006355.93,
+            "Long Term Debt Issuance": 6547731247.38,
+            "Investing Cash Flow": -19794321231.14,
+            "Net Other Investing Changes": -6481796278.32,
+            "Net Investment Purchase And Sale": -1221726953.72,
+            "Sale Of Investment": 259145251.26,
+            "Purchase Of Investment": -1480872204.98,
+            "Net PPE Purchase And Sale": -12027971358.89,
+            "Sale Of PPE": 172760409.28,
+            "Purchase Of PPE": -12200731768.17,
+            "Operating Cash Flow": 88589673110.84,
+            "Change In Working Capital": 4814422000.79,
+            "Change In Other Current Assets": -7453676.29,
+            "Change In Payable": 11319929405.69,
+            "Change In Inventory": -3481083900.98,
+            "Change In Receivables": -3016969827.63,
+            "Other Non Cash Items": 1608100859.96,
+            "Stock Based Compensation": 236735581.37,
+            "Depreciation And Amortization": 7461359189.99,
+            "Amortization Cash Flow": 251018715.88,
+            "Depreciation": 7210340474.11,
+            "Gain Loss On Investment Securities": -383051915.71,
+            "Gain Loss On Sale Of PPE": -39625169.51,
+            "Net Income From Continuing Operations": 74538066006.8,
+            "Cash Flowsfromusedin Operating Activities Direct": 88589673110.84,
+            "Taxes Refund Paid Direct": -478391125.14,
+            "Classesof Cash Payments": -10518863516.67,
+            "Other Cash Paymentsfrom Operating Activities": -837328410.15,
+            "Paymentson Behalfof Employees": -1998136868.81,
+            "Paymentsto Suppliersfor Goodsand Services": -7683398237.71,
+            "Classesof Cash Receiptsfrom Operating Activities": 99586927752.65,
+            "Other Cash Receiptsfrom Operating Activities": 2050712926.86,
+            "Receiptsfrom Customers": 97536214825.79
+          }
+        }
+      },
+      "as_of": "2026-10-27T15:30:54+08:00",
+      "source": "yfinance:688825.SS"
+    },
+    "kline": {
+      "value": [
+        {
+          "date": "2026-07-27",
+          "open": 49.5,
+          "close": 49.0,
+          "high": 55.03,
+          "low": 38.11,
+          "volume": 2990129163.0
+        },
+        {
+          "date": "2026-07-28",
+          "open": 45.22,
+          "close": 47.0,
+          "high": 49.74,
+          "low": 45.21,
+          "volume": 930477847.0
+        },
+        {
+          "date": "2026-07-29",
+          "open": 46.5,
+          "close": 52.95,
+          "high": 53.99,
+          "low": 46.26,
+          "volume": 902313540.0
+        },
+        {
+          "date": "2026-07-30",
+          "open": 52.2,
+          "close": 52.87,
+          "high": 54.66,
+          "low": 49.25,
+          "volume": 860839199.0
+        },
+        {
+          "date": "2026-07-31",
+          "open": 58.2,
+          "close": 53.97,
+          "high": 60.6,
+          "low": 52.88,
+          "volume": 877449611.0
+        },
+        {
+          "date": "2026-08-03",
+          "open": 52.51,
+          "close": 54.99,
+          "high": 55.98,
+          "low": 50.73,
+          "volume": 557925365.0
+        },
+        {
+          "date": "2026-08-04",
+          "open": 55.0,
+          "close": 55.0,
+          "high": 56.16,
+          "low": 53.02,
+          "volume": 508205571.0
+        },
+        {
+          "date": "2026-08-05",
+          "open": 54.6,
+          "close": 54.3,
+          "high": 56.06,
+          "low": 53.01,
+          "volume": 574533044.0
+        },
+        {
+          "date": "2026-08-06",
+          "open": 52.96,
+          "close": 51.96,
+          "high": 53.23,
+          "low": 51.13,
+          "volume": 560574859.0
+        },
+        {
+          "date": "2026-08-07",
+          "open": 51.01,
+          "close": 52.48,
+          "high": 53.15,
+          "low": 50.06,
+          "volume": 515512907.0
+        },
+        {
+          "date": "2026-08-10",
+          "open": 52.47,
+          "close": 51.3,
+          "high": 52.59,
+          "low": 49.77,
+          "volume": 503397678.0
+        },
+        {
+          "date": "2026-08-11",
+          "open": 50.81,
+          "close": 50.4,
+          "high": 51.3,
+          "low": 50.05,
+          "volume": 284095105.0
+        },
+        {
+          "date": "2026-08-12",
+          "open": 50.82,
+          "close": 53.52,
+          "high": 54.4,
+          "low": 50.81,
+          "volume": 514102135.0
+        },
+        {
+          "date": "2026-08-13",
+          "open": 54.8,
+          "close": 52.88,
+          "high": 55.92,
+          "low": 52.73,
+          "volume": 465377680.0
+        },
+        {
+          "date": "2026-08-14",
+          "open": 54.49,
+          "close": 55.18,
+          "high": 55.38,
+          "low": 54.2,
+          "volume": 362235670.0
+        },
+        {
+          "date": "2026-08-17",
+          "open": 55.6,
+          "close": 61.8,
+          "high": 61.8,
+          "low": 55.5,
+          "volume": 566136754.0
+        },
+        {
+          "date": "2026-08-18",
+          "open": 61.15,
+          "close": 59.19,
+          "high": 61.3,
+          "low": 58.23,
+          "volume": 426504877.0
+        },
+        {
+          "date": "2026-08-19",
+          "open": 57.1,
+          "close": 57.55,
+          "high": 58.34,
+          "low": 55.7,
+          "volume": 460638573.0
+        },
+        {
+          "date": "2026-08-20",
+          "open": 57.58,
+          "close": 57.57,
+          "high": 58.43,
+          "low": 56.05,
+          "volume": 296418334.0
+        },
+        {
+          "date": "2026-08-21",
+          "open": 57.21,
+          "close": 58.0,
+          "high": 59.56,
+          "low": 57.21,
+          "volume": 275847845.0
+        },
+        {
+          "date": "2026-08-24",
+          "open": 57.6,
+          "close": 56.6,
+          "high": 58.88,
+          "low": 55.29,
+          "volume": 293731946.0
+        },
+        {
+          "date": "2026-08-25",
+          "open": 55.35,
+          "close": 56.5,
+          "high": 57.19,
+          "low": 54.91,
+          "volume": 236842998.0
+        },
+        {
+          "date": "2026-08-26",
+          "open": 56.6,
+          "close": 56.1,
+          "high": 56.97,
+          "low": 55.51,
+          "volume": 201284145.0
+        },
+        {
+          "date": "2026-08-27",
+          "open": 56.65,
+          "close": 59.12,
+          "high": 59.3,
+          "low": 56.2,
+          "volume": 324624545.0
+        },
+        {
+          "date": "2026-08-28",
+          "open": 58.5,
+          "close": 58.6,
+          "high": 59.8,
+          "low": 58.09,
+          "volume": 226216708.0
+        },
+        {
+          "date": "2026-08-31",
+          "open": 58.8,
+          "close": 58.01,
+          "high": 59.9,
+          "low": 57.01,
+          "volume": 357653432.0
+        },
+        {
+          "date": "2026-09-01",
+          "open": 58.5,
+          "close": 56.5,
+          "high": 58.88,
+          "low": 56.06,
+          "volume": 231592525.0
+        },
+        {
+          "date": "2026-09-02",
+          "open": 55.55,
+          "close": 54.32,
+          "high": 55.88,
+          "low": 54.0,
+          "volume": 243949672.0
+        },
+        {
+          "date": "2026-09-03",
+          "open": 55.0,
+          "close": 55.55,
+          "high": 56.05,
+          "low": 54.37,
+          "volume": 202392499.0
+        },
+        {
+          "date": "2026-09-04",
+          "open": 56.01,
+          "close": 54.8,
+          "high": 56.65,
+          "low": 54.45,
+          "volume": 199646496.0
+        },
+        {
+          "date": "2026-09-07",
+          "open": 56.51,
+          "close": 58.47,
+          "high": 58.97,
+          "low": 56.5,
+          "volume": 353839820.0
+        },
+        {
+          "date": "2026-09-08",
+          "open": 58.4,
+          "close": 58.39,
+          "high": 59.39,
+          "low": 57.61,
+          "volume": 197784411.0
+        },
+        {
+          "date": "2026-09-09",
+          "open": 58.9,
+          "close": 56.87,
+          "high": 59.08,
+          "low": 56.47,
+          "volume": 178739399.0
+        },
+        {
+          "date": "2026-09-10",
+          "open": 57.04,
+          "close": 57.2,
+          "high": 58.28,
+          "low": 57.02,
+          "volume": 162329942.0
+        },
+        {
+          "date": "2026-09-11",
+          "open": 56.0,
+          "close": 56.73,
+          "high": 57.0,
+          "low": 54.8,
+          "volume": 208390217.0
+        },
+        {
+          "date": "2026-09-14",
+          "open": 55.22,
+          "close": 54.49,
+          "high": 55.49,
+          "low": 54.4,
+          "volume": 191214352.0
+        },
+        {
+          "date": "2026-09-15",
+          "open": 54.49,
+          "close": 54.22,
+          "high": 55.89,
+          "low": 54.05,
+          "volume": 179376011.0
+        },
+        {
+          "date": "2026-09-16",
+          "open": 54.4,
+          "close": 55.1,
+          "high": 55.8,
+          "low": 53.51,
+          "volume": 213245388.0
+        },
+        {
+          "date": "2026-09-17",
+          "open": 54.6,
+          "close": 53.47,
+          "high": 54.99,
+          "low": 53.33,
+          "volume": 207059476.0
+        },
+        {
+          "date": "2026-09-18",
+          "open": 54.43,
+          "close": 55.54,
+          "high": 55.96,
+          "low": 54.18,
+          "volume": 262651331.0
+        },
+        {
+          "date": "2026-09-21",
+          "open": 57.0,
+          "close": 56.88,
+          "high": 58.76,
+          "low": 56.46,
+          "volume": 243467649.0
+        },
+        {
+          "date": "2026-09-22",
+          "open": 57.89,
+          "close": 57.86,
+          "high": 59.5,
+          "low": 57.01,
+          "volume": 287081713.0
+        },
+        {
+          "date": "2026-09-23",
+          "open": 58.5,
+          "close": 58.62,
+          "high": 59.83,
+          "low": 58.2,
+          "volume": 206428074.0
+        },
+        {
+          "date": "2026-09-24",
+          "open": 57.7,
+          "close": 56.2,
+          "high": 57.8,
+          "low": 56.2,
+          "volume": 151606263.0
+        },
+        {
+          "date": "2026-09-28",
+          "open": 56.0,
+          "close": 53.8,
+          "high": 56.29,
+          "low": 53.8,
+          "volume": 215431375.0
+        },
+        {
+          "date": "2026-09-29",
+          "open": 53.71,
+          "close": 55.55,
+          "high": 55.78,
+          "low": 53.68,
+          "volume": 149458088.0
+        },
+        {
+          "date": "2026-09-30",
+          "open": 55.55,
+          "close": 54.79,
+          "high": 55.85,
+          "low": 54.38,
+          "volume": 116869999.0
+        },
+        {
+          "date": "2026-10-08",
+          "open": 54.5,
+          "close": 50.52,
+          "high": 54.51,
+          "low": 50.2,
+          "volume": 365289830.0
+        },
+        {
+          "date": "2026-10-09",
+          "open": 49.81,
+          "close": 51.0,
+          "high": 51.36,
+          "low": 48.0,
+          "volume": 302990427.0
+        },
+        {
+          "date": "2026-10-12",
+          "open": 49.99,
+          "close": 48.34,
+          "high": 50.23,
+          "low": 48.29,
+          "volume": 223306892.0
+        },
+        {
+          "date": "2026-10-13",
+          "open": 46.3,
+          "close": 46.99,
+          "high": 48.55,
+          "low": 45.77,
+          "volume": 235206271.0
+        },
+        {
+          "date": "2026-10-14",
+          "open": 47.45,
+          "close": 46.0,
+          "high": 47.78,
+          "low": 46.0,
+          "volume": 172119094.0
+        },
+        {
+          "date": "2026-10-15",
+          "open": 44.01,
+          "close": 43.59,
+          "high": 44.55,
+          "low": 43.33,
+          "volume": 281414633.0
+        },
+        {
+          "date": "2026-10-16",
+          "open": 44.5,
+          "close": 45.02,
+          "high": 46.44,
+          "low": 44.1,
+          "volume": 302567260.0
+        },
+        {
+          "date": "2026-10-19",
+          "open": 42.79,
+          "close": 41.52,
+          "high": 42.97,
+          "low": 41.0,
+          "volume": 432227162.0
+        },
+        {
+          "date": "2026-10-20",
+          "open": 41.1,
+          "close": 40.32,
+          "high": 41.89,
+          "low": 39.81,
+          "volume": 356785575.0
+        },
+        {
+          "date": "2026-10-21",
+          "open": 41.2,
+          "close": 40.97,
+          "high": 41.75,
+          "low": 40.75,
+          "volume": 230015875.0
+        },
+        {
+          "date": "2026-10-22",
+          "open": 40.8,
+          "close": 39.7,
+          "high": 41.12,
+          "low": 39.1,
+          "volume": 303342938.0
+        },
+        {
+          "date": "2026-10-23",
+          "open": 38.76,
+          "close": 42.85,
+          "high": 43.15,
+          "low": 38.75,
+          "volume": 480660771.0
+        },
+        {
+          "date": "2026-10-26",
+          "open": 41.89,
+          "close": 42.66,
+          "high": 43.18,
+          "low": 41.6,
+          "volume": 325530672.0
+        },
+        {
+          "date": "2026-10-27",
+          "open": 43.8,
+          "close": 43.0,
+          "high": 44.69,
+          "low": 42.99,
+          "volume": 344444285.0
+        }
+      ],
+      "as_of": "2026-10-27",
+      "source": "tencent:fqkline qfq"
+    }
+  }
+}
