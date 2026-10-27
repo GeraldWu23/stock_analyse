@@ -49,7 +49,7 @@
       "last_price": 1.129,
       "currency": "CNY",
       "market_value_cny": 47869.6,
-      "weight_pct": 10.12
+      "weight_pct": 10.11
     },
     {
       "name": "南方航空",
@@ -79,18 +79,18 @@
       "type": "港股通",
       "shares": 1200,
       "cost_price": 19.865,
-      "last_price": 25.1,
+      "last_price": 25.14,
       "currency": "HKD",
-      "market_value_hkd": 30120.0,
-      "market_value_cny": 25348.42,
+      "market_value_hkd": 30168.0,
+      "market_value_cny": 25388.82,
       "weight_pct": 5.36
     }
   ],
   "totals": {
     "positions": 6,
-    "securities_cny": 202818.57,
+    "securities_cny": 202858.97,
     "cash_cny": 270421.91,
-    "total_assets_cny": 473240.48,
+    "total_assets_cny": 473280.88,
     "hkd_to_cny": 0.8415811012
   }
 }
