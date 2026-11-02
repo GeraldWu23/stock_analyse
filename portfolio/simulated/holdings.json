@@ -13,8 +13,8 @@
   "shares_are_sticky": true,
   "shares_rule": "除非发生新的模拟交易，否则不更新份额；市值用份额乘实时价格还原",
   "cash": {
-    "account_cash_cny": 270421.91,
-    "weight_pct": 57.58,
+    "account_cash_cny": 260421.91,
+    "weight_pct": 56.66,
     "included_in_total_assets": true
   },
   "holdings": [
@@ -27,7 +27,7 @@
       "last_price": 1.185,
       "currency": "CNY",
       "market_value_cny": 42541.5,
-      "weight_pct": 9.06
+      "weight_pct": 9.26
     },
     {
       "name": "电网设备ETF国泰",
@@ -38,7 +38,7 @@
       "last_price": 0.586,
       "currency": "CNY",
       "market_value_cny": 39027.6,
-      "weight_pct": 8.31
+      "weight_pct": 8.49
     },
     {
       "name": "绿色电力ETF富国",
@@ -49,7 +49,7 @@
       "last_price": 1.138,
       "currency": "CNY",
       "market_value_cny": 48251.2,
-      "weight_pct": 10.27
+      "weight_pct": 10.5
     },
     {
       "name": "南方航空",
@@ -60,7 +60,7 @@
       "last_price": 4.88,
       "currency": "CNY",
       "market_value_cny": 18544.0,
-      "weight_pct": 3.95
+      "weight_pct": 4.03
     },
     {
       "name": "黄金ETF易方达",
@@ -71,7 +71,7 @@
       "last_price": 8.319,
       "currency": "CNY",
       "market_value_cny": 25073.47,
-      "weight_pct": 5.34
+      "weight_pct": 5.45
     },
     {
       "name": "太古地产",
@@ -83,14 +83,14 @@
       "currency": "HKD",
       "market_value_hkd": 30648.0,
       "market_value_cny": 25792.78,
-      "weight_pct": 5.49
+      "weight_pct": 5.61
     }
   ],
   "totals": {
     "positions": 6,
     "securities_cny": 199230.55,
-    "cash_cny": 270421.91,
-    "total_assets_cny": 469652.46,
+    "cash_cny": 260421.91,
+    "total_assets_cny": 459652.46,
     "hkd_to_cny": 0.8415811012
   }
 }

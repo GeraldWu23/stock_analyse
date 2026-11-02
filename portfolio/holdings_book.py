@@ -2,7 +2,7 @@
 
 持仓结果在 data/<仓名>/holdings.jsonl。
 买卖动作在 data/<仓名>/ledger.jsonl，一行一笔。
-成交后调用 trade()。不要另写一份成交记录，也不要直接改份额。
+成交后调用 trade()。充值或提取调用 cash()。不要另写一份记录，也不要直接改份额或现金。
 """
 from __future__ import annotations
 
@@ -21,7 +21,8 @@ class Holdings:
 
     读持仓用 load，整本写回用 dump。
     成交后只用 trade()：追加一条买卖，并改份额和现金。
-    不要另写一份成交记录，也不要直接改 holdings.jsonl 里的份额。
+    充值或提取只用 cash()：追加一条现金记录，并改现金和总额。
+    不要另写一份记录，也不要直接改 holdings.jsonl 里的份额或现金。
     """
 
     def __init__(self, name: str, root: Path | None = None):
@@ -154,6 +155,41 @@ class Holdings:
         if ticker:
             record["ticker"] = ticker
         return self._append_ledger(record)
+
+    def cash(self, *, side: str, amount: float, at: datetime | None = None) -> dict:
+        """记一笔充值或提取。只改现金和总额，不改份额，也不改 last_checked_at。"""
+        if side not in ("充值", "提取"):
+            raise ValueError("side 只能是充值或提取")
+        amount = round(float(amount), 2)
+        if amount <= 0:
+            raise ValueError("金额要大于 0")
+
+        records = self.load()
+        header = next(row for row in records if row.get("record") == "book")
+        current = float(header["cash"]["account_cash_cny"])
+        if side == "提取" and current < amount:
+            raise ValueError("现金不够")
+        signed = amount if side == "充值" else -amount
+        header["cash"]["account_cash_cny"] = round(current + signed, 2)
+        totals = header.get("totals") or {}
+        if "cash_cny" in totals:
+            totals["cash_cny"] = header["cash"]["account_cash_cny"]
+        if "total_assets_cny" in totals:
+            totals["total_assets_cny"] = round(float(totals["total_assets_cny"]) + signed, 2)
+        securities = float(totals.get("securities_cny") or 0)
+        total = securities + header["cash"]["account_cash_cny"]
+        if total:
+            header["cash"]["weight_pct"] = round(header["cash"]["account_cash_cny"] / total * 100, 2)
+            for row in records:
+                if row.get("record") != "position" or row.get("market_value_cny") is None:
+                    continue
+                row["weight_pct"] = round(float(row["market_value_cny"]) / total * 100, 2)
+        self.dump(records)
+        return self._append_ledger(_moment_record("cash", at) | {
+            "side": side,
+            "amount": int(amount) if amount == int(amount) else amount,
+            "currency": "CNY",
+        })
 
     def _append_ledger(self, record: dict) -> dict:
         self.folder.mkdir(parents=True, exist_ok=True)

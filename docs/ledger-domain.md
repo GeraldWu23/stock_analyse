@@ -108,6 +108,12 @@ book.trade(name="太古地产", side="卖", shares=1200, price=25.00)
 
 `trade()` 会保存这两个文件。上面两行是调用例子，不是待执行的委托。`trade()` 不改 `last_checked_at`。
 
+充值和提取不走 `trade()`。调用 `cash(side="充值", amount=1000)` 或 `side="提取"`。账上追加一行，`record` 为 `cash`，带方向、金额和 `CNY`。同时改账本头的现金和总额，并按持仓行里已有的人民币市值重算仓位。不改份额，不改价格，也不改 `last_checked_at`。用户没说充值或提取时不要调用。
+
+```python
+book.cash(side="提取", amount=1000)
+```
+
 ## 最后检查时间
 
 账本头可以有 `last_checked_at`。这是最近一次看过这本账的时间。某一天分析过、决定不改份额，也要写成这一天，不要用 `as_of`、`as_of_date` 或最近一笔买卖来代替。旧文件没有这个字段时，`last_checked_at()` 返回空，不当成报错，也不要填成交易日。

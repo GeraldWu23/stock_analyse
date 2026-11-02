@@ -34,7 +34,7 @@ def test_two_books_keep_their_own_shares():
     assert mine_rows["南方航空"]["shares"] == 12500
     assert "holdings" not in MINE.book()
     assert VIRTUAL.book()["account_owner"] == "assistant"
-    assert VIRTUAL.cash_cny() == 270421.91
+    assert VIRTUAL.cash_cny() == 260421.91
     assert virtual_rows["南方航空"]["shares"] == 3800
     assert "纳斯达克ETF华安" not in virtual_rows
     assert "电力ETF博时" in mine_rows
@@ -178,9 +178,56 @@ def test_virtual_check_is_not_the_last_trade():
     assert VIRTUAL.book()["as_of"] == "2026-09-18T14:07:38+08:00"
     assert VIRTUAL.rows()[3]["name"] == "南方航空"
     assert VIRTUAL.rows()[3]["shares"] == 3800
-    assert VIRTUAL.cash_cny() == 270421.91
+    assert VIRTUAL.cash_cny() == 260421.91
     assert MINE.last_checked_at() is None
     assert "last_checked_at" not in MINE.book()
+
+
+def test_cash_moves_only_cash_and_keeps_the_check_time(tmp_path: Path):
+    book = _book(tmp_path)
+    records = book.load()
+    records[0]["totals"]["securities_cny"] = 500
+    records[0]["totals"]["total_assets_cny"] = 10500
+    records[1]["market_value_cny"] = 500
+    book.dump(records)
+    book.mark_checked(at=datetime(2026, 11, 2, 10, 10, 31, tzinfo=ZoneInfo("Asia/Shanghai")))
+    at = datetime(2026, 11, 2, 10, 20, tzinfo=ZoneInfo("Asia/Shanghai"))
+
+    deposited = book.cash(side="充值", amount=1000, at=at)
+    assert deposited == {
+        "record": "cash",
+        "date": "2026-11-02",
+        "time": "10:20:00",
+        "timezone": "Asia/Shanghai",
+        "side": "充值",
+        "amount": 1000,
+        "currency": "CNY",
+    }
+    assert book.cash_cny() == 11000
+    assert book.book()["totals"]["total_assets_cny"] == 11500
+    assert book.rows()[0]["shares"] == 100
+    assert book.last_checked_at() == "2026-11-02T10:10:31+08:00"
+
+    withdrawn = book.cash(side="提取", amount=2500.5, at=at)
+    assert withdrawn["side"] == "提取"
+    assert withdrawn["amount"] == 2500.5
+    assert book.cash_cny() == 8499.5
+    assert book.book()["totals"]["cash_cny"] == 8499.5
+    assert book.book()["totals"]["total_assets_cny"] == 8999.5
+    assert book.book()["cash"]["weight_pct"] == round(8499.5 / 8999.5 * 100, 2)
+    assert book.rows()[0]["weight_pct"] == round(500 / 8999.5 * 100, 2)
+    assert book.rows()[0]["shares"] == 100
+    assert book.rows()[0]["last_price"] == 5
+    assert book.last_checked_at() == "2026-11-02T10:10:31+08:00"
+
+    with pytest.raises(ValueError, match="只能是充值或提取"):
+        book.cash(side="取出", amount=1)
+    with pytest.raises(ValueError, match="金额要大于 0"):
+        book.cash(side="提取", amount=0)
+    with pytest.raises(ValueError, match="现金不够"):
+        book.cash(side="提取", amount=9000)
+    assert book.cash_cny() == 8499.5
+    assert [line["side"] for line in book.trades()] == ["充值", "提取"]
 
 
 def test_rejected_trade_does_not_append(tmp_path: Path):
