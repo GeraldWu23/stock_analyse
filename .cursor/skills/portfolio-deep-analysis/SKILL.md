@@ -18,9 +18,9 @@ metadata:
 
 ## 1. 确定账本
 
-- “我的持仓”读取 `portfolio/HOLDINGS.md` 和 `portfolio/holdings.json`。
-- “你的持仓”读取 `portfolio/simulated/HOLDINGS.md` 和 `portfolio/simulated/holdings.json`。
-- 用户只说“持仓”且上下文没有明确指向时，默认分析用户真实持仓。
+深度分析、看持仓和盘中监控默认只看虚拟仓 `data/虚拟仓/`。不要读取或修改普通账户：`portfolio/HOLDINGS.md`、`portfolio/holdings.json`、`portfolio/holdings.csv`、`data/我的持仓/`。只有用户在当次消息里明确写出「我的持仓」或「普通账户」时才打开那本账。
+
+- “你的持仓”、未指明的“持仓”、深度分析和监控都读 `portfolio/simulated/HOLDINGS.md`、`portfolio/simulated/holdings.json` 和 `data/虚拟仓/`。
 - 份额是粘性的：除非用户明确说已交易，或下面第 8 节的虚拟仓触发条件已经成立，否则不得修改份额、成本或现金。用户的真实持仓在任何情况下都不由这里改。
 - 仓位、现金和权重读选定的账本。检查和分析的证券读 `data/info/universe.json`，不要从这本账，尤其不要从虚拟仓，生成名单。
 - 开始时列出名单里的全部证券，并说明账本日期和 `last_checked_at`。名单里有、账本里没有的名字照样分析，不编份额。不得静默漏掉小仓位、残余仓或现金。

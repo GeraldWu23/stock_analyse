@@ -56,9 +56,9 @@ Tickers: `600519.SH` / `002273.SZ` / `00700.HK` / `AAPL` / Chinese names.
 
 Canonical snapshot (date + cash + positions): `portfolio/HOLDINGS.md`. Machine copy: `portfolio/holdings.json`. CSV for `--portfolio`: `portfolio/holdings.csv`.
 
-When the user says 我的持仓 / 我监控的票 / 拿一支我的股票, read `portfolio/HOLDINGS.md` first. **Shares are sticky:** do not change `shares` / 持仓 unless the user says they traded; mark to market with live price × shares. Ordinary-account total already includes cash; do not add cash on top. The 100-share 电力ETF博时 stub is not the 9% cash sleeve.
+Checks, deep analysis, “看持仓”, and price monitoring use the simulated book only. Do not read or edit the ordinary account (`portfolio/HOLDINGS.md`, `portfolio/holdings.json`, `portfolio/holdings.csv`, `data/我的持仓/`) unless the current message explicitly says 我的持仓 or 普通账户. A generic 持仓, 当前持仓, or portfolio check is the simulated book.
 
-The assistant's separate simulated portfolio lives in `portfolio/simulated/HOLDINGS.md`, with machine copy `portfolio/simulated/holdings.json`. When the user says 你的持仓 / 你目前的持仓 / 你的当前持仓, “你的” refers to the assistant, so read the simulated portfolio. Do not interpret every generic mention of 当前持仓 as simulated, and never overwrite the user's real holdings with simulated trades.
+The simulated portfolio lives in `data/虚拟仓/`, with the display copy `portfolio/simulated/HOLDINGS.md` and machine copy `portfolio/simulated/holdings.json`. When the user says 你的持仓 / 你目前的持仓 / 你的当前持仓, read that book. **Shares are sticky:** do not change simulated `shares` / 持仓 unless the user says a simulated trade filled, or a portfolio-deep-analysis trigger below is already true. Mark to market with live price × shares. Cash is already inside total assets; do not add it on top.
 
 虚拟仓的持仓对象是 `data/虚拟仓/`。用户明确说已成交，或要求执行虚拟交易时，从仓库根目录用持仓类记一笔，不要改 `portfolio/simulated/` 的份额来代替：
 
@@ -71,6 +71,8 @@ book.trade(name="太古地产", side="卖", shares=1200, price=25.00)
 ```
 
 `trade()` 会写入 `holdings.jsonl` 和 `ledger.jsonl`，一行一笔，包含日期、时间、中文名称、买或卖、份额、价格。卖光会去掉该持仓行。港币价格按账本里的汇率折进现金。上面两行是调用例子，不是待执行的委托。用户没说成交时不要调用 `trade()`。例外只有 portfolio-deep-analysis：虚拟仓里触发条件已经成立的操作当场记入，并同步到 `main`；没有成交时也把 `last_checked_at` 同步到 `main`。
+
+用户明确说充值或提取现金时，调用 `book.cash(side="充值", amount=1000)` 或 `side="提取"`。它追加一条现金记录，只改现金、总额和按现有市值重算的仓位，不改份额，也不改 `last_checked_at`。用户没说充值或提取时不要调用。`cash()` 不代替买卖。
 
 客观信息与持仓类无关，按天放在 `data/info/<YYYY-MM-DD>/<代码>.json`。个股必填现价、昨收、财报、K 线；ETF 必填现价、昨收、IOPV、溢折价、前十大成分和成分报告期。缺一项则文件里 `ready` 为 false，不要分析这只。读写用 `portfolio.info_day`。
 
