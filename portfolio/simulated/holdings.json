@@ -13,8 +13,8 @@
   "shares_are_sticky": true,
   "shares_rule": "除非发生新的模拟交易，否则不更新份额；市值用份额乘实时价格还原",
   "cash": {
-    "account_cash_cny": 270421.91,
-    "weight_pct": 57.19,
+    "account_cash_cny": 260421.91,
+    "weight_pct": 56.66,
     "included_in_total_assets": true
   },
   "holdings": [
@@ -24,10 +24,10 @@
       "type": "场内基金",
       "shares": 35900.0,
       "cost_price": 1.506,
-      "last_price": 1.249,
+      "last_price": 1.185,
       "currency": "CNY",
-      "market_value_cny": 44839.1,
-      "weight_pct": 9.48
+      "market_value_cny": 42541.5,
+      "weight_pct": 9.26
     },
     {
       "name": "电网设备ETF国泰",
@@ -35,10 +35,10 @@
       "type": "场内基金",
       "shares": 66600,
       "cost_price": 0.732,
-      "last_price": 0.598,
+      "last_price": 0.586,
       "currency": "CNY",
-      "market_value_cny": 39826.8,
-      "weight_pct": 8.42
+      "market_value_cny": 39027.6,
+      "weight_pct": 8.49
     },
     {
       "name": "绿色电力ETF富国",
@@ -46,10 +46,10 @@
       "type": "场内基金",
       "shares": 42400,
       "cost_price": 1.129,
-      "last_price": 1.136,
+      "last_price": 1.138,
       "currency": "CNY",
-      "market_value_cny": 48166.4,
-      "weight_pct": 10.19
+      "market_value_cny": 48251.2,
+      "weight_pct": 10.5
     },
     {
       "name": "南方航空",
@@ -57,10 +57,10 @@
       "type": "股票",
       "shares": 3800,
       "cost_price": 5.181,
-      "last_price": 4.83,
+      "last_price": 4.88,
       "currency": "CNY",
-      "market_value_cny": 18354.0,
-      "weight_pct": 3.88
+      "market_value_cny": 18544.0,
+      "weight_pct": 4.03
     },
     {
       "name": "黄金ETF易方达",
@@ -68,10 +68,10 @@
       "type": "场内基金",
       "shares": 3014,
       "cost_price": 8.85,
-      "last_price": 8.618,
+      "last_price": 8.319,
       "currency": "CNY",
-      "market_value_cny": 25974.65,
-      "weight_pct": 5.49
+      "market_value_cny": 25073.47,
+      "weight_pct": 5.45
     },
     {
       "name": "太古地产",
@@ -79,18 +79,18 @@
       "type": "港股通",
       "shares": 1200,
       "cost_price": 19.865,
-      "last_price": 25.04,
+      "last_price": 25.54,
       "currency": "HKD",
-      "market_value_hkd": 30048.0,
-      "market_value_cny": 25287.83,
-      "weight_pct": 5.35
+      "market_value_hkd": 30648.0,
+      "market_value_cny": 25792.78,
+      "weight_pct": 5.61
     }
   ],
   "totals": {
     "positions": 6,
-    "securities_cny": 202448.78,
-    "cash_cny": 270421.91,
-    "total_assets_cny": 472870.69,
+    "securities_cny": 199230.55,
+    "cash_cny": 260421.91,
+    "total_assets_cny": 459652.46,
     "hkd_to_cny": 0.8415811012
   }
 }
