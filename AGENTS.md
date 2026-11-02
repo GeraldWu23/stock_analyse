@@ -56,9 +56,9 @@ Tickers: `600519.SH` / `002273.SZ` / `00700.HK` / `AAPL` / Chinese names.
 
 Canonical snapshot (date + cash + positions): `portfolio/HOLDINGS.md`. Machine copy: `portfolio/holdings.json`. CSV for `--portfolio`: `portfolio/holdings.csv`.
 
-When the user says 我的持仓 / 我监控的票 / 拿一支我的股票, read `portfolio/HOLDINGS.md` first. **Shares are sticky:** do not change `shares` / 持仓 unless the user says they traded; mark to market with live price × shares. Ordinary-account total already includes cash; do not add cash on top. The 100-share 电力ETF博时 stub is not the 9% cash sleeve.
+Checks, deep analysis, “看持仓”, and price monitoring use the simulated book only. Do not read or edit the ordinary account (`portfolio/HOLDINGS.md`, `portfolio/holdings.json`, `portfolio/holdings.csv`, `data/我的持仓/`) unless the current message explicitly says 我的持仓 or 普通账户. A generic 持仓, 当前持仓, or portfolio check is the simulated book.
 
-The assistant's separate simulated portfolio lives in `portfolio/simulated/HOLDINGS.md`, with machine copy `portfolio/simulated/holdings.json`. When the user says 你的持仓 / 你目前的持仓 / 你的当前持仓, “你的” refers to the assistant, so read the simulated portfolio. Do not interpret every generic mention of 当前持仓 as simulated, and never overwrite the user's real holdings with simulated trades.
+The simulated portfolio lives in `data/虚拟仓/`, with the display copy `portfolio/simulated/HOLDINGS.md` and machine copy `portfolio/simulated/holdings.json`. When the user says 你的持仓 / 你目前的持仓 / 你的当前持仓, read that book. **Shares are sticky:** do not change simulated `shares` / 持仓 unless the user says a simulated trade filled, or a portfolio-deep-analysis trigger below is already true. Mark to market with live price × shares. Cash is already inside total assets; do not add it on top.
 
 虚拟仓的持仓对象是 `data/虚拟仓/`。用户明确说已成交，或要求执行虚拟交易时，从仓库根目录用持仓类记一笔，不要改 `portfolio/simulated/` 的份额来代替：
 
