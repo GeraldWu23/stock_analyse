@@ -1,0 +1,3965 @@
+{
+  "date": "2026-11-03",
+  "ticker": "01972.HK",
+  "name": "太古地产",
+  "kind": "stock",
+  "ready": true,
+  "missing": [],
+  "fields": {
+    "last_price": {
+      "value": 25.56,
+      "as_of": "2026/11/03 09:41:36",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "prev_close": {
+      "value": 25.6,
+      "as_of": "2026/11/03 09:41:36",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "financials": {
+      "value": {
+        "currency": "HKD",
+        "unit": "yuan",
+        "income": [
+          {
+            "period": "2025-12-31",
+            "Tax Effect Of Unusual Items": 18975000.0,
+            "Tax Rate For Calcs": 0.165,
+            "Normalized EBITDA": 1345000000.0,
+            "Total Unusual Items": 115000000.0,
+            "Total Unusual Items Excluding Goodwill": 115000000.0,
+            "Net Income From Continuing Operation Net Minority Interest": -1533000000.0,
+            "Reconciled Depreciation": 587000000.0,
+            "Reconciled Cost Of Revenue": 5384000000.0,
+            "EBITDA": 1460000000.0,
+            "EBIT": 873000000.0,
+            "Net Interest Income": -1034000000.0,
+            "Interest Expense": 1127000000.0,
+            "Interest Income": 264000000.0,
+            "Normalized Income": -1629025000.0,
+            "Net Income From Continuing And Discontinued Operation": -1533000000.0,
+            "Total Expenses": 7849000000.0,
+            "Rent Expense Supplemental": 3314000000.0,
+            "Total Operating Income As Reported": 1958000000.0,
+            "Diluted Average Shares": 5768725592.0,
+            "Basic Average Shares": 5768725592.0,
+            "Diluted EPS": -0.27,
+            "Basic EPS": -0.27,
+            "Diluted NI Availto Com Stockholders": -1533000000.0,
+            "Net Income Common Stockholders": -1533000000.0,
+            "Otherunder Preferred Stock Dividend": 0.0,
+            "Net Income": -1533000000.0,
+            "Minority Interests": 18000000.0,
+            "Net Income Including Noncontrolling Interests": -1551000000.0,
+            "Net Income Continuous Operations": -1551000000.0,
+            "Tax Provision": 1297000000.0,
+            "Pretax Income": -254000000.0,
+            "Other Non Operating Income Expenses": -102000000.0,
+            "Special Income Charges": 35000000.0,
+            "Other Special Charges": -35000000.0,
+            "Impairment Of Capital Assets": 0.0,
+            "Net Non Operating Interest Income Expense": -1034000000.0,
+            "Total Other Finance Cost": 171000000.0,
+            "Interest Expense Non Operating": 1127000000.0,
+            "Interest Income Non Operating": 264000000.0,
+            "Operating Income": 8192000000.0,
+            "Operating Expense": 2465000000.0,
+            "Other Operating Expenses": 192000000.0,
+            "Selling General And Administration": 2273000000.0,
+            "General And Administrative Expense": 2273000000.0,
+            "Gross Profit": 10657000000.0,
+            "Cost Of Revenue": 5384000000.0,
+            "Total Revenue": 16041000000.0,
+            "Operating Revenue": 16041000000.0
+          },
+          {
+            "period": "2024-12-31",
+            "Tax Effect Of Unusual Items": -38775000.0,
+            "Tax Rate For Calcs": 0.165,
+            "Normalized EBITDA": 3324000000.0,
+            "Total Unusual Items": -235000000.0,
+            "Total Unusual Items Excluding Goodwill": -235000000.0,
+            "Net Income From Continuing Operation Net Minority Interest": -766000000.0,
+            "Reconciled Depreciation": 515000000.0,
+            "Reconciled Cost Of Revenue": 4258000000.0,
+            "EBITDA": 3089000000.0,
+            "EBIT": 2574000000.0,
+            "Net Interest Income": -973000000.0,
+            "Interest Expense": 1037000000.0,
+            "Interest Income": 233000000.0,
+            "Normalized Income": -569775000.0,
+            "Net Income From Continuing And Discontinued Operation": -766000000.0,
+            "Total Expenses": 6635000000.0,
+            "Rent Expense Supplemental": 3347000000.0,
+            "Total Operating Income As Reported": 1702000000.0,
+            "Diluted Average Shares": 5845544241.0,
+            "Basic Average Shares": 5845544241.0,
+            "Diluted EPS": -0.13,
+            "Basic EPS": -0.13,
+            "Diluted NI Availto Com Stockholders": -766000000.0,
+            "Net Income Common Stockholders": -766000000.0,
+            "Otherunder Preferred Stock Dividend": 0.0,
+            "Net Income": -766000000.0,
+            "Minority Interests": -165000000.0,
+            "Net Income Including Noncontrolling Interests": -601000000.0,
+            "Net Income Continuous Operations": -601000000.0,
+            "Tax Provision": 2138000000.0,
+            "Pretax Income": 1537000000.0,
+            "Other Non Operating Income Expenses": 120000000.0,
+            "Special Income Charges": -215000000.0,
+            "Other Special Charges": 230000000.0,
+            "Impairment Of Capital Assets": -15000000.0,
+            "Restructuring And Mergern Acquisition": 0.0,
+            "Net Non Operating Interest Income Expense": -973000000.0,
+            "Total Other Finance Cost": 169000000.0,
+            "Interest Expense Non Operating": 1037000000.0,
+            "Interest Income Non Operating": 233000000.0,
+            "Operating Income": 7793000000.0,
+            "Operating Expense": 2377000000.0,
+            "Other Operating Expenses": 182000000.0,
+            "Selling General And Administration": 2195000000.0,
+            "General And Administrative Expense": 2195000000.0,
+            "Gross Profit": 10170000000.0,
+            "Cost Of Revenue": 4258000000.0,
+            "Total Revenue": 14428000000.0,
+            "Operating Revenue": 14428000000.0
+          },
+          {
+            "period": "2023-12-31",
+            "Tax Effect Of Unusual Items": 18509615.384615,
+            "Tax Rate For Calcs": 0.370192,
+            "Normalized EBITDA": 5433000000.0,
+            "Total Unusual Items": 50000000.0,
+            "Total Unusual Items Excluding Goodwill": 50000000.0,
+            "Net Income From Continuing Operation Net Minority Interest": 2637000000.0,
+            "Reconciled Depreciation": 515000000.0,
+            "Reconciled Cost Of Revenue": 4284000000.0,
+            "EBITDA": 5483000000.0,
+            "EBIT": 4968000000.0,
+            "Net Interest Income": -507000000.0,
+            "Interest Expense": 600000000.0,
+            "Interest Income": 218000000.0,
+            "Normalized Income": 2605509615.384615,
+            "Net Income From Continuing And Discontinued Operation": 2637000000.0,
+            "Total Expenses": 6547000000.0,
+            "Rent Expense Supplemental": 3266000000.0,
+            "Total Operating Income As Reported": 5180000000.0,
+            "Diluted Average Shares": 5850000000.0,
+            "Basic Average Shares": 5850000000.0,
+            "Diluted EPS": 0.45,
+            "Basic EPS": 0.45,
+            "Diluted NI Availto Com Stockholders": 2637000000.0,
+            "Net Income Common Stockholders": 2637000000.0,
+            "Otherunder Preferred Stock Dividend": 0.0,
+            "Net Income": 2637000000.0,
+            "Minority Interests": -114000000.0,
+            "Net Income Including Noncontrolling Interests": 2751000000.0,
+            "Net Income Continuous Operations": 2751000000.0,
+            "Tax Provision": 1617000000.0,
+            "Pretax Income": 4368000000.0,
+            "Other Non Operating Income Expenses": 79000000.0,
+            "Special Income Charges": 505000000.0,
+            "Other Special Charges": 46000000.0,
+            "Impairment Of Capital Assets": 0.0,
+            "Restructuring And Mergern Acquisition": -551000000.0,
+            "Net Non Operating Interest Income Expense": -507000000.0,
+            "Total Other Finance Cost": 125000000.0,
+            "Interest Expense Non Operating": 600000000.0,
+            "Interest Income Non Operating": 218000000.0,
+            "Operating Income": 8123000000.0,
+            "Operating Expense": 2263000000.0,
+            "Other Operating Expenses": 205000000.0,
+            "Selling General And Administration": 2058000000.0,
+            "General And Administrative Expense": 2058000000.0,
+            "Gross Profit": 10386000000.0,
+            "Cost Of Revenue": 4284000000.0,
+            "Total Revenue": 14670000000.0,
+            "Operating Revenue": 14670000000.0
+          },
+          {
+            "period": "2022-12-31",
+            "Tax Effect Of Unusual Items": 107142440.730665,
+            "Tax Rate For Calcs": 0.200641,
+            "Normalized EBITDA": 10382000000.0,
+            "Total Unusual Items": 534000000.0,
+            "Total Unusual Items Excluding Goodwill": 534000000.0,
+            "Net Income From Continuing Operation Net Minority Interest": 7980000000.0,
+            "Reconciled Depreciation": 428000000.0,
+            "Reconciled Cost Of Revenue": 4303000000.0,
+            "EBITDA": 10916000000.0,
+            "EBIT": 10488000000.0,
+            "Net Interest Income": -133000000.0,
+            "Interest Expense": 196000000.0,
+            "Interest Income": 172000000.0,
+            "Normalized Income": 7553142440.730665,
+            "Net Income From Continuing And Discontinued Operation": 7980000000.0,
+            "Total Expenses": 6171000000.0,
+            "Rent Expense Supplemental": 2997000000.0,
+            "Total Operating Income As Reported": 9024000000.0,
+            "Diluted Average Shares": 5850000000.0,
+            "Basic Average Shares": 5850000000.0,
+            "Diluted EPS": 1.36,
+            "Basic EPS": 1.36,
+            "Diluted NI Availto Com Stockholders": 7980000000.0,
+            "Net Income Common Stockholders": 7980000000.0,
+            "Otherunder Preferred Stock Dividend": 0.0,
+            "Net Income": 7980000000.0,
+            "Minority Interests": -247000000.0,
+            "Net Income Including Noncontrolling Interests": 8227000000.0,
+            "Net Income Continuous Operations": 8227000000.0,
+            "Tax Provision": 2065000000.0,
+            "Pretax Income": 10292000000.0,
+            "Other Non Operating Income Expenses": 56000000.0,
+            "Special Income Charges": 540000000.0,
+            "Other Special Charges": -540000000.0,
+            "Restructuring And Mergern Acquisition": 0.0,
+            "Net Non Operating Interest Income Expense": -133000000.0,
+            "Total Other Finance Cost": 109000000.0,
+            "Interest Expense Non Operating": 196000000.0,
+            "Interest Income Non Operating": 172000000.0,
+            "Operating Income": 7655000000.0,
+            "Operating Expense": 1868000000.0,
+            "Other Operating Expenses": 186000000.0,
+            "Selling General And Administration": 1713000000.0,
+            "General And Administrative Expense": 1713000000.0,
+            "Gross Profit": 9523000000.0,
+            "Cost Of Revenue": 4303000000.0,
+            "Total Revenue": 13826000000.0,
+            "Operating Revenue": 13826000000.0
+          }
+        ],
+        "balance": [
+          {
+            "period": "2025-12-31",
+            "Ordinary Shares Number": 5757484800.0,
+            "Share Issued": 5757484800.0,
+            "Net Debt": 39060000000.0,
+            "Total Debt": 49723000000.0,
+            "Tangible Book Value": 267966000000.0,
+            "Invested Capital": 318703000000.0,
+            "Working Capital": 3942000000.0,
+            "Net Tangible Assets": 267966000000.0,
+            "Capital Lease Obligations": 480000000.0,
+            "Common Stock Equity": 269460000000.0,
+            "Total Capitalization": 309354000000.0,
+            "Total Equity Gross Minority Interest": 271342000000.0,
+            "Minority Interest": 1882000000.0,
+            "Stockholders Equity": 269460000000.0,
+            "Capital Stock": 10449000000.0,
+            "Common Stock": 10449000000.0,
+            "Total Liabilities Net Minority Interest": 82190000000.0,
+            "Total Non Current Liabilities Net Minority Interest": 56330000000.0,
+            "Derivative Product Liabilities": 80000000.0,
+            "Tradeand Other Payables Non Current": 356000000.0,
+            "Non Current Deferred Taxes Liabilities": 15610000000.0,
+            "Long Term Debt And Capital Lease Obligation": 40284000000.0,
+            "Long Term Capital Lease Obligation": 390000000.0,
+            "Long Term Debt": 39894000000.0,
+            "Current Liabilities": 25860000000.0,
+            "Current Debt And Capital Lease Obligation": 9439000000.0,
+            "Current Capital Lease Obligation": 90000000.0,
+            "Current Debt": 9349000000.0,
+            "Payables": 5950000000.0,
+            "Other Payable": 4815000000.0,
+            "Total Tax Payable": 304000000.0,
+            "Accounts Payable": 831000000.0,
+            "Total Assets": 353532000000.0,
+            "Total Non Current Assets": 323730000000.0,
+            "Other Non Current Assets": 281000000.0,
+            "Defined Pension Benefit": 137000000.0,
+            "Non Current Deferred Taxes Assets": 414000000.0,
+            "Financial Assets": 0.0,
+            "Investmentin Financial Assets": 670000000.0,
+            "Financial Assets Designatedas Fair Value Through Profitor Loss Total": 670000000.0,
+            "Long Term Equity Investment": 32439000000.0,
+            "Investmentsin Joint Venturesat Cost": 21460000000.0,
+            "Investmentsin Associatesat Cost": 10979000000.0,
+            "Investment Properties": 268467000000.0,
+            "Goodwill And Other Intangible Assets": 1494000000.0,
+            "Other Intangible Assets": 140000000.0,
+            "Goodwill": 1354000000.0,
+            "Net PPE": 6060000000.0,
+            "Accumulated Depreciation": -3197000000.0,
+            "Gross PPE": 9257000000.0,
+            "Machinery Furniture Equipment": 2620000000.0,
+            "Buildings And Improvements": 103000000.0,
+            "Land And Improvements": 6534000000.0,
+            "Properties": 0.0,
+            "Current Assets": 29802000000.0,
+            "Hedging Assets Current": 48000000.0,
+            "Assets Held For Sale Current": 0.0,
+            "Inventory": 15538000000.0,
+            "Other Inventories": 90000000.0,
+            "Finished Goods": 15448000000.0,
+            "Other Receivables": 3617000000.0,
+            "Accounts Receivable": 416000000.0,
+            "Cash Cash Equivalents And Short Term Investments": 10183000000.0,
+            "Cash And Cash Equivalents": 10183000000.0,
+            "Cash Equivalents": 356000000.0,
+            "Cash Financial": 9827000000.0
+          },
+          {
+            "period": "2024-12-31",
+            "Ordinary Shares Number": 5802221400.0,
+            "Share Issued": 5802221400.0,
+            "Net Debt": 43226000000.0,
+            "Total Debt": 48867000000.0,
+            "Tangible Book Value": 273882000000.0,
+            "Invested Capital": 323673000000.0,
+            "Working Capital": 7311000000.0,
+            "Net Tangible Assets": 273882000000.0,
+            "Capital Lease Obligations": 520000000.0,
+            "Common Stock Equity": 275326000000.0,
+            "Total Capitalization": 316913000000.0,
+            "Total Equity Gross Minority Interest": 278427000000.0,
+            "Minority Interest": 3101000000.0,
+            "Stockholders Equity": 275326000000.0,
+            "Capital Stock": 10449000000.0,
+            "Common Stock": 10449000000.0,
+            "Total Liabilities Net Minority Interest": 76999000000.0,
+            "Total Non Current Liabilities Net Minority Interest": 57219000000.0,
+            "Derivative Product Liabilities": 19000000.0,
+            "Non Current Pension And Other Postretirement Benefit Plans": 0.0,
+            "Tradeand Other Payables Non Current": 403000000.0,
+            "Non Current Deferred Taxes Liabilities": 14776000000.0,
+            "Long Term Debt And Capital Lease Obligation": 42021000000.0,
+            "Long Term Capital Lease Obligation": 434000000.0,
+            "Long Term Debt": 41587000000.0,
+            "Current Liabilities": 19780000000.0,
+            "Current Debt And Capital Lease Obligation": 6846000000.0,
+            "Current Capital Lease Obligation": 86000000.0,
+            "Current Debt": 6760000000.0,
+            "Payables": 5405000000.0,
+            "Other Payable": 4211000000.0,
+            "Total Tax Payable": 261000000.0,
+            "Accounts Payable": 933000000.0,
+            "Total Assets": 355426000000.0,
+            "Total Non Current Assets": 328335000000.0,
+            "Defined Pension Benefit": 66000000.0,
+            "Non Current Deferred Taxes Assets": 108000000.0,
+            "Financial Assets": 65000000.0,
+            "Investmentin Financial Assets": 638000000.0,
+            "Financial Assets Designatedas Fair Value Through Profitor Loss Total": 638000000.0,
+            "Long Term Equity Investment": 31463000000.0,
+            "Investmentsin Joint Venturesat Cost": 21167000000.0,
+            "Investmentsin Associatesat Cost": 10296000000.0,
+            "Investment Properties": 272818000000.0,
+            "Goodwill And Other Intangible Assets": 1444000000.0,
+            "Other Intangible Assets": 150000000.0,
+            "Goodwill": 1294000000.0,
+            "Net PPE": 6190000000.0,
+            "Accumulated Depreciation": -2858000000.0,
+            "Gross PPE": 9048000000.0,
+            "Machinery Furniture Equipment": 2498000000.0,
+            "Buildings And Improvements": 115000000.0,
+            "Land And Improvements": 6435000000.0,
+            "Properties": 0.0,
+            "Current Assets": 27091000000.0,
+            "Hedging Assets Current": 2000000.0,
+            "Assets Held For Sale Current": 5012000000.0,
+            "Inventory": 12751000000.0,
+            "Other Inventories": 75000000.0,
+            "Finished Goods": 12676000000.0,
+            "Other Receivables": 3757000000.0,
+            "Accounts Receivable": 448000000.0,
+            "Cash Cash Equivalents And Short Term Investments": 5121000000.0,
+            "Cash And Cash Equivalents": 5121000000.0,
+            "Cash Equivalents": 73000000.0,
+            "Cash Financial": 5048000000.0
+          },
+          {
+            "period": "2023-12-31",
+            "Ordinary Shares Number": 5850000000.0,
+            "Share Issued": 5850000000.0,
+            "Net Debt": 36072000000.0,
+            "Total Debt": 41776000000.0,
+            "Tangible Book Value": 283527000000.0,
+            "Invested Capital": 326251000000.0,
+            "Working Capital": 555000000.0,
+            "Net Tangible Assets": 283527000000.0,
+            "Capital Lease Obligations": 607000000.0,
+            "Common Stock Equity": 285082000000.0,
+            "Total Capitalization": 318688000000.0,
+            "Total Equity Gross Minority Interest": 288149000000.0,
+            "Minority Interest": 3067000000.0,
+            "Stockholders Equity": 285082000000.0,
+            "Capital Stock": 10449000000.0,
+            "Common Stock": 10449000000.0,
+            "Total Liabilities Net Minority Interest": 66339000000.0,
+            "Total Non Current Liabilities Net Minority Interest": 48550000000.0,
+            "Derivative Product Liabilities": 22000000.0,
+            "Non Current Pension And Other Postretirement Benefit Plans": 45000000.0,
+            "Tradeand Other Payables Non Current": 268000000.0,
+            "Non Current Deferred Taxes Liabilities": 14082000000.0,
+            "Long Term Debt And Capital Lease Obligation": 34133000000.0,
+            "Long Term Capital Lease Obligation": 527000000.0,
+            "Long Term Debt": 33606000000.0,
+            "Current Liabilities": 17789000000.0,
+            "Current Debt And Capital Lease Obligation": 7643000000.0,
+            "Current Capital Lease Obligation": 80000000.0,
+            "Current Debt": 7563000000.0,
+            "Payables": 10141000000.0,
+            "Total Tax Payable": 378000000.0,
+            "Accounts Payable": 9763000000.0,
+            "Total Assets": 354488000000.0,
+            "Total Non Current Assets": 336144000000.0,
+            "Defined Pension Benefit": 0.0,
+            "Non Current Deferred Taxes Assets": 88000000.0,
+            "Financial Assets": 57000000.0,
+            "Investmentin Financial Assets": 623000000.0,
+            "Financial Assets Designatedas Fair Value Through Profitor Loss Total": 623000000.0,
+            "Long Term Equity Investment": 29859000000.0,
+            "Investmentsin Joint Venturesat Cost": 19276000000.0,
+            "Investmentsin Associatesat Cost": 10583000000.0,
+            "Investment Properties": 282673000000.0,
+            "Goodwill And Other Intangible Assets": 1555000000.0,
+            "Other Intangible Assets": 214000000.0,
+            "Goodwill": 1341000000.0,
+            "Net PPE": 6299000000.0,
+            "Accumulated Depreciation": -3205000000.0,
+            "Gross PPE": 9504000000.0,
+            "Machinery Furniture Equipment": 2312000000.0,
+            "Buildings And Improvements": 153000000.0,
+            "Land And Improvements": 7039000000.0,
+            "Properties": 0.0,
+            "Current Assets": 18344000000.0,
+            "Hedging Assets Current": 0.0,
+            "Assets Held For Sale Current": 543000000.0,
+            "Inventory": 9198000000.0,
+            "Other Inventories": 77000000.0,
+            "Finished Goods": 9121000000.0,
+            "Other Receivables": 3006000000.0,
+            "Accounts Receivable": 500000000.0,
+            "Cash Cash Equivalents And Short Term Investments": 5097000000.0,
+            "Cash And Cash Equivalents": 5097000000.0,
+            "Cash Equivalents": 838000000.0,
+            "Cash Financial": 4259000000.0
+          },
+          {
+            "period": "2022-12-31",
+            "Ordinary Shares Number": 5850000000.0,
+            "Share Issued": 5850000000.0,
+            "Net Debt": 18333000000.0,
+            "Total Debt": 23449000000.0,
+            "Tangible Book Value": 289003000000.0,
+            "Invested Capital": 312046000000.0,
+            "Working Capital": 6724000000.0,
+            "Net Tangible Assets": 289003000000.0,
+            "Capital Lease Obligations": 614000000.0,
+            "Common Stock Equity": 289211000000.0,
+            "Total Capitalization": 311346000000.0,
+            "Total Equity Gross Minority Interest": 292258000000.0,
+            "Minority Interest": 3047000000.0,
+            "Stockholders Equity": 289211000000.0,
+            "Fixed Assets Revaluation Reserve": 2007000000.0,
+            "Capital Stock": 10449000000.0,
+            "Common Stock": 10449000000.0,
+            "Total Liabilities Net Minority Interest": 44904000000.0,
+            "Total Non Current Liabilities Net Minority Interest": 33918000000.0,
+            "Derivative Product Liabilities": 0.0,
+            "Non Current Pension And Other Postretirement Benefit Plans": 0.0,
+            "Non Current Deferred Taxes Liabilities": 11248000000.0,
+            "Long Term Debt And Capital Lease Obligation": 22670000000.0,
+            "Long Term Capital Lease Obligation": 535000000.0,
+            "Long Term Debt": 22135000000.0,
+            "Current Liabilities": 10986000000.0,
+            "Other Current Liabilities": 1429000000.0,
+            "Current Debt And Capital Lease Obligation": 779000000.0,
+            "Current Capital Lease Obligation": 79000000.0,
+            "Current Debt": 700000000.0,
+            "Payables": 4175000000.0,
+            "Other Payable": 3178000000.0,
+            "Total Tax Payable": 185000000.0,
+            "Accounts Payable": 812000000.0,
+            "Total Assets": 337162000000.0,
+            "Total Non Current Assets": 319452000000.0,
+            "Defined Pension Benefit": 14000000.0,
+            "Non Current Deferred Taxes Assets": 64000000.0,
+            "Financial Assets": 96000000.0,
+            "Investmentin Financial Assets": 460000000.0,
+            "Financial Assets Designatedas Fair Value Through Profitor Loss Total": 460000000.0,
+            "Long Term Equity Investment": 25062000000.0,
+            "Investmentsin Joint Venturesat Cost": 24589000000.0,
+            "Investmentsin Associatesat Cost": 473000000.0,
+            "Investment Properties": 272576000000.0,
+            "Goodwill And Other Intangible Assets": 208000000.0,
+            "Other Intangible Assets": 208000000.0,
+            "Goodwill": 0.0,
+            "Net PPE": 5647000000.0,
+            "Accumulated Depreciation": -3012000000.0,
+            "Gross PPE": 8659000000.0,
+            "Other Properties": 6177000000.0,
+            "Machinery Furniture Equipment": 2012000000.0,
+            "Buildings And Improvements": 142000000.0,
+            "Land And Improvements": 6505000000.0,
+            "Properties": 0.0,
+            "Current Assets": 17710000000.0,
+            "Hedging Assets Current": 0.0,
+            "Assets Held For Sale Current": 2038000000.0,
+            "Prepaid Assets": 85000000.0,
+            "Inventory": 8336000000.0,
+            "Other Inventories": 72000000.0,
+            "Finished Goods": 8264000000.0,
+            "Other Receivables": 1929000000.0,
+            "Accounts Receivable": 385000000.0,
+            "Cash Cash Equivalents And Short Term Investments": 5022000000.0,
+            "Other Short Term Investments": 520000000.0,
+            "Cash And Cash Equivalents": 4502000000.0,
+            "Cash Equivalents": 307000000.0,
+            "Cash Financial": 4195000000.0
+          },
+          {
+            "period": "2021-12-31",
+            "Non Current Pension And Other Postretirement Benefit Plans": 187000000.0,
+            "Tradeand Other Payables Non Current": 150000000.0,
+            "Other Current Liabilities": 1609000000.0,
+            "Other Payable": 2453000000.0,
+            "Prepaid Assets": 81000000.0
+          }
+        ],
+        "cashflow": [
+          {
+            "period": "2025-12-31",
+            "Free Cash Flow": 7246000000.0,
+            "Repurchase Of Capital Stock": -738000000.0,
+            "Repayment Of Debt": -15008000000.0,
+            "Issuance Of Debt": 14815000000.0,
+            "Capital Expenditure": -225000000.0,
+            "End Cash Position": 10183000000.0,
+            "Beginning Cash Position": 5212000000.0,
+            "Effect Of Exchange Rate Changes": 205000000.0,
+            "Changes In Cash": 4766000000.0,
+            "Financing Cash Flow": -5895000000.0,
+            "Net Other Financing Charges": 1634000000.0,
+            "Cash Dividends Paid": -6401000000.0,
+            "Common Stock Dividend Paid": -6401000000.0,
+            "Net Common Stock Issuance": -738000000.0,
+            "Common Stock Payments": -738000000.0,
+            "Net Issuance Payments Of Debt": -193000000.0,
+            "Net Long Term Debt Issuance": -193000000.0,
+            "Long Term Debt Payments": -15008000000.0,
+            "Long Term Debt Issuance": 14815000000.0,
+            "Investing Cash Flow": 3190000000.0,
+            "Net Other Investing Changes": -4000000.0,
+            "Net Investment Purchase And Sale": -32000000.0,
+            "Purchase Of Investment": -32000000.0,
+            "Net Investment Properties Purchase And Sale": -1086000000.0,
+            "Sale Of Investment Properties": 872000000.0,
+            "Purchase Of Investment Properties": -1958000000.0,
+            "Net Business Purchase And Sale": 3310000000.0,
+            "Sale Of Business": 4524000000.0,
+            "Purchase Of Business": -1214000000.0,
+            "Net Intangibles Purchase And Sale": -43000000.0,
+            "Purchase Of Intangibles": -43000000.0,
+            "Net PPE Purchase And Sale": -182000000.0,
+            "Purchase Of PPE": -182000000.0,
+            "Operating Cash Flow": 7471000000.0,
+            "Taxes Refund Paid": -1199000000.0,
+            "Interest Received Cfo": 128000000.0,
+            "Interest Paid Cfo": -1726000000.0,
+            "Dividend Received Cfo": 244000000.0,
+            "Change In Working Capital": 1329000000.0,
+            "Change In Other Current Assets": 1145000000.0,
+            "Change In Payable": 814000000.0,
+            "Change In Inventory": -811000000.0,
+            "Change In Receivables": 175000000.0,
+            "Other Non Cash Items": 1000000.0,
+            "Depreciation And Amortization": 587000000.0,
+            "Amortization Cash Flow": 53000000.0,
+            "Depreciation": 534000000.0,
+            "Gain Loss On Investment Securities": 6184000000.0,
+            "Gain Loss On Sale Of PPE": 5000000.0,
+            "Gain Loss On Sale Of Business": -40000000.0,
+            "Net Income From Continuing Operations": 1958000000.0
+          },
+          {
+            "period": "2024-12-31",
+            "Free Cash Flow": 3440000000.0,
+            "Repurchase Of Capital Stock": -723000000.0,
+            "Repayment Of Debt": -7535000000.0,
+            "Issuance Of Debt": 15312000000.0,
+            "Capital Expenditure": -322000000.0,
+            "End Cash Position": 5212000000.0,
+            "Beginning Cash Position": 5097000000.0,
+            "Effect Of Exchange Rate Changes": -127000000.0,
+            "Changes In Cash": 242000000.0,
+            "Financing Cash Flow": 2757000000.0,
+            "Net Other Financing Charges": 2082000000.0,
+            "Cash Dividends Paid": -6201000000.0,
+            "Common Stock Dividend Paid": -6201000000.0,
+            "Net Common Stock Issuance": -723000000.0,
+            "Common Stock Payments": -723000000.0,
+            "Net Issuance Payments Of Debt": 7777000000.0,
+            "Net Long Term Debt Issuance": 7777000000.0,
+            "Long Term Debt Payments": -7535000000.0,
+            "Long Term Debt Issuance": 15312000000.0,
+            "Investing Cash Flow": -6277000000.0,
+            "Net Other Investing Changes": -7000000.0,
+            "Net Investment Purchase And Sale": -17000000.0,
+            "Purchase Of Investment": -17000000.0,
+            "Net Investment Properties Purchase And Sale": -3715000000.0,
+            "Sale Of Investment Properties": 454000000.0,
+            "Purchase Of Investment Properties": -4169000000.0,
+            "Net Business Purchase And Sale": -1744000000.0,
+            "Sale Of Business": 0.0,
+            "Purchase Of Business": -1744000000.0,
+            "Net Intangibles Purchase And Sale": -46000000.0,
+            "Purchase Of Intangibles": -46000000.0,
+            "Net PPE Purchase And Sale": -276000000.0,
+            "Purchase Of PPE": -276000000.0,
+            "Operating Cash Flow": 3762000000.0,
+            "Taxes Refund Paid": -1276000000.0,
+            "Interest Received Cfo": 133000000.0,
+            "Interest Paid Cfo": -1709000000.0,
+            "Dividend Received Cfo": 125000000.0,
+            "Change In Working Capital": -1826000000.0,
+            "Change In Other Current Assets": 632000000.0,
+            "Change In Payable": -35000000.0,
+            "Change In Inventory": -1599000000.0,
+            "Change In Receivables": -797000000.0,
+            "Other Non Cash Items": -113000000.0,
+            "Depreciation And Amortization": 515000000.0,
+            "Amortization Cash Flow": 71000000.0,
+            "Depreciation": 444000000.0,
+            "Gain Loss On Investment Securities": 6216000000.0,
+            "Gain Loss On Sale Of PPE": 10000000.0,
+            "Gain Loss On Sale Of Business": 0.0,
+            "Net Income From Continuing Operations": 1702000000.0
+          },
+          {
+            "period": "2023-12-31",
+            "Free Cash Flow": 5164000000.0,
+            "Repurchase Of Capital Stock": 0.0,
+            "Repayment Of Debt": -3130000000.0,
+            "Issuance Of Debt": 18265000000.0,
+            "Capital Expenditure": -281000000.0,
+            "End Cash Position": 5097000000.0,
+            "Beginning Cash Position": 4502000000.0,
+            "Effect Of Exchange Rate Changes": -54000000.0,
+            "Changes In Cash": 649000000.0,
+            "Financing Cash Flow": 9065000000.0,
+            "Net Other Financing Charges": 16000000.0,
+            "Cash Dividends Paid": -5909000000.0,
+            "Common Stock Dividend Paid": -5909000000.0,
+            "Net Common Stock Issuance": 0.0,
+            "Common Stock Payments": 0.0,
+            "Net Issuance Payments Of Debt": 15135000000.0,
+            "Net Long Term Debt Issuance": 15135000000.0,
+            "Long Term Debt Payments": -3130000000.0,
+            "Long Term Debt Issuance": 18265000000.0,
+            "Investing Cash Flow": -13861000000.0,
+            "Net Other Investing Changes": -79000000.0,
+            "Net Investment Purchase And Sale": -161000000.0,
+            "Purchase Of Investment": -161000000.0,
+            "Net Investment Properties Purchase And Sale": 2520000000.0,
+            "Sale Of Investment Properties": 5291000000.0,
+            "Purchase Of Investment Properties": -2771000000.0,
+            "Net Business Purchase And Sale": -14708000000.0,
+            "Sale Of Business": 535000000.0,
+            "Purchase Of Business": -15243000000.0,
+            "Net Intangibles Purchase And Sale": -64000000.0,
+            "Purchase Of Intangibles": -64000000.0,
+            "Net PPE Purchase And Sale": -217000000.0,
+            "Purchase Of PPE": -217000000.0,
+            "Operating Cash Flow": 5445000000.0,
+            "Taxes Refund Paid": -963000000.0,
+            "Interest Received Cfo": 104000000.0,
+            "Interest Paid Cfo": -1222000000.0,
+            "Dividend Received Cfo": 34000000.0,
+            "Change In Working Capital": -1221000000.0,
+            "Change In Other Current Assets": -9000000.0,
+            "Change In Payable": 281000000.0,
+            "Change In Inventory": -588000000.0,
+            "Change In Receivables": -902000000.0,
+            "Other Non Cash Items": 450000000.0,
+            "Depreciation And Amortization": 515000000.0,
+            "Amortization Cash Flow": 66000000.0,
+            "Depreciation": 449000000.0,
+            "Gain Loss On Investment Securities": 2889000000.0,
+            "Gain Loss On Sale Of PPE": 2000000.0,
+            "Gain Loss On Sale Of Business": -323000000.0,
+            "Net Income From Continuing Operations": 5180000000.0
+          },
+          {
+            "period": "2022-12-31",
+            "Free Cash Flow": 4565000000.0,
+            "Repayment Of Debt": -9009000000.0,
+            "Issuance Of Debt": 7237000000.0,
+            "Capital Expenditure": -191000000.0,
+            "End Cash Position": 4502000000.0,
+            "Beginning Cash Position": 14833000000.0,
+            "Effect Of Exchange Rate Changes": -541000000.0,
+            "Changes In Cash": -9790000000.0,
+            "Financing Cash Flow": -6547000000.0,
+            "Net Other Financing Charges": 1003000000.0,
+            "Cash Dividends Paid": -5616000000.0,
+            "Common Stock Dividend Paid": -5616000000.0,
+            "Net Issuance Payments Of Debt": -1772000000.0,
+            "Net Long Term Debt Issuance": -1772000000.0,
+            "Long Term Debt Payments": -9009000000.0,
+            "Long Term Debt Issuance": 7237000000.0,
+            "Investing Cash Flow": -7999000000.0,
+            "Net Other Investing Changes": -75000000.0,
+            "Net Investment Purchase And Sale": -20000000.0,
+            "Sale Of Investment": 0.0,
+            "Purchase Of Investment": -20000000.0,
+            "Net Investment Properties Purchase And Sale": -6487000000.0,
+            "Sale Of Investment Properties": 609000000.0,
+            "Purchase Of Investment Properties": -7096000000.0,
+            "Net Business Purchase And Sale": -1783000000.0,
+            "Sale Of Business": 1060000000.0,
+            "Purchase Of Business": -2843000000.0,
+            "Net Intangibles Purchase And Sale": -58000000.0,
+            "Purchase Of Intangibles": -58000000.0,
+            "Net PPE Purchase And Sale": -133000000.0,
+            "Sale Of PPE": 0.0,
+            "Purchase Of PPE": -133000000.0,
+            "Operating Cash Flow": 4756000000.0,
+            "Taxes Refund Paid": -1127000000.0,
+            "Interest Received Cfo": 117000000.0,
+            "Interest Paid Cfo": -742000000.0,
+            "Dividend Received Cfo": 176000000.0,
+            "Change In Working Capital": -1844000000.0,
+            "Change In Other Current Assets": -106000000.0,
+            "Change In Payable": 62000000.0,
+            "Change In Inventory": -1668000000.0,
+            "Change In Receivables": -88000000.0,
+            "Other Non Cash Items": 96000000.0,
+            "Depreciation And Amortization": 428000000.0,
+            "Amortization Cash Flow": 53000000.0,
+            "Depreciation": 375000000.0,
+            "Gain Loss On Investment Securities": -852000000.0,
+            "Gain Loss On Sale Of PPE": 0.0,
+            "Gain Loss On Sale Of Business": -520000000.0,
+            "Net Income From Continuing Operations": 9024000000.0
+          },
+          {
+            "period": "2021-12-31",
+            "Sale Of Investment": 1003000000.0,
+            "Sale Of PPE": 889000000.0
+          }
+        ],
+        "as_of": "2025-12-31",
+        "source": "yfinance:1972.HK income_stmt+balance_sheet+cashflow"
+      },
+      "as_of": "2025-12-31",
+      "source": "yfinance:1972.HK income_stmt+balance_sheet+cashflow"
+    },
+    "kline": {
+      "value": [
+        {
+          "date": "2025-03-20",
+          "open": 14.88,
+          "close": 14.78,
+          "high": 14.9,
+          "low": 14.7,
+          "volume": 3815346.0
+        },
+        {
+          "date": "2025-03-21",
+          "open": 14.74,
+          "close": 14.76,
+          "high": 14.86,
+          "low": 14.5,
+          "volume": 7494858.0
+        },
+        {
+          "date": "2025-03-24",
+          "open": 14.78,
+          "close": 14.78,
+          "high": 15.02,
+          "low": 14.52,
+          "volume": 2956352.0
+        },
+        {
+          "date": "2025-03-25",
+          "open": 14.8,
+          "close": 14.76,
+          "high": 14.94,
+          "low": 14.68,
+          "volume": 3814950.0
+        },
+        {
+          "date": "2025-03-26",
+          "open": 14.82,
+          "close": 14.82,
+          "high": 14.86,
+          "low": 14.58,
+          "volume": 2782435.0
+        },
+        {
+          "date": "2025-03-27",
+          "open": 14.78,
+          "close": 14.82,
+          "high": 14.92,
+          "low": 14.68,
+          "volume": 1493676.0
+        },
+        {
+          "date": "2025-03-28",
+          "open": 14.84,
+          "close": 15.02,
+          "high": 15.04,
+          "low": 14.74,
+          "volume": 2925705.0
+        },
+        {
+          "date": "2025-03-31",
+          "open": 15.04,
+          "close": 14.78,
+          "high": 15.04,
+          "low": 14.72,
+          "volume": 3355945.0
+        },
+        {
+          "date": "2025-04-01",
+          "open": 15.04,
+          "close": 15.14,
+          "high": 15.2,
+          "low": 14.78,
+          "volume": 4705643.0
+        },
+        {
+          "date": "2025-04-02",
+          "open": 15.1,
+          "close": 15.26,
+          "high": 15.26,
+          "low": 14.88,
+          "volume": 2143796.0
+        },
+        {
+          "date": "2025-04-03",
+          "open": 15.14,
+          "close": 15.5,
+          "high": 15.64,
+          "low": 15.04,
+          "volume": 3141380.0
+        },
+        {
+          "date": "2025-04-07",
+          "open": 14.72,
+          "close": 14.0,
+          "high": 14.74,
+          "low": 13.94,
+          "volume": 9046966.0
+        },
+        {
+          "date": "2025-04-08",
+          "open": 13.98,
+          "close": 13.86,
+          "high": 14.18,
+          "low": 13.56,
+          "volume": 4174528.0
+        },
+        {
+          "date": "2025-04-09",
+          "open": 13.52,
+          "close": 13.56,
+          "high": 13.72,
+          "low": 13.2,
+          "volume": 5153286.0
+        },
+        {
+          "date": "2025-04-10",
+          "open": 13.64,
+          "close": 14.0,
+          "high": 14.2,
+          "low": 13.6,
+          "volume": 4528403.0
+        },
+        {
+          "date": "2025-04-11",
+          "open": 13.88,
+          "close": 14.16,
+          "high": 14.22,
+          "low": 13.58,
+          "volume": 2508150.0
+        },
+        {
+          "date": "2025-04-14",
+          "open": 14.24,
+          "close": 14.36,
+          "high": 14.6,
+          "low": 14.24,
+          "volume": 2388286.0
+        },
+        {
+          "date": "2025-04-15",
+          "open": 14.38,
+          "close": 14.42,
+          "high": 14.48,
+          "low": 14.26,
+          "volume": 1657368.0
+        },
+        {
+          "date": "2025-04-16",
+          "open": 14.44,
+          "close": 14.46,
+          "high": 14.6,
+          "low": 14.34,
+          "volume": 1542259.0
+        },
+        {
+          "date": "2025-04-17",
+          "open": 14.36,
+          "close": 14.56,
+          "high": 14.72,
+          "low": 14.36,
+          "volume": 1875075.0
+        },
+        {
+          "date": "2025-04-22",
+          "open": 14.48,
+          "close": 14.68,
+          "high": 14.74,
+          "low": 14.48,
+          "volume": 3024029.0
+        },
+        {
+          "date": "2025-04-23",
+          "open": 14.62,
+          "close": 14.82,
+          "high": 14.94,
+          "low": 14.62,
+          "volume": 2161932.0
+        },
+        {
+          "date": "2025-04-24",
+          "open": 14.82,
+          "close": 14.92,
+          "high": 14.92,
+          "low": 14.62,
+          "volume": 3299438.0
+        },
+        {
+          "date": "2025-04-25",
+          "open": 14.9,
+          "close": 14.98,
+          "high": 15.34,
+          "low": 14.88,
+          "volume": 3402247.0
+        },
+        {
+          "date": "2025-04-28",
+          "open": 14.86,
+          "close": 15.3,
+          "high": 15.38,
+          "low": 14.76,
+          "volume": 2490412.0
+        },
+        {
+          "date": "2025-04-29",
+          "open": 15.3,
+          "close": 15.34,
+          "high": 15.54,
+          "low": 15.16,
+          "volume": 3344600.0
+        },
+        {
+          "date": "2025-04-30",
+          "open": 15.22,
+          "close": 15.62,
+          "high": 15.76,
+          "low": 15.18,
+          "volume": 5190016.0
+        },
+        {
+          "date": "2025-05-02",
+          "open": 15.58,
+          "close": 15.54,
+          "high": 15.66,
+          "low": 15.48,
+          "volume": 1987865.0
+        },
+        {
+          "date": "2025-05-06",
+          "open": 15.54,
+          "close": 15.1,
+          "high": 15.54,
+          "low": 14.92,
+          "volume": 6660709.0
+        },
+        {
+          "date": "2025-05-07",
+          "open": 15.32,
+          "close": 15.06,
+          "high": 15.56,
+          "low": 14.96,
+          "volume": 7322969.0
+        },
+        {
+          "date": "2025-05-08",
+          "open": 14.94,
+          "close": 15.14,
+          "high": 15.28,
+          "low": 14.86,
+          "volume": 3248887.0
+        },
+        {
+          "date": "2025-05-09",
+          "open": 15.14,
+          "close": 15.52,
+          "high": 15.58,
+          "low": 15.14,
+          "volume": 4464031.0
+        },
+        {
+          "date": "2025-05-12",
+          "open": 15.34,
+          "close": 15.28,
+          "high": 15.58,
+          "low": 15.22,
+          "volume": 3387144.0
+        },
+        {
+          "date": "2025-05-13",
+          "open": 15.24,
+          "close": 15.32,
+          "high": 15.46,
+          "low": 15.06,
+          "volume": 1737496.0
+        },
+        {
+          "date": "2025-05-14",
+          "open": 15.34,
+          "close": 15.26,
+          "high": 15.34,
+          "low": 14.98,
+          "volume": 2752897.0
+        },
+        {
+          "date": "2025-05-15",
+          "open": 15.1,
+          "close": 15.18,
+          "high": 15.26,
+          "low": 15.04,
+          "volume": 1575584.0
+        },
+        {
+          "date": "2025-05-16",
+          "open": 15.18,
+          "close": 15.34,
+          "high": 15.34,
+          "low": 15.08,
+          "volume": 1524915.0
+        },
+        {
+          "date": "2025-05-19",
+          "open": 15.26,
+          "close": 15.36,
+          "high": 15.4,
+          "low": 15.14,
+          "volume": 1479361.0
+        },
+        {
+          "date": "2025-05-20",
+          "open": 15.34,
+          "close": 15.38,
+          "high": 15.44,
+          "low": 15.28,
+          "volume": 2359171.0
+        },
+        {
+          "date": "2025-05-21",
+          "open": 15.38,
+          "close": 15.62,
+          "high": 15.64,
+          "low": 15.34,
+          "volume": 1792600.0
+        },
+        {
+          "date": "2025-05-22",
+          "open": 15.6,
+          "close": 15.28,
+          "high": 15.68,
+          "low": 15.18,
+          "volume": 3239992.0
+        },
+        {
+          "date": "2025-05-23",
+          "open": 15.28,
+          "close": 15.54,
+          "high": 15.6,
+          "low": 15.18,
+          "volume": 1723224.0
+        },
+        {
+          "date": "2025-05-26",
+          "open": 15.54,
+          "close": 15.48,
+          "high": 15.64,
+          "low": 15.36,
+          "volume": 1622000.0
+        },
+        {
+          "date": "2025-05-27",
+          "open": 15.34,
+          "close": 15.46,
+          "high": 15.56,
+          "low": 15.28,
+          "volume": 2144282.0
+        },
+        {
+          "date": "2025-05-28",
+          "open": 15.38,
+          "close": 15.56,
+          "high": 15.68,
+          "low": 15.38,
+          "volume": 1591309.0
+        },
+        {
+          "date": "2025-05-29",
+          "open": 15.52,
+          "close": 15.58,
+          "high": 15.64,
+          "low": 15.42,
+          "volume": 977410.0
+        },
+        {
+          "date": "2025-05-30",
+          "open": 15.48,
+          "close": 15.68,
+          "high": 15.7,
+          "low": 15.48,
+          "volume": 2977610.0
+        },
+        {
+          "date": "2025-06-02",
+          "open": 15.7,
+          "close": 15.74,
+          "high": 15.9,
+          "low": 15.38,
+          "volume": 1342895.0
+        },
+        {
+          "date": "2025-06-03",
+          "open": 15.76,
+          "close": 16.62,
+          "high": 16.7,
+          "low": 15.76,
+          "volume": 5286155.0
+        },
+        {
+          "date": "2025-06-04",
+          "open": 16.66,
+          "close": 16.42,
+          "high": 16.7,
+          "low": 16.34,
+          "volume": 6251213.0
+        },
+        {
+          "date": "2025-06-05",
+          "open": 16.48,
+          "close": 16.68,
+          "high": 16.96,
+          "low": 16.48,
+          "volume": 5036190.0
+        },
+        {
+          "date": "2025-06-06",
+          "open": 16.68,
+          "close": 17.04,
+          "high": 17.06,
+          "low": 16.64,
+          "volume": 3338357.0
+        },
+        {
+          "date": "2025-06-09",
+          "open": 16.98,
+          "close": 16.82,
+          "high": 17.0,
+          "low": 16.66,
+          "volume": 2089982.0
+        },
+        {
+          "date": "2025-06-10",
+          "open": 16.68,
+          "close": 17.12,
+          "high": 17.14,
+          "low": 16.68,
+          "volume": 4303537.0
+        },
+        {
+          "date": "2025-06-11",
+          "open": 17.08,
+          "close": 16.98,
+          "high": 17.34,
+          "low": 16.8,
+          "volume": 5028800.0
+        },
+        {
+          "date": "2025-06-12",
+          "open": 16.9,
+          "close": 16.86,
+          "high": 17.18,
+          "low": 16.78,
+          "volume": 2310975.0
+        },
+        {
+          "date": "2025-06-13",
+          "open": 16.8,
+          "close": 16.96,
+          "high": 17.06,
+          "low": 16.68,
+          "volume": 2546007.0
+        },
+        {
+          "date": "2025-06-16",
+          "open": 16.84,
+          "close": 17.04,
+          "high": 17.32,
+          "low": 16.82,
+          "volume": 3342853.0
+        },
+        {
+          "date": "2025-06-17",
+          "open": 17.02,
+          "close": 16.98,
+          "high": 17.16,
+          "low": 16.88,
+          "volume": 2539363.0
+        },
+        {
+          "date": "2025-06-18",
+          "open": 16.96,
+          "close": 16.96,
+          "high": 17.02,
+          "low": 16.72,
+          "volume": 1060127.0
+        },
+        {
+          "date": "2025-06-19",
+          "open": 16.78,
+          "close": 16.66,
+          "high": 16.8,
+          "low": 16.54,
+          "volume": 4174700.0
+        },
+        {
+          "date": "2025-06-20",
+          "open": 16.66,
+          "close": 16.8,
+          "high": 16.82,
+          "low": 16.52,
+          "volume": 6861869.0
+        },
+        {
+          "date": "2025-06-23",
+          "open": 16.62,
+          "close": 17.24,
+          "high": 17.42,
+          "low": 16.62,
+          "volume": 2007843.0
+        },
+        {
+          "date": "2025-06-24",
+          "open": 17.28,
+          "close": 17.44,
+          "high": 17.52,
+          "low": 17.24,
+          "volume": 2180122.0
+        },
+        {
+          "date": "2025-06-25",
+          "open": 17.48,
+          "close": 18.1,
+          "high": 18.18,
+          "low": 17.38,
+          "volume": 9753651.0
+        },
+        {
+          "date": "2025-06-26",
+          "open": 18.18,
+          "close": 18.04,
+          "high": 18.18,
+          "low": 17.58,
+          "volume": 3000961.0
+        },
+        {
+          "date": "2025-06-27",
+          "open": 17.98,
+          "close": 18.18,
+          "high": 18.26,
+          "low": 17.8,
+          "volume": 4584428.0
+        },
+        {
+          "date": "2025-06-30",
+          "open": 18.32,
+          "close": 18.08,
+          "high": 18.32,
+          "low": 17.96,
+          "volume": 4138590.0
+        },
+        {
+          "date": "2025-07-02",
+          "open": 18.04,
+          "close": 18.16,
+          "high": 18.78,
+          "low": 18.02,
+          "volume": 6092592.0
+        },
+        {
+          "date": "2025-07-03",
+          "open": 17.98,
+          "close": 18.3,
+          "high": 18.32,
+          "low": 17.98,
+          "volume": 5552954.0
+        },
+        {
+          "date": "2025-07-04",
+          "open": 18.28,
+          "close": 18.36,
+          "high": 18.38,
+          "low": 17.98,
+          "volume": 3588516.0
+        },
+        {
+          "date": "2025-07-07",
+          "open": 18.34,
+          "close": 18.16,
+          "high": 18.34,
+          "low": 17.94,
+          "volume": 2856800.0
+        },
+        {
+          "date": "2025-07-08",
+          "open": 18.18,
+          "close": 17.84,
+          "high": 18.26,
+          "low": 17.72,
+          "volume": 3067105.0
+        },
+        {
+          "date": "2025-07-09",
+          "open": 17.7,
+          "close": 17.98,
+          "high": 18.04,
+          "low": 17.38,
+          "volume": 3760028.0
+        },
+        {
+          "date": "2025-07-10",
+          "open": 17.82,
+          "close": 17.96,
+          "high": 18.1,
+          "low": 17.82,
+          "volume": 982960.0
+        },
+        {
+          "date": "2025-07-11",
+          "open": 17.96,
+          "close": 18.1,
+          "high": 18.58,
+          "low": 17.96,
+          "volume": 2873894.0
+        },
+        {
+          "date": "2025-07-14",
+          "open": 18.08,
+          "close": 18.3,
+          "high": 18.38,
+          "low": 18.08,
+          "volume": 2954683.0
+        },
+        {
+          "date": "2025-07-15",
+          "open": 18.3,
+          "close": 18.1,
+          "high": 18.3,
+          "low": 17.98,
+          "volume": 1074190.0
+        },
+        {
+          "date": "2025-07-16",
+          "open": 18.04,
+          "close": 18.22,
+          "high": 18.36,
+          "low": 18.04,
+          "volume": 2478806.0
+        },
+        {
+          "date": "2025-07-17",
+          "open": 18.18,
+          "close": 18.48,
+          "high": 18.98,
+          "low": 18.18,
+          "volume": 4886904.0
+        },
+        {
+          "date": "2025-07-18",
+          "open": 18.63,
+          "close": 18.68,
+          "high": 18.73,
+          "low": 18.22,
+          "volume": 3708375.0
+        },
+        {
+          "date": "2025-07-21",
+          "open": 18.73,
+          "close": 18.73,
+          "high": 19.08,
+          "low": 18.58,
+          "volume": 2729100.0
+        },
+        {
+          "date": "2025-07-22",
+          "open": 18.88,
+          "close": 18.88,
+          "high": 19.18,
+          "low": 18.78,
+          "volume": 1842188.0
+        },
+        {
+          "date": "2025-07-23",
+          "open": 18.98,
+          "close": 19.18,
+          "high": 19.33,
+          "low": 18.88,
+          "volume": 2890792.0
+        },
+        {
+          "date": "2025-07-24",
+          "open": 19.18,
+          "close": 19.13,
+          "high": 19.43,
+          "low": 19.08,
+          "volume": 4501858.0
+        },
+        {
+          "date": "2025-07-25",
+          "open": 18.93,
+          "close": 19.03,
+          "high": 19.28,
+          "low": 18.83,
+          "volume": 2269033.0
+        },
+        {
+          "date": "2025-07-28",
+          "open": 19.08,
+          "close": 19.18,
+          "high": 19.33,
+          "low": 18.78,
+          "volume": 2791800.0
+        },
+        {
+          "date": "2025-07-29",
+          "open": 19.23,
+          "close": 19.43,
+          "high": 19.48,
+          "low": 19.03,
+          "volume": 3081700.0
+        },
+        {
+          "date": "2025-07-30",
+          "open": 19.43,
+          "close": 19.63,
+          "high": 19.68,
+          "low": 19.23,
+          "volume": 2838216.0
+        },
+        {
+          "date": "2025-07-31",
+          "open": 19.68,
+          "close": 19.58,
+          "high": 19.73,
+          "low": 19.28,
+          "volume": 2896937.0
+        },
+        {
+          "date": "2025-08-01",
+          "open": 19.58,
+          "close": 18.98,
+          "high": 19.58,
+          "low": 18.73,
+          "volume": 2820760.0
+        },
+        {
+          "date": "2025-08-04",
+          "open": 18.78,
+          "close": 19.14,
+          "high": 19.32,
+          "low": 18.7,
+          "volume": 2946759.0
+        },
+        {
+          "date": "2025-08-05",
+          "open": 19.12,
+          "close": 19.02,
+          "high": 19.14,
+          "low": 18.9,
+          "volume": 819621.0
+        },
+        {
+          "date": "2025-08-06",
+          "open": 19.08,
+          "close": 19.08,
+          "high": 19.18,
+          "low": 18.96,
+          "volume": 1972635.0
+        },
+        {
+          "date": "2025-08-07",
+          "open": 19.08,
+          "close": 19.56,
+          "high": 19.66,
+          "low": 19.08,
+          "volume": 2569903.0
+        },
+        {
+          "date": "2025-08-08",
+          "open": 19.52,
+          "close": 19.56,
+          "high": 19.94,
+          "low": 19.24,
+          "volume": 3711522.0
+        },
+        {
+          "date": "2025-08-11",
+          "open": 19.52,
+          "close": 19.58,
+          "high": 19.94,
+          "low": 19.36,
+          "volume": 2249877.0
+        },
+        {
+          "date": "2025-08-12",
+          "open": 19.48,
+          "close": 19.18,
+          "high": 19.56,
+          "low": 19.04,
+          "volume": 2257271.0
+        },
+        {
+          "date": "2025-08-13",
+          "open": 19.24,
+          "close": 19.42,
+          "high": 19.54,
+          "low": 19.04,
+          "volume": 5441963.0
+        },
+        {
+          "date": "2025-08-14",
+          "open": 19.42,
+          "close": 19.28,
+          "high": 19.68,
+          "low": 19.2,
+          "volume": 3150085.0
+        },
+        {
+          "date": "2025-08-15",
+          "open": 19.32,
+          "close": 19.18,
+          "high": 19.58,
+          "low": 19.04,
+          "volume": 4440300.0
+        },
+        {
+          "date": "2025-08-18",
+          "open": 19.08,
+          "close": 19.1,
+          "high": 19.52,
+          "low": 19.08,
+          "volume": 4543830.0
+        },
+        {
+          "date": "2025-08-19",
+          "open": 19.12,
+          "close": 18.9,
+          "high": 19.14,
+          "low": 18.62,
+          "volume": 3295406.0
+        },
+        {
+          "date": "2025-08-20",
+          "open": 18.82,
+          "close": 19.02,
+          "high": 19.08,
+          "low": 18.48,
+          "volume": 1897058.0
+        },
+        {
+          "date": "2025-08-21",
+          "open": 19.04,
+          "close": 19.5,
+          "high": 19.54,
+          "low": 19.02,
+          "volume": 5488809.0
+        },
+        {
+          "date": "2025-08-22",
+          "open": 19.52,
+          "close": 19.4,
+          "high": 19.8,
+          "low": 19.3,
+          "volume": 2751359.0
+        },
+        {
+          "date": "2025-08-25",
+          "open": 19.46,
+          "close": 19.44,
+          "high": 19.76,
+          "low": 19.28,
+          "volume": 3453269.0
+        },
+        {
+          "date": "2025-08-26",
+          "open": 19.38,
+          "close": 19.44,
+          "high": 19.5,
+          "low": 19.14,
+          "volume": 4536408.0
+        },
+        {
+          "date": "2025-08-27",
+          "open": 19.38,
+          "close": 19.38,
+          "high": 19.48,
+          "low": 19.22,
+          "volume": 2500713.0
+        },
+        {
+          "date": "2025-08-28",
+          "open": 19.34,
+          "close": 19.42,
+          "high": 19.52,
+          "low": 19.2,
+          "volume": 2947144.0
+        },
+        {
+          "date": "2025-08-29",
+          "open": 19.38,
+          "close": 19.6,
+          "high": 19.66,
+          "low": 19.38,
+          "volume": 3655063.0
+        },
+        {
+          "date": "2025-09-01",
+          "open": 19.74,
+          "close": 19.66,
+          "high": 19.96,
+          "low": 19.5,
+          "volume": 1659232.0
+        },
+        {
+          "date": "2025-09-02",
+          "open": 19.58,
+          "close": 19.56,
+          "high": 19.76,
+          "low": 19.36,
+          "volume": 2797585.0
+        },
+        {
+          "date": "2025-09-03",
+          "open": 19.37,
+          "close": 19.29,
+          "high": 19.53,
+          "low": 19.03,
+          "volume": 2493871.0
+        },
+        {
+          "date": "2025-09-04",
+          "open": 19.17,
+          "close": 19.49,
+          "high": 19.53,
+          "low": 19.17,
+          "volume": 2679040.0
+        },
+        {
+          "date": "2025-09-05",
+          "open": 19.57,
+          "close": 19.77,
+          "high": 19.81,
+          "low": 19.43,
+          "volume": 2119152.0
+        },
+        {
+          "date": "2025-09-08",
+          "open": 19.83,
+          "close": 20.09,
+          "high": 20.15,
+          "low": 19.83,
+          "volume": 3314689.0
+        },
+        {
+          "date": "2025-09-09",
+          "open": 20.19,
+          "close": 20.31,
+          "high": 20.33,
+          "low": 20.01,
+          "volume": 2476958.0
+        },
+        {
+          "date": "2025-09-10",
+          "open": 20.33,
+          "close": 20.69,
+          "high": 20.71,
+          "low": 20.21,
+          "volume": 4339185.0
+        },
+        {
+          "date": "2025-09-11",
+          "open": 20.43,
+          "close": 20.81,
+          "high": 20.99,
+          "low": 20.43,
+          "volume": 4634277.0
+        },
+        {
+          "date": "2025-09-12",
+          "open": 20.73,
+          "close": 20.81,
+          "high": 20.91,
+          "low": 20.59,
+          "volume": 1673419.0
+        },
+        {
+          "date": "2025-09-15",
+          "open": 20.73,
+          "close": 21.01,
+          "high": 21.07,
+          "low": 20.69,
+          "volume": 2650644.0
+        },
+        {
+          "date": "2025-09-16",
+          "open": 21.03,
+          "close": 21.13,
+          "high": 21.29,
+          "low": 20.91,
+          "volume": 2838344.0
+        },
+        {
+          "date": "2025-09-17",
+          "open": 21.13,
+          "close": 20.85,
+          "high": 21.27,
+          "low": 20.73,
+          "volume": 4792422.0
+        },
+        {
+          "date": "2025-09-18",
+          "open": 20.63,
+          "close": 20.85,
+          "high": 20.89,
+          "low": 20.29,
+          "volume": 5007362.0
+        },
+        {
+          "date": "2025-09-19",
+          "open": 20.75,
+          "close": 20.85,
+          "high": 21.11,
+          "low": 20.59,
+          "volume": 5737922.0
+        },
+        {
+          "date": "2025-09-22",
+          "open": 20.83,
+          "close": 20.89,
+          "high": 21.07,
+          "low": 20.71,
+          "volume": 3980176.0
+        },
+        {
+          "date": "2025-09-23",
+          "open": 20.83,
+          "close": 20.77,
+          "high": 20.97,
+          "low": 20.69,
+          "volume": 4155308.0
+        },
+        {
+          "date": "2025-09-24",
+          "open": 20.65,
+          "close": 20.51,
+          "high": 20.77,
+          "low": 20.37,
+          "volume": 4284706.0
+        },
+        {
+          "date": "2025-09-25",
+          "open": 20.33,
+          "close": 20.11,
+          "high": 20.51,
+          "low": 19.93,
+          "volume": 6763603.0
+        },
+        {
+          "date": "2025-09-26",
+          "open": 19.77,
+          "close": 20.01,
+          "high": 20.19,
+          "low": 19.63,
+          "volume": 2531389.0
+        },
+        {
+          "date": "2025-09-29",
+          "open": 20.03,
+          "close": 20.37,
+          "high": 20.43,
+          "low": 19.85,
+          "volume": 3235428.0
+        },
+        {
+          "date": "2025-09-30",
+          "open": 20.45,
+          "close": 20.97,
+          "high": 20.97,
+          "low": 20.45,
+          "volume": 5631754.0
+        },
+        {
+          "date": "2025-10-02",
+          "open": 21.21,
+          "close": 20.69,
+          "high": 21.31,
+          "low": 20.65,
+          "volume": 3496022.0
+        },
+        {
+          "date": "2025-10-03",
+          "open": 20.59,
+          "close": 20.69,
+          "high": 20.83,
+          "low": 20.53,
+          "volume": 1740607.0
+        },
+        {
+          "date": "2025-10-06",
+          "open": 20.59,
+          "close": 20.17,
+          "high": 20.63,
+          "low": 20.15,
+          "volume": 653501.0
+        },
+        {
+          "date": "2025-10-08",
+          "open": 20.49,
+          "close": 20.21,
+          "high": 20.49,
+          "low": 19.83,
+          "volume": 2517324.0
+        },
+        {
+          "date": "2025-10-09",
+          "open": 20.19,
+          "close": 20.33,
+          "high": 20.39,
+          "low": 19.83,
+          "volume": 4571686.0
+        },
+        {
+          "date": "2025-10-10",
+          "open": 20.25,
+          "close": 20.45,
+          "high": 20.61,
+          "low": 20.07,
+          "volume": 1461379.0
+        },
+        {
+          "date": "2025-10-13",
+          "open": 20.15,
+          "close": 20.55,
+          "high": 20.55,
+          "low": 20.01,
+          "volume": 3640550.0
+        },
+        {
+          "date": "2025-10-14",
+          "open": 20.53,
+          "close": 20.53,
+          "high": 20.87,
+          "low": 20.41,
+          "volume": 2658556.0
+        },
+        {
+          "date": "2025-10-15",
+          "open": 20.43,
+          "close": 20.73,
+          "high": 20.83,
+          "low": 20.25,
+          "volume": 3555158.0
+        },
+        {
+          "date": "2025-10-16",
+          "open": 20.59,
+          "close": 20.33,
+          "high": 20.95,
+          "low": 20.11,
+          "volume": 2206305.0
+        },
+        {
+          "date": "2025-10-17",
+          "open": 20.19,
+          "close": 20.29,
+          "high": 20.57,
+          "low": 20.07,
+          "volume": 2591134.0
+        },
+        {
+          "date": "2025-10-20",
+          "open": 20.13,
+          "close": 20.79,
+          "high": 20.83,
+          "low": 20.13,
+          "volume": 1150846.0
+        },
+        {
+          "date": "2025-10-21",
+          "open": 20.79,
+          "close": 20.33,
+          "high": 21.03,
+          "low": 20.31,
+          "volume": 2185978.0
+        },
+        {
+          "date": "2025-10-22",
+          "open": 20.13,
+          "close": 20.27,
+          "high": 20.43,
+          "low": 19.99,
+          "volume": 5236302.0
+        },
+        {
+          "date": "2025-10-23",
+          "open": 20.13,
+          "close": 20.11,
+          "high": 20.33,
+          "low": 19.85,
+          "volume": 4781450.0
+        },
+        {
+          "date": "2025-10-24",
+          "open": 20.09,
+          "close": 20.47,
+          "high": 20.53,
+          "low": 20.09,
+          "volume": 2782307.0
+        },
+        {
+          "date": "2025-10-27",
+          "open": 20.55,
+          "close": 20.33,
+          "high": 20.61,
+          "low": 20.25,
+          "volume": 1400169.0
+        },
+        {
+          "date": "2025-10-28",
+          "open": 20.33,
+          "close": 20.63,
+          "high": 20.67,
+          "low": 20.33,
+          "volume": 2061985.0
+        },
+        {
+          "date": "2025-10-30",
+          "open": 21.05,
+          "close": 20.21,
+          "high": 21.05,
+          "low": 20.13,
+          "volume": 2696180.0
+        },
+        {
+          "date": "2025-10-31",
+          "open": 20.01,
+          "close": 20.03,
+          "high": 20.35,
+          "low": 19.87,
+          "volume": 2252848.0
+        },
+        {
+          "date": "2025-11-03",
+          "open": 19.93,
+          "close": 20.41,
+          "high": 20.45,
+          "low": 19.93,
+          "volume": 2926014.0
+        },
+        {
+          "date": "2025-11-04",
+          "open": 20.41,
+          "close": 20.81,
+          "high": 20.85,
+          "low": 20.33,
+          "volume": 4072148.0
+        },
+        {
+          "date": "2025-11-05",
+          "open": 20.81,
+          "close": 20.63,
+          "high": 20.81,
+          "low": 20.25,
+          "volume": 3570415.0
+        },
+        {
+          "date": "2025-11-06",
+          "open": 20.73,
+          "close": 20.49,
+          "high": 20.89,
+          "low": 20.39,
+          "volume": 2656522.0
+        },
+        {
+          "date": "2025-11-07",
+          "open": 20.33,
+          "close": 20.55,
+          "high": 20.65,
+          "low": 20.33,
+          "volume": 2340959.0
+        },
+        {
+          "date": "2025-11-10",
+          "open": 20.53,
+          "close": 20.85,
+          "high": 20.91,
+          "low": 20.53,
+          "volume": 4864309.0
+        },
+        {
+          "date": "2025-11-11",
+          "open": 20.73,
+          "close": 20.75,
+          "high": 20.83,
+          "low": 20.35,
+          "volume": 4702611.0
+        },
+        {
+          "date": "2025-11-12",
+          "open": 20.87,
+          "close": 21.65,
+          "high": 21.83,
+          "low": 20.83,
+          "volume": 8740225.0
+        },
+        {
+          "date": "2025-11-13",
+          "open": 21.63,
+          "close": 21.73,
+          "high": 21.85,
+          "low": 21.51,
+          "volume": 7222825.0
+        },
+        {
+          "date": "2025-11-14",
+          "open": 21.59,
+          "close": 21.53,
+          "high": 21.85,
+          "low": 21.45,
+          "volume": 2898259.0
+        },
+        {
+          "date": "2025-11-17",
+          "open": 21.17,
+          "close": 21.43,
+          "high": 21.59,
+          "low": 21.17,
+          "volume": 4366944.0
+        },
+        {
+          "date": "2025-11-18",
+          "open": 21.39,
+          "close": 20.93,
+          "high": 21.41,
+          "low": 20.85,
+          "volume": 3228787.0
+        },
+        {
+          "date": "2025-11-19",
+          "open": 21.13,
+          "close": 20.85,
+          "high": 21.25,
+          "low": 20.73,
+          "volume": 1505048.0
+        },
+        {
+          "date": "2025-11-20",
+          "open": 20.89,
+          "close": 20.87,
+          "high": 21.25,
+          "low": 20.75,
+          "volume": 3288679.0
+        },
+        {
+          "date": "2025-11-21",
+          "open": 20.77,
+          "close": 20.55,
+          "high": 20.77,
+          "low": 20.39,
+          "volume": 3409093.0
+        },
+        {
+          "date": "2025-11-24",
+          "open": 20.57,
+          "close": 20.83,
+          "high": 20.93,
+          "low": 20.37,
+          "volume": 3423742.0
+        },
+        {
+          "date": "2025-11-25",
+          "open": 20.77,
+          "close": 20.73,
+          "high": 21.07,
+          "low": 20.63,
+          "volume": 3516272.0
+        },
+        {
+          "date": "2025-11-26",
+          "open": 20.73,
+          "close": 20.77,
+          "high": 20.93,
+          "low": 20.65,
+          "volume": 4583724.0
+        },
+        {
+          "date": "2025-11-27",
+          "open": 20.79,
+          "close": 20.83,
+          "high": 21.19,
+          "low": 20.77,
+          "volume": 5587149.0
+        },
+        {
+          "date": "2025-11-28",
+          "open": 20.75,
+          "close": 20.19,
+          "high": 20.75,
+          "low": 20.11,
+          "volume": 3992335.0
+        },
+        {
+          "date": "2025-12-01",
+          "open": 20.19,
+          "close": 19.93,
+          "high": 20.35,
+          "low": 19.77,
+          "volume": 7529010.0
+        },
+        {
+          "date": "2025-12-02",
+          "open": 19.95,
+          "close": 20.63,
+          "high": 20.73,
+          "low": 19.95,
+          "volume": 5445348.0
+        },
+        {
+          "date": "2025-12-03",
+          "open": 20.61,
+          "close": 20.31,
+          "high": 20.65,
+          "low": 20.21,
+          "volume": 1836782.0
+        },
+        {
+          "date": "2025-12-04",
+          "open": 20.31,
+          "close": 20.13,
+          "high": 20.41,
+          "low": 20.05,
+          "volume": 3928650.0
+        },
+        {
+          "date": "2025-12-05",
+          "open": 20.23,
+          "close": 19.95,
+          "high": 20.23,
+          "low": 19.87,
+          "volume": 1906658.0
+        },
+        {
+          "date": "2025-12-08",
+          "open": 19.93,
+          "close": 19.93,
+          "high": 20.03,
+          "low": 19.75,
+          "volume": 2923835.0
+        },
+        {
+          "date": "2025-12-09",
+          "open": 19.99,
+          "close": 19.85,
+          "high": 19.99,
+          "low": 19.77,
+          "volume": 3121468.0
+        },
+        {
+          "date": "2025-12-10",
+          "open": 19.85,
+          "close": 19.89,
+          "high": 20.05,
+          "low": 19.77,
+          "volume": 3448562.0
+        },
+        {
+          "date": "2025-12-11",
+          "open": 19.99,
+          "close": 19.93,
+          "high": 20.17,
+          "low": 19.87,
+          "volume": 4019421.0
+        },
+        {
+          "date": "2025-12-12",
+          "open": 19.99,
+          "close": 20.27,
+          "high": 20.45,
+          "low": 19.95,
+          "volume": 5524516.0
+        },
+        {
+          "date": "2025-12-15",
+          "open": 20.17,
+          "close": 20.07,
+          "high": 20.39,
+          "low": 19.99,
+          "volume": 2273142.0
+        },
+        {
+          "date": "2025-12-16",
+          "open": 20.07,
+          "close": 19.95,
+          "high": 20.07,
+          "low": 19.83,
+          "volume": 3342293.0
+        },
+        {
+          "date": "2025-12-17",
+          "open": 19.93,
+          "close": 19.83,
+          "high": 19.93,
+          "low": 19.65,
+          "volume": 1905021.0
+        },
+        {
+          "date": "2025-12-18",
+          "open": 19.69,
+          "close": 19.89,
+          "high": 20.19,
+          "low": 19.57,
+          "volume": 2790085.0
+        },
+        {
+          "date": "2025-12-19",
+          "open": 19.77,
+          "close": 20.03,
+          "high": 20.27,
+          "low": 19.77,
+          "volume": 5980401.0
+        },
+        {
+          "date": "2025-12-22",
+          "open": 20.03,
+          "close": 19.83,
+          "high": 20.07,
+          "low": 19.75,
+          "volume": 3093019.0
+        },
+        {
+          "date": "2025-12-23",
+          "open": 19.77,
+          "close": 19.93,
+          "high": 19.99,
+          "low": 19.73,
+          "volume": 2318635.0
+        },
+        {
+          "date": "2025-12-24",
+          "open": 19.87,
+          "close": 19.87,
+          "high": 20.07,
+          "low": 19.81,
+          "volume": 1123125.0
+        },
+        {
+          "date": "2025-12-29",
+          "open": 19.93,
+          "close": 19.77,
+          "high": 20.05,
+          "low": 19.61,
+          "volume": 1163463.0
+        },
+        {
+          "date": "2025-12-30",
+          "open": 19.69,
+          "close": 19.75,
+          "high": 19.97,
+          "low": 19.59,
+          "volume": 1554794.0
+        },
+        {
+          "date": "2025-12-31",
+          "open": 19.79,
+          "close": 19.81,
+          "high": 19.93,
+          "low": 19.57,
+          "volume": 954991.0
+        },
+        {
+          "date": "2026-01-02",
+          "open": 19.77,
+          "close": 19.99,
+          "high": 19.99,
+          "low": 19.71,
+          "volume": 1636525.0
+        },
+        {
+          "date": "2026-01-05",
+          "open": 19.87,
+          "close": 19.69,
+          "high": 20.01,
+          "low": 19.53,
+          "volume": 2655416.0
+        },
+        {
+          "date": "2026-01-06",
+          "open": 19.63,
+          "close": 19.89,
+          "high": 20.29,
+          "low": 19.63,
+          "volume": 3499387.0
+        },
+        {
+          "date": "2026-01-07",
+          "open": 19.87,
+          "close": 20.19,
+          "high": 20.37,
+          "low": 19.87,
+          "volume": 2462350.0
+        },
+        {
+          "date": "2026-01-08",
+          "open": 20.17,
+          "close": 20.03,
+          "high": 20.31,
+          "low": 19.97,
+          "volume": 6861429.0
+        },
+        {
+          "date": "2026-01-09",
+          "open": 19.97,
+          "close": 20.25,
+          "high": 20.41,
+          "low": 19.85,
+          "volume": 5577885.0
+        },
+        {
+          "date": "2026-01-12",
+          "open": 20.39,
+          "close": 21.01,
+          "high": 21.17,
+          "low": 20.29,
+          "volume": 10443030.0
+        },
+        {
+          "date": "2026-01-13",
+          "open": 21.07,
+          "close": 21.19,
+          "high": 21.43,
+          "low": 20.91,
+          "volume": 7369393.0
+        },
+        {
+          "date": "2026-01-14",
+          "open": 21.19,
+          "close": 20.89,
+          "high": 21.59,
+          "low": 20.55,
+          "volume": 9086305.0
+        },
+        {
+          "date": "2026-01-15",
+          "open": 20.89,
+          "close": 21.57,
+          "high": 21.57,
+          "low": 20.87,
+          "volume": 5959895.0
+        },
+        {
+          "date": "2026-01-16",
+          "open": 21.59,
+          "close": 21.87,
+          "high": 22.09,
+          "low": 21.51,
+          "volume": 7152972.0
+        },
+        {
+          "date": "2026-01-19",
+          "open": 21.87,
+          "close": 21.77,
+          "high": 21.95,
+          "low": 21.51,
+          "volume": 3278200.0
+        },
+        {
+          "date": "2026-01-20",
+          "open": 21.53,
+          "close": 22.05,
+          "high": 22.05,
+          "low": 21.53,
+          "volume": 3416789.0
+        },
+        {
+          "date": "2026-01-21",
+          "open": 21.83,
+          "close": 21.97,
+          "high": 22.11,
+          "low": 21.79,
+          "volume": 2604735.0
+        },
+        {
+          "date": "2026-01-22",
+          "open": 21.93,
+          "close": 22.19,
+          "high": 22.33,
+          "low": 21.67,
+          "volume": 6029429.0
+        },
+        {
+          "date": "2026-01-23",
+          "open": 22.19,
+          "close": 21.93,
+          "high": 22.79,
+          "low": 21.87,
+          "volume": 2505498.0
+        },
+        {
+          "date": "2026-01-26",
+          "open": 21.89,
+          "close": 22.03,
+          "high": 22.19,
+          "low": 21.51,
+          "volume": 3784152.0
+        },
+        {
+          "date": "2026-01-27",
+          "open": 22.15,
+          "close": 22.03,
+          "high": 22.37,
+          "low": 21.65,
+          "volume": 4580851.0
+        },
+        {
+          "date": "2026-01-28",
+          "open": 22.03,
+          "close": 22.57,
+          "high": 22.73,
+          "low": 22.03,
+          "volume": 3736809.0
+        },
+        {
+          "date": "2026-01-29",
+          "open": 22.53,
+          "close": 22.31,
+          "high": 22.53,
+          "low": 22.13,
+          "volume": 6167904.0
+        },
+        {
+          "date": "2026-01-30",
+          "open": 22.29,
+          "close": 22.55,
+          "high": 22.55,
+          "low": 22.09,
+          "volume": 5115801.0
+        },
+        {
+          "date": "2026-02-02",
+          "open": 22.37,
+          "close": 22.05,
+          "high": 22.37,
+          "low": 21.73,
+          "volume": 5699287.0
+        },
+        {
+          "date": "2026-02-03",
+          "open": 22.33,
+          "close": 22.69,
+          "high": 22.79,
+          "low": 22.13,
+          "volume": 1897018.0
+        },
+        {
+          "date": "2026-02-04",
+          "open": 22.39,
+          "close": 22.91,
+          "high": 22.99,
+          "low": 22.39,
+          "volume": 3181209.0
+        },
+        {
+          "date": "2026-02-05",
+          "open": 22.97,
+          "close": 23.61,
+          "high": 23.65,
+          "low": 22.89,
+          "volume": 4985862.0
+        },
+        {
+          "date": "2026-02-06",
+          "open": 23.83,
+          "close": 23.47,
+          "high": 23.83,
+          "low": 22.79,
+          "volume": 8052818.0
+        },
+        {
+          "date": "2026-02-09",
+          "open": 23.47,
+          "close": 24.63,
+          "high": 24.67,
+          "low": 23.43,
+          "volume": 7112132.0
+        },
+        {
+          "date": "2026-02-10",
+          "open": 24.73,
+          "close": 24.63,
+          "high": 24.81,
+          "low": 24.29,
+          "volume": 5465284.0
+        },
+        {
+          "date": "2026-02-11",
+          "open": 24.63,
+          "close": 24.45,
+          "high": 24.63,
+          "low": 24.15,
+          "volume": 2555700.0
+        },
+        {
+          "date": "2026-02-12",
+          "open": 24.41,
+          "close": 24.31,
+          "high": 24.51,
+          "low": 24.07,
+          "volume": 3958314.0
+        },
+        {
+          "date": "2026-02-13",
+          "open": 24.01,
+          "close": 23.95,
+          "high": 24.09,
+          "low": 23.83,
+          "volume": 3150521.0
+        },
+        {
+          "date": "2026-02-16",
+          "open": 23.89,
+          "close": 23.87,
+          "high": 24.09,
+          "low": 23.77,
+          "volume": 394010.0
+        },
+        {
+          "date": "2026-02-20",
+          "open": 23.87,
+          "close": 24.27,
+          "high": 24.37,
+          "low": 23.75,
+          "volume": 4541818.0
+        },
+        {
+          "date": "2026-02-23",
+          "open": 24.33,
+          "close": 24.87,
+          "high": 24.93,
+          "low": 24.33,
+          "volume": 4301335.0
+        },
+        {
+          "date": "2026-02-24",
+          "open": 24.73,
+          "close": 25.43,
+          "high": 25.51,
+          "low": 24.67,
+          "volume": 7294644.0
+        },
+        {
+          "date": "2026-02-25",
+          "open": 25.47,
+          "close": 25.31,
+          "high": 25.65,
+          "low": 25.01,
+          "volume": 3964817.0
+        },
+        {
+          "date": "2026-02-26",
+          "open": 25.45,
+          "close": 25.17,
+          "high": 25.75,
+          "low": 25.11,
+          "volume": 4773414.0
+        },
+        {
+          "date": "2026-02-27",
+          "open": 25.17,
+          "close": 25.83,
+          "high": 26.01,
+          "low": 25.01,
+          "volume": 6746539.0
+        },
+        {
+          "date": "2026-03-02",
+          "open": 25.83,
+          "close": 25.29,
+          "high": 25.97,
+          "low": 25.05,
+          "volume": 4322275.0
+        },
+        {
+          "date": "2026-03-03",
+          "open": 25.25,
+          "close": 24.65,
+          "high": 25.65,
+          "low": 24.43,
+          "volume": 4999323.0
+        },
+        {
+          "date": "2026-03-04",
+          "open": 23.77,
+          "close": 23.87,
+          "high": 24.51,
+          "low": 23.65,
+          "volume": 4209724.0
+        },
+        {
+          "date": "2026-03-05",
+          "open": 23.91,
+          "close": 24.33,
+          "high": 24.97,
+          "low": 23.91,
+          "volume": 2591453.0
+        },
+        {
+          "date": "2026-03-06",
+          "open": 24.13,
+          "close": 24.17,
+          "high": 24.21,
+          "low": 23.91,
+          "volume": 2690399.0
+        },
+        {
+          "date": "2026-03-09",
+          "open": 23.81,
+          "close": 23.13,
+          "high": 23.81,
+          "low": 22.25,
+          "volume": 6235871.0
+        },
+        {
+          "date": "2026-03-10",
+          "open": 23.63,
+          "close": 23.89,
+          "high": 24.09,
+          "low": 23.57,
+          "volume": 4852715.0
+        },
+        {
+          "date": "2026-03-11",
+          "open": 23.77,
+          "close": 23.59,
+          "high": 23.99,
+          "low": 23.35,
+          "volume": 2579727.0
+        },
+        {
+          "date": "2026-03-12",
+          "open": 23.59,
+          "close": 23.29,
+          "high": 23.59,
+          "low": 22.65,
+          "volume": 4986524.0
+        },
+        {
+          "date": "2026-03-13",
+          "open": 23.61,
+          "close": 23.35,
+          "high": 24.21,
+          "low": 22.69,
+          "volume": 4162444.0
+        },
+        {
+          "date": "2026-03-16",
+          "open": 23.21,
+          "close": 23.47,
+          "high": 23.65,
+          "low": 22.85,
+          "volume": 2480160.0
+        },
+        {
+          "date": "2026-03-17",
+          "open": 23.47,
+          "close": 23.59,
+          "high": 23.99,
+          "low": 22.95,
+          "volume": 2523400.0
+        },
+        {
+          "date": "2026-03-18",
+          "open": 23.63,
+          "close": 24.43,
+          "high": 24.51,
+          "low": 23.43,
+          "volume": 3251239.0
+        },
+        {
+          "date": "2026-03-19",
+          "open": 24.23,
+          "close": 23.61,
+          "high": 24.23,
+          "low": 23.43,
+          "volume": 2664189.0
+        },
+        {
+          "date": "2026-03-20",
+          "open": 23.33,
+          "close": 22.65,
+          "high": 23.61,
+          "low": 22.65,
+          "volume": 7913700.0
+        },
+        {
+          "date": "2026-03-23",
+          "open": 22.09,
+          "close": 22.11,
+          "high": 22.53,
+          "low": 21.89,
+          "volume": 5053617.0
+        },
+        {
+          "date": "2026-03-24",
+          "open": 22.71,
+          "close": 23.13,
+          "high": 23.21,
+          "low": 22.33,
+          "volume": 3903738.0
+        },
+        {
+          "date": "2026-03-25",
+          "open": 23.63,
+          "close": 23.17,
+          "high": 23.67,
+          "low": 23.01,
+          "volume": 2472177.0
+        },
+        {
+          "date": "2026-03-26",
+          "open": 23.43,
+          "close": 22.81,
+          "high": 23.43,
+          "low": 22.71,
+          "volume": 3946518.0
+        },
+        {
+          "date": "2026-03-27",
+          "open": 22.45,
+          "close": 22.59,
+          "high": 22.95,
+          "low": 22.39,
+          "volume": 3656680.0
+        },
+        {
+          "date": "2026-03-30",
+          "open": 21.91,
+          "close": 22.45,
+          "high": 22.73,
+          "low": 21.91,
+          "volume": 2409255.0
+        },
+        {
+          "date": "2026-03-31",
+          "open": 22.63,
+          "close": 22.37,
+          "high": 23.09,
+          "low": 22.21,
+          "volume": 3857808.0
+        },
+        {
+          "date": "2026-04-01",
+          "open": 22.63,
+          "close": 22.83,
+          "high": 23.13,
+          "low": 22.63,
+          "volume": 2058232.0
+        },
+        {
+          "date": "2026-04-02",
+          "open": 22.83,
+          "close": 22.61,
+          "high": 23.13,
+          "low": 22.21,
+          "volume": 2523298.0
+        },
+        {
+          "date": "2026-04-08",
+          "open": 23.63,
+          "close": 23.87,
+          "high": 24.07,
+          "low": 22.97,
+          "volume": 7028006.0
+        },
+        {
+          "date": "2026-04-09",
+          "open": 24.03,
+          "close": 24.21,
+          "high": 24.47,
+          "low": 23.75,
+          "volume": 3834663.0
+        },
+        {
+          "date": "2026-04-10",
+          "open": 24.37,
+          "close": 24.57,
+          "high": 25.07,
+          "low": 24.21,
+          "volume": 3406984.0
+        },
+        {
+          "date": "2026-04-13",
+          "open": 24.17,
+          "close": 24.37,
+          "high": 24.43,
+          "low": 23.85,
+          "volume": 2175804.0
+        },
+        {
+          "date": "2026-04-14",
+          "open": 24.37,
+          "close": 24.27,
+          "high": 24.47,
+          "low": 23.99,
+          "volume": 2053880.0
+        },
+        {
+          "date": "2026-04-15",
+          "open": 24.47,
+          "close": 24.37,
+          "high": 24.61,
+          "low": 24.23,
+          "volume": 2456601.0
+        },
+        {
+          "date": "2026-04-16",
+          "open": 24.01,
+          "close": 24.51,
+          "high": 24.61,
+          "low": 24.01,
+          "volume": 1826650.0
+        },
+        {
+          "date": "2026-04-17",
+          "open": 24.59,
+          "close": 24.69,
+          "high": 24.71,
+          "low": 24.27,
+          "volume": 3703943.0
+        },
+        {
+          "date": "2026-04-20",
+          "open": 24.27,
+          "close": 24.65,
+          "high": 24.73,
+          "low": 24.19,
+          "volume": 3418556.0
+        },
+        {
+          "date": "2026-04-21",
+          "open": 24.63,
+          "close": 24.81,
+          "high": 25.43,
+          "low": 24.41,
+          "volume": 4787285.0
+        },
+        {
+          "date": "2026-04-22",
+          "open": 24.79,
+          "close": 24.67,
+          "high": 25.25,
+          "low": 23.87,
+          "volume": 2532975.0
+        },
+        {
+          "date": "2026-04-23",
+          "open": 24.63,
+          "close": 24.47,
+          "high": 24.75,
+          "low": 24.33,
+          "volume": 2459272.0
+        },
+        {
+          "date": "2026-04-24",
+          "open": 25.13,
+          "close": 24.53,
+          "high": 25.13,
+          "low": 24.13,
+          "volume": 2937405.0
+        },
+        {
+          "date": "2026-04-27",
+          "open": 24.53,
+          "close": 24.25,
+          "high": 24.73,
+          "low": 24.01,
+          "volume": 1938183.0
+        },
+        {
+          "date": "2026-04-28",
+          "open": 24.83,
+          "close": 24.33,
+          "high": 24.83,
+          "low": 24.19,
+          "volume": 3544958.0
+        },
+        {
+          "date": "2026-04-29",
+          "open": 24.75,
+          "close": 24.87,
+          "high": 24.91,
+          "low": 24.31,
+          "volume": 5010717.0
+        },
+        {
+          "date": "2026-04-30",
+          "open": 24.63,
+          "close": 24.63,
+          "high": 25.01,
+          "low": 24.43,
+          "volume": 2929287.0
+        },
+        {
+          "date": "2026-05-04",
+          "open": 25.13,
+          "close": 24.65,
+          "high": 25.13,
+          "low": 24.43,
+          "volume": 1422794.0
+        },
+        {
+          "date": "2026-05-05",
+          "open": 24.65,
+          "close": 24.61,
+          "high": 24.91,
+          "low": 24.27,
+          "volume": 2522865.0
+        },
+        {
+          "date": "2026-05-06",
+          "open": 24.81,
+          "close": 24.93,
+          "high": 24.93,
+          "low": 24.29,
+          "volume": 2867007.0
+        },
+        {
+          "date": "2026-05-07",
+          "open": 24.97,
+          "close": 24.95,
+          "high": 25.39,
+          "low": 24.75,
+          "volume": 5680382.0
+        },
+        {
+          "date": "2026-05-08",
+          "open": 24.87,
+          "close": 24.63,
+          "high": 24.99,
+          "low": 24.19,
+          "volume": 4997048.0
+        },
+        {
+          "date": "2026-05-11",
+          "open": 24.39,
+          "close": 25.05,
+          "high": 25.63,
+          "low": 24.35,
+          "volume": 2845220.0
+        },
+        {
+          "date": "2026-05-12",
+          "open": 25.21,
+          "close": 24.69,
+          "high": 25.33,
+          "low": 24.63,
+          "volume": 2082278.0
+        },
+        {
+          "date": "2026-05-13",
+          "open": 24.41,
+          "close": 24.19,
+          "high": 24.57,
+          "low": 24.17,
+          "volume": 2094793.0
+        },
+        {
+          "date": "2026-05-14",
+          "open": 24.17,
+          "close": 24.31,
+          "high": 24.53,
+          "low": 24.07,
+          "volume": 1462419.0
+        },
+        {
+          "date": "2026-05-15",
+          "open": 24.31,
+          "close": 24.03,
+          "high": 24.41,
+          "low": 23.79,
+          "volume": 2583188.0
+        },
+        {
+          "date": "2026-05-18",
+          "open": 23.93,
+          "close": 23.51,
+          "high": 23.93,
+          "low": 23.09,
+          "volume": 4613020.0
+        },
+        {
+          "date": "2026-05-19",
+          "open": 23.39,
+          "close": 23.03,
+          "high": 23.43,
+          "low": 22.93,
+          "volume": 2790177.0
+        },
+        {
+          "date": "2026-05-20",
+          "open": 22.91,
+          "close": 23.27,
+          "high": 23.45,
+          "low": 22.85,
+          "volume": 4166906.0
+        },
+        {
+          "date": "2026-05-21",
+          "open": 23.43,
+          "close": 23.25,
+          "high": 23.45,
+          "low": 23.15,
+          "volume": 1945173.0
+        },
+        {
+          "date": "2026-05-22",
+          "open": 23.19,
+          "close": 23.37,
+          "high": 23.63,
+          "low": 23.19,
+          "volume": 1857523.0
+        },
+        {
+          "date": "2026-05-26",
+          "open": 23.19,
+          "close": 22.81,
+          "high": 23.49,
+          "low": 22.73,
+          "volume": 2658449.0
+        },
+        {
+          "date": "2026-05-27",
+          "open": 22.63,
+          "close": 22.67,
+          "high": 23.03,
+          "low": 22.45,
+          "volume": 3593310.0
+        },
+        {
+          "date": "2026-05-28",
+          "open": 22.63,
+          "close": 22.37,
+          "high": 22.79,
+          "low": 22.01,
+          "volume": 4070309.0
+        },
+        {
+          "date": "2026-05-29",
+          "open": 22.43,
+          "close": 21.87,
+          "high": 22.79,
+          "low": 21.81,
+          "volume": 5349193.0
+        },
+        {
+          "date": "2026-06-01",
+          "open": 22.13,
+          "close": 22.23,
+          "high": 22.39,
+          "low": 21.77,
+          "volume": 3783561.0
+        },
+        {
+          "date": "2026-06-02",
+          "open": 22.23,
+          "close": 22.31,
+          "high": 22.61,
+          "low": 21.81,
+          "volume": 3185233.0
+        },
+        {
+          "date": "2026-06-03",
+          "open": 22.39,
+          "close": 22.17,
+          "high": 22.53,
+          "low": 22.01,
+          "volume": 2112413.0
+        },
+        {
+          "date": "2026-06-04",
+          "open": 22.05,
+          "close": 21.77,
+          "high": 22.05,
+          "low": 21.61,
+          "volume": 3686554.0
+        },
+        {
+          "date": "2026-06-05",
+          "open": 21.93,
+          "close": 21.17,
+          "high": 22.03,
+          "low": 20.97,
+          "volume": 7796189.0
+        },
+        {
+          "date": "2026-06-08",
+          "open": 21.03,
+          "close": 21.27,
+          "high": 21.29,
+          "low": 20.59,
+          "volume": 3912358.0
+        },
+        {
+          "date": "2026-06-09",
+          "open": 21.17,
+          "close": 21.29,
+          "high": 21.35,
+          "low": 21.01,
+          "volume": 4182889.0
+        },
+        {
+          "date": "2026-06-10",
+          "open": 21.23,
+          "close": 21.11,
+          "high": 21.31,
+          "low": 20.65,
+          "volume": 3452031.0
+        },
+        {
+          "date": "2026-06-11",
+          "open": 21.11,
+          "close": 21.05,
+          "high": 21.37,
+          "low": 20.83,
+          "volume": 2623732.0
+        },
+        {
+          "date": "2026-06-12",
+          "open": 20.85,
+          "close": 21.31,
+          "high": 21.47,
+          "low": 20.85,
+          "volume": 3939329.0
+        },
+        {
+          "date": "2026-06-15",
+          "open": 21.33,
+          "close": 21.29,
+          "high": 21.89,
+          "low": 21.15,
+          "volume": 1236561.0
+        },
+        {
+          "date": "2026-06-16",
+          "open": 21.23,
+          "close": 20.85,
+          "high": 21.29,
+          "low": 20.65,
+          "volume": 2781692.0
+        },
+        {
+          "date": "2026-06-17",
+          "open": 20.83,
+          "close": 20.29,
+          "high": 20.87,
+          "low": 20.15,
+          "volume": 4119843.0
+        },
+        {
+          "date": "2026-06-18",
+          "open": 20.13,
+          "close": 20.79,
+          "high": 20.79,
+          "low": 19.53,
+          "volume": 13410802.0
+        },
+        {
+          "date": "2026-06-22",
+          "open": 20.15,
+          "close": 20.15,
+          "high": 20.39,
+          "low": 19.83,
+          "volume": 6518579.0
+        },
+        {
+          "date": "2026-06-23",
+          "open": 20.03,
+          "close": 20.07,
+          "high": 20.31,
+          "low": 19.71,
+          "volume": 2025072.0
+        },
+        {
+          "date": "2026-06-24",
+          "open": 20.03,
+          "close": 20.15,
+          "high": 20.47,
+          "low": 19.83,
+          "volume": 5748951.0
+        },
+        {
+          "date": "2026-06-25",
+          "open": 20.35,
+          "close": 20.63,
+          "high": 20.91,
+          "low": 20.25,
+          "volume": 5944411.0
+        },
+        {
+          "date": "2026-06-26",
+          "open": 20.57,
+          "close": 20.33,
+          "high": 20.93,
+          "low": 20.07,
+          "volume": 3200080.0
+        },
+        {
+          "date": "2026-06-29",
+          "open": 20.19,
+          "close": 20.27,
+          "high": 20.53,
+          "low": 20.05,
+          "volume": 2886836.0
+        },
+        {
+          "date": "2026-06-30",
+          "open": 20.19,
+          "close": 20.17,
+          "high": 20.53,
+          "low": 19.81,
+          "volume": 4385660.0
+        },
+        {
+          "date": "2026-07-02",
+          "open": 20.13,
+          "close": 20.03,
+          "high": 20.39,
+          "low": 19.85,
+          "volume": 2368763.0
+        },
+        {
+          "date": "2026-07-03",
+          "open": 20.13,
+          "close": 20.71,
+          "high": 20.81,
+          "low": 20.13,
+          "volume": 2702189.0
+        },
+        {
+          "date": "2026-07-06",
+          "open": 20.69,
+          "close": 20.81,
+          "high": 21.11,
+          "low": 20.63,
+          "volume": 1793934.0
+        },
+        {
+          "date": "2026-07-07",
+          "open": 20.79,
+          "close": 20.53,
+          "high": 20.81,
+          "low": 20.41,
+          "volume": 928423.0
+        },
+        {
+          "date": "2026-07-08",
+          "open": 20.49,
+          "close": 20.83,
+          "high": 21.05,
+          "low": 20.43,
+          "volume": 2288495.0
+        },
+        {
+          "date": "2026-07-09",
+          "open": 20.83,
+          "close": 20.53,
+          "high": 20.91,
+          "low": 20.49,
+          "volume": 2032859.0
+        },
+        {
+          "date": "2026-07-10",
+          "open": 20.47,
+          "close": 20.81,
+          "high": 21.05,
+          "low": 20.27,
+          "volume": 888851.0
+        },
+        {
+          "date": "2026-07-13",
+          "open": 20.79,
+          "close": 20.79,
+          "high": 20.93,
+          "low": 20.57,
+          "volume": 934628.0
+        },
+        {
+          "date": "2026-07-14",
+          "open": 20.73,
+          "close": 20.83,
+          "high": 20.83,
+          "low": 20.33,
+          "volume": 1599398.0
+        },
+        {
+          "date": "2026-07-15",
+          "open": 20.91,
+          "close": 21.35,
+          "high": 21.39,
+          "low": 20.75,
+          "volume": 2814235.0
+        },
+        {
+          "date": "2026-07-16",
+          "open": 21.73,
+          "close": 21.79,
+          "high": 22.13,
+          "low": 21.61,
+          "volume": 5894111.0
+        },
+        {
+          "date": "2026-07-17",
+          "open": 21.63,
+          "close": 21.91,
+          "high": 22.29,
+          "low": 21.53,
+          "volume": 3011014.0
+        },
+        {
+          "date": "2026-07-20",
+          "open": 21.91,
+          "close": 21.81,
+          "high": 21.91,
+          "low": 21.35,
+          "volume": 1926152.0
+        },
+        {
+          "date": "2026-07-21",
+          "open": 21.73,
+          "close": 22.03,
+          "high": 22.11,
+          "low": 21.55,
+          "volume": 2157048.0
+        },
+        {
+          "date": "2026-07-22",
+          "open": 22.11,
+          "close": 21.91,
+          "high": 22.11,
+          "low": 21.77,
+          "volume": 1965301.0
+        },
+        {
+          "date": "2026-07-23",
+          "open": 22.03,
+          "close": 22.35,
+          "high": 22.49,
+          "low": 21.87,
+          "volume": 2561090.0
+        },
+        {
+          "date": "2026-07-24",
+          "open": 22.23,
+          "close": 22.13,
+          "high": 22.23,
+          "low": 21.77,
+          "volume": 3458572.0
+        },
+        {
+          "date": "2026-07-27",
+          "open": 22.13,
+          "close": 23.07,
+          "high": 23.21,
+          "low": 22.13,
+          "volume": 2945116.0
+        },
+        {
+          "date": "2026-07-28",
+          "open": 23.07,
+          "close": 23.09,
+          "high": 23.25,
+          "low": 22.81,
+          "volume": 1596878.0
+        },
+        {
+          "date": "2026-07-29",
+          "open": 23.07,
+          "close": 23.39,
+          "high": 23.43,
+          "low": 22.79,
+          "volume": 5006396.0
+        },
+        {
+          "date": "2026-07-30",
+          "open": 23.39,
+          "close": 23.85,
+          "high": 23.91,
+          "low": 23.19,
+          "volume": 3157255.0
+        },
+        {
+          "date": "2026-07-31",
+          "open": 23.57,
+          "close": 23.53,
+          "high": 23.83,
+          "low": 23.23,
+          "volume": 2431870.0
+        },
+        {
+          "date": "2026-08-03",
+          "open": 23.53,
+          "close": 23.49,
+          "high": 23.73,
+          "low": 23.29,
+          "volume": 2509618.0
+        },
+        {
+          "date": "2026-08-04",
+          "open": 24.03,
+          "close": 23.67,
+          "high": 24.03,
+          "low": 23.23,
+          "volume": 2381015.0
+        },
+        {
+          "date": "2026-08-05",
+          "open": 23.69,
+          "close": 23.63,
+          "high": 23.81,
+          "low": 23.17,
+          "volume": 1993778.0
+        },
+        {
+          "date": "2026-08-06",
+          "open": 23.63,
+          "close": 22.63,
+          "high": 23.63,
+          "low": 22.39,
+          "volume": 7534041.0
+        },
+        {
+          "date": "2026-08-07",
+          "open": 22.81,
+          "close": 23.01,
+          "high": 23.05,
+          "low": 22.47,
+          "volume": 2698174.0
+        },
+        {
+          "date": "2026-08-10",
+          "open": 23.13,
+          "close": 23.67,
+          "high": 23.83,
+          "low": 23.03,
+          "volume": 2359140.0
+        },
+        {
+          "date": "2026-08-11",
+          "open": 24.03,
+          "close": 23.55,
+          "high": 24.03,
+          "low": 23.31,
+          "volume": 1869342.0
+        },
+        {
+          "date": "2026-08-12",
+          "open": 23.59,
+          "close": 23.71,
+          "high": 23.75,
+          "low": 23.33,
+          "volume": 2360749.0
+        },
+        {
+          "date": "2026-08-13",
+          "open": 23.43,
+          "close": 23.63,
+          "high": 23.69,
+          "low": 23.39,
+          "volume": 1614834.0
+        },
+        {
+          "date": "2026-08-14",
+          "open": 23.57,
+          "close": 23.29,
+          "high": 23.61,
+          "low": 23.17,
+          "volume": 1219922.0
+        },
+        {
+          "date": "2026-08-17",
+          "open": 23.27,
+          "close": 23.89,
+          "high": 24.01,
+          "low": 23.25,
+          "volume": 2974024.0
+        },
+        {
+          "date": "2026-08-18",
+          "open": 23.87,
+          "close": 23.79,
+          "high": 23.97,
+          "low": 23.51,
+          "volume": 2073092.0
+        },
+        {
+          "date": "2026-08-19",
+          "open": 23.97,
+          "close": 24.23,
+          "high": 24.49,
+          "low": 23.77,
+          "volume": 4156103.0
+        },
+        {
+          "date": "2026-08-20",
+          "open": 24.43,
+          "close": 24.71,
+          "high": 24.79,
+          "low": 24.29,
+          "volume": 2815076.0
+        },
+        {
+          "date": "2026-08-21",
+          "open": 24.71,
+          "close": 25.03,
+          "high": 25.33,
+          "low": 24.71,
+          "volume": 2387882.0
+        },
+        {
+          "date": "2026-08-24",
+          "open": 25.03,
+          "close": 24.89,
+          "high": 25.21,
+          "low": 24.83,
+          "volume": 2145658.0
+        },
+        {
+          "date": "2026-08-25",
+          "open": 24.89,
+          "close": 24.59,
+          "high": 25.01,
+          "low": 24.57,
+          "volume": 2275882.0
+        },
+        {
+          "date": "2026-08-26",
+          "open": 24.73,
+          "close": 24.47,
+          "high": 24.73,
+          "low": 24.13,
+          "volume": 1564535.0
+        },
+        {
+          "date": "2026-08-27",
+          "open": 24.47,
+          "close": 24.31,
+          "high": 24.55,
+          "low": 24.15,
+          "volume": 1061720.0
+        },
+        {
+          "date": "2026-08-28",
+          "open": 24.13,
+          "close": 24.15,
+          "high": 24.77,
+          "low": 23.93,
+          "volume": 767104.0
+        },
+        {
+          "date": "2026-08-31",
+          "open": 24.15,
+          "close": 23.61,
+          "high": 24.65,
+          "low": 23.41,
+          "volume": 4400472.0
+        },
+        {
+          "date": "2026-09-01",
+          "open": 23.53,
+          "close": 23.69,
+          "high": 23.77,
+          "low": 23.39,
+          "volume": 1446777.0
+        },
+        {
+          "date": "2026-09-02",
+          "open": 23.7,
+          "close": 24.0,
+          "high": 24.0,
+          "low": 23.26,
+          "volume": 1491562.0
+        },
+        {
+          "date": "2026-09-03",
+          "open": 23.92,
+          "close": 24.12,
+          "high": 24.38,
+          "low": 23.92,
+          "volume": 2610244.0
+        },
+        {
+          "date": "2026-09-04",
+          "open": 24.1,
+          "close": 24.76,
+          "high": 24.96,
+          "low": 24.1,
+          "volume": 3148936.0
+        },
+        {
+          "date": "2026-09-07",
+          "open": 24.3,
+          "close": 24.42,
+          "high": 24.72,
+          "low": 24.3,
+          "volume": 1092691.0
+        },
+        {
+          "date": "2026-09-08",
+          "open": 24.42,
+          "close": 24.76,
+          "high": 24.8,
+          "low": 24.38,
+          "volume": 1989399.0
+        },
+        {
+          "date": "2026-09-09",
+          "open": 24.88,
+          "close": 24.84,
+          "high": 24.88,
+          "low": 24.36,
+          "volume": 2669014.0
+        },
+        {
+          "date": "2026-09-10",
+          "open": 24.6,
+          "close": 24.64,
+          "high": 24.9,
+          "low": 24.38,
+          "volume": 1866969.0
+        },
+        {
+          "date": "2026-09-11",
+          "open": 24.38,
+          "close": 24.4,
+          "high": 24.56,
+          "low": 24.1,
+          "volume": 2019628.0
+        },
+        {
+          "date": "2026-09-14",
+          "open": 24.4,
+          "close": 24.3,
+          "high": 24.46,
+          "low": 24.1,
+          "volume": 1688076.0
+        },
+        {
+          "date": "2026-09-15",
+          "open": 24.3,
+          "close": 24.0,
+          "high": 24.42,
+          "low": 23.82,
+          "volume": 2011800.0
+        },
+        {
+          "date": "2026-09-16",
+          "open": 23.96,
+          "close": 24.0,
+          "high": 24.0,
+          "low": 23.6,
+          "volume": 1788980.0
+        },
+        {
+          "date": "2026-09-17",
+          "open": 23.84,
+          "close": 23.92,
+          "high": 23.92,
+          "low": 23.42,
+          "volume": 3292287.0
+        },
+        {
+          "date": "2026-09-18",
+          "open": 23.7,
+          "close": 24.32,
+          "high": 24.46,
+          "low": 23.7,
+          "volume": 5912003.0
+        },
+        {
+          "date": "2026-09-21",
+          "open": 24.32,
+          "close": 24.44,
+          "high": 24.48,
+          "low": 24.02,
+          "volume": 1685133.0
+        },
+        {
+          "date": "2026-09-22",
+          "open": 24.18,
+          "close": 24.4,
+          "high": 24.64,
+          "low": 24.1,
+          "volume": 2210778.0
+        },
+        {
+          "date": "2026-09-23",
+          "open": 24.5,
+          "close": 24.5,
+          "high": 24.6,
+          "low": 24.24,
+          "volume": 1804118.0
+        },
+        {
+          "date": "2026-09-24",
+          "open": 24.46,
+          "close": 24.54,
+          "high": 24.6,
+          "low": 24.32,
+          "volume": 1669360.0
+        },
+        {
+          "date": "2026-09-25",
+          "open": 24.3,
+          "close": 24.32,
+          "high": 24.38,
+          "low": 23.96,
+          "volume": 2001564.0
+        },
+        {
+          "date": "2026-09-28",
+          "open": 24.4,
+          "close": 24.32,
+          "high": 24.52,
+          "low": 24.26,
+          "volume": 737666.0
+        },
+        {
+          "date": "2026-09-29",
+          "open": 24.16,
+          "close": 24.54,
+          "high": 24.6,
+          "low": 24.16,
+          "volume": 3481837.0
+        },
+        {
+          "date": "2026-09-30",
+          "open": 24.58,
+          "close": 24.36,
+          "high": 24.58,
+          "low": 24.32,
+          "volume": 2364429.0
+        },
+        {
+          "date": "2026-10-02",
+          "open": 24.0,
+          "close": 24.04,
+          "high": 24.58,
+          "low": 23.9,
+          "volume": 2384876.0
+        },
+        {
+          "date": "2026-10-05",
+          "open": 24.04,
+          "close": 23.76,
+          "high": 24.16,
+          "low": 23.42,
+          "volume": 1738792.0
+        },
+        {
+          "date": "2026-10-06",
+          "open": 24.08,
+          "close": 23.76,
+          "high": 24.08,
+          "low": 23.64,
+          "volume": 3356156.0
+        },
+        {
+          "date": "2026-10-07",
+          "open": 23.76,
+          "close": 23.96,
+          "high": 24.0,
+          "low": 23.7,
+          "volume": 1972268.0
+        },
+        {
+          "date": "2026-10-08",
+          "open": 23.5,
+          "close": 23.86,
+          "high": 24.32,
+          "low": 23.5,
+          "volume": 3615657.0
+        },
+        {
+          "date": "2026-10-09",
+          "open": 23.86,
+          "close": 24.44,
+          "high": 24.62,
+          "low": 22.8,
+          "volume": 3665940.0
+        },
+        {
+          "date": "2026-10-12",
+          "open": 24.56,
+          "close": 24.3,
+          "high": 24.56,
+          "low": 24.08,
+          "volume": 915714.0
+        },
+        {
+          "date": "2026-10-13",
+          "open": 24.16,
+          "close": 24.7,
+          "high": 24.76,
+          "low": 24.16,
+          "volume": 1750434.0
+        },
+        {
+          "date": "2026-10-14",
+          "open": 24.7,
+          "close": 24.44,
+          "high": 24.72,
+          "low": 24.24,
+          "volume": 2336497.0
+        },
+        {
+          "date": "2026-10-15",
+          "open": 24.42,
+          "close": 24.42,
+          "high": 24.6,
+          "low": 24.06,
+          "volume": 2773764.0
+        },
+        {
+          "date": "2026-10-16",
+          "open": 24.42,
+          "close": 24.44,
+          "high": 24.64,
+          "low": 24.28,
+          "volume": 1658213.0
+        },
+        {
+          "date": "2026-10-20",
+          "open": 24.42,
+          "close": 24.48,
+          "high": 24.68,
+          "low": 24.2,
+          "volume": 3358346.0
+        },
+        {
+          "date": "2026-10-21",
+          "open": 24.56,
+          "close": 24.44,
+          "high": 24.66,
+          "low": 24.32,
+          "volume": 2852211.0
+        },
+        {
+          "date": "2026-10-22",
+          "open": 24.44,
+          "close": 23.98,
+          "high": 24.44,
+          "low": 23.76,
+          "volume": 2909406.0
+        },
+        {
+          "date": "2026-10-23",
+          "open": 23.98,
+          "close": 24.08,
+          "high": 24.22,
+          "low": 23.82,
+          "volume": 2337294.0
+        },
+        {
+          "date": "2026-10-26",
+          "open": 24.04,
+          "close": 24.52,
+          "high": 24.76,
+          "low": 23.94,
+          "volume": 5111391.0
+        },
+        {
+          "date": "2026-10-27",
+          "open": 24.72,
+          "close": 25.14,
+          "high": 25.2,
+          "low": 24.56,
+          "volume": 3157003.0
+        },
+        {
+          "date": "2026-10-28",
+          "open": 25.14,
+          "close": 25.06,
+          "high": 25.22,
+          "low": 24.9,
+          "volume": 3283076.0
+        },
+        {
+          "date": "2026-10-29",
+          "open": 24.84,
+          "close": 24.84,
+          "high": 25.26,
+          "low": 24.7,
+          "volume": 3291946.0
+        },
+        {
+          "date": "2026-10-30",
+          "open": 24.84,
+          "close": 25.42,
+          "high": 25.64,
+          "low": 24.68,
+          "volume": 2853367.0
+        },
+        {
+          "date": "2026-11-02",
+          "open": 25.38,
+          "close": 25.6,
+          "high": 25.9,
+          "low": 25.3,
+          "volume": 2172891.0
+        },
+        {
+          "date": "2026-11-03",
+          "open": 25.78,
+          "close": 25.54,
+          "high": 25.96,
+          "low": 25.52,
+          "volume": 490807.0
+        }
+      ],
+      "as_of": "2026-11-02",
+      "source": "tencent:hkfqkline qfq"
+    },
+    "pe": {
+      "value": -96.07,
+      "as_of": "2026/11/03 09:38:33",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "pb": {
+      "value": null,
+      "as_of": "2026/11/03 09:38:33",
+      "source": "tencent:qt.gtimg.cn"
+    }
+  }
+}
