@@ -5,3 +5,4 @@
 {"record": "trade", "date": "2026-10-21", "time": "15:03:07", "timezone": "Asia/Shanghai", "name": "美的集团", "side": "卖", "shares": 100, "price": 83.86, "currency": "CNY", "ticker": "000333.SZ"}
 {"record": "cash", "date": "2026-10-25", "time": "16:28:16", "timezone": "Asia/Shanghai", "side": "充值", "amount": 10781, "currency": "CNY"}
 {"record": "cash", "date": "2026-11-02", "time": "10:22:56", "timezone": "Asia/Shanghai", "side": "提取", "amount": 10000, "currency": "CNY"}
+{"record": "cash", "date": "2026-11-03", "time": "14:38:15", "timezone": "Asia/Shanghai", "side": "提取", "amount": 500, "currency": "CNY"}
