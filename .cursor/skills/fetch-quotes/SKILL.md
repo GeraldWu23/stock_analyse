@@ -53,7 +53,7 @@ python fetch_quotes.py --interval 120
 | 上交所 A 股 | `sh` | `sh600029` 南方航空 |
 | 深交所 A 股 | `sz` | `sz000001` 平安银行 |
 | 港股 | `hk`(5 位) | `hk01972` 太古地产、`hk03986` 兆易创新H、`hk01113` 长实集团 |
-| ETF | `sh`/`sz` | `sh561700` 电力ETF、`sh561380` 电网设备ETF |
+| ETF | `sh`/`sz` | `sh561170` 绿色电力ETF、`sh561380` 电网设备ETF |
 
 ## 输出 / Output
 

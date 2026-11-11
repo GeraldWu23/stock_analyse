@@ -78,7 +78,7 @@ book.trade(name="太古地产", side="卖", shares=1200, price=25.00)
 
 账本头可以有 `last_checked_at`，这是最后一次检查的时间。看完一本账即使不改份额，也调用 `book.mark_checked()`。不要把 `as_of`、`as_of_date` 或最近一笔交易说成最后检查。旧账本没有这个字段时，`last_checked_at()` 是空的。
 
-**Display rule:** in user-facing replies and markdown tables, use Chinese names (科创人工智能ETF、电网设备ETF、绿色电力ETF、南方航空、纳斯达克ETF、黄金ETF、太古地产、长鑫科技、电力ETF博时). Do not show ticker codes unless the user asks. Codes stay in `holdings.json` / CSV only.
+**Display rule:** in user-facing replies and markdown tables, use Chinese names (科创人工智能ETF、电网设备ETF、绿色电力ETF、南方航空、纳斯达克ETF、黄金ETF、太古地产、长鑫科技). Do not show ticker codes unless the user asks. Codes stay in `holdings.json` / CSV only. 电力ETF博时不在检查名单里。
 
 Whenever the user asks to 看持仓 / 持仓情况 / 你的持仓 / 我的持仓, mimic the broker screenshot with this fixed column order: **名称｜今日盈亏｜成本价｜现价｜持仓金额｜持仓量｜仓位**. Show today's P&L as amount and percentage when both are available. Today's P&L means `(current price - previous close) × shares`, never cumulative holding P&L. If a valid live price or previous close is unavailable, show `暂不可用` and disclose the quote timestamp/fallback; never substitute cumulative P&L. Include cash and total assets after the positions, remembering that cash is already included in total assets. Use HKD for Hong Kong price/P&L fields and the stated FX rate only for portfolio value and weight.
 
