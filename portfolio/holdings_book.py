@@ -81,7 +81,7 @@ class Holdings:
         return [json.loads(line) for line in text.splitlines() if line.strip()]
 
     def begin(self, at: datetime | None = None) -> dict:
-        """以当前持仓为起点。已有记录则不另写起点。此前买卖不补记。"""
+        """文件已有记录则原样返回第一行。空账才按当时持仓写一条起点。"""
         existing = self.trades()
         if existing:
             return existing[0]
