@@ -108,6 +108,15 @@ book.trade(name="太古地产", side="卖", shares=1200, price=25.00)
 
 `trade()` 会保存这两个文件。上面两行是调用例子，不是待执行的委托。`trade()` 不改 `last_checked_at`。
 
+## 充值和提现
+
+账户充值或提现用 `cash_flow()`，金额按人民币。它只改账本头的现金，不动份额，并在 `ledger.jsonl` 追加一行 `record` 为 `cash` 的记录：日期、时间、`side`（充值或提现）、`amount`。提现超过现金会报错，不写任何记录。仓位比例不重算。用户没说已充值或提现时不要调用。
+
+```python
+book.cash_flow(side="充值", amount=5000)
+book.cash_flow(side="提现", amount=2000)
+```
+
 ## 最后检查时间
 
 账本头可以有 `last_checked_at`。这是最近一次看过这本账的时间。某一天分析过、决定不改份额，也要写成这一天，不要用 `as_of`、`as_of_date` 或最近一笔买卖来代替。旧文件没有这个字段时，`last_checked_at()` 返回空，不当成报错，也不要填成交易日。
