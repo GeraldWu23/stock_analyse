@@ -82,6 +82,6 @@ book.trade(name="太古地产", side="卖", shares=1200, price=25.00)
 
 Whenever the user asks to 看持仓 / 持仓情况 / 你的持仓 / 我的持仓, mimic the broker screenshot with this fixed column order: **名称｜今日盈亏｜成本价｜现价｜持仓金额｜持仓量｜仓位**. Show today's P&L as amount and percentage when both are available. Today's P&L means `(current price - previous close) × shares`, never cumulative holding P&L. If a valid live price or previous close is unavailable, show `暂不可用` and disclose the quote timestamp/fallback; never substitute cumulative P&L. Include cash and total assets after the positions, remembering that cash is already included in total assets. Use HKD for Hong Kong price/P&L fields and the stated FX rate only for portfolio value and weight.
 
-盘中监控的结论另写。正文讲这一轮相对上一轮、以及相对今早开盘的分时变化：谁在延续、谁在回吐、谁横住。不要把现价、持仓金额和仓位表当作监控正文。绝对值只在触发成交，或说明突破了哪一条日线、周线、月线时带一句。只有价格突破当日走势、本周高低或本月高低时，才单独写这段趋势，并配一次检索到的公开时事；没有突破就不要配时事，也不要编新闻。看持仓仍用上面的券商表。
+盘中监控每一轮都写出该时点的价格，以及相对上一轮、相对昨收的变化。正文同时说明相对上一轮和今早开盘谁在延续、谁在回吐、谁横住，不要只重复绝对值。持仓金额和仓位表不作为监控正文。只有价格突破当日高低、本周高低或本月高低时，才另写这段趋势，并配一次检索到的公开时事；没有突破就不要配时事，也不要编新闻。看持仓仍用上面的券商表。
 
 ETF/LOF rows are baskets, not single stocks. Do not run the 65-judge equity pipeline on them; analyze the index + top holdings instead.
