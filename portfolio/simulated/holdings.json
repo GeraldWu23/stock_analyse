@@ -14,7 +14,7 @@
   "shares_rule": "除非发生新的模拟交易，否则不更新份额；市值用份额乘实时价格还原",
   "cash": {
     "account_cash_cny": 259921.91,
-    "weight_pct": 55.58,
+    "weight_pct": 56.25,
     "included_in_total_assets": true
   },
   "holdings": [
@@ -24,10 +24,10 @@
       "type": "场内基金",
       "shares": 35900.0,
       "cost_price": 1.506,
-      "last_price": 1.349,
+      "last_price": 1.248,
       "currency": "CNY",
-      "market_value_cny": 48429.1,
-      "weight_pct": 10.35
+      "market_value_cny": 44803.2,
+      "weight_pct": 9.7
     },
     {
       "name": "电网设备ETF国泰",
@@ -35,10 +35,10 @@
       "type": "场内基金",
       "shares": 66600,
       "cost_price": 0.732,
-      "last_price": 0.608,
+      "last_price": 0.58,
       "currency": "CNY",
-      "market_value_cny": 40492.8,
-      "weight_pct": 8.66
+      "market_value_cny": 38628.0,
+      "weight_pct": 8.36
     },
     {
       "name": "绿色电力ETF富国",
@@ -46,10 +46,10 @@
       "type": "场内基金",
       "shares": 42400,
       "cost_price": 1.129,
-      "last_price": 1.14,
+      "last_price": 1.146,
       "currency": "CNY",
-      "market_value_cny": 48336.0,
-      "weight_pct": 10.33
+      "market_value_cny": 48590.4,
+      "weight_pct": 10.52
     },
     {
       "name": "南方航空",
@@ -60,7 +60,7 @@
       "last_price": 5.07,
       "currency": "CNY",
       "market_value_cny": 19266.0,
-      "weight_pct": 4.12
+      "weight_pct": 4.17
     },
     {
       "name": "黄金ETF易方达",
@@ -68,10 +68,10 @@
       "type": "场内基金",
       "shares": 3014,
       "cost_price": 8.85,
-      "last_price": 8.341,
+      "last_price": 8.268,
       "currency": "CNY",
-      "market_value_cny": 25139.77,
-      "weight_pct": 5.38
+      "market_value_cny": 24919.75,
+      "weight_pct": 5.39
     },
     {
       "name": "太古地产",
@@ -79,18 +79,18 @@
       "type": "港股通",
       "shares": 1200,
       "cost_price": 19.865,
-      "last_price": 25.84,
+      "last_price": 25.68,
       "currency": "HKD",
-      "market_value_hkd": 31008.0,
-      "market_value_cny": 26095.75,
-      "weight_pct": 5.58
+      "market_value_hkd": 30816.0,
+      "market_value_cny": 25933.37,
+      "weight_pct": 5.61
     }
   ],
   "totals": {
     "positions": 6,
-    "securities_cny": 207759.42,
+    "securities_cny": 202140.72,
     "cash_cny": 259921.91,
-    "total_assets_cny": 467681.33,
+    "total_assets_cny": 462062.63,
     "hkd_to_cny": 0.8415811012
   }
 }
