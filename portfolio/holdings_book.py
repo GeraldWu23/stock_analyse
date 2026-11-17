@@ -155,6 +155,29 @@ class Holdings:
             record["ticker"] = ticker
         return self._append_ledger(record)
 
+    def cash_flow(self, *, side: str, amount: float, at: datetime | None = None) -> dict:
+        """账户充值或提现，金额按人民币。只改现金，不动份额。追加一条 record 为 cash 的账。"""
+        if side not in ("充值", "提现"):
+            raise ValueError("side 只能是充值或提现")
+        if amount <= 0:
+            raise ValueError("金额要大于 0")
+
+        records = self.load()
+        book = next(row for row in records if row.get("record") == "book")
+        cash = float(book["cash"]["account_cash_cny"])
+        if side == "提现" and cash < amount:
+            raise ValueError("现金不够")
+        book["cash"]["account_cash_cny"] = round(cash + (amount if side == "充值" else -amount), 2)
+        if book.get("totals") and "cash_cny" in book["totals"]:
+            book["totals"]["cash_cny"] = book["cash"]["account_cash_cny"]
+        self.dump(records)
+
+        return self._append_ledger(_moment_record("cash", at) | {
+            "side": side,
+            "amount": amount,
+            "currency": "CNY",
+        })
+
     def _append_ledger(self, record: dict) -> dict:
         self.folder.mkdir(parents=True, exist_ok=True)
         with (self.folder / "ledger.jsonl").open("a", encoding="utf-8") as handle:
