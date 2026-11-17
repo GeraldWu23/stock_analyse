@@ -20,6 +20,9 @@ def test_universe_is_not_taken_from_the_virtual_book():
     assert names[tickers.index("000333.SZ")]["kind"] == "stock"
     assert "159632.SZ" not in virtual
     assert "688825.SH" not in virtual
+    assert names[tickers.index("603986.SH")]["name"] == "兆易创新"
+    assert names[tickers.index("603986.SH")]["kind"] == "stock"
+    assert "603986.SH" not in virtual
     assert "561700.SH" not in tickers
     assert "561700.SH" not in virtual
     assert virtual < set(tickers)
