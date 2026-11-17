@@ -9,6 +9,7 @@
     {"name": "黄金ETF易方达", "ticker": "159934.SZ", "kind": "etf"},
     {"name": "太古地产", "ticker": "01972.HK", "kind": "stock"},
     {"name": "长鑫科技", "ticker": "688825.SH", "kind": "stock"},
+    {"name": "兆易创新", "ticker": "603986.SH", "kind": "stock"},
     {"name": "美的集团", "ticker": "000333.SZ", "kind": "stock"}
   ]
 }
