@@ -1,0 +1,101 @@
+{
+  "date": "2026-11-23",
+  "ticker": "588730.SH",
+  "name": "科创人工智能ETF易方达",
+  "kind": "etf",
+  "ready": true,
+  "missing": [],
+  "fields": {
+    "last_price": {
+      "value": 1.112,
+      "as_of": "20261123093440",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "prev_close": {
+      "value": 1.118,
+      "as_of": "20261123093440",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "iopv": {
+      "value": 1.1102,
+      "as_of": "20261123093440",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "premium_pct": {
+      "value": 0.001621,
+      "as_of": "20261123093440",
+      "source": "last/iopv-1"
+    },
+    "top_holdings": {
+      "value": [
+        {
+          "rank": 1,
+          "code": "688008",
+          "name": "澜起科技",
+          "weight_pct": 10.51
+        },
+        {
+          "rank": 2,
+          "code": "688041",
+          "name": "海光信息",
+          "weight_pct": 9.66
+        },
+        {
+          "rank": 3,
+          "code": "688521",
+          "name": "芯原股份",
+          "weight_pct": 9.53
+        },
+        {
+          "rank": 4,
+          "code": "688256",
+          "name": "寒武纪",
+          "weight_pct": 9.51
+        },
+        {
+          "rank": 5,
+          "code": "688111",
+          "name": "金山办公",
+          "weight_pct": 8.41
+        },
+        {
+          "rank": 6,
+          "code": "688099",
+          "name": "晶晨股份",
+          "weight_pct": 6.83
+        },
+        {
+          "rank": 7,
+          "code": "688169",
+          "name": "石头科技",
+          "weight_pct": 4.09
+        },
+        {
+          "rank": 8,
+          "code": "688385",
+          "name": "复旦微电",
+          "weight_pct": 3.54
+        },
+        {
+          "rank": 9,
+          "code": "688123",
+          "name": "聚辰股份",
+          "weight_pct": 3.36
+        },
+        {
+          "rank": 10,
+          "code": "688047",
+          "name": "龙芯中科",
+          "weight_pct": 3.26
+        }
+      ],
+      "as_of": "2026-09-30",
+      "source": "eastmoney:FundMNInverstPosition"
+    },
+    "holdings_report_date": {
+      "value": "2026年3季度",
+      "as_of": "2026-09-30",
+      "source": "eastmoney:FundMNInverstPosition"
+    }
+  }
+}
