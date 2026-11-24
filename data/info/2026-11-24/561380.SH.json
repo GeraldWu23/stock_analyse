@@ -1,0 +1,101 @@
+{
+  "date": "2026-11-24",
+  "ticker": "561380.SH",
+  "name": "电网设备ETF国泰",
+  "kind": "etf",
+  "ready": true,
+  "missing": [],
+  "fields": {
+    "last_price": {
+      "value": 0.581,
+      "as_of": "20261124093250",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "prev_close": {
+      "value": 0.57,
+      "as_of": "20261124093250",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "iopv": {
+      "value": 0.5703,
+      "as_of": "20261124093250",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "premium_pct": {
+      "value": 0.018762,
+      "as_of": "20261124093250",
+      "source": "last/iopv-1"
+    },
+    "top_holdings": {
+      "value": [
+        {
+          "rank": 1,
+          "code": "600487",
+          "name": "亨通光电",
+          "weight_pct": 11.0
+        },
+        {
+          "rank": 2,
+          "code": "600522",
+          "name": "中天科技",
+          "weight_pct": 9.22
+        },
+        {
+          "rank": 3,
+          "code": "600406",
+          "name": "国电南瑞",
+          "weight_pct": 8.83
+        },
+        {
+          "rank": 4,
+          "code": "600089",
+          "name": "特变电工",
+          "weight_pct": 8.07
+        },
+        {
+          "rank": 5,
+          "code": "002028",
+          "name": "思源电气",
+          "weight_pct": 7.66
+        },
+        {
+          "rank": 6,
+          "code": "601208",
+          "name": "东材科技",
+          "weight_pct": 4.23
+        },
+        {
+          "rank": 7,
+          "code": "600885",
+          "name": "宏发股份",
+          "weight_pct": 4.21
+        },
+        {
+          "rank": 8,
+          "code": "601179",
+          "name": "中国西电",
+          "weight_pct": 2.91
+        },
+        {
+          "rank": 9,
+          "code": "601877",
+          "name": "正泰电器",
+          "weight_pct": 2.9
+        },
+        {
+          "rank": 10,
+          "code": "300001",
+          "name": "特锐德",
+          "weight_pct": 2.76
+        }
+      ],
+      "as_of": "2026-09-30",
+      "source": "eastmoney:FundMNInverstPosition"
+    },
+    "holdings_report_date": {
+      "value": "2026-09-30",
+      "as_of": "2026-09-30",
+      "source": "eastmoney:FundMNInverstPosition"
+    }
+  }
+}
