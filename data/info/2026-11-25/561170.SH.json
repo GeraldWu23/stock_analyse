@@ -1,0 +1,101 @@
+{
+  "date": "2026-11-25",
+  "ticker": "561170.SH",
+  "name": "绿色电力ETF富国",
+  "kind": "etf",
+  "ready": true,
+  "missing": [],
+  "fields": {
+    "last_price": {
+      "value": 1.138,
+      "as_of": "20261125093604",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "prev_close": {
+      "value": 1.142,
+      "as_of": "20261125093604",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "iopv": {
+      "value": 1.1402,
+      "as_of": "20261125093604",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "premium_pct": {
+      "value": -0.0019294860550782555,
+      "as_of": "20261125093604",
+      "source": "last/iopv-1"
+    },
+    "top_holdings": {
+      "value": [
+        {
+          "rank": 1,
+          "code": "600900",
+          "name": "长江电力",
+          "weight_pct": 11.71
+        },
+        {
+          "rank": 2,
+          "code": "601985",
+          "name": "中国核电",
+          "weight_pct": 9.2
+        },
+        {
+          "rank": 3,
+          "code": "600905",
+          "name": "三峡能源",
+          "weight_pct": 6.2
+        },
+        {
+          "rank": 4,
+          "code": "600795",
+          "name": "国电电力",
+          "weight_pct": 5.87
+        },
+        {
+          "rank": 5,
+          "code": "600886",
+          "name": "国投电力",
+          "weight_pct": 4.51
+        },
+        {
+          "rank": 6,
+          "code": "003816",
+          "name": "中国广核",
+          "weight_pct": 4.1
+        },
+        {
+          "rank": 7,
+          "code": "600674",
+          "name": "川投能源",
+          "weight_pct": 3.99
+        },
+        {
+          "rank": 8,
+          "code": "600011",
+          "name": "华能国际",
+          "weight_pct": 3.82
+        },
+        {
+          "rank": 9,
+          "code": "600023",
+          "name": "浙能电力",
+          "weight_pct": 2.59
+        },
+        {
+          "rank": 10,
+          "code": "601991",
+          "name": "大唐发电",
+          "weight_pct": 2.43
+        }
+      ],
+      "as_of": "2026-09-30",
+      "source": "eastmoney:FundMNewApi/FundMNInverstPosition"
+    },
+    "holdings_report_date": {
+      "value": "2026-09-30",
+      "as_of": "2026-09-30",
+      "source": "eastmoney:FundMNewApi/FundMNInverstPosition"
+    }
+  }
+}
