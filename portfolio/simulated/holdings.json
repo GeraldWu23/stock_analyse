@@ -13,8 +13,8 @@
   "shares_are_sticky": true,
   "shares_rule": "除非发生新的模拟交易，否则不更新份额；市值用份额乘实时价格还原",
   "cash": {
-    "account_cash_cny": 259921.91,
-    "weight_pct": 56.25,
+    "account_cash_cny": 278085.91,
+    "weight_pct": 60.33,
     "included_in_total_assets": true
   },
   "holdings": [
@@ -52,17 +52,6 @@
       "weight_pct": 10.52
     },
     {
-      "name": "南方航空",
-      "ticker": "600029.SH",
-      "type": "股票",
-      "shares": 3800,
-      "cost_price": 5.181,
-      "last_price": 5.07,
-      "currency": "CNY",
-      "market_value_cny": 19266.0,
-      "weight_pct": 4.17
-    },
-    {
       "name": "黄金ETF易方达",
       "ticker": "159934.SZ",
       "type": "场内基金",
@@ -87,10 +76,10 @@
     }
   ],
   "totals": {
-    "positions": 6,
-    "securities_cny": 202140.72,
-    "cash_cny": 259921.91,
-    "total_assets_cny": 462062.63,
+    "positions": 5,
+    "securities_cny": 182874.72,
+    "cash_cny": 278085.91,
+    "total_assets_cny": 460960.63,
     "hkd_to_cny": 0.8415811012
   }
 }
