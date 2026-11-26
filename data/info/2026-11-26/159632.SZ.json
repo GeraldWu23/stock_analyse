@@ -1,0 +1,101 @@
+{
+  "date": "2026-11-26",
+  "ticker": "159632.SZ",
+  "name": "纳斯达克ETF华安",
+  "kind": "etf",
+  "ready": true,
+  "missing": [],
+  "fields": {
+    "last_price": {
+      "value": 2.239,
+      "as_of": "20261126093300",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "prev_close": {
+      "value": 2.239,
+      "as_of": "20261126093300",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "iopv": {
+      "value": 1.9772,
+      "as_of": "20261126093300",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "premium_pct": {
+      "value": 0.13240946793445274,
+      "as_of": "20261126093300",
+      "source": "last/iopv-1"
+    },
+    "top_holdings": {
+      "value": [
+        {
+          "rank": 1,
+          "code": "NVDA",
+          "name": "英伟达",
+          "weight_pct": 7.72
+        },
+        {
+          "rank": 2,
+          "code": "AAPL",
+          "name": "苹果",
+          "weight_pct": 6.81
+        },
+        {
+          "rank": 3,
+          "code": "MSFT",
+          "name": "微软",
+          "weight_pct": 5.34
+        },
+        {
+          "rank": 4,
+          "code": "MU",
+          "name": "美光科技",
+          "weight_pct": 4.65
+        },
+        {
+          "rank": 5,
+          "code": "AMD",
+          "name": "超威半导体",
+          "weight_pct": 3.86
+        },
+        {
+          "rank": 6,
+          "code": "AMZN",
+          "name": "亚马逊",
+          "weight_pct": 3.77
+        },
+        {
+          "rank": 7,
+          "code": "META",
+          "name": "Meta Platforms Inc-A",
+          "weight_pct": 3.02
+        },
+        {
+          "rank": 8,
+          "code": "GOOGL",
+          "name": "谷歌-A",
+          "weight_pct": 2.83
+        },
+        {
+          "rank": 9,
+          "code": "GOOG",
+          "name": "谷歌-C",
+          "weight_pct": 2.64
+        },
+        {
+          "rank": 10,
+          "code": "TSLA",
+          "name": "特斯拉",
+          "weight_pct": 2.61
+        }
+      ],
+      "as_of": "2026-09-30",
+      "source": "eastmoney:FundMNewApi/FundMNInverstPosition"
+    },
+    "holdings_report_date": {
+      "value": "2026-09-30",
+      "as_of": "2026-09-30",
+      "source": "eastmoney:FundMNewApi/FundMNInverstPosition"
+    }
+  }
+}

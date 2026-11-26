@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-26",
+  "ticker": "159934.SZ",
+  "name": "黄金ETF易方达",
+  "kind": "etf",
+  "ready": true,
+  "missing": [],
+  "fields": {
+    "last_price": {
+      "value": 7.583,
+      "as_of": "20261126093342",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "prev_close": {
+      "value": 7.492,
+      "as_of": "20261126093342",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "iopv": {
+      "value": 7.5839,
+      "as_of": "20261126093342",
+      "source": "tencent:qt.gtimg.cn"
+    },
+    "premium_pct": {
+      "value": -0.00011867245084973277,
+      "as_of": "20261126093342",
+      "source": "last/iopv-1"
+    },
+    "top_holdings": {
+      "value": [
+        {
+          "rank": 1,
+          "name": "其他",
+          "weight_pct": 99.93
+        },
+        {
+          "rank": 2,
+          "name": "货币资金",
+          "weight_pct": 0.07
+        }
+      ],
+      "as_of": "2026-09-30",
+      "source": "eastmoney:FundMNewApi/FundMNAssetAllocationNew"
+    },
+    "holdings_report_date": {
+      "value": "2026-09-30",
+      "as_of": "2026-09-30",
+      "source": "eastmoney:FundMNewApi/FundMNAssetAllocationNew"
+    }
+  }
+}
